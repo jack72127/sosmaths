@@ -47147,7 +47147,7 @@ window.M4PLAN = {
   function page(box, cls, n) {
     const L = (S[cls] || {})[n] || [];
     if (L.sub) {
-      box.innerHTML = '<div class="sm-ti">\u26A1 <span class="sm-tt">BOOST de SOSMATHS</span></div><div class="sm-subs">'.concat(L.sub.map((x, i) => '<button type="button" class="sm-sb" data-i="'.concat(i, '">').concat(esc(x.t), "</button>")).join(""), '</div><div class="sm-slot"></div>');
+      box.innerHTML = '<div class="sm-ti">\u26A1 <span class="sm-tt">le BOOST de SOSMATHS</span></div><div class="sm-subs">'.concat(L.sub.map((x, i) => '<button type="button" class="sm-sb" data-i="'.concat(i, '">').concat(esc(x.t), "</button>")).join(""), '</div><div class="sm-slot"></div>');
       const slot = box.querySelector(".sm-slot"), B = [...box.querySelectorAll(".sm-sb")];
       const go = (i) => {
         B.forEach((b) => b.classList.toggle("on", +b.dataset.i === i));
@@ -47167,7 +47167,7 @@ window.M4PLAN = {
       go(L.sub[i0] ? i0 : 0);
       return;
     }
-    box.innerHTML = '<div class="sm-ti">\u26A1 <span class="sm-tt">BOOST de SOSMATHS</span></div>' + (L.length ? L.map((x) => '<div class="sm-sec">'.concat(x.h ? '<div class="sm-h">'.concat(Tx(x.h), "</div>") : "").concat((x.l || []).map((l) => '<div class="sm-l">'.concat(Tx(l), "</div>")).join(""), "</div>")).join("") : '<div class="sm-vide">Contenu en pr\xE9paration.</div>');
+    box.innerHTML = '<div class="sm-ti">\u26A1 <span class="sm-tt">le BOOST de SOSMATHS</span></div>' + (L.length ? L.map((x) => '<div class="sm-sec">'.concat(x.h ? '<div class="sm-h">'.concat(Tx(x.h), "</div>") : "").concat((x.l || []).map((l) => '<div class="sm-l">'.concat(Tx(l), "</div>")).join(""), "</div>")).join("") : '<div class="sm-vide">Contenu en pr\xE9paration.</div>');
     try {
       if (window.TEXM && TEXM.render) TEXM.render(box);
     } catch (_) {
@@ -47200,7 +47200,7 @@ window.M4PLAN = {
     const b = document.createElement("button");
     b.type = "button";
     b.className = "m4-tab sm-tab";
-    b.textContent = "\u26A1 BOOST de SOSMATHS";
+    b.textContent = "\u26A1 le BOOST de SOSMATHS";
     tabs.appendChild(b);
     b.onclick = () => {
       let box = m.querySelector(".m4-box");
