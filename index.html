@@ -46724,6 +46724,268 @@ window.M4PLAN = {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const N = (a, e) => ({ nr: [["Auto-\xE9valuation", [1, a]], ["Travailler les automatismes", [a + 1, e - 1]], ["Entra\xEEnement", [e, 999]]] });
+  P.tlespe = { ch: {
+    1: N(15, 48),
+    2: N(16, 40),
+    3: N(18, 46),
+    4: N(16, 40),
+    5: N(16, 35),
+    6: N(17, 44),
+    7: N(15, 37),
+    8: N(21, 56),
+    9: N(15, 52),
+    10: N(18, 53),
+    11: N(17, 43),
+    12: N(18, 48),
+    13: N(14, 36),
+    14: N(15, 36)
+  } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Combinatoire et d\xE9nombrement", 2: "Vecteurs, droites et plans de l\u2019espace", 3: "Orthogonalit\xE9 et distances dans l\u2019espace", 4: "Suites", 5: "Limites de fonctions", 6: "Continuit\xE9", 7: "Compl\xE9ments sur la d\xE9rivation", 8: "Logarithme n\xE9p\xE9rien", 9: "Fonctions trigonom\xE9triques", 10: "Primitives - \xC9quations diff\xE9rentielles", 11: "Calcul int\xE9gral", 12: "Loi binomiale", 13: "Sommes de variables al\xE9atoires", 14: "Loi des grands nombres" };
+  const PG = { 1: 41, 2: 69, 3: 99, 4: 141, 5: 173, 6: 199, 7: 219, 8: 247, 9: 273, 10: 295, 11: 323, 12: 359, 13: 391, 14: 415 };
+  const S = (c, n) => "Manuel Maths Tle sp\xE9cialit\xE9, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + PG[c] + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(une ou plusieurs bonnes r\xE9ponses)";
+  const E = (c, n, t, it) => ({ n: String(n), src: S(c, n), t, rule: R[c], it });
+  const Q = (c, n, t, ch, ok, cm) => E(c, n, t, [qc("R\xE9ponse :", ch, ok, cm)]);
+  const R = {
+    1: "Listes ordonn\xE9es **avec r\xE9p\xE9tition** : **$n^k$**. **Sans r\xE9p\xE9tition** (arrangements) : **$\\frac{n!}{(n-k)!}$**. Permutations : **$n!$**. Combinaisons (parties \xE0 $k$ \xE9l\xE9ments) : **$\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$** ; $\\binom{n}{k} = \\binom{n}{n-k}$ ; **$\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$**.",
+    2: "Droite passant par A de vecteur directeur $\\vec{u}$ : **$x = x_A + at$, $y = y_A + bt$, $z = z_A + ct$**. $\\vec{w}$ est **coplanaire** \xE0 $\\vec{u}$ et $\\vec{v}$ s\u2019il existe $a$, $b$ tels que **$\\vec{w} = a\\vec{u} + b\\vec{v}$** ; trois vecteurs non coplanaires forment une **base**.",
+    3: "Plan de vecteur normal $\\vec{n}\\begin{pmatrix}a\\\\b\\\\c\\end{pmatrix}$ : **$ax + by + cz + d = 0$**. Distance d\u2019un point M au plan : **$\\frac{|ax_M + by_M + cz_M + d|}{\\sqrt{a^2 + b^2 + c^2}}$**. $\\vec{u} \\perp \\vec{v} \\iff \\vec{u}\\cdot\\vec{v} = 0$."
+  };
+  ADD("tlespe", { mnx: {
+    c1: [
+      Q(1, 7, "Le nombre de mani\xE8res de placer cinq manteaux diff\xE9rents sur un porte-manteau \xE0 cinq pat\xE8res (un par pat\xE8re) est :", ["$5^2$", "$5!$", "$2^5$", "$5 \xD7 2$"], 1),
+      Q(1, 8, "17 filles et 12 gar\xE7ons : on \xE9lit deux d\xE9l\xE9gu\xE9s, une fille et un gar\xE7on. Nombre de couples possibles :", ["$17 \xD7 12$", "$17! \xD7 12!$", "$\\binom{29}{2}$", "$17 + 12$"], 0),
+      Q(1, 9, "Nombre de mani\xE8res de s\xE9lectionner trois personnes dans un groupe de cinq :", ["60", "125", "10", "243"], 2),
+      Q(1, 10, "On tire une \xE0 une trois cartes dans un paquet de douze cartes. Nombre de tirages diff\xE9rents :", ["$\\binom{12}{3}$", "$\\frac{12!}{9!}$", "$\\frac{12!}{3!}$", "$\\binom{3}{12}$"], 1),
+      E(1, 11, "\xC0 quoi le nombre $\\binom{12}{9}$ est-il \xE9gal ? " + PL, [vf("4", 0), vf("$\\binom{12}{3}$", 1), vf("1 320", 0), vf("220", 1)]),
+      E(1, 12, "Onze livres diff\xE9rents : nombre de mani\xE8res d\u2019en s\xE9lectionner quatre ou cinq ? " + PL, [vf("$\\binom{11}{9}$", 0), vf("$\\binom{12}{5}$", 1, "formule de Pascal"), vf("$\\binom{11}{4} + \\binom{11}{5}$", 1), vf("$\\binom{11}{4} \xD7 \\binom{11}{5}$", 0)]),
+      E(1, 13, "Lesquelles sont des permutations de l\u2019ensemble {1 ; 2 ; 3 ; 4} ? " + PL, [vf("(4 ; 3 ; 1 ; 2)", 1), vf("(1 ; 2 ; 4)", 0), vf("{1 ; 2 ; 4 ; 3}", 0, "c\u2019est un ensemble, pas une liste"), vf("(1 ; 3 ; 2 ; 4)", 1)]),
+      E(1, 14, "Nombres \xE0 quatre chiffres \xE9crits avec les chiffres de 1 \xE0 6, sans r\xE9p\xE9tition : " + PL, [vf("$6^4$", 0), vf("$\\frac{6!}{2!}$", 1), vf("$\\frac{6!}{4!}$", 0), vf("$6 \xD7 5 \xD7 4 \xD7 3$", 1)]),
+      E(1, 15, "Probl\xE8me. Un sac contient neuf boules num\xE9rot\xE9es de 1 \xE0 9.", [nm("Tirage successif avec remise de 3 boules : nombres diff\xE9rents :", 729), nm("\u2026 nombres pairs :", 324), nm("Sans remise : nombres diff\xE9rents :", 504), nm("\u2026 sans le chiffre 7 :", 336), nm("\u2026 avec 5 ou 8 en derni\xE8re position :", 112), nm("Tirage simultan\xE9 de 3 boules : r\xE9sultats diff\xE9rents :", 84), nm("\u2026 sans le 3 ni le 6 :", 35), nm("\u2026 avec le 2 mais sans le 4 ni le 6 :", 15)])
+    ],
+    c2: [
+      Q(2, 8, "$d$ : $x = -6t + 2$, $y = 3t - 1$, $z = -2t + 3$ ($t \\in \\mathbb{R}$). Alors :", ["A(\u22124 ; 2 ; \u22121) \u2208 $d$", "B(\u22124 ; \u22122 ; \u22121) \u2208 $d$", "C(4 ; 2 ; \u22121) \u2208 $d$", "D(\u22124 ; 2 ; 1) \u2208 $d$"], 3),
+      Q(2, 9, "A(2 ; \u22125 ; 1), B(1 ; 1 ; 2) et C sont align\xE9s lorsque C a pour coordonn\xE9es :", ["(0 ; 7 ; 3)", "(3 ; 1 ; 2)", "(1 ; 2 ; \u22121)", "(2 ; 1 ; 1)"], 0),
+      Q(2, 10, "A(1 ; 2 ; 1), B(0 ; \u22121 ; 3), C(\u22124 ; 2 ; 1) et $\\overrightarrow{AM} = 2\\overrightarrow{AB} + \\overrightarrow{AC}$. Coordonn\xE9es de M :", ["(\u22127 ; \u22126 ; 4)", "(8 ; 8 ; \u22121)", "(\u22128 ; \u22128 ; 1)", "(\u22126 ; \u22124 ; 5)"], 3),
+      Q(2, 11, "$\\vec{u}(3 ; 4 ; 2)$, $\\vec{v}(1 ; 2 ; -2)$ et $\\vec{w}$ sont coplanaires lorsque $\\vec{w}$ a pour coordonn\xE9es :", ["(5 ; 3 ; 2)", "(1 ; \u22125 ; 4)", "(4 ; 5 ; 4)", "(1 ; \u22122 ; 5)"], 2, "$\\vec{w} = 1{,}5\\vec{u} - 0{,}5\\vec{v}$"),
+      E(2, 12, "$\\vec{u}(1 ; 0 ; 1)$, $\\vec{v}(1 ; 1 ; 0)$ et $\\vec{w}$ forment une base lorsque $\\vec{w}$ a pour coordonn\xE9es : " + PL, [vf("(1 ; 1 ; 1)", 1), vf("(1 ; \u22121 ; 2)", 0), vf("(1 ; \u22121 ; 0)", 1), vf("(\u22121 ; \u22122 ; 1)", 0)]),
+      E(2, 13, "A(\u22121 ; \u22122 ; 3) et B(2 ; \u22123 ; 4). Repr\xE9sentations param\xE9triques de (AB) : " + PL, [vf("$x = 3t - 1$, $y = -t - 2$, $z = t + 3$", 1), vf("$x = 3t + 1$, $y = -t + 1$, $z = t + 1$", 0), vf("$x = -3t + 2$, $y = -t - 3$, $z = t + 4$", 0), vf("$x = 3t + 11$, $y = -t - 6$, $z = t + 7$", 1)]),
+      E(2, 14, "A(1 ; 2 ; 3), B(2 ; \u22121 ; 3), C(0 ; 1 ; 0) et $\\vec{u}(1 ; 1 ; 3)$. Si $(A ; \\vec{u}, \\vec{v})$ est un rep\xE8re de (ABC), $\\vec{v}$ peut \xEAtre : " + PL, [vf("(1 ; 1 ; 0)", 0), vf("(1 ; \u22123 ; 0)", 1), vf("(\u22122 ; 2 ; \u22123)", 1), vf("(1 ; 2 ; \u22121)", 0)]),
+      E(2, 15, "Cube ABCDEFGH de centre O ; I, J, K, L milieux de [EH], [FG], [BC], [AD]. " + PL, [vf("les plans (AIJ) et (GKL) sont parall\xE8les", 1), vf("les droites (IK) et (JA) sont s\xE9cantes", 0), vf("les points I, J, K et O sont coplanaires", 1), vf("les droites (LI) et (GK) sont s\xE9cantes", 0)]),
+      E(2, 16, "Probl\xE8me. Cube ABCDEFGH, rep\xE8re $(A ; \\vec{i}, \\vec{j}, \\vec{k})$ avec $\\vec{i} = \\frac{1}{2}\\overrightarrow{AB}$, $\\vec{j} = \\frac{1}{2}\\overrightarrow{AD}$, $\\vec{k} = \\frac{1}{2}\\overrightarrow{AE}$ ; R tel que $\\overrightarrow{HR} = \\frac{2}{3}\\overrightarrow{HE}$.", [nm("Abscisse de B :", 2), nm("Ordonn\xE9e de H :", 2), nm("Cote de F :", 2), nm("Ordonn\xE9e de R :", "2/3"), nm("Cote de R :", 2)])
+    ],
+    c3: [
+      Q(3, 9, "Un vecteur normal au plan d\u2019\xE9quation $2x + 3z + 1 = 0$ :", ["$\\vec{n}(2 ; 3 ; 1)$", "$\\vec{n}(2 ; 1 ; 3)$", "$\\vec{n}(2 ; 0 ; 3)$", "il n\u2019en poss\xE8de pas"], 2),
+      Q(3, 10, "Dans un cube, combien d\u2019ar\xEAtes sont orthogonales \xE0 une face donn\xE9e ?", ["2", "6", "4", "aucune"], 2),
+      Q(3, 11, "Projet\xE9 orthogonal de M(2 ; 3 ; 2) sur le plan $3x + 4y - 2z + 15 = 0$ :", ["H(5 ; 7 ; 0)", "H(\u22121 ; \u22121 ; 4)", "H(4 ; \u22121 ; \u22121)", "H(1 ; 1 ; 4)"], 1),
+      Q(3, 12, "Distance entre K(3 ; 1 ; 3) et le plan $x + 2y - 3z + 18 = 0$ :", ["14", "$\\frac{32}{\\sqrt{14}}$", "$\\sqrt{14}$", "32"], 2),
+      Q(3, 13, "$\\vec{u}(3 ; -1 ; 4)$. Un vecteur normal (orthogonal) \xE0 $\\vec{u}$ :", ["$\\vec{v}(-3 ; 1 ; -4)$", "$\\vec{v}(0 ; -4 ; 1)$", "$\\vec{v}(2 ; -2 ; -2)$", "$\\vec{v}(1 ; 0 ; 0)$"], 2),
+      E(3, 14, "Plans admettant $\\vec{n}(1 ; 0 ; -1)$ comme vecteur normal : " + PL, [vf("$2x = 2z + 3$", 1), vf("$-2x + \\sqrt{4}z - 12 = 0$", 1), vf("$x - z + 4 = 0$", 1), vf("$2x + 4y - 2z + 11 = 0$", 0)]),
+      E(3, 15, "Distance entre S(1 ; 1 ; 1) et la droite \u0394 : $x = 3t + 2$, $y = -4t$, $z = 2t + 12$. " + PL, [vf("la distance entre S et A(0 ; \u22128 ; 12)", 0), vf("$\\sqrt{33}$", 0), vf("$\\sqrt{94}$", 1), vf("la distance entre S et B(\u22121 ; 4 ; 10)", 1, "B est le projet\xE9 orthogonal de S sur \u0394")]),
+      E(3, 16, "Deux droites orthogonales \xE0 une m\xEAme troisi\xE8me droite sont : " + PL, [vf("parall\xE8les", 0), vf("orthogonales", 0), vf("coplanaires", 0), vf("on ne peut pas savoir", 1)]),
+      E(3, 17, "Vecteurs normaux au plan $x + \\sqrt{2}y - \\sqrt{2}z + 4 = 0$ : " + PL, [vf("$(2 ; 2\\sqrt{2} ; -2\\sqrt{2})$", 1), vf("$(-\\sqrt{2} ; -2 ; 2)$", 1), vf("$(1 ; \\sqrt{2} ; -\\sqrt{2})$", 1), vf("$(1 ; 2 ; 2)$", 0)]),
+      E(3, 18, "Probl\xE8me. A(4 ; 5 ; 2), B(1 ; 3 ; 1), C(3 ; 3 ; \u22121) et $\\vec{n}(2 ; -4 ; 2)$.", [vf("$\\vec{n}$ est normal au plan (ABC).", 1, "$\\vec{n}\\cdot\\overrightarrow{AB} = \\vec{n}\\cdot\\overrightarrow{AC} = 0$"), qc("\xC9quation du plan (ABC) :", ["$x - 2y + z + 4 = 0$", "$2x - 4y + 2z + 4 = 0$", "$x - 2y + z - 4 = 0$"], 0), vf("D(1 ; 1 ; 1) appartient au plan (ABC).", 0), nm("Distance de D au plan (ABC) (au milli\xE8me) :", 1.633, "", "$\\frac{4}{\\sqrt{6}}$")])
+    ]
+  } });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Combinatoire et d\xE9nombrement", 2: "Vecteurs, droites et plans de l\u2019espace", 3: "Orthogonalit\xE9 et distances dans l\u2019espace", 4: "Suites", 5: "Limites de fonctions", 6: "Continuit\xE9", 7: "Compl\xE9ments sur la d\xE9rivation", 8: "Logarithme n\xE9p\xE9rien", 9: "Fonctions trigonom\xE9triques", 10: "Primitives - \xC9quations diff\xE9rentielles", 11: "Calcul int\xE9gral", 12: "Loi binomiale", 13: "Sommes de variables al\xE9atoires", 14: "Loi des grands nombres" };
+  const PG = { 1: 41, 2: 69, 3: 99, 4: 141, 5: 173, 6: 199, 7: 219, 8: 247, 9: 273, 10: 295, 11: 323, 12: 359, 13: 391, 14: 415 };
+  const S = (c, n) => "Manuel Maths Tle sp\xE9cialit\xE9, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + PG[c] + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(une ou plusieurs bonnes r\xE9ponses)";
+  const E = (c, n, t, it) => ({ n: String(n), src: S(c, n), t, rule: R[c], it });
+  const Q = (c, n, t, ch, ok, cm) => E(c, n, t, [qc("R\xE9ponse :", ch, ok, cm)]);
+  const R = {
+    10: "F est une **primitive** de $f$ si **$F^{\\prime} = f$**. Solutions de **$y^{\\prime} = ay$** : **$y = Ce^{ax}$**. Solutions de **$y^{\\prime} = ay + b$** : **$y = Ce^{ax} - \\frac{b}{a}$**. Solution g\xE9n\xE9rale = solution particuli\xE8re + solution de l\u2019\xE9quation homog\xE8ne.",
+    11: "**$\\int_a^b f(x)\\,dx = F(b) - F(a)$**. Lin\xE9arit\xE9 : $\\int (\\alpha f + \\beta g) = \\alpha\\int f + \\beta\\int g$. Si $m \u2264 f \u2264 M$ sur $[a\\,;b]$ ($a < b$) : **$m(b - a) \u2264 \\int_a^b f \u2264 M(b - a)$**. Aire entre deux courbes : **$\\int_a^b (g - f)$** si $f \u2264 g$.",
+    12: "X suit **$\\mathcal{B}(n\\,;p)$** : **$P(X = k) = \\binom{n}{k}p^k(1 - p)^{n-k}$**, **$E(X) = np$**, **$V(X) = np(1 - p)$**. \xC9preuve de **Bernoulli** : deux issues seulement.",
+    13: "**$E(aX + bY) = aE(X) + bE(Y)$** (toujours). Si X et Y sont **ind\xE9pendantes** : **$V(aX + bY) = a^2V(X) + b^2V(Y)$**. \xC9chantillon de $n$ variables **ind\xE9pendantes** de m\xEAme loi : $V(X_1 + \u2026 + X_n) = nV(X_1)$.",
+    14: "**Markov** (X positive) : **$P(X \u2265 a) \u2264 \\frac{E(X)}{a}$**. **Bienaym\xE9-Tchebychev** : **$P(|X - E(X)| \u2265 \\delta) \u2264 \\frac{V(X)}{\\delta^2}$**. Pour la moyenne $M_n$ de $n$ variables : **$P(|M_n - \\mu| \u2265 \\delta) \u2264 \\frac{V(X_1)}{n\\delta^2}$**."
+  };
+  ADD("tlespe", { mnx: {
+    c10: [
+      Q(10, 10, "$f(x) = 3x^2 - 2x + 1$ admet comme primitive :", ["$x^3 + x^2 + x$", "$x^3 - x^2 - x$", "$x^3 - x^2 + x$", "$x^3 - x^2$"], 2),
+      Q(10, 11, "La solution F de $y^{\\prime} = 3e^{3x}$ telle que $F(0) = -1$ :", ["$3e^x$", "$e^{3x} - 2$", "$3e^{3x} - 2$", "$e^{3x} + 1$"], 1),
+      Q(10, 12, "Solutions de $y^{\\prime} + 3y = 0$ :", ["$Ce^{-3x}$", "$Ce^{3x}$", "$Ce^x$", "$Ce^{-x}$"], 0),
+      Q(10, 13, "Solutions de $y^{\\prime} = 2y + 3$ :", ["$Ce^{2x}$", "$e^{2x} + C$", "$Ce^{2x} - \\frac{3}{2}$", "$Ce^{2x} + 3$"], 2),
+      E(10, 14, "Solutions de $y^{\\prime} = 2x(x^2 + 1)^2$ : " + PL, [vf("$(x^2 + 1)^3$", 0), vf("$\\frac{1}{3}(x^2 + 1)^3$", 1), vf("$(x^2 + 1)^3 + 1$", 0), vf("$\\frac{1}{3}(x^2 + 1)^3 + 1$", 1)]),
+      E(10, 15, "Solutions de $y^{\\prime} = e \xD7 y$ : " + PL, [vf("$x \\mapsto 0$", 1), vf("$x \\mapsto e^{e \xD7 x}$", 1), vf("$x \\mapsto 2e^{ex}$", 1), vf("$x \\mapsto 2e^{ex + 1}$", 1)]),
+      E(10, 16, "Solutions de $y^{\\prime} - e \xD7 y = e$ : " + PL, [vf("$e^{ex} - 1$", 1), vf("$e^{ex}$", 0), vf("$2e^{ex} - 1$", 1), vf("$-e^{ex} - 1$", 1)]),
+      E(10, 17, "Solutions de $y^{\\prime} + 2y = (x^2 + 2x - 1)e^{-x}$ : " + PL, [vf("$e^{-2x}$", 0), vf("$e^{-x}$", 0), vf("$(x^2 - 1)e^{-x}$", 1), vf("$e^{-2x} + (x^2 - 1)e^{-x}$", 1)]),
+      E(10, 18, "Probl\xE8me. (E) : $y^{\\prime} - 3y = e^{3x}$.", [vf("$\\varphi(x) = xe^{3x}$ est une solution particuli\xE8re de (E).", 1), qc("Solutions de $(E_0)$ : $y^{\\prime} - 3y = 0$ :", ["$Ce^{3x}$", "$Ce^{-3x}$", "$3e^x + C$"], 0), qc("Forme g\xE9n\xE9rale des solutions de (E) :", ["$(x + C)e^{3x}$", "$Cxe^{3x}$", "$xe^{3x} + C$"], 0), nm("Constante C telle que $F\\left(\\frac{1}{3}\\right) = e$ :", "2/3")])
+    ],
+    c11: [
+      Q(11, 10, "$\\int_{-2}^{1} (-x^3 + 2x^2 - 1)\\,dx$ est \xE9gale \xE0 :", ["\u221215", "$-\\frac{27}{4}$", "15", "$\\frac{27}{4}$"], 3),
+      Q(11, 11, "Affirmation correcte :", ["$\\int_{-2}^{-1} 3xe^x dx = \\int_{-2}^{-1} 3x\\,dx \xD7 \\int_{-2}^{-1} e^x dx$", "$\\int_{-2}^{-1} (3x + e^x)dx = 3\\int_{-2}^{-1} x\\,dx + \\int_{-2}^{-1} e^x dx$", "$\\int_{-2}^{-1} 3xe^x dx \u2265 0$", "$\\int_{-2}^{-1} (3x + e^x)dx = \\int_0^{-2} 3xe^x dx + \\int_0^{-1} 3xe^x dx$"], 1),
+      Q(11, 12, "$f(x) = \\int_1^x (t - 1)e^t\\,dt$ sur $[1\\,;+\\infty[$. Alors :", ["$f$ est d\xE9rivable et $f^{\\prime}(x) = (x - 1)e^x$", "$f$ est d\xE9rivable et $f^{\\prime}(x) = xe^x$", "$f$ admet pour primitive $(x - 1)e^x$", "$f$ admet pour primitive $\\left(\\frac{x^2}{2} - x\\right)e^x$"], 0),
+      E(11, 13, "$f$ continue sur $\\mathbb{R}$ et $-5 \u2264 f(x) \u2264 -2$ pour tout $x$. " + PL, [vf("$\\int_0^{-2} f(x)\\,dx \u2265 0$", 1), vf("$\\int_{-2}^0 f(x)\\,dx \u2265 0$", 0), vf("$-5 \u2264 \\int_{-2}^0 f(x)\\,dx \u2264 -2$", 0), vf("$-10 \u2264 \\int_{-2}^0 f(x)\\,dx \u2264 -4$", 1)]),
+      E(11, 14, "$f$ est la fonction carr\xE9, rep\xE8re d\u2019unit\xE9s 2 cm en abscisse et 1 cm en ordonn\xE9e. Aire entre $C_f$, l\u2019axe des abscisses et les droites $x = -1$ et $x = 2$ : " + PL, [vf("3 u.a.", 1), vf("6 u.a.", 0), vf("3 cm\xB2", 0), vf("6 cm\xB2", 1)]),
+      E(11, 15, "$f$ est d\xE9finie sur $\\mathbb{R}$ et impaire. " + PL, [vf("$\\int_0^1 f(x)\\,dx = 0$", 0), vf("on ne peut pas conna\xEEtre la valeur de $\\int_{-1}^1 f(x)\\,dx$", 0), vf("$\\int_{-1}^1 f(x)\\,dx = 0$", 1), vf("$\\int_0^1 f(x)\\,dx \u2265 0$", 0)]),
+      E(11, 16, "$f(x) = x^3$ et $g(x) = x^2$. Aire entre les deux courbes sur $[0\\,;1]$ : " + PL, [vf("$\\int_0^1 [f(x) - g(x)]dx$", 0), vf("$\\int_0^1 [g(x) - f(x)]dx$", 1), vf("$\\frac{1}{12}$ u.a.", 1), vf("$-\\frac{1}{12}$ u.a.", 0)]),
+      E(11, 17, "Probl\xE8me. Encadrer $I = \\int_1^3 \\frac{e^{x-1}}{x}\\,dx$ ; $g(x) = \\frac{e^{x-1}}{x}$ est croissante sur $[1\\,;3]$.", [nm("$g(1) =$", 1), qc("$g(3) =$", ["$\\frac{e^2}{3}$", "$\\frac{e^3}{3}$", "$e^2$"], 0), vf("$2 \u2264 I \u2264 \\frac{2e^2}{3}$", 1)])
+    ],
+    c12: [
+      Q(12, 10, "X suit $\\mathcal{B}(5\\,;0{,}2)$. Alors :", ["$P(X = 1) = 0{,}8^4$", "$E(X) = 0{,}8$", "$P(X \u2264 1) = \\binom{5}{1}0{,}2^1 \xD7 (1 - 0{,}2)^4$", "$P(X = 1) = 0{,}2 \xD7 0{,}8^4$"], 0, "$5 \xD7 0{,}2 \xD7 0{,}8^4 = 0{,}8^4$"),
+      Q(12, 11, "On lance cinq d\xE9s \xE9quilibr\xE9s. Quelle variable suit une loi binomiale ?", ["le maximum des faces", "le minimum des faces", "le nombre de faces paires", "la somme des faces"], 2),
+      Q(12, 12, "X suit $\\mathcal{B}(200\\,;0{,}7)$. Plus petit entier $a$ tel que $P(X \u2264 a) \u2265 0{,}95$ :", ["103", "145", "151", "156"], 2),
+      Q(12, 13, "X suit une loi binomiale de param\xE8tres $n$ et $p$ quelconques.", ["$P(X = k) = P(X = n - k)$", "$P(X = k) = \\frac{n!\\,p^k(1 - p)^{n-k}}{k!(n - k)!}$", "$V(X) = p(1 - p)$", "$V(X) = (E(X))^2$"], 1),
+      E(12, 14, "Urne de boules bleues, rouges et vertes. \xC9preuves de Bernoulli : " + PL, [vf("On tire une boule et on regarde sa couleur.", 0), vf("On tire une boule et on regarde si elle est bleue.", 1), vf("On pr\xE9l\xE8ve deux boules sans remise et on regarde si elles sont de la m\xEAme couleur.", 1), vf("On tire une boule et on regarde si elle n\u2019est pas rouge.", 1)]),
+      E(12, 15, "X suit $\\mathcal{B}(72\\,;0{,}52)$. Couples $(a\\,;b)$ tels que $P(a \u2264 X \u2264 b) \u2248 0{,}95$ : " + PL, [vf("(25 ; 44)", 1), vf("(32 ; 68)", 0), vf("(30 ; 72)", 0), vf("(30 ; 46)", 1)]),
+      E(12, 16, "Cinq cartes tir\xE9es avec remise dans un jeu de 32 ; X = nombre de piques. " + PL, [vf("X suit $\\mathcal{B}\\left(5\\,;\\frac{1}{4}\\right)$", 1), vf("$P(X \u2265 3) \u2248 0{,}104$", 1), vf("X suit $\\mathcal{B}\\left(5\\,;\\frac{1}{6}\\right)$", 0), vf("$V(X) = \\frac{5}{6} \xD7 E(X)$", 0)]),
+      E(12, 17, "X suit $\\mathcal{B}(15\\,;0{,}23)$. " + PL, [vf("$P(X = 3) \u2248 0{,}24$", 1), vf("$P(X \u2264 5) \u2248 0{,}89$", 1), vf("$P(3 \u2264 X \u2264 6) \u2248 0{,}67$", 1), vf("$V(X) \u2248 2{,}66$", 1)]),
+      E(12, 18, "Probl\xE8me. 35 \xE9l\xE8ves arrivent en retard ind\xE9pendamment, chacun avec la probabilit\xE9 0,04.", [nm("Param\xE8tre $n$ :", 35), nm("Param\xE8tre $p$ :", 0.04), nm("P(exactement deux \xE9l\xE8ves en retard) (au milli\xE8me) :", 0.248), nm("P(au plus deux \xE9l\xE8ves en retard) (au milli\xE8me) :", 0.837), nm("E(X) :", 1.4)])
+    ],
+    c13: [
+      Q(13, 6, "X : \u22124 (0,25), 2 (0,6), 3 (0,15) ; Y : \u22127 (0,15), 1 (0,2), 3 (0,35), 5 (0,3) ; X et Y ind\xE9pendantes. $E(2X) =$", ["0,325", "0,65", "$0{,}325^2$", "1,3"], 3),
+      Q(13, 7, "M\xEAmes lois. $E(3X - Y) =$", ["3,65", "7,55", "0,25", "4,15"], 2),
+      Q(13, 8, "M\xEAmes lois. $V(X + Y) =$", ["22,6375", "14,655", "7,3275", "15,31"], 0),
+      Q(13, 9, "M\xEAmes lois. $V(2X + Y) =$", ["29,965", "18,973 75", "22,6375", "44,62"], 3),
+      E(13, 10, "X suit $\\mathcal{B}(100\\,;0{,}25)$ et Y suit $\\mathcal{B}(200\\,;0{,}4)$. " + PL, [vf("$E(X) = E(Y)$", 0), vf("La moyenne th\xE9orique des valeurs de X est inf\xE9rieure \xE0 celle de Y.", 1), vf("$\\sigma(X) = \\sigma(Y)$", 0), vf("Les valeurs de X sont th\xE9oriquement moins espac\xE9es autour de leur moyenne que celles de Y.", 1)]),
+      E(13, 11, "X et Y ind\xE9pendantes. " + PL, [vf("$V(2X - Y) = V(2X) - V(Y)$", 0), vf("$V(2X - Y) = 2V(X) - V(Y)$", 0), vf("$V(2X - Y) = V(2X) + V(Y)$", 1), vf("$V(2X - Y) = 4V(X) + V(Y)$", 1)]),
+      E(13, 12, "$X_1, \u2026, X_n$ ont la m\xEAme loi. " + PL, [vf("$E(X_2) = E(X_n)$", 1), vf("Si $X_1$ prend la valeur 3, il en est de m\xEAme pour $X_n$.", 0), vf("$E\\left(\\sum X_i\\right) = nE(X_1)$", 1), vf("$E\\left(\\sum X_i\\right) = nE(X_n)$", 1)]),
+      E(13, 13, "M\xEAmes conditions (m\xEAme loi, sans autre hypoth\xE8se). " + PL, [vf("$V(X_1 + \u2026 + X_n) = nV(X_1)$", 0), vf("$\\sigma(X_1 + \u2026 + X_n) = \\sqrt{n}\\,\\sigma(X_1)$", 0), vf("$V\\left(\\frac{X_1 + \u2026 + X_n}{n}\\right) = \\frac{V(X_n)}{n}$", 0), vf("Aucune ne convient, il faut ajouter une hypoth\xE8se (l\u2019ind\xE9pendance).", 1)]),
+      E(13, 14, "Probl\xE8me. X : \u22128 (0,35), 2 (0,45), 4 (0,2) ; Y : 1 (0,1), 3 (0,25), $a$ (0,45), 7 (0,2).", [nm("$E(X) =$", -1.1), qc("$E(Y) =$", ["$2{,}25 + 0{,}45a$", "$0{,}45a$", "$3{,}65 + a$"], 0), nm("Valeur de $a$ pour que $E(X + 2Y) = 7$ :", 4)])
+    ],
+    c14: [
+      Q(14, 7, "L\u2019in\xE9galit\xE9 de Markov ne fournit aucune information utile lorsque :", ["$a > E(X)$", "$a = 1$", "$a \u2264 E(X)$", "jamais"], 2),
+      Q(14, 8, "Vol de 325 places, 340 billets vendus. X = nombre de passagers pr\xE9sents, $E(X) = 323$, $V(X) = 16{,}15$. Probabilit\xE9 qu\u2019il y ait entre 317 et 329 passagers :", ["sup\xE9rieure \xE0 0,65", "inf\xE9rieure \xE0 0,45", "sup\xE9rieure \xE0 0,75", "inf\xE9rieure \xE0 0,55"], 0, "$1 - \\frac{16{,}15}{7^2} \u2248 0{,}67$"),
+      Q(14, 9, "Algorithme : C \u2190 0 ; pour $i$ de 1 \xE0 $n$ : X \u2190 entier al\xE9atoire entre 1 et 10 ; si X = 1 : C \u2190 C + 1. Il simule :", ["une loi binomiale de param\xE8tres $n = 10$ et $p = 0{,}1$", "une loi binomiale de param\xE8tres $n$ et $p = 0{,}1$", "une loi binomiale de param\xE8tres inconnus", "une exp\xE9rience dont on ignore la loi"], 1),
+      Q(14, 10, "On lance $n$ fois un d\xE9 et on note le nombre de \xAB 4 \xBB. Nombre minimal de lancers pour que la probabilit\xE9 de s\u2019\xE9carter de la moyenne d\u2019au moins 0,1 soit inf\xE9rieure \xE0 0,1 :", ["59", "109", "373", "139"], 3),
+      E(14, 11, "Dans quels cas peut-on appliquer l\u2019in\xE9galit\xE9 de Markov ? " + PL, [vf("X est la note \xE0 un contr\xF4le.", 1), vf("X est la temp\xE9rature sur une ann\xE9e.", 0), vf("X est le nombre de points d\u2019une \xE9quipe de football.", 1), vf("X est le gain \xE0 un jeu de paris sportifs.", 0)]),
+      Q(14, 12, "QCM de 20 questions, quatre propositions dont une juste : estimateur de la moyenne si on r\xE9pond au hasard :", ["4", "6", "5", "7"], 2),
+      Q(14, 13, "Taille moyenne 170 cm, variance 7,2. $P(|X - 170| \u2265 5)$ est inf\xE9rieure ou \xE9gale \xE0 :", ["0,25", "0,288", "0,312", "0,35"], 1),
+      E(14, 14, "Notes : moyenne 11,4, variance 1,2 ; classe de 36 \xE9l\xE8ves. Probabilit\xE9 que la moyenne de la classe soit dans $]9\\,;13{,}8[$ : " + PL, [vf("sup\xE9rieure \xE0 0,79", 1), vf("inf\xE9rieure \xE0 0,79", 0), vf("inf\xE9rieure \xE0 0,21", 0), vf("sup\xE9rieure \xE0 0,21", 1)]),
+      E(14, 15, "Probl\xE8me. $X_i$ vaut 1 si la personne est n\xE9e en mars (probabilit\xE9 $\\frac{1}{12}$) ; $M_n$ est la moyenne.", [qc("$V(X_1) =$", ["$\\frac{11}{144}$", "$\\frac{1}{12}$", "$\\frac{11}{12}$"], 0), nm("Plus petit $n$ tel que la majoration de $P(|M_n - E(X_1)| \u2265 0{,}1)$ soit inf\xE9rieure \xE0 0,05 :", 153)])
+    ]
+  } });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Combinatoire et d\xE9nombrement", 2: "Vecteurs, droites et plans de l\u2019espace", 3: "Orthogonalit\xE9 et distances dans l\u2019espace", 4: "Suites", 5: "Limites de fonctions", 6: "Continuit\xE9", 7: "Compl\xE9ments sur la d\xE9rivation", 8: "Logarithme n\xE9p\xE9rien", 9: "Fonctions trigonom\xE9triques", 10: "Primitives - \xC9quations diff\xE9rentielles", 11: "Calcul int\xE9gral", 12: "Loi binomiale", 13: "Sommes de variables al\xE9atoires", 14: "Loi des grands nombres" };
+  const PG = { 1: 41, 2: 69, 3: 99, 4: 141, 5: 173, 6: 199, 7: 219, 8: 247, 9: 273, 10: 295, 11: 323, 12: 359, 13: 391, 14: 415 };
+  const S = (c, n) => "Manuel Maths Tle sp\xE9cialit\xE9, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + PG[c] + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(une ou plusieurs bonnes r\xE9ponses)";
+  const E = (c, n, t, it) => ({ n: String(n), src: S(c, n), t, rule: R[c], it });
+  const Q = (c, n, t, ch, ok, cm) => E(c, n, t, [qc("R\xE9ponse :", ch, ok, cm)]);
+  const R = {
+    4: "Une suite **croissante et major\xE9e converge**. Si $u_n \u2264 M$ et $u_n \\to \\ell$, alors **$\\ell \u2264 M$**. **Gendarmes** : si $u_n \u2264 v_n \u2264 w_n$ et $u_n, w_n \\to \\ell$, alors $v_n \\to \\ell$. Comparaison : si $u_n \u2264 v_n$ et $u_n \\to +\\infty$, alors $v_n \\to +\\infty$. Formes ind\xE9termin\xE9es : **$\\infty - \\infty$, $0 \xD7 \\infty$, $\\frac{\\infty}{\\infty}$, $\\frac{0}{0}$**.",
+    5: "Si $\\lim\\limits_{x \\to \\pm\\infty} f(x) = \\ell$ : **asymptote horizontale $y = \\ell$**. Si $\\lim\\limits_{x \\to a} f(x) = \\pm\\infty$ : **asymptote verticale $x = a$**. Croissances compar\xE9es : **$\\lim\\limits_{x \\to +\\infty} \\frac{e^x}{x^n} = +\\infty$**, $\\lim\\limits_{x \\to -\\infty} x^n e^x = 0$.",
+    6: "Toute fonction **d\xE9rivable est continue**. **Th\xE9or\xE8me des valeurs interm\xE9diaires** : si $f$ est continue et **strictement monotone** sur $[a\\,;b]$, pour tout $k$ entre $f(a)$ et $f(b)$, l\u2019\xE9quation **$f(x) = k$ a une unique solution**. Si $u_{n+1} = f(u_n)$ converge vers $\\ell$ et $f$ continue, alors **$f(\\ell) = \\ell$**.",
+    7: "**$(e^u)^{\\prime} = u^{\\prime}e^u$**, **$(\\sqrt{u})^{\\prime} = \\frac{u^{\\prime}}{2\\sqrt{u}}$**, $(u^n)^{\\prime} = nu^{\\prime}u^{n-1}$. **$f^{\\prime\\prime} \u2265 0$ \u27FA $f$ convexe** ; un **point d\u2019inflexion** correspond \xE0 un **changement de signe de $f^{\\prime\\prime}$**.",
+    8: "**$\\ln(ab) = \\ln a + \\ln b$**, **$\\ln(a^n) = n\\ln a$**, $\\ln\\sqrt{a} = \\frac{1}{2}\\ln a$, $\\ln 1 = 0$, $\\ln e = 1$. **$(\\ln u)^{\\prime} = \\frac{u^{\\prime}}{u}$**. Diviser par un nombre **n\xE9gatif** (comme $\\ln\\frac{2}{3}$) **change le sens** d\u2019une in\xE9galit\xE9.",
+    9: "**$\\cos x = \\cos a \\iff x = \\pm a + 2k\\pi$** ($k \\in \\mathbb{Z}$). $\\sin(\\pi - x) = \\sin x$, **$\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x$**. **$(\\cos u)^{\\prime} = -u^{\\prime}\\sin u$**, $(\\sin u)^{\\prime} = u^{\\prime}\\cos u$."
+  };
+  ADD("tlespe", { mnx: {
+    c4: [
+      Q(4, 8, "$u_n = \\frac{3n + 2}{5 + 2n}$. La suite $(u_n)$ :", ["converge vers $\\frac{3}{5}$", "converge vers $\\frac{3}{2}$", "converge vers 0", "a pour limite $+\\infty$"], 1),
+      Q(4, 9, "$v_0 = 1$ et $v_{n+1} = \\frac{v_n^2}{10} - 2v_n + 1$. \xC0 la calculatrice, on conjecture que la suite est :", ["born\xE9e", "croissante", "d\xE9croissante", "convergente"], 0),
+      Q(4, 10, "Une suite $(w_n)$ est major\xE9e par 4 et converge vers un r\xE9el $\\ell$. Alors :", ["$\\ell = 4$", "$(w_n)$ est croissante", "$\\ell \u2264 4$", "$(w_n)$ est constante \xE9gale \xE0 4 \xE0 partir d\u2019un certain rang"], 2),
+      Q(4, 11, "Si $\\lim u_n = +\\infty$ et $\\lim v_n = -\\infty$, alors :", ["$\\lim \\frac{u_n}{v_n} = +\\infty$", "$\\lim \\frac{u_n}{v_n} = 0$", "$\\lim \\frac{u_n}{v_n} = -1$", "on ne peut pas conclure dans le cas g\xE9n\xE9ral"], 3),
+      E(4, 12, "$(u_n)$ converge vers 1. " + PL, [vf("La suite est croissante.", 0), vf("La suite est born\xE9e \xE0 partir d\u2019un certain rang.", 1), vf("La suite est positive \xE0 partir d\u2019un certain rang.", 1), vf("La suite est major\xE9e par 1.", 0)]),
+      E(4, 13, "$(v_n)$ est une suite born\xE9e. " + PL, [vf("La suite n\u2019est pas monotone.", 0), vf("La suite est monotone.", 0), vf("La suite est convergente.", 0), vf("La suite peut diverger.", 1)]),
+      E(4, 14, "Si $\\lim u_n = +\\infty$ et $\\lim v_n = +\\infty$, on peut avoir : " + PL, [vf("$\\lim \\frac{u_n}{v_n} = +\\infty$", 1), vf("$\\lim \\frac{u_n}{v_n} = 0$", 1), vf("$\\lim \\frac{u_n}{v_n} = 1$", 1), vf("$\\lim \\frac{u_n}{v_n} = -\\infty$", 0)]),
+      E(4, 15, "$u_n \u2264 v_n \u2264 w_n$ \xE0 partir d\u2019un certain rang. " + PL, [vf("Si $\\lim u_n = +\\infty$ alors $\\lim w_n = +\\infty$.", 1), vf("Si $\\lim v_n = -\\infty$ alors $\\lim u_n = -\\infty$.", 1), vf("Si $\\lim v_n = +\\infty$ alors $\\lim u_n = +\\infty$.", 0), vf("Si $\\lim u_n < 0$ et $\\lim w_n > 0$, alors $\\lim v_n = 0$.", 0)]),
+      E(4, 16, "Probl\xE8me (d\u2019apr\xE8s bac). $u_0 = 300$ et $u_{n+1} = 0{,}96u_n + 22$ ; $v_n = u_n - 550$.", [nm("Raison de la suite g\xE9om\xE9trique $(v_n)$ :", 0.96), nm("$v_0 =$", -250), qc("$u_n =$", ["$550 - 250 \xD7 0{,}96^n$", "$300 \xD7 0{,}96^n$", "$550 + 250 \xD7 0{,}96^n$"], 0), nm("$\\lim u_n =$", 550)])
+    ],
+    c5: [
+      Q(5, 8, "$f(x) = \\frac{2x^2 - 3}{x^2 + 1}$. $C_f$ admet comme asymptote la droite d\u2019\xE9quation :", ["$y = -3$", "$x = 2$", "$y = 2$", "$y = 0$"], 2),
+      Q(5, 9, "Si $\\lim\\limits_{x \\to +\\infty} f(x) = -\\infty$ et $\\lim\\limits_{x \\to +\\infty} g(x) = 0$, alors $\\lim\\limits_{x \\to +\\infty} f(x)g(x) = 0$.", ["Vrai", "Faux"], 1, "forme ind\xE9termin\xE9e"),
+      Q(5, 10, "$g(x) < f(x) < h(x)$ avec $\\lim\\limits_{+\\infty} g = 0$ et $\\lim\\limits_{+\\infty} h = 1$. On peut affirmer :", ["si $\\lim f = \\ell$, alors $\\ell > 0$", "si $\\lim f = \\ell$, alors $\\ell \u2265 0$", "$f$ admet une limite en $+\\infty$", "$f$ n\u2019admet pas de limite en $+\\infty$"], 1),
+      Q(5, 11, "Si $\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$, alors $\\lim\\limits_{x \\to +\\infty} \\frac{e^x}{f(x)} = 1$.", ["Vrai", "Faux"], 1),
+      E(5, 12, "$f(x) = \\frac{5 - 4x}{x + 1}$ sur $\\mathbb{R}\\setminus\\{-1\\}$. Asymptotes : " + PL, [vf("$y = -4$", 1), vf("$y = 5$", 0), vf("$x = -1$", 1), vf("$x = -4$", 0)]),
+      E(5, 13, "$0 \u2264 f(x) \u2264 x^2$ pour tout $x$ de $]0\\,;+\\infty[$. " + PL, [vf("$\\lim\\limits_{x \\to 0} \\frac{f(x)}{e^x} = 0$", 1), vf("$\\lim\\limits_{x \\to +\\infty} \\frac{f(x)}{e^x} = 0$", 1), vf("$C_f$ admet une asymptote verticale.", 0), vf("$\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$", 0)]),
+      E(5, 14, "$f(x) = e^x\\cos x$ sur $\\mathbb{R}$. " + PL, [vf("$f$ n\u2019a pas de limite en $+\\infty$.", 1), vf("$\\lim\\limits_{x \\to +\\infty} f(x) = +\\infty$", 0), vf("$\\lim\\limits_{x \\to -\\infty} f(x) = 1$", 0), vf("$\\lim\\limits_{x \\to -\\infty} f(x) = 0$", 1)]),
+      E(5, 15, "$\\lim\\limits_{+\\infty} f = -\\infty$ et $\\lim\\limits_{+\\infty} g = 0^+$. " + PL, [vf("La courbe de $\\frac{f}{g}$ admet une asymptote horizontale en $+\\infty$.", 0), vf("$\\lim \\frac{g(x)}{f(x)} = 0$", 1), vf("$\\lim \\frac{f(x)}{g(x)} = -\\infty$", 1), vf("$\\frac{f}{g}$ n\u2019a pas de limite en $+\\infty$.", 0)]),
+      E(5, 16, "Probl\xE8me. Limites aux bornes.", [qc("$f(x) = x^3 - x^2 + 2x - 5$ en $+\\infty$ :", ["$+\\infty$", "$-\\infty$", "0"], 0), nm("$g(x) = \\frac{x^2 - x - 2}{2x^2 - 8}$ : limite en $+\\infty$ :", "1/2"), nm("$h(x) = \\frac{2\\sin x + x + 1}{x}$ : limite en $+\\infty$ :", 1), qc("$k(x) = \\frac{e^x}{x^2}$ en $+\\infty$ :", ["$+\\infty$", "0", "1"], 0)])
+    ],
+    c6: [
+      Q(6, 9, "Courbes sur $[-3\\,;4]$ : une droite (verte), une parabole (bleue), la courbe de la fonction inverse avec ses deux branches de part et d\u2019autre de 0 (rouge) et une courbe en racine (violette). Laquelle ne semble pas continue sur $[-3\\,;4]$ ?", ["la bleue", "la verte", "la rouge", "la violette"], 2),
+      Q(6, 10, "$f : x \\mapsto x\\sqrt{x}$ sur $[0\\,;+\\infty[$. Alors :", ["$f$ est continue sur $\\mathbb{R}$", "$f(x) = 0{,}5$ admet au moins une solution sur $[0\\,;1]$", "$f(x) = -1$ admet au moins une solution sur $[0\\,;1]$"], 1),
+      Q(6, 11, "$f$ continue sur $\\mathbb{R}$ : croissante de $-3$ (limite en $-\\infty$) \xE0 3 (en $x = 1$), puis d\xE9croissante vers $-\\infty$. Nombre de solutions de $f(x) = -3$ :", ["0", "1", "2", "3"], 1),
+      Q(6, 12, "$f : x \\mapsto \\sqrt{x}$ sur $[0\\,;+\\infty[$. Alors :", ["$f$ est d\xE9rivable sur $[0\\,;+\\infty[$", "$f$ est continue sur $[0\\,;+\\infty[$", "$f$ n\u2019est pas continue sur $[0\\,;+\\infty[$", "$f(x) = k$ admet une solution pour tout r\xE9el $k$"], 1),
+      E(6, 13, "Fonctions continues sur $\\mathbb{R}$ : " + PL, [vf("$x \\mapsto e^{3x}$", 1), vf("$x \\mapsto |x + 1|$", 1), vf("$x \\mapsto \\sqrt{x^2 + 1}$", 1), vf("$x \\mapsto \\frac{2}{x + 1}$", 0)]),
+      E(6, 14, "\xC9quation $x^2 + x + 1 = \\frac{1}{x}$ sur $]0\\,;+\\infty[$. " + PL, [vf("Elle n\u2019a aucune solution.", 0), vf("Elle a une seule solution.", 1, "$x^3 + x^2 + x - 1$ est strictement croissante"), vf("Elle a deux solutions.", 0), vf("On ne peut rien affirmer.", 0)]),
+      E(6, 15, "$f$ et $g$ continues sur I. " + PL, [vf("$f \xD7 g$ est continue sur I", 1), vf("$g \xD7 \\sqrt{f}$ est continue sur I", 0, "$f$ peut \xEAtre n\xE9gative"), vf("$5f + 6g$ est continue sur I", 1), vf("$(f - g)(f + g)$ est continue sur I", 1)]),
+      E(6, 16, "$u_0 = 0{,}5$ et $u_{n+1} = \\frac{2}{u_n + 1}$. " + PL, [vf("$u_{n+1} = f(u_n)$ avec $f : x \\mapsto \\frac{2}{x + 1}$", 1), vf("$\\lim u_n = -2$", 0), vf("$\\lim u_n = 1$", 1), vf("$\\lim u_n = \\lim\\limits_{x \\to +\\infty} \\frac{2}{x + 1} = 0$", 0)]),
+      E(6, 17, "Probl\xE8me. $f(x) = \\frac{x + 1}{\\sqrt{x}}$ sur $]0\\,;+\\infty[$.", [nm("Nombre de solutions de $f(x) = 3$ :", 2, "", "avec $t = \\sqrt{x}$ : $t^2 - 3t + 1 = 0$"), nm("Minimum de $f$ :", 2, "", "atteint en $x = 1$")])
+    ],
+    c7: [
+      Q(7, 10, "D\xE9riv\xE9e de $f(x) = \\sqrt{3x^2 + 6x + 4}$ :", ["$\\frac{1}{2\\sqrt{3x^2 + 6x + 4}}$", "$\\frac{6x + 6}{\\sqrt{3x^2 + 6x + 4}}$", "$\\frac{3x + 3}{\\sqrt{3x^2 + 6x + 4}}$", "$\\frac{1}{\\sqrt{3x^2 + 6x + 4}}$"], 2),
+      E(7, 11, "D\xE9riv\xE9e de $h(x) = e^{5x+7}(2x^2 + 4x + 6)$ : " + PL, [vf("$e^{5x+7}(2x^2 + 4x + 6) + e^{5x+7}(4x + 4)$", 0), vf("$2(5x^2 + 12x + 17)e^{5x+7}$", 1), vf("$5e^{5x+7}(2x^2 + 4x + 6) + e^{5x+7}(4x + 4)$", 1), vf("$5e^{5x+7}(4x + 4)$", 0)]),
+      E(7, 12, "$k(x) = \\sqrt{x^2 + 1}$ est : " + PL, [vf("croissante sur $\\mathbb{R}$", 0), vf("croissante sur $[0\\,;+\\infty[$", 1), vf("convexe sur $[0\\,;+\\infty[$", 1), vf("convexe sur $\\mathbb{R}$", 1)]),
+      E(7, 13, "$\\ell(x) = (x^2 - 5x + 4)^2$ : " + PL, [vf("admet un point d\u2019inflexion", 0), vf("admet deux points d\u2019inflexion", 1), vf("admet trois tangentes horizontales", 1), vf("admet quatre tangentes horizontales", 0)]),
+      E(7, 14, "$m(x) = e^{x^2 - 2x + 3}$ : " + PL, [vf("$m^{\\prime}(x) = 2(x - 1)e^{x^2 - 2x + 3}$", 1), vf("$m^{\\prime}(x) = e^{2x - 2}$", 0), vf("$m$ est concave sur $\\mathbb{R}$", 0), vf("$m$ est convexe sur $\\mathbb{R}$", 1)]),
+      E(7, 15, "Probl\xE8me. $p(x) = x^3 - 5x^2 + 8x - 3$.", [qc("$p^{\\prime}(x) =$", ["$(3x - 4)(x - 2)$", "$3x^2 - 10x$", "$(x - 4)(3x - 2)$"], 0), qc("$p$ est d\xE9croissante sur :", ["$[\\frac{4}{3}\\,;2]$", "$[2\\,;+\\infty[$", "$]-\\infty\\,;\\frac{4}{3}]$"], 0), qc("$p$ est convexe sur :", ["$[\\frac{5}{3}\\,;+\\infty[$", "$]-\\infty\\,;\\frac{5}{3}]$", "$\\mathbb{R}$"], 0), nm("Abscisse du point d\u2019inflexion :", "5/3"), nm("Ordonn\xE9e du point d\u2019inflexion :", "29/27")])
+    ],
+    c8: [
+      Q(8, 11, "$\\ln(125)$ est \xE9gal \xE0 :", ["$5\\ln(3)$", "$3\\ln(5)$", "$25\\ln(5)$", "$5\\ln(25)$"], 1),
+      Q(8, 12, "Plus grand intervalle de d\xE9finition de $x \\mapsto \\ln(x^2 + x + 1)$ :", ["$]0\\,;+\\infty[$", "$]-\\infty\\,;0]$", "$[0\\,;1]$", "$\\mathbb{R}$"], 3),
+      Q(8, 13, "Pour tout r\xE9el $x$, $\\ln(x^2) = 2\\ln(x)$.", ["Vrai", "Faux"], 1, "faux pour $x \u2264 0$"),
+      Q(8, 14, "D\xE9riv\xE9e de $f : x \\mapsto \\ln(2x^2 + 3)$ :", ["$\\frac{2x^2 + 3}{4x}$", "$\\ln(4x)$", "$\\frac{4x}{2x^2 + 3}$", "$\\frac{2x}{2x^2 + 3}$"], 2),
+      Q(8, 15, "L\u2019in\xE9quation $\\ln\\left(\\frac{2}{3}\\right)x - 1 > 3$ \xE9quivaut \xE0 :", ["$x > \\frac{4}{\\ln(2/3)}$", "$x \u2265 \\frac{4}{\\ln(2/3)}$", "$x < \\frac{4}{\\ln(2) - \\ln(3)}$", "$x > 4 - \\ln\\left(\\frac{2}{3}\\right)$"], 2),
+      Q(8, 16, "$x \\mapsto \\ln(x^2)$ est croissante sur $]0\\,;+\\infty[$.", ["Vrai", "Faux"], 0),
+      E(8, 17, "Affirmations vraies : " + PL, [vf("$\\ln(0) = 1$", 0), vf("$\\ln(e) = 1$", 1), vf("$\\ln(1) = 0$", 1), vf("$\\ln(1) = 1$", 0)]),
+      E(8, 18, "Expressions \xE9gales \xE0 5 : " + PL, [vf("$\\ln(5^5)$", 0), vf("$\\exp\\left(\\frac{\\ln(5^5)}{5}\\right)$", 1), vf("$\\ln(e^5)$", 1), vf("$\\ln(5e^5) - \\ln(5)$", 1)]),
+      E(8, 19, "$\\ln(\\sqrt{2}) + \\frac{1}{2}\\ln(7)$ est \xE9gale \xE0 : " + PL, [vf("$\\ln(\\sqrt{14})$", 1), vf("$\\frac{1}{2}\\ln(14)$", 1), vf("$\\frac{1}{2}\\ln(9)$", 0), vf("$\\ln(7)$", 0)]),
+      E(8, 20, "D\xE9riv\xE9e de $f : x \\mapsto \\ln(2x + e^{-x})$ sur $]0\\,;+\\infty[$ : " + PL, [vf("$\\frac{2 - e^{-x}}{2x + e^{-x}}$", 1), vf("$\\ln(2 - e^{-x})$", 0), vf("$\\frac{2 + e^{-x}}{2x + e^{-x}}$", 0), vf("$\\frac{2e^x - 1}{2xe^x + 1}$", 1)]),
+      E(8, 21, "Probl\xE8me. $f(x) = \\frac{\\ln(x + 1)}{x + 1}$.", [qc("Ensemble de d\xE9finition :", ["$]-1\\,;+\\infty[$", "$]0\\,;+\\infty[$", "$\\mathbb{R}$"], 0), qc("$f(e - 1) =$", ["$\\frac{1}{e}$", "$e$", "1"], 0), vf("$f(3) = \\ln(\\sqrt{2})$", 1, "$\\frac{\\ln 4}{4} = \\frac{\\ln 2}{2}$"), qc("Limite en $-1$ :", ["$-\\infty$", "0", "$+\\infty$"], 0), nm("Limite en $+\\infty$ :", 0), qc("Maximum de $f$ :", ["$\\frac{1}{e}$, atteint en $e - 1$", "1, atteint en 0", "$e$, atteint en 1"], 0)])
+    ],
+    c9: [
+      Q(9, 7, "Sur $\\mathbb{R}$, les solutions de $\\cos(x) = -0{,}5$ sont :", ["$-\\frac{2\\pi}{3} + 2k\\pi$ ; $\\frac{2\\pi}{3} + 2k\\pi$, o\xF9 $k \\in \\mathbb{R}$", "$-\\frac{5\\pi}{6} + 2k\\pi$ ; $\\frac{5\\pi}{6} + 2k\\pi$, o\xF9 $k \\in \\mathbb{R}$", "$-\\frac{2\\pi}{3} + 2k\\pi$ ; $\\frac{2\\pi}{3} + 2k\\pi$, o\xF9 $k \\in \\mathbb{Z}$", "$-\\frac{5\\pi}{6} + 2k\\pi$ ; $\\frac{5\\pi}{6} + 2k\\pi$, o\xF9 $k \\in \\mathbb{Z}$"], 2),
+      Q(9, 8, "Sur $\\mathbb{R}$, une solution de $\\cos(x) = \\sin\\left(\\frac{\\pi}{3}\\right)$ est :", ["$\\frac{\\pi}{3}$", "$\\frac{\\pi}{4}$", "$-\\frac{\\pi}{3}$", "$\\frac{\\pi}{6}$"], 3),
+      Q(9, 9, "Sur $[-\\pi\\,;\\pi]$, les solutions de $\\sin(x) \u2264 \\frac{1}{2}$ sont :", ["$[\\frac{\\pi}{6}\\,;\\frac{5\\pi}{6}]$", "$[\\frac{5\\pi}{6}\\,;\\frac{\\pi}{6}]$", "$[-\\pi\\,;\\frac{\\pi}{6}]\\cup[\\frac{5\\pi}{6}\\,;\\pi]$", "$[-\\pi\\,;\\pi]$"], 2),
+      Q(9, 10, "D\xE9riv\xE9e de $f(x) = \\sin(3x) - 4\\cos(3 - 2x)$ :", ["$\\cos(3x) + 4\\sin(3 - 2x)$", "$\\cos(3x) + 12\\sin(3 - 2x)$", "$3\\cos(3x) - 8\\sin(3 - 2x)$", "$3\\cos(3x) + 8\\sin(3 - 2x)$"], 2),
+      E(9, 11, "Pour toute fonction $f$ d\xE9finie sur $\\mathbb{R}$ : " + PL, [vf("Si $f(2) = f(-2)$, alors $f$ est paire.", 0), vf("Si $f(2) \u2260 f(-2)$, alors $f$ n\u2019est pas paire.", 1), vf("Si $f(2) = f(-2)$, alors $f$ est p\xE9riodique de p\xE9riode 4.", 0), vf("Si $f(2) \u2260 f(-2)$, alors $f$ n\u2019est pas p\xE9riodique de p\xE9riode 4.", 1)]),
+      E(9, 12, "Expressions \xE9gales \xE0 $\\sin(x)$ : " + PL, [vf("$\\sin(-x)$", 0), vf("$\\sin(\\pi - x)$", 1), vf("$\\cos\\left(\\frac{\\pi}{2} - x\\right)$", 1), vf("$\\cos\\left(\\frac{\\pi}{2} + x\\right)$", 0)]),
+      E(9, 13, "D\xE9riv\xE9e de $x \\mapsto x^2\\cos(x)$ : " + PL, [vf("$2x\\sin(x)$", 0), vf("$-2x\\sin(x)$", 0), vf("$2x\\cos(x) - x^2\\sin(x)$", 1), vf("$2x\\cos(x) + x^2\\sin(x)$", 0)]),
+      E(9, 14, "$f(x) = \\cos(\\sin(x))$ est : " + PL, [vf("paire", 1), vf("impaire", 0), vf("p\xE9riodique de p\xE9riode $\\pi$", 1), vf("p\xE9riodique de p\xE9riode $2\\pi$", 1)]),
+      E(9, 15, "Probl\xE8me. \xC9quation $\\sin(x) + \\cos(x) = -1$ sur $[-3\\pi\\,;3\\pi]$ ; $f(x) = \\sin(x) + \\cos(x) + 1$.", [nm("Nombre de solutions sur $[-3\\pi\\,;3\\pi]$ :", 7), vf("$f$ est p\xE9riodique de p\xE9riode $2\\pi$.", 1), vf("$f$ est paire.", 0), qc("Sur $[-\\pi\\,;\\pi]$, $\\cos(x) > \\sin(x)$ pour :", ["$x \\in ]-\\frac{3\\pi}{4}\\,;\\frac{\\pi}{4}[$", "$x \\in ]\\frac{\\pi}{4}\\,;\\pi]$", "$x \\in [0\\,;\\frac{\\pi}{2}[$"], 0)])
+    ]
+  } });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
