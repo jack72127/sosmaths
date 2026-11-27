@@ -1729,6 +1729,7 @@ html.da-on #ch-accueil .eyebrow{color:#9FFFD0}html.da-on #ch-accueil .home-h1{co
 @-webkit-keyframes da-r{from{-webkit-transform:translate3d(-50%,0,0)}to{-webkit-transform:translate3d(0,0,0)}}@keyframes da-r{from{transform:translate3d(-50%,0,0)}to{transform:translate3d(0,0,0)}}
 @media (prefers-reduced-motion:reduce){#decor-anim .da-cr,#decor-anim:after{-webkit-animation:none;animation:none}#decor-anim .da-cr{-webkit-transform:translate3d(0,20vh,0);transform:translate3d(0,20vh,0)}}
 #decor-anim .da-pl,#decor-anim .da-hz{display:none}
+#decor-anim .da-st{position:absolute;top:-30%;bottom:-30%;left:-40%;right:-40%;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:rotateY(-24deg) rotateX(8deg);transform:rotateY(-24deg) rotateX(8deg)}#decor-anim .da-row{position:absolute;left:0;white-space:nowrap;will-change:transform;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-animation:da-l var(--d,120s) linear infinite;animation:da-l var(--d,120s) linear infinite}#decor-anim .da-row.da-r{-webkit-animation-name:da-r;animation-name:da-r}#decor-anim .da-row .da-f{margin-right:90px;vertical-align:middle}#decor-anim .da-row{text-shadow:0 0 6px rgba(90,255,175,.85),0 0 16px rgba(40,220,160,.45),1px 1px 0 #1C8A5C,2px 2px 0 #13664A,3px 3px 0 #0B4433,4px 4px 8px rgba(0,0,0,.7)}#decor-anim .da-row.da-c{color:#7FE9FF;text-shadow:0 0 6px rgba(110,220,255,.85),0 0 16px rgba(60,160,255,.45),1px 1px 0 #1F6FA0,2px 2px 0 #175279,3px 3px 0 #0E3550,4px 4px 8px rgba(0,0,0,.7)}#decor-anim .da-row.da-b{-webkit-filter:blur(1.4px);filter:blur(1.4px)}#decor-anim .da-row.da-bb{-webkit-filter:blur(2.6px);filter:blur(2.6px)}@media (prefers-reduced-motion:reduce){#decor-anim .da-row{-webkit-animation:none;animation:none}}
 @media print{#decor-anim{display:none!important}}
 @media print{#decor,#decor-bg,[id^="ch-"]>header::after,[id^="ch-"]>header::before{display:none}[id^="ch-"]>header{background:none;border:none;padding:0}}
 html[data-rub="accueil"]{--rub:#2457C5;--rub-soft:#E0E7F7;--accent:#2457C5;--accent-soft:#E0E7F7;--paper:#F6F8FB;--grid:#DDE5F5;--grid2:#C4D1EE}
@@ -28265,6 +28266,20 @@ var JMC = {
       a.appendChild(pl);
     }
     a.style.setProperty("--hz", "50%");
+    var R = [[6, 14, 0.35, 260, "da-bb", -900], [14, 30, 0.75, 170, "", -150], [22, 18, 0.45, 220, "da-b", -600], [31, 42, 0.9, 130, "da-c", 0], [40, 16, 0.35, 250, "da-bb", -800], [49, 26, 0.7, 180, "", -250], [58, 50, 0.95, 110, "da-c", 0], [67, 20, 0.5, 210, "da-b", -500], [76, 34, 0.8, 150, "", -50], [85, 15, 0.35, 240, "da-bb", -850], [93, 38, 0.85, 140, "da-c", -20]];
+    var st = document.createElement("div");
+    st.className = "da-st";
+    a.appendChild(st);
+    for (var r = 0; r < R.length; r++) {
+      var row = document.createElement("div"), o = r * 4 % html.length, sh = html.slice(o).concat(html.slice(0, o)), part = sh.slice(0, 14).join("");
+      row.className = "da-row" + (r % 2 ? " da-r" : "") + (R[r][4] ? " " + R[r][4] : "");
+      row.style.top = R[r][0] + "%";
+      row.style.fontSize = R[r][1] + "px";
+      row.style.opacity = R[r][2];
+      row.style.webkitAnimationDuration = row.style.animationDuration = R[r][3] + "s";
+      row.innerHTML = '<div style="-webkit-transform:translateZ(' + R[r][5] + "px);transform:translateZ(" + R[r][5] + 'px)">' + part + part + "</div>";
+      st.appendChild(row);
+    }
   })();
   var DI = ["dastro", "dchim", "deco", "delec", "dfin", "dia", "dinfo", "dmeca", "dmed", "dphys", "dplus", "dthermo"];
   var di0 = document.createElement("div");
@@ -28298,7 +28313,7 @@ var JMC = {
       else root.removeAttribute("data-di");
     }
     if (root.classList.contains("di-on") !== !!di) root.classList.toggle("di-on", !!di);
-    var on = false;
+    var on = (!cur || cur === "accueil") && !(sub && !sub.hidden);
     if (root.classList.contains("da-on") !== on) root.classList.toggle("da-on", on);
   }
   var mo = new MutationObserver(function() {
