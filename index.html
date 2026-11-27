@@ -44692,6 +44692,261 @@ window.M4PLAN = {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const G = (A, D, E, S, Z) => ({ pg: [["Auto-\xE9valuation", [A, A]], ["Applications directes", [D, D]], ["Entra\xEEnement", [E, S - 1]], ["Synth\xE8se", [S, Z]]] });
+  P.seconde = { ch: {
+    1: G(47, 51, 52, 61, 63),
+    2: G(73, 77, 78, 86, 89),
+    3: G(99, 103, 104, 110, 113),
+    4: G(125, 129, 130, 135, 137),
+    5: G(153, 157, 158, 165, 167),
+    6: G(177, 181, 182, 189, 191),
+    7: G(201, 205, 206, 210, 211),
+    8: G(223, 227, 228, 235, 237),
+    9: G(253, 257, 258, 264, 265),
+    10: G(275, 279, 280, 287, 289),
+    11: G(303, 307, 308, 316, 317)
+  } };
+})();
+(function() {
+  const N = (a, d, s) => ({ nr: [["Auto-\xE9valuation", [1, a]], ["Applications directes", [a + 1, d]], ["Entra\xEEnement", [d + 1, s - 1]], ["Synth\xE8se", [s, 999]]] });
+  window.MNPLAN.seconde = { ch: {
+    1: N(14, 25, 64),
+    2: N(13, 21, 57),
+    3: N(16, 27, 85),
+    4: N(14, 30, 82),
+    5: N(15, 28, 72),
+    6: N(14, 22, 66),
+    7: N(17, 33, 71),
+    8: N(15, 29, 89),
+    9: N(16, 33, 90),
+    10: N(13, 27, 61),
+    11: N(16, 31, 87)
+  } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 2de, chapitre 1 \xAB G\xE9n\xE9ralit\xE9s sur les fonctions \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const FN = "Si $f(a) = b$ : **$b$ est l\u2019image de $a$** et **$a$ est un ant\xE9c\xE9dent de $b$**. $f$ est **paire** si $f(-x) = f(x)$ (courbe sym\xE9trique par rapport \xE0 l\u2019axe des ordonn\xE9es), **impaire** si $f(-x) = -f(x)$ (courbe sym\xE9trique par rapport \xE0 l\u2019origine).";
+  const TAB = "Tableau de valeurs de $f$ sur $[-3 ; 3]$ : $f(-3) = 4$, $f(-2) = 1$, $f(-1) = 0$, $f(0) = 1$, $f(1) = 2$, $f(2) = 3$, $f(3) = 2$.";
+  ADD("seconde", {
+    mnx: {
+      c1: [
+        { n: "5", src: S(49, 5), t: "QCM. On consid\xE8re la fonction $f$ d\xE9finie sur $\\mathbb{R}$ par $f(x) = 3x$.", rule: FN, it: [qc("L\u2019image de 1 par $f$ est :", ["Pas d\u2019image", "1", "$\\frac{1}{3}$", "3"], 3)] },
+        { n: "6", src: S(49, 6), t: "QCM. On consid\xE8re la fonction $f$ d\xE9finie sur $\\mathbb{R}$ par $f(x) = 3x$.", rule: FN, it: [qc("1 a pour ant\xE9c\xE9dent :", ["0", "\u22123", "$\\frac{1}{3}$", "Pas d\u2019ant\xE9c\xE9dent"], 2)] },
+        { n: "7", src: S(49, 7), t: "QCM. On consid\xE8re la fonction $g$ d\xE9finie sur $\\mathbb{R}$ par $g(x) = x^2$.", rule: FN, it: [qc("\u22124 a pour image :", ["16", "\u221216", "2", "\u22122"], 0)] },
+        { n: "8", src: S(49, 8), t: "QCM. On consid\xE8re la fonction $g$ d\xE9finie sur $\\mathbb{R}$ par $g(x) = -x^2 + x$.", rule: FN, it: [qc("La fonction $g$ :", ["est paire", "est impaire", "n\u2019est ni paire, ni impaire"], 2, "$g(-1) = -2$ et $g(1) = 0$")] },
+        { n: "9", src: S(49, 9), t: "QCM. " + TAB, rule: FN, it: [qc("2 a pour image par $f$ :", ["1", "2", "3", "1 et 3"], 2)] },
+        { n: "10", src: S(49, 10), t: "QCM. " + TAB, rule: FN, it: [qc("4 a pour image :", ["1", "3", "\u22123", "4 n\u2019a pas d\u2019image"], 3, "$f$ est d\xE9finie sur $[-3 ; 3]$")] },
+        { n: "11", src: S(49, 11), t: "Plusieurs bonnes r\xE9ponses possibles. " + TAB + " Les ant\xE9c\xE9dents de 2 par $f$ sont :", rule: FN, it: [vf("1", 1), vf("2", 0), vf("3", 1), vf("Pas d\u2019ant\xE9c\xE9dent", 0)] },
+        { n: "12", src: S(49, 12), t: "Plusieurs bonnes r\xE9ponses possibles. " + TAB + " Des ant\xE9c\xE9dents de 3 par $f$ sont :", rule: FN, it: [vf("2", 1), vf("3", 0), vf("On ne peut pas conna\xEEtre tous les ant\xE9c\xE9dents.", 1, "le tableau ne donne que quelques valeurs"), vf("3 n\u2019a pas d\u2019ant\xE9c\xE9dent.", 0)] },
+        { n: "13", src: S(49, 13), t: "Plusieurs bonnes r\xE9ponses possibles. $h$ est d\xE9finie sur $\\mathbb{R}$ par $h(x) = x^2 - 3$.", rule: FN, it: [vf("$h$ est paire.", 1), vf("$h$ est impaire.", 0), vf("$C_h$ est sym\xE9trique par rapport \xE0 l\u2019origine d\u2019un rep\xE8re orthogonal.", 0), vf("$C_h$ est sym\xE9trique par rapport \xE0 l\u2019axe des ordonn\xE9es d\u2019un rep\xE8re orthogonal.", 1)] },
+        { n: "18", src: S(53, 18), t: "On consid\xE8re la fonction $f$ d\xE9finie sur $[-3 ; 3]$ par $f(x) = x^2$.", rule: FN, it: [nm("$f(-3) =$", 9), nm("$f(-1) =$", 1), nm("$f(2) =$", 4)] },
+        { n: "19", src: S(53, 19), t: "On consid\xE8re la fonction d\xE9finie sur $[-4 ; 4]$ par $f(x) = \\frac{x^3}{10}$.", rule: FN, it: [nm("$f(-4) =$", -6.4), nm("$f(-2) =$", -0.8), nm("$f(3) =$", 2.7)] },
+        { n: "21", src: S(53, 21), t: "$f$ et $g$ sont deux fonctions d\xE9finies sur $\\mathbb{R}$ par $f(x) = x^3 + x$ et $g(x) = x^4 - 3x^2$.", rule: FN, it: [qc("La fonction paire est :", ["$g$", "$f$"], 0, "$g(-x) = x^4 - 3x^2 = g(x)$"), qc("La fonction impaire est :", ["$f$", "$g$"], 0, "$f(-x) = -x^3 - x = -f(x)$")] },
+        { n: "25", src: S(53, 25), t: "R\xE9soudre alg\xE9briquement l\u2019\xE9quation (E) : $x^3 - 2x = 0$, \xE9quivalente \xE0 $x(x^2 - 2) = 0$.", rule: FN, it: [nm("Plus petite solution (au centi\xE8me) :", -1.41, "", "$-\\sqrt{2}$"), nm("Solution du milieu :", 0), nm("Plus grande solution (au centi\xE8me) :", 1.41, "", "$\\sqrt{2}$")] },
+        { n: "65", src: S(63, 65), t: "CD audio : la partie inscriptible est une couronne de rayons 25 mm et 55 mm. $x$ est la distance en millim\xE8tre du laser au bord du cercle int\xE9rieur. $S(x) = \\pi(25 + x)^2 - \\pi \xD7 25^2$ et la dur\xE9e de lecture est $D(x) = \\frac{1}{30}(x^2 + 50x)$ minutes.", rule: FN, it: [qc("$x$ appartient \xE0 l\u2019intervalle :", ["$[0 ; 30]$", "$[25 ; 55]$", "$[0 ; 55]$"], 0), qc("Pour tout $x$ de $I$ : $S(x) =$", ["$\\pi x^2 + 50\\pi x$", "$\\pi x^2 + 25\\pi x$", "$\\pi x^2$"], 0), nm("Dur\xE9e de lecture \xE0 mi-distance ($x = 15$) :", 32.5, "min"), vf("\xC0 mi-distance, la moiti\xE9 de la dur\xE9e totale (80 min) a \xE9t\xE9 lue.", 0, "32,5 min < 40 min"), nm("Valeur de $x$ quand le CD a \xE9t\xE9 lu \xE0 moiti\xE9 (au centi\xE8me) :", 17.72, "mm", "$x^2 + 50x = 1\\,200$")] },
+        { n: "66", src: S(64, 66), t: "Trois fleurs $F_1$, $F_2$, $F_3$ dans des carr\xE9s concentriques : $f_1(x) = x^2$, $f_2(x) = 34x + 289$ et $f_3(x) = 16x + 336$ (aires en m\xB2).", rule: FN, it: [nm("$f_2(0) =$", 289), nm("$f_3(0) =$", 336), nm("Valeur de $x$ pour 1 200 m\xB2 de fleurs $F_1$ (au centi\xE8me) :", 34.64, "m"), nm("Solution de $f_2(x) = f_3(x)$ (au centi\xE8me) :", 2.61, "", "$18x = 47$")] },
+        { n: "68", src: S(64, 68), t: "ABCD est un rectangle avec AB = 6 et AD = 4. On trace le parall\xE9logramme EFGH avec AG = BH = CE = DF = $x$. Son aire est $S(x) = 2x^2 - 10x + 24$.", rule: FN, it: [qc("$x$ appartient \xE0 :", ["$[0 ; 4]$", "$[0 ; 6]$", "$[4 ; 6]$"], 0), nm("Plus petite solution de $S(x) = 12$ :", 2), nm("Plus grande solution de $S(x) = 12$ :", 3), nm("Solution de $S(x) = 11{,}5$ :", 2.5), nm("Aire minimale du parall\xE9logramme :", 11.5)] },
+        { n: "70", src: S(65, 70), t: "Club de maths. D\xE9fi : les trois demi-cercles ont pour diam\xE8tres les c\xF4t\xE9s d\u2019un triangle rectangle (lunules d\u2019Hippocrate).", rule: FN, it: [vf("L\u2019aire totale des lunules (en rouge) est \xE9gale \xE0 l\u2019aire du triangle.", 1)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S2 = (p, n) => "Manuel Maths 2de, chapitre 2 \xAB Variations de fonctions \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const S3 = (p, n) => "Manuel Maths 2de, chapitre 3 \xAB Fonctions affines \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const VA = "Le **tableau de variations** indique o\xF9 $f$ est **croissante** (fl\xE8che montante) ou **d\xE9croissante** (fl\xE8che descendante). Si $f$ est croissante sur $I$, $a < b$ dans $I$ \u27F9 $f(a) \u2264 f(b)$ ; d\xE9croissante : l\u2019ordre est invers\xE9. Le **maximum** est la plus grande valeur atteinte.";
+  const TV = "Fonction $f$ d\xE9finie sur $[-7 ; +\\infty[$ : $f$ cro\xEEt de \u22125 (en \u22127) \xE0 \u22121 (en 4), d\xE9cro\xEEt jusqu\u2019\xE0 \u22123 (en 8), cro\xEEt jusqu\u2019\xE0 5 (en 15), puis d\xE9cro\xEEt sur $[15 ; +\\infty[$.";
+  const AF = "Une **fonction affine** s\u2019\xE9crit $f(x) = mx + p$ ($m$ : coefficient directeur, $p$ : ordonn\xE9e \xE0 l\u2019origine). Elle est **strictement croissante si $m > 0$**, **strictement d\xE9croissante si $m < 0$**, constante si $m = 0$. Elle s\u2019annule en $x = -\\frac{p}{m}$. Coefficient directeur : $m = \\frac{y_B - y_A}{x_B - x_A}$.";
+  ADD("seconde", {
+    mnx: {
+      c2: [
+        { n: "5", src: S2(75, 5), t: "QCM. " + TV, rule: VA, it: [qc("Le maximum de $f$ sur $[-7 ; +\\infty[$ est :", ["4", "\u22121", "5", "15"], 2)] },
+        { n: "6", src: S2(75, 6), t: "QCM. " + TV, rule: VA, it: [qc("Le minimum de $f$ sur $[-7 ; +\\infty[$ est :", ["\u22127", "\u22125", "\u22123", "On ne peut pas le savoir avec ce tableau."], 3, "on ne conna\xEEt pas les valeurs quand $x$ tend vers $+\\infty$")] },
+        { n: "7", src: S2(75, 7), t: "QCM. " + TV + " On ajoute que $f(20) = 2$.", rule: VA, it: [qc("Le maximum de $f$ sur $[-5 ; 20]$ est :", ["2", "20", "5", "\u22121"], 2)] },
+        { n: "8", src: S2(75, 8), t: "QCM. " + TV + " On rappelle que $f(20) = 2$.", rule: VA, it: [qc("Le minimum de $f$ sur $[-7 ; 20]$ est :", ["\u22127", "\u22125", "\u22123", "2"], 1)] },
+        { n: "9", src: S2(75, 9), t: "Plusieurs bonnes r\xE9ponses possibles. " + TV + " $f$ est d\xE9croissante sur :", rule: VA, it: [vf("$[4 ; 8]$", 1), vf("$]5 ; 7[$", 1), vf("$]3 ; 6[$", 0), vf("$[15 ; 30]$", 1)] },
+        { n: "10", src: S2(75, 10), t: "Plusieurs bonnes r\xE9ponses possibles. " + TV + " $f$ est croissante sur :", rule: VA, it: [vf("$[-3 ; 5]$", 0), vf("$[-6 ; -5]$", 1), vf("$[10 ; 15]$", 1), vf("$[-7 ; 4] \\cup [8 ; 15]$", 0, "$f(4) = -1 > f(8) = -3$")] },
+        { n: "11", src: S2(75, 11), t: "Plusieurs bonnes r\xE9ponses possibles. " + TV + " On peut affirmer que :", rule: VA, it: [vf("$f(-6) < f(-5)$", 1), vf("$f(5) > f(6)$", 1), vf("$f(5) < f(9)$", 0, "on ne peut pas comparer"), vf("$f(16) > f(17)$", 1)] },
+        { n: "12", src: S2(75, 12), t: "Plusieurs bonnes r\xE9ponses possibles. " + TV + " Pour tout $x \\in [4 ; 15]$, $f(x)$ appartient \xE0 :", rule: VA, it: [vf("$[4 ; 15]$", 0), vf("$[-3 ; -1]$", 0), vf("$[-3 ; 5]$", 1), vf("$[-5 ; 10]$", 1)] }
+      ],
+      c3: [
+        { n: "7", src: S3(101, 7), t: "QCM. Parmi les fonctions suivantes, laquelle n\u2019est pas une fonction affine ?", rule: AF, it: [qc("R\xE9ponse :", ["$f(x) = x + 2$", "$f(x) = x \xD7 2$", "$f(x) = x^2$", "$f(x) = \\frac{x}{2}$"], 2)] },
+        { n: "8", src: S3(101, 8), t: "QCM. $f$ est d\xE9finie pour tout $x \\in \\mathbb{R}$ par $f(x) = 2 - 3x$.", rule: AF, it: [qc("Point de la repr\xE9sentation de $f$ :", ["A(2 ; 0)", "A(0 ; 0)", "A(0 ; 2)", "A(\u22121 ; 1)"], 2)] },
+        { n: "9", src: S3(101, 9), t: "QCM. Laquelle est une fonction strictement croissante sur $\\mathbb{R}$ ?", rule: AF, it: [qc("R\xE9ponse :", ["$f(x) = 2x - 3$", "$f(x) = 2x - 3x$", "$f(x) = 2 - 3x$", "$f(x) = 2 - 3$"], 0)] },
+        { n: "10", src: S3(101, 10), t: "QCM. Quelle valeur annule la fonction affine $f(x) = 2 - 3x$ ?", rule: AF, it: [qc("R\xE9ponse :", ["$\\frac{-3}{2}$", "0", "$\\frac{-2}{3}$", "$\\frac{2}{3}$"], 3)] },
+        { n: "11", src: S3(101, 11), t: "Plusieurs bonnes r\xE9ponses possibles. Fonctions \xE9crites en Python : lesquelles sont des fonctions affines ?", rule: AF, it: [vf("return 2/x-3", 0), vf("return 2*x/3", 1), vf("return 2*(x-3)", 1), vf("return 2/(x-3)", 0)] },
+        { n: "12", src: S3(101, 12), t: "Plusieurs bonnes r\xE9ponses possibles. Quels tableaux de valeurs peuvent correspondre \xE0 des fonctions affines ?", rule: AF, it: [vf("$f(0) = 0$ ; $f(2) = 5$ ; $f(1) = 2{,}5$", 1), vf("$f(2) = 3$ ; $f(3) = 4$ ; $f(5) = 7$", 0, "accroissements non proportionnels"), vf("$f(2) = 3$ ; $f(3) = 4$ ; $f(1) = 2$", 1), vf("$f(0) = 0$ ; $f(6) = 4$ ; $f(9) = 6$", 1)] },
+        { n: "13", src: S3(101, 13), t: "Plusieurs bonnes r\xE9ponses possibles. Quelles fonctions affines ne sont ni paires ni impaires ?", rule: AF, it: [vf("$f(x) = 2x - 3$", 1), vf("$f(x) = 2x - 3x$", 0, "$-x$ : impaire"), vf("$f(x) = 2 - 3x$", 1), vf("$f(x) = 2 - 3$", 0, "constante : paire")] },
+        { n: "14", src: S3(101, 14), t: "Plusieurs bonnes r\xE9ponses possibles. Quelles fonctions sont strictement croissantes sur $\\mathbb{R}$ ?", rule: AF, it: [vf("$f(x) = -3x + 2$", 0), vf("$f(x) = 2x - 3$", 1), vf("$f(x) = 3x - 2$", 1), vf("$f(x) = -2x + 3$", 0)] },
+        { n: "15", src: S3(101, 15), t: "Sur quel intervalle la fonction $f(x) = 2 - 3x$ est-elle strictement n\xE9gative ?", rule: AF, it: [qc("R\xE9ponse :", ["$\\left]\\frac{2}{3} ; +\\infty\\right[$", "$\\left]-\\infty ; \\frac{2}{3}\\right[$", "$\\left]\\frac{3}{2} ; +\\infty\\right[$", "$\\left]-\\infty ; \\frac{3}{2}\\right[$"], 0)] },
+        { n: "16", src: S3(101, 16), t: "Probl\xE8me. $f$ est une fonction affine dont la repr\xE9sentation graphique passe par A(0 ; \u22124) et B(2 ; 3).", rule: AF, it: [nm("Coefficient directeur de $f$ :", 3.5), qc("Variations de $f$ :", ["strictement croissante sur $\\mathbb{R}$", "strictement d\xE9croissante sur $\\mathbb{R}$", "constante"], 0), nm("Valeur o\xF9 $f$ change de signe :", "8/7"), nm("Image de 1 par $f$ :", -0.5), nm("Ant\xE9c\xE9dent de 1 par $f$ :", "10/7")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 4: "Fonctions de r\xE9f\xE9rence", 5: "Rep\xE9rage et configuration dans le plan", 6: "Notion de vecteur", 7: "Colin\xE9arit\xE9 de vecteurs", 8: "\xC9quations de droites" };
+  const S = (c, p, n) => "Manuel Maths 2de, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const RF = "Fonctions de r\xE9f\xE9rence : **carr\xE9** $x^2$ (paire), **inverse** $\\frac{1}{x}$ (d\xE9finie sur $\\mathbb{R}^*$, impaire), **racine carr\xE9e** $\\sqrt{x}$ (sur $[0 ; +\\infty[$), **cube** $x^3$ (impaire, croissante sur $\\mathbb{R}$). $x^2 \u2264 a$ \u27FA $-\\sqrt{a} \u2264 x \u2264 \\sqrt{a}$.";
+  const RP = "Milieu de [AB] : $\\left(\\frac{x_A + x_B}{2} ; \\frac{y_A + y_B}{2}\\right)$ (dans **tout** rep\xE8re). Distance (rep\xE8re **orthonorm\xE9**) : $AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$. R\xE9ciproque de Pythagore pour un triangle rectangle.";
+  const VE = "$\\overrightarrow{AB} = \\overrightarrow{DC}$ \u27FA ABCD parall\xE9logramme \u27FA [AC] et [BD] ont le m\xEAme milieu. **Chasles** : $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$. Coordonn\xE9es : $\\overrightarrow{AB}\\begin{pmatrix} x_B - x_A \\\\ y_B - y_A \\end{pmatrix}$.";
+  const CO = "$\\vec{u}\\begin{pmatrix} x \\\\ y \\end{pmatrix}$ et $\\vec{v}\\begin{pmatrix} x\\prime \\\\ y\\prime \\end{pmatrix}$ sont **colin\xE9aires** \u27FA $\\det(\\vec{u}, \\vec{v}) = xy\\prime - x\\prime y = 0$. A, B, C align\xE9s \u27FA $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$ colin\xE9aires ; (AB) // (CD) \u27FA $\\overrightarrow{AB}$ et $\\overrightarrow{CD}$ colin\xE9aires.";
+  const DR = "\xC9quation cart\xE9sienne $ax + by + c = 0$ : vecteur directeur **$\\begin{pmatrix} -b \\\\ a \\end{pmatrix}$**. \xC9quation r\xE9duite $y = mx + p$ : $m$ = **coefficient directeur**, vecteur directeur $\\begin{pmatrix} 1 \\\\ m \\end{pmatrix}$. M\xEAme $m$ et $p$ diff\xE9rents : droites **strictement parall\xE8les**.";
+  ADD("seconde", {
+    mnx: {
+      c4: [
+        { n: "6", src: S(4, 127, 6), t: "QCM.", rule: RF, it: [qc("La fonction de r\xE9f\xE9rence d\xE9finie sur $\\mathbb{R}^*$ est la fonction :", ["carr\xE9", "cube", "inverse", "racine carr\xE9e"], 2)] },
+        { n: "7", src: S(4, 127, 7), t: "QCM.", rule: RF, it: [qc("La fonction dont la courbe admet la droite d\u2019\xE9quation $x = 0$ comme axe de sym\xE9trie est la fonction :", ["inverse", "racine carr\xE9e", "cube", "carr\xE9"], 3)] },
+        { n: "8", src: S(4, 127, 8), t: "QCM. Le tableau de variations d\u2019une fonction de r\xE9f\xE9rence $f$ : croissante sur $]-\\infty ; +\\infty[$ et $f(0) = 0$.", rule: RF, it: [qc("Il s\u2019agit de la fonction :", ["cube", "carr\xE9", "racine carr\xE9e", "inverse"], 0)] },
+        { n: "9", src: S(4, 127, 9), t: "QCM.", rule: RF, it: [qc("L\u2019in\xE9quation $x^2 \u2264 13$ est \xE9quivalente \xE0 :", ["$x \u2264 \\sqrt{13}$", "$x \u2264 -\\sqrt{13}$", "$-\\sqrt{13} \u2264 x \u2264 \\sqrt{13}$", "$x \u2265 \\sqrt{13}$"], 2)] },
+        { n: "10", src: S(4, 127, 10), t: "Plusieurs bonnes r\xE9ponses possibles. Fonctions de r\xE9f\xE9rence impaires :", rule: RF, it: [vf("fonction carr\xE9", 0), vf("fonction inverse", 1), vf("fonction racine carr\xE9e", 0), vf("fonction cube", 1)] },
+        { n: "11", src: S(4, 127, 11), t: "Plusieurs bonnes r\xE9ponses possibles. Si $x \u2264 -2$, alors :", rule: RF, it: [vf("$x^2 \u2265 4$", 1), vf("$x^2 \u2264 4$", 0), vf("$x^2 \u2265 -4$", 1), vf("$x^2 \u2264 -4$", 0)] },
+        { n: "12", src: S(4, 127, 12), t: "Plusieurs bonnes r\xE9ponses possibles. Si $x > 10$, alors :", rule: RF, it: [vf("$\\frac{1}{x} > 0$", 1), vf("$\\frac{1}{x} > \\frac{1}{10}$", 0), vf("$\\frac{1}{x} < -\\frac{1}{10}$", 0), vf("$\\frac{1}{x} < \\frac{1}{10}$", 1)] },
+        { n: "13", src: S(4, 127, 13), t: "Plusieurs bonnes r\xE9ponses possibles. Pour tout $a > 0$, l\u2019\xE9quation $f(x) = a$ admet une unique solution dans $\\mathbb{R}$ si $f$ est la fonction :", rule: RF, it: [vf("carr\xE9", 0, "deux solutions $\xB1\\sqrt{a}$"), vf("cube", 1), vf("inverse", 1), vf("racine carr\xE9e", 1)] },
+        { n: "14", src: S(4, 127, 14), t: "Probl\xE8me. Carburants A et B : les quantit\xE9s n\xE9cessaires pour une fus\xE9e de masse $x$ (en tonnes) sont $f(x) = \\left(\\frac{x}{10}\\right)^2$ pour A et $g(x) = \\left(\\frac{x}{10}\\right)^3$ pour B.", rule: RF, it: [nm("Abscisse du point d\u2019intersection des courbes (pour $x > 0$) :", 10), qc("Pour une fus\xE9e de 9 tonnes, il faut choisir le carburant :", ["B", "A"], 0, "$0{,}9^3 < 0{,}9^2$"), qc("Pour une fus\xE9e de 13 tonnes :", ["A", "B"], 0, "$1{,}3^2 < 1{,}3^3$")] }
+      ],
+      c5: [
+        { n: "7", src: S(5, 155, 7), t: "QCM. Dans un rep\xE8re orthogonal, A(0,4 ; \u22123) et B$\\left(-\\frac{2}{5} ; 3\\right)$.", rule: RP, it: [qc("Le milieu de [AB] est :", ["le point C(0,2 ; 0)", "l\u2019origine du rep\xE8re", "le point D(0,2 ; 1,5)", "on ne peut pas le dire car le rep\xE8re n\u2019est pas orthonorm\xE9"], 1)] },
+        { n: "8", src: S(5, 155, 8), t: "QCM. Dans un rep\xE8re orthonorm\xE9, A(\u22121 ; \u22124) et B(2 ; 5).", rule: RP, it: [qc("Le cercle de diam\xE8tre [AB] a pour rayon :", ["$3\\sqrt{10}$", "$6\\sqrt{10}$", "$\\frac{3\\sqrt{10}}{2}$", "$\\sqrt{10}$"], 2)] },
+        { n: "9", src: S(5, 155, 9), t: "QCM. Dans un rep\xE8re orthogonal (non orthonorm\xE9), A(1 ; 4) et B(2 ; 3).", rule: RP, it: [qc("La distance AB est \xE9gale \xE0 :", ["$\\sqrt{2}$", "on ne peut pas le dire car le rep\xE8re n\u2019est pas orthonorm\xE9", "$\\sqrt{3}$", "2"], 1)] },
+        { n: "10", src: S(5, 155, 10), t: "QCM.", rule: RP, it: [qc("L\u2019orthocentre d\u2019un triangle est l\u2019intersection des :", ["m\xE9diatrices", "hauteurs", "bissectrices", "m\xE9dianes"], 1)] },
+        { n: "11", src: S(5, 155, 11), t: "Plusieurs bonnes r\xE9ponses possibles. Pour calculer les coordonn\xE9es du milieu d\u2019un segment, le rep\xE8re peut \xEAtre :", rule: RP, it: [vf("orthogonal", 1), vf("orthonorm\xE9", 1), vf("ni orthogonal, ni orthonorm\xE9", 1), vf("quelconque", 1)] },
+        { n: "12", src: S(5, 155, 12), t: "Plusieurs bonnes r\xE9ponses possibles. Pour calculer la distance entre deux points, le rep\xE8re doit \xEAtre :", rule: RP, it: [vf("orthogonal", 0), vf("orthonorm\xE9", 1), vf("ni orthogonal, ni orthonorm\xE9", 0), vf("quelconque", 0)] },
+        { n: "13", src: S(5, 155, 13), t: "Plusieurs bonnes r\xE9ponses possibles. Dans un rep\xE8re orthonorm\xE9, A(1 ; 4) et B(\u22121 ; \u22122) sont align\xE9s avec :", rule: RP, it: [vf("C(0 ; 1)", 1), vf("l\u2019origine du rep\xE8re", 0), vf("D(\u22122 ; \u22125)", 1), vf("E(3 ; 10)", 1)] },
+        { n: "14", src: S(5, 155, 14), t: "Plusieurs bonnes r\xE9ponses possibles. Dans un rep\xE8re orthonorm\xE9, A(1 ; \u22121), B(0 ; 4) et C(\u22122 ; 1). Le triangle ABC est :", rule: RP, it: [vf("rectangle en A", 0), vf("isoc\xE8le en C", 1, "$AC^2 = BC^2 = 13$"), vf("\xE9quilat\xE9ral", 0), vf("rectangle en C", 1, "$13 + 13 = 26 = AB^2$")] },
+        { n: "15", src: S(5, 155, 15), t: "Probl\xE8me. Rep\xE8re orthonorm\xE9 : A(\u22122 ; 2), B(2 ; \u22121), C(5 ; 3) et D(1 ; 6).", rule: RP, it: [nm("Abscisse de K, milieu de [AC] :", 1.5), nm("Ordonn\xE9e de K :", 2.5), vf("L, milieu de [BD], est confondu avec K : ABCD est un parall\xE9logramme.", 1), nm("AB =", 5), nm("BC =", 5), qc("Nature de ABCD :", ["un carr\xE9", "un losange non carr\xE9", "un rectangle non carr\xE9"], 0, "$AB^2 + BC^2 = 50 = AC^2$ et AB = BC")] }
+      ],
+      c6: [
+        { n: "6", src: S(6, 179, 6), t: "QCM. On consid\xE8re l\u2019\xE9galit\xE9 vectorielle $\\overrightarrow{RH} = \\overrightarrow{MZ}$.", rule: VE, it: [qc("R\xE9ponse juste :", ["ZMHR est un parall\xE9logramme.", "M est l\u2019image de Z par la translation de vecteur $\\overrightarrow{RH}$.", "R est l\u2019image de H par la translation de vecteur $\\overrightarrow{ZM}$.", "[RM] et [ZH] ont m\xEAme milieu."], 2)] },
+        { n: "7", src: S(6, 179, 7), t: "QCM. On pose $\\overrightarrow{RH} + \\overrightarrow{RT} = \\overrightarrow{RY}$.", rule: VE, it: [qc("R\xE9ponse juste :", ["RHYT est un parall\xE9logramme.", "$\\overrightarrow{RH}$ et $\\overrightarrow{TY}$ sont oppos\xE9s.", "Il s\u2019agit de la relation de Chasles.", "RH + RT = RY"], 0)] },
+        { n: "8", src: S(6, 179, 8), t: "QCM. A(4 ; \u22125), B(\u22123 ; 5), C(2 000 ; 8 235) et D(1 993 ; 8 245).", rule: VE, it: [qc("R\xE9ponse juste :", ["ABDC est un parall\xE9logramme.", "ABCD est un parall\xE9logramme.", "ACBD est un parall\xE9logramme.", "ABCD est un quadrilat\xE8re quelconque."], 0, "$\\overrightarrow{AB} = \\overrightarrow{CD}$")] },
+        { n: "9", src: S(6, 179, 9), t: "QCM. $\\vec{u}\\begin{pmatrix} -4 \\\\ 10 \\end{pmatrix}$ et $\\vec{w}\\begin{pmatrix} 10 \\\\ 3 \\end{pmatrix}$ tels que $\\vec{u} + \\vec{v} = \\vec{w}$.", rule: VE, it: [nm("Abscisse de $\\vec{v}$ :", 14), nm("Ordonn\xE9e de $\\vec{v}$ :", -7)] },
+        { n: "10", src: S(6, 179, 10), t: "Plusieurs bonnes r\xE9ponses possibles. A, B et I sont tels que $\\overrightarrow{AI} = \\overrightarrow{IB}$.", rule: VE, it: [vf("AI = IB", 1), vf("$\\overrightarrow{AI}$ et $\\overrightarrow{BI}$ sont oppos\xE9s.", 1), vf("I est le milieu de [AB].", 1), vf("AI = 2AB", 0)] },
+        { n: "11", src: S(6, 179, 11), t: "Plusieurs bonnes r\xE9ponses possibles. On a : $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$.", rule: VE, it: [vf("B est le milieu de [AC].", 0), vf("A, B et C sont align\xE9s dans cet ordre.", 0), vf("On ne peut rien conclure concernant la position relative des points A, B et C.", 1), vf("On appelle cette \xE9galit\xE9 la relation de Chasles.", 1)] },
+        { n: "12", src: S(6, 179, 12), t: "Plusieurs bonnes r\xE9ponses possibles. $\\vec{r}\\begin{pmatrix} 3 \\\\ -12 \\end{pmatrix}$ et $\\vec{s}\\begin{pmatrix} -3 \\\\ 12 \\end{pmatrix}$.", rule: VE, it: [vf("Ces vecteurs sont oppos\xE9s.", 1), vf("Ils ont la m\xEAme direction.", 1), vf("Ils ont la m\xEAme norme.", 1), vf("Ils ont le m\xEAme sens.", 0)] },
+        { n: "13", src: S(6, 179, 13), t: "Plusieurs bonnes r\xE9ponses possibles. D est l\u2019image de C(6 ; 9) par la translation de vecteur $\\vec{r}\\begin{pmatrix} 4 \\\\ -5 \\end{pmatrix}$.", rule: VE, it: [vf("$\\overrightarrow{DC} = \\vec{r}$", 0), vf("C est l\u2019image de D par la translation de vecteur $\\vec{s}\\begin{pmatrix} -4 \\\\ 5 \\end{pmatrix}$.", 1), vf("D(10 ; 4)", 1), vf("Les vecteurs $\\overrightarrow{DC}$ et $\\vec{r}$ ont les m\xEAmes coordonn\xE9es.", 0)] }
+      ],
+      c7: [
+        { n: "8", src: S(7, 203, 8), t: "QCM. Rep\xE8re orthonorm\xE9 : $\\vec{u}\\begin{pmatrix} -2 \\\\ -4 \\end{pmatrix}$ et $\\vec{v}\\begin{pmatrix} 3 \\\\ 6 \\end{pmatrix}$.", rule: CO, it: [qc("La valeur de $\\lambda$ telle que $\\vec{u} = \\lambda\\vec{v}$ est :", ["$\\frac{3}{2}$", "$\\frac{2}{3}$", "$-\\frac{3}{2}$", "$-\\frac{2}{3}$"], 3)] },
+        { n: "9", src: S(7, 203, 9), t: "QCM. A(2 ; 8), B(\u22122 ; 6) et C(\u22125 ; 3).", rule: CO, it: [qc("Les points sont-ils align\xE9s ?", ["Oui", "Non"], 1, "$\\det(\\overrightarrow{AB}, \\overrightarrow{AC}) = 6 \u2260 0$")] },
+        { n: "10", src: S(7, 203, 10), t: "QCM. M(\u22124 ; 5), N(3 ; 8), S(\u22127 ; \u22122) et T(7 ; 4).", rule: CO, it: [qc("Les droites (MN) et (ST) sont-elles parall\xE8les ?", ["Oui", "Non"], 0, "$\\overrightarrow{ST} = 2\\overrightarrow{MN}$")] },
+        { n: "11", src: S(7, 203, 11), t: "QCM. K(\u22126 ; 8), L(2 ; 5) et M(\u22123 ; \u22121). N est tel que $\\overrightarrow{KN} = -3\\overrightarrow{LM}$.", rule: CO, it: [qc("Coordonn\xE9es de N :", ["(\u221221 ; \u221210)", "(\u221221 ; 26)", "(9 ; 26)", "(9 ; \u221210)"], 2)] },
+        { n: "13", src: S(7, 203, 13), t: "Plusieurs bonnes r\xE9ponses possibles. Quelles affirmations sont vraies ?", rule: CO, it: [vf("Si $\\overrightarrow{AB}$ et $\\overrightarrow{CD}$ sont colin\xE9aires, alors les droites (AC) et (BD) sont parall\xE8les.", 0), vf("Dire que $\\overrightarrow{AB}$ et $\\overrightarrow{CD}$ sont colin\xE9aires \xE9quivaut \xE0 dire que A, B, C et D sont align\xE9s.", 0), vf("Le d\xE9terminant de deux vecteurs colin\xE9aires est \xE9gal \xE0 0.", 1), vf("Les coordonn\xE9es de deux vecteurs colin\xE9aires sont proportionnelles.", 1)] },
+        { n: "14", src: S(7, 203, 14), t: "Plusieurs bonnes r\xE9ponses possibles. Quels vecteurs sont colin\xE9aires au vecteur $\\vec{u}\\begin{pmatrix} 12 \\\\ -9 \\end{pmatrix}$ ?", rule: CO, it: [vf("$\\vec{v}\\begin{pmatrix} -36 \\\\ -27 \\end{pmatrix}$", 0), vf("$\\vec{w}\\begin{pmatrix} -24 \\\\ 18 \\end{pmatrix}$", 1), vf("$\\vec{m}\\begin{pmatrix} 4 \\\\ -3 \\end{pmatrix}$", 1), vf("$\\vec{n}\\begin{pmatrix} -40 \\\\ 30 \\end{pmatrix}$", 1)] },
+        { n: "16", src: S(7, 203, 16), t: "Plusieurs bonnes r\xE9ponses possibles. $\\overrightarrow{AB} = 2\\overrightarrow{AC}$ implique que :", rule: CO, it: [vf("$\\|\\overrightarrow{AB}\\| = 2\\|\\overrightarrow{AC}\\|$", 1), vf("A, B et C sont align\xE9s.", 1), vf("C est le milieu de [AB].", 1), vf("$\\overrightarrow{AC} = \\frac{1}{2}\\overrightarrow{AB}$", 1)] },
+        { n: "17", src: S(7, 203, 17), t: "Probl\xE8me. A(3 ; \u22122), B(7 ; 0), C(\u22126 ; 4) et D(5 ; \u22122). E et F sont tels que $\\overrightarrow{AE} = -2\\overrightarrow{AB}$ et $\\overrightarrow{EF} = 7\\overrightarrow{AD}$.", rule: CO, it: [nm("Abscisse de E :", -5), nm("Ordonn\xE9e de E :", -6), nm("Abscisse de F :", 9), nm("Ordonn\xE9e de F :", -6), vf("Les points C, A et F sont align\xE9s.", 1, "$\\det(\\overrightarrow{AC}, \\overrightarrow{AF}) = 36 - 36 = 0$")] }
+      ],
+      c8: [
+        { n: "7", src: S(8, 225, 7), t: "QCM. $d$ est la droite d\u2019\xE9quation cart\xE9sienne $x + 5y - 7 = 0$.", rule: DR, it: [qc("Un vecteur directeur de $d$ a pour coordonn\xE9es :", ["(1 ; 5)", "(5 ; 1)", "(\u22121 ; 5)", "(\u22125 ; 1)"], 3)] },
+        { n: "8", src: S(8, 225, 8), t: "QCM. $d$ est la droite d\u2019\xE9quation r\xE9duite $y = -3x + \\frac{1}{2}$.", rule: DR, it: [qc("Son coefficient directeur est :", ["\u22123", "$\\frac{1}{2}$", "(1 ; \u22123)", "$\\left(-3 ; \\frac{1}{2}\\right)$"], 0)] },
+        { n: "9", src: S(8, 225, 9), t: "QCM. A(\u22123 ; \u22121) et B(\u22121 ; 2).", rule: DR, it: [qc("Une \xE9quation cart\xE9sienne de (AB) est :", ["$-4x + y + 1 = 0$", "$3x - 2y + 7 = 0$", "$-3x - y - 2 = 0$", "$-2x - 3y + 5 = 0$"], 1)] },
+        { n: "10", src: S(8, 225, 10), t: "QCM. Les droites $d : 3x + 2y - 10 = 0$ et $d\\prime : y = -1{,}5x - 5{,}5$ sont :", rule: DR, it: [qc("R\xE9ponse :", ["strictement parall\xE8les", "perpendiculaires", "s\xE9cantes", "confondues"], 0, "$d : y = -1{,}5x + 5$")] },
+        { n: "11", src: S(8, 225, 11), t: "Plusieurs bonnes r\xE9ponses possibles. La droite d\u2019\xE9quation $5x - 2y + 9 = 0$ passe par les points :", rule: DR, it: [vf("(7 ; 21)", 0), vf("(\u22121 ; 7)", 0), vf("(\u22123 ; \u22123)", 1), vf("(\u22121,8 ; 0)", 1)] },
+        { n: "13", src: S(8, 225, 13), t: "Plusieurs bonnes r\xE9ponses possibles. A(\u22126 ; 2) et B(\u22121 ; 0). La droite (AB) admet pour \xE9quation :", rule: DR, it: [vf("$x + 2y + 2 = 0$", 0), vf("$y = -2x - 1$", 0), vf("$y = -\\frac{2}{5}x - \\frac{2}{5}$", 1), vf("$2x + 5y + 2 = 0$", 1)] },
+        { n: "15", src: S(8, 225, 15), t: "Probl\xE8me. A(\u22128 ; \u22123), B(4 ; \u22121), C(\u22122 ; 7) et les milieux I(1 ; 3), J(\u22125 ; 2), K(\u22122 ; \u22122) des c\xF4t\xE9s du triangle ABC.", rule: DR, it: [qc("\xC9quation de (AI) :", ["$y = \\frac{2}{3}x + \\frac{7}{3}$", "$y = \\frac{3}{2}x + 9$", "$y = 2x + 1$"], 0), qc("\xC9quation de (BJ) :", ["$y = -\\frac{1}{3}x + \\frac{1}{3}$", "$y = -3x + 11$", "$y = \\frac{1}{3}x - \\frac{7}{3}$"], 0), nm("Abscisse de G, intersection de (AI) et (BJ) :", -2), nm("Ordonn\xE9e de G :", 1), vf("G appartient \xE0 (CK).", 1, "(CK) a pour \xE9quation $x = -2$")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 9: "Informations chiffr\xE9es", 10: "Statistiques descriptives", 11: "Probabilit\xE9s et \xE9chantillonnage" };
+  const S = (c, p, n) => "Manuel Maths 2de, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const IC = "Proportion = $\\frac{\\text{partie}}{\\text{total}}$. Taux d\u2019\xE9volution : $t = \\frac{V_A - V_D}{V_D}$ ; **coefficient multiplicateur** $CM = 1 + t$. \xC9volutions successives : on **multiplie** les CM. \xC9volution r\xE9ciproque : CM $= \\frac{1}{CM}$.";
+  const SD = "Moyenne $\\bar{x} = \\frac{\\sum n_i x_i}{N}$ ; **m\xE9diane** : partage la s\xE9rie rang\xE9e en deux moiti\xE9s ; **Q1**, **Q3** : premier et troisi\xE8me quartiles ; **\xE9cart interquartile** $Q_3 - Q_1$ ; **\xE9cart-type** $\\sigma = \\sqrt{\\frac{\\sum n_i x_i^2}{N} - \\bar{x}^2}$ (dispersion).";
+  const PB = "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$ ; $P(\\overline{A}) = 1 - P(A)$. A et B **incompatibles** : $P(A \\cap B) = 0$. \xC9quiprobabilit\xE9 : $P(A) = \\frac{\\text{nombre d\u2019issues favorables}}{\\text{nombre d\u2019issues}}$.";
+  const SER = "S\xE9rie : valeur \u22123 (effectif 6), 0 (effectif 4), 2 (effectif 3), 5 (effectif 7) ; effectifs cumul\xE9s croissants 6, 10, 13, 20.";
+  ADD("seconde", {
+    mnx: {
+      c9: [
+        { n: "8", src: S(9, 255, 8), t: "QCM. Dans un village, il y a 500 habitants dont 230 femmes.", rule: IC, it: [qc("Proportion de femmes :", ["1,17", "0,54", "0,46", "2,17"], 2)] },
+        { n: "9", src: S(9, 255, 9), t: "QCM. Dans une entreprise, 70 % des employ\xE9s poss\xE8dent une voiture et $\\frac{1}{4}$ de ces voitures sont blanches.", rule: IC, it: [qc("Pourcentage d\u2019employ\xE9s poss\xE9dant une voiture blanche :", ["28 %", "17,5 %", "35,7 %", "25 %"], 1)] },
+        { n: "10", src: S(9, 255, 10), t: "QCM. Lorsqu\u2019on diminue 1 200 de 5 %, quel est le r\xE9sultat obtenu ?", rule: IC, it: [qc("R\xE9ponse :", ["1 140", "1 260", "60", "1 199,95"], 0)] },
+        { n: "11", src: S(9, 255, 11), t: "QCM. Diminuer une valeur $x$ de 35 % revient \xE0 faire le calcul :", rule: IC, it: [qc("R\xE9ponse :", ["$x \xD7 0{,}35$", "$x \xD7 0{,}65$", "$\\frac{x}{0{,}35}$", "$x \xD7 1{,}35$"], 1)] },
+        { n: "12", src: S(9, 255, 12), t: "Plusieurs bonnes r\xE9ponses possibles. La valeur de d\xE9part est $V_D = 130$ et la valeur d\u2019arriv\xE9e $V_A = 189$.", rule: IC, it: [vf("$t \u2248 0{,}454$", 1), vf("$t \u2248 0{,}312$", 0), vf("On a une augmentation d\u2019environ 54,6 %.", 0), vf("On a une augmentation d\u2019environ 45,4 %.", 1)] },
+        { n: "13", src: S(9, 255, 13), t: "Plusieurs bonnes r\xE9ponses possibles. Augmenter une valeur de 10 % puis la diminuer de 30 % revient \xE0 :", rule: IC, it: [vf("la diminuer de 20 %", 0), vf("la multiplier par 0,77", 1), vf("la diminuer de 77 %", 0), vf("la diminuer de 23 %", 1)] },
+        { n: "14", src: S(9, 255, 14), t: "Plusieurs bonnes r\xE9ponses possibles. Pour revenir \xE0 la valeur de d\xE9part apr\xE8s une hausse de 40 %, il faut :", rule: IC, it: [vf("diminuer de 40 %", 0), vf("diviser par 1,4", 1), vf("diminuer d\u2019environ 29 %", 1), vf("multiplier par 0,71 environ", 1)] },
+        { n: "15", src: S(9, 255, 15), t: "Plusieurs bonnes r\xE9ponses possibles. Si une quantit\xE9 est multipli\xE9e par 4, alors elle :", rule: IC, it: [vf("subit une augmentation de 400 %", 0), vf("subit une augmentation de 300 %", 1), vf("doit subir une diminution de 75 % pour revenir \xE0 sa valeur initiale", 1), vf("doit subir une diminution de 25 % pour revenir \xE0 sa valeur initiale", 0)] },
+        { n: "16", src: S(9, 255, 16), t: "Probl\xE8me. Le salaire d\u2019un employ\xE9 est de 1 341 \u20AC en 2017. Il augmente de 2 % en 2018 mais baisse de 4,8 % en 2019.", rule: IC, it: [nm("Taux d\u2019\xE9volution global entre 2017 et 2019 (en %, au centi\xE8me) :", -2.9, "%", "$1{,}02 \xD7 0{,}952 = 0{,}97104$"), nm("Salaire en 2019 (au centime) :", 1302.16, "\u20AC"), nm("\xC9volution qui permettrait de retrouver 1 341 \u20AC en 2020 (en %, au centi\xE8me) :", 2.98, "%")] }
+      ],
+      c10: [
+        { n: "5", src: S(10, 277, 5), t: "QCM. " + SER, rule: SD, it: [qc("La moyenne est \xE9gale \xE0 :", ["1,15", "\u221210,25", "1", "5"], 0)] },
+        { n: "6", src: S(10, 277, 6), t: "QCM. " + SER, rule: SD, it: [qc("La m\xE9diane est \xE9gale \xE0 :", ["0", "4", "1", "3,5"], 2, "moyenne des 10e et 11e valeurs : 0 et 2")] },
+        { n: "7", src: S(10, 277, 7), t: "QCM. " + SER, rule: SD, it: [qc("L\u2019\xE9cart-type arrondi au dixi\xE8me est \xE9gal \xE0 :", ["2,9", "3,3", "3,2", "10,7"], 1)] },
+        { n: "8", src: S(10, 277, 8), t: "QCM. " + SER, rule: SD, it: [qc("L\u2019\xE9cart interquartile est \xE9gal \xE0 :", ["$[0 ; 2]$", "$[-3 ; 5]$", "2", "8"], 3, "$Q_1 = -3$ et $Q_3 = 5$")] },
+        { n: "9", src: S(10, 277, 9), t: "Plusieurs bonnes r\xE9ponses possibles. Paula : moyenne 10 et \xE9cart-type 5 ; Mariam : moyenne 9 et \xE9cart-type 2.", rule: SD, it: [vf("Paula a plus d\u2019excellentes notes que Mariam.", 0, "on ne peut pas le savoir"), vf("La classe de Paula est plus h\xE9t\xE9rog\xE8ne que celle de Mariam.", 1), vf("On est s\xFBr que Paula a plus d\u2019\xE9l\xE8ves ayant plus de 10.", 0), vf("Paula a davantage de notes tr\xE8s basses que Mariam.", 0)] },
+        { n: "10", src: S(10, 277, 10), t: "Plusieurs bonnes r\xE9ponses possibles. Un pays a un revenu mensuel net m\xE9dian de 1 500 \u20AC et un revenu moyen de 2 500 \u20AC.", rule: SD, it: [vf("C\u2019est impossible que la moyenne et la m\xE9diane soient si diff\xE9rentes.", 0), vf("Un groupe de personnes per\xE7oit de tr\xE8s hauts salaires.", 1), vf("Au moins la moiti\xE9 des habitants gagnent plus de 2 500 \u20AC.", 0), vf("Au moins la moiti\xE9 des habitants gagnent au maximum 1 500 \u20AC.", 1)] },
+        { n: "11", src: S(10, 277, 11), t: "Plusieurs bonnes r\xE9ponses possibles. Une s\xE9rie a pour moyenne 2 et pour \xE9cart-type 1. On ajoute 3 \xE0 toutes les valeurs.", rule: SD, it: [vf("La nouvelle moyenne est 5.", 1), vf("La nouvelle moyenne est 3.", 0), vf("Le nouvel \xE9cart-type est 1.", 1), vf("Le nouvel \xE9cart-type est 4.", 0)] },
+        { n: "12", src: S(10, 277, 12), t: "Plusieurs bonnes r\xE9ponses possibles. Revenus mensuels : \xE0 Lebu, l\u2019intervalle interquartile est [1 700 ; 2 200] ; \xE0 Tom\xE9, [1 300 ; 2 600].", rule: SD, it: [vf("La moiti\xE9 des habitants de Lebu gagnent moins de 1 700 \u20AC.", 0, "seulement un quart"), vf("Il y a proportionnellement plus d\u2019habitants de Lebu gagnant plus de 1 700 \u20AC qu\u2019\xE0 Tom\xE9.", 1), vf("Au moins un quart des habitants de Tom\xE9 gagnent 2 600 \u20AC ou plus.", 1), vf("Les salaires des habitants de Lebu sont plus homog\xE8nes que ceux de Tom\xE9.", 1)] }
+      ],
+      c11: [
+        { n: "7", src: S(11, 305, 7), t: "QCM. On lance deux d\xE9s non truqu\xE9s \xE0 6 faces et on s\u2019int\xE9resse \xE0 la somme des nombres obtenus.", rule: PB, it: [qc("L\u2019univers est :", ["\u03A9 = {1 ; 2 ; \u2026 ; 12}", "\u03A9 = {2 ; 3 ; \u2026 ; 12}", "\u03A9 = {1 ; 2 ; 3 ; 4 ; 5 ; 6}", "\u03A9 = {7 ; 8 ; 9 ; 10 ; 11 ; 12}"], 1)] },
+        { n: "8", src: S(11, 305, 8), t: "QCM. On tire successivement et avec remise deux boules dans une urne qui contient une boule bleue et deux boules rouges.", rule: PB, it: [qc("Probabilit\xE9 de ne tirer aucune fois la boule bleue :", ["$\\frac{1}{3}$", "$\\frac{4}{9}$", "$\\frac{5}{9}$", "$\\frac{2}{3}$"], 1)] },
+        { n: "9", src: S(11, 305, 9), t: "QCM. $P(A) = 0{,}3$, $P(B) = 0{,}4$ et $P(A \\cap B) = 0{,}1$.", rule: PB, it: [qc("$P(A \\cup B) =$", ["0,7", "0,8", "0,6", "0,2"], 2)] },
+        { n: "10", src: S(11, 305, 10), t: "QCM. $P(A) = 0{,}14$.", rule: PB, it: [qc("$P(\\overline{A}) =$", ["1,14", "0,86", "0,96", "0,14"], 1)] },
+        { n: "11", src: S(11, 305, 11), t: "QCM. Si A et B sont incompatibles, alors :", rule: PB, it: [qc("R\xE9ponse :", ["$P(A) + P(B) = 1$", "$P(A) + P(B) = 0$", "$P(A \\cap B) = 0$", "$P(A \\cap B) = 1$"], 2)] },
+        { n: "12", src: S(11, 305, 12), t: "Plusieurs bonnes r\xE9ponses possibles. On tire une carte dans un jeu de 32. Quels \xE9v\xE9nements ont une probabilit\xE9 de $\\frac{3}{8}$ ?", rule: PB, it: [vf("Tirer une figure.", 1, "12 figures"), vf("Tirer un tr\xE8fle.", 0), vf("Tirer un 8, un 9 ou un 10.", 1), vf("Tirer une carte noire.", 0)] },
+        { n: "13", src: S(11, 305, 13), t: "Plusieurs bonnes r\xE9ponses possibles. Une urne contient des boules num\xE9rot\xE9es de 1 \xE0 20. \xC9v\xE9nements de probabilit\xE9 sup\xE9rieure ou \xE9gale \xE0 $\\frac{1}{2}$ :", rule: PB, it: [vf("\xAB On obtient un multiple de 3. \xBB", 0), vf("\xAB On obtient un nombre pair. \xBB", 1), vf("\xAB On obtient un nombre avec un 1 dans son \xE9criture. \xBB", 1, "11 nombres"), vf("\xAB On obtient un nombre premier. \xBB", 0)] },
+        { n: "14", src: S(11, 305, 14), t: "Plusieurs bonnes r\xE9ponses possibles. $P(A) = 0{,}6$ et $P(A \\cup B) = 0{,}9$. On peut avoir :", rule: PB, it: [vf("$P(B) = 0{,}4$ et $P(A \\cap B) = 0{,}1$", 1), vf("$P(B) = 0{,}5$ et $P(A \\cap B) = 0{,}2$", 1), vf("$P(B) = 0{,}3$ et $P(A \\cap B) = 0{,}1$", 0), vf("$P(B) = 0{,}3$ et $P(A \\cap B) = 0$", 1)] },
+        { n: "15", src: S(11, 305, 15), t: "Plusieurs bonnes r\xE9ponses possibles. On lance quatre fois un d\xE9. Formulations de l\u2019\xE9v\xE9nement contraire de \xAB obtenir au moins deux fois 6 \xBB :", rule: PB, it: [vf("\xAB Obtenir 6 moins de deux fois. \xBB", 1), vf("\xAB Obtenir 6 une fois ou moins. \xBB", 1), vf("\xAB Obtenir au moins deux fois 1, 2, 3, 4 ou 5. \xBB", 0), vf("\xAB Obtenir au plus une fois 6. \xBB", 1)] },
+        { n: "16", src: S(11, 305, 16), t: "Probl\xE8me. On tire une carte dans un jeu de 52 cartes. A : \xAB la carte est un c\u0153ur \xBB ; B : \xAB la carte est une dame \xBB.", rule: PB, it: [nm("$P(A) =$", "1/4"), nm("$P(B) =$", "1/13"), nm("$P(A \\cap B) =$", "1/52"), nm("$P(A \\cup B) =$", "4/13"), nm("$P(\\overline{B}) =$", "12/13")] }
+      ]
+    }
+  });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
@@ -47869,6 +48124,17 @@ window.M4PLAN = {
       const TY = (L) => window.MANUEL_API && MANUEL_API.types ? MANUEL_API.types(L) : [{ name: "Exercices", u: units(L) }], pgOf = (e) => +((String(e.src || "").match(/p\. (\d+)/) || [])[1] || 0), fl = (e) => /flash/i.test(String(e.src || ""));
       const used = /* @__PURE__ */ new Set(), R = D.ch[k].pg.map(([t, w]) => {
         const L = P.L.filter((e) => !used.has(e) && (w === "flash" ? fl(e) : !fl(e) && pgOf(e) >= w[0] && pgOf(e) <= w[1]));
+        L.forEach((e) => used.add(e));
+        return { t, subs: L.length ? TY(L) : [] };
+      }).filter((r) => r.subs.length);
+      const rest = P.L.filter((e) => !used.has(e));
+      if (rest.length) R.push({ t: "Autres exercices", subs: TY(rest) });
+      return R;
+    }
+    if (D && D.ch && D.ch[k] && D.ch[k].nr) {
+      const TY = (L) => window.MANUEL_API && MANUEL_API.types ? MANUEL_API.types(L) : [{ name: "Exercices", u: units(L) }], nOf = (e) => +((String(e.n || "").match(/\d+/) || [])[0] || -1);
+      const used = /* @__PURE__ */ new Set(), R = D.ch[k].nr.map(([t, w]) => {
+        const L = P.L.filter((e) => !used.has(e) && nOf(e) >= w[0] && nOf(e) <= w[1]);
         L.forEach((e) => used.add(e));
         return { t, subs: L.length ? TY(L) : [] };
       }).filter((r) => r.subs.length);
