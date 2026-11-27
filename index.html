@@ -2589,6 +2589,8 @@ html{-webkit-text-size-adjust:100%}body{margin:0;font-size:14px}img{max-width:10
 
 
 
+
+
 <div id="ch-pythagore" hidden data-lz>
   <header>
     <div class="eyebrow">Mathématiques · Géométrie · Triangle rectangle</div>
@@ -3481,7 +3483,7 @@ html{-webkit-text-size-adjust:100%}body{margin:0;font-size:14px}img{max-width:10
         </div>
         </div>
         <div class="field"><span class="lbl">Tables</span>
-          <div class="seg" id="z-tb-tables"><button class="chip" data-t="2" aria-pressed="true">2</button><button class="chip" data-t="3" aria-pressed="true">3</button><button class="chip" data-t="4" aria-pressed="true">4</button><button class="chip" data-t="5" aria-pressed="true">5</button><button class="chip" data-t="6" aria-pressed="true">6</button><button class="chip" data-t="7" aria-pressed="true">7</button><button class="chip" data-t="8" aria-pressed="true">8</button><button class="chip" data-t="9" aria-pressed="true">9</button><button class="chip" data-t="all" aria-pressed="true">Toutes</button></div>
+          <div class="seg" id="z-tb-tables"><button class="chip" data-t="0" aria-pressed="false">0</button><button class="chip" data-t="1" aria-pressed="false">1</button><button class="chip" data-t="2" aria-pressed="false">2</button><button class="chip" data-t="3" aria-pressed="true">3</button><button class="chip" data-t="4" aria-pressed="true">4</button><button class="chip" data-t="5" aria-pressed="true">5</button><button class="chip" data-t="6" aria-pressed="true">6</button><button class="chip" data-t="7" aria-pressed="true">7</button><button class="chip" data-t="8" aria-pressed="true">8</button><button class="chip" data-t="9" aria-pressed="true">9</button><button class="chip" data-t="10" aria-pressed="false">10</button><button class="chip" data-t="11" aria-pressed="false">11</button><button class="chip" data-t="12" aria-pressed="false">12</button><button class="chip" data-t="all" aria-pressed="false">Toutes</button></div>
         </div>
         <div class="field"><span class="lbl">Nombres</span>
         <div class="seg" id="z-tb-rel">
@@ -3492,9 +3494,10 @@ html{-webkit-text-size-adjust:100%}body{margin:0;font-size:14px}img{max-width:10
         <div class="field"><span class="lbl">Chronomètre</span>
         <div class="seg" id="z-tb-chrono">
           <button class="chip" data-c="0" aria-pressed="true">Sans chrono</button>
+          <button class="chip" data-c="3" aria-pressed="false">3 s par calcul</button>
+          <button class="chip" data-c="5" aria-pressed="false">5 s par calcul</button>
+          <button class="chip" data-c="7" aria-pressed="false">7 s par calcul</button>
           <button class="chip" data-c="10" aria-pressed="false">10 s par calcul</button>
-          <button class="chip" data-c="6" aria-pressed="false">6 s par calcul</button>
-          <button class="chip" data-c="4" aria-pressed="false">4 s par calcul</button>
         </div>
         </div>
         <div class="field"><span class="lbl">Nombre de calculs</span>
@@ -55045,13 +55048,15 @@ window.M4PLAN = {
     svg.appendChild(el("rect", { x: x - 8, y: y - 22, width: 16, height: 12, rx: 3, class: "z-sub" }));
     svg.appendChild(el("line", { x1: x, y1: y - 22, x2: x, y2: y - 30, class: "z-guide" }));
   }
-  const TB = { op: "\xD7", tables: [2, 3, 4, 5, 6, 7, 8, 9], rel: false, chrono: 0, n: 20, qs: [], i: 0, ans: [], t0: 0, qt0: 0, timer: null, running: false, review: false };
+  const TB = { op: "\xD7", tables: [3, 4, 5, 6, 7, 8, 9], rel: false, chrono: 0, n: 20, qs: [], i: 0, ans: [], t0: 0, qt0: 0, timer: null, running: false, review: false };
   const OPN = { "+": "Addition", "\u2212": "Soustraction", "\xD7": "Multiplication", ":": "Division" };
   function tbMake() {
     const pairs = [];
     TB.tables.forEach((t) => {
-      for (let n = 1; n <= 10; n++) pairs.push([t, n]);
+      if (TB.op === ":" && t === 0) return;
+      for (let n = 3; n <= 10; n++) pairs.push([t, n]);
     });
+    if (!pairs.length) for (let n = 3; n <= 10; n++) pairs.push([1, n]);
     let pool = shuffleZ(pairs);
     while (pool.length < TB.n) pool = pool.concat(shuffleZ(pairs));
     return pool.slice(0, TB.n).map(([t, n]) => {
@@ -55221,11 +55226,11 @@ window.M4PLAN = {
     const tb = ROOT.querySelectorAll("#z-tb-tables .chip");
     const sync = () => tb.forEach((c) => {
       const t = c.dataset.t;
-      c.setAttribute("aria-pressed", t === "all" ? String(TB.tables.length === 8) : String(TB.tables.includes(+t)));
+      c.setAttribute("aria-pressed", t === "all" ? String(TB.tables.length === 13) : String(TB.tables.includes(+t)));
     });
     tb.forEach((c) => c.addEventListener("click", () => {
       const t = c.dataset.t;
-      if (t === "all") TB.tables = TB.tables.length === 8 ? [] : [2, 3, 4, 5, 6, 7, 8, 9];
+      if (t === "all") TB.tables = TB.tables.length === 13 ? [] : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
       else {
         const n = +t;
         TB.tables = TB.tables.includes(n) ? TB.tables.filter((x) => x !== n) : TB.tables.concat([n]).sort((a, b) => a - b);
