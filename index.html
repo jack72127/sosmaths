@@ -41599,6 +41599,174 @@ window.MN_VT = window.MN_VT || function(f, P) {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const N = (a, e, s) => ({ nr: [["Auto-\xE9valuation", [1, a]], ["Applications directes", [a + 1, e - 1]], ["Entra\xEEnement", [e, s - 1]], ["Synth\xE8se", [s, 999]]] });
+  P.premtec = { ch: {
+    1: N(21, 54, 102),
+    2: N(22, 50, 83),
+    3: N(18, 41, 87),
+    4: N(23, 43, 73),
+    5: N(22, 47, 78),
+    6: N(21, 55, 91),
+    7: N(26, 65, 106),
+    8: N(24, 55, 114),
+    9: N(20, 52, 98),
+    10: N(22, 52, 104)
+  } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Suites num\xE9riques", 2: "Fonctions de la variable r\xE9elle", 3: "D\xE9rivation", 4: "Fr\xE9quences et probabilit\xE9s conditionnelles", 5: "Variables al\xE9atoires", 6: "Trigonom\xE9trie", 7: "Produit scalaire", 8: "Nombres complexes", 9: "Compl\xE9ments sur la d\xE9rivation", 10: "Primitives" };
+  const PG = { 1: 21, 2: 47, 3: 73, 4: 99, 5: 125, 6: 177, 7: 199, 8: 223, 9: 245, 10: 267 };
+  const S = (c, n) => "Manuel Maths 1re technologique, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + PG[c] + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(plusieurs r\xE9ponses peuvent \xEAtre justes)";
+  const R = {
+    1: "Suite **arithm\xE9tique** : **$u_{n+1} = u_n + r$**, $u_n = u_0 + nr$. Suite **g\xE9om\xE9trique** : **$v_{n+1} = q \xD7 v_n$**, $v_n = v_0 \xD7 q^n$. Diminuer de $t$ % revient \xE0 multiplier par **$1 - \\frac{t}{100}$**.",
+    2: "Forme factoris\xE9e **$a(x - x_1)(x - x_2)$** : racines $x_1$, $x_2$ ; sommet d\u2019abscisse **$\\frac{x_1 + x_2}{2}$**. Un polyn\xF4me est du **signe de $a$** \xE0 l\u2019ext\xE9rieur des racines (degr\xE9 2).",
+    3: "Taux de variation entre $a$ et $b$ : **$\\frac{f(b) - f(a)}{b - a}$**. Tangente en $a$ : **$y = f^{\\prime}(a)(x - a) + f(a)$**. $(x^n)^{\\prime} = nx^{n-1}$.",
+    4: "Fr\xE9quence marginale : **effectif de la ligne (ou colonne) \xF7 effectif total**. Fr\xE9quence conditionnelle de B parmi A : **$f_A(B) = \\frac{\\text{effectif de } A \\cap B}{\\text{effectif de } A}$**.",
+    5: "**$E(X) = \\sum x_i\\,p_i$** et **$\\sum p_i = 1$**. \xC9preuve de **Bernoulli** : deux issues (succ\xE8s de probabilit\xE9 $p$, \xE9chec). Sch\xE9ma de Bernoulli : $n$ \xE9preuves **identiques et ind\xE9pendantes**.",
+    6: "**$\\pi$ rad = 180\xB0**. **$\\cos(-x) = \\cos x$**, **$\\sin(-x) = -\\sin x$**. $t \\mapsto A\\cos(\\omega t + \\varphi)$ est p\xE9riodique de p\xE9riode **$\\frac{2\\pi}{\\omega}$**.",
+    7: "**$\\vec{u}\\cdot\\vec{v} = xx^{\\prime} + yy^{\\prime}$** $= \\|\\vec{u}\\|\\,\\|\\vec{v}\\|\\cos\\theta$. **$\\vec{u}\\cdot\\vec{v} = 0 \\iff \\vec{u} \\perp \\vec{v}$**. Al-Kashi : $a^2 = b^2 + c^2 - 2bc\\cos\\hat{A}$.",
+    8: "**$i^2 = -1$**. $\\frac{1}{a + ib} = \\frac{a - ib}{a^2 + b^2}$. $|a + ib| = \\sqrt{a^2 + b^2}$. Forme trigonom\xE9trique : **$z = r(\\cos\\theta + i\\sin\\theta)$**.",
+    9: "Approximation affine : **$f(a + h) \u2248 f(a) + f^{\\prime}(a) \xD7 h$**. **$(\\cos(\\omega t + \\varphi))^{\\prime} = -\\omega\\sin(\\omega t + \\varphi)$** ; $(\\sin(\\omega t + \\varphi))^{\\prime} = \\omega\\cos(\\omega t + \\varphi)$. Vitesse = d\xE9riv\xE9e de la position.",
+    10: "F est une **primitive** de $f$ si **$F^{\\prime} = f$** ; les primitives diff\xE8rent d\u2019une **constante**. Primitive de $x^n$ : **$\\frac{x^{n+1}}{n + 1}$** ; de $\\cos(\\omega t + \\varphi)$ : $\\frac{1}{\\omega}\\sin(\\omega t + \\varphi)$."
+  };
+  const E = (c, n, t, it) => ({ n: String(n), src: S(c, n), t, rule: R[c], it });
+  const Q = (c, n, t, ch, ok, cm) => E(c, n, t, [qc("R\xE9ponse :", ch, ok, cm)]);
+  ADD("premtec", { mnx: {
+    c1: [
+      Q(1, 9, "$u_n = 3n + 2$. Valeur de $u_3$ :", ["2", "8", "11", "3"], 2),
+      Q(1, 10, "Chaque ann\xE9e, une quantit\xE9 diminue de 5 %. Cette situation peut \xEAtre mod\xE9lis\xE9e par une suite :", ["arithm\xE9tique de raison $r = 0{,}05$", "g\xE9om\xE9trique de raison $q = 0{,}95$", "g\xE9om\xE9trique de raison $q = 0{,}05$", "g\xE9om\xE9trique de raison $q = 1{,}05$"], 1),
+      Q(1, 11, "$(u_n)$ est arithm\xE9tique de raison 2. Alors, pour tout $n$ :", ["$u_n = n + 2$", "$u_n = 2n$", "$u_{n+1} = 2u_n$", "$u_{n+1} = u_n + 2$"], 3),
+      Q(1, 12, "$v_0 = 2$ et $v_{n+1} = 2v_n - 1$. Alors :", ["$v_1 = 2$", "$v_2 = 6$", "$v_3 = 9$", "$v_3 = 10$"], 2, "$v_1 = 3$, $v_2 = 5$, $v_3 = 9$"),
+      E(1, 13, "$u_n = 3n - 2$. " + PL, [vf("$u_{n+1} - u_n = 3$", 1), vf("la suite est arithm\xE9tique", 1), vf("la suite est d\xE9croissante", 0), vf("la suite est croissante", 1)]),
+      E(1, 14, "$v_{n+1} = v_n - n - 2$. " + PL, [vf("la suite est arithm\xE9tique", 0), vf("$v_{n+1} - v_n = -n - 2$", 1), vf("la suite est d\xE9croissante", 1), vf("la suite est croissante", 0)]),
+      E(1, 15, "$v_{n+1} = v_n + 1$. La suite est\u2026 " + PL, [vf("arithm\xE9tique de raison 1", 1), vf("croissante", 1), vf("repr\xE9sent\xE9e par des points align\xE9s", 1), vf("d\xE9croissante", 0)]),
+      E(1, 16, "$w_0 = 9$ et $w_{n+1} = \\frac{1}{3}w_n$. La suite est\u2026 " + PL, [vf("arithm\xE9tique de raison $\\frac{1}{3}$", 0), vf("croissante", 0), vf("g\xE9om\xE9trique de raison $\\frac{1}{3}$", 1), vf("d\xE9croissante", 1)]),
+      E(1, 17, "Probl\xE8me. Le salaire mensuel d\u2019un employ\xE9 augmente de 5 % par an. En 2020, il gagne 1 200 \u20AC ; $u_n$ est le salaire l\u2019ann\xE9e $2020 + n$.", [nm("$u_1 =$", 1260, "\u20AC"), nm("$u_2 =$", 1323, "\u20AC"), qc("La suite $(u_n)$ est :", ["g\xE9om\xE9trique de raison 1,05", "arithm\xE9tique de raison 60", "g\xE9om\xE9trique de raison 0,05"], 0), qc("Elle est :", ["croissante", "d\xE9croissante"], 0), nm("Au bout de combien d\u2019ann\xE9es le salaire d\xE9passe-t-il 1 500 \u20AC ?", 5, "ans", "$1\\,200 \xD7 1{,}05^5 \u2248 1\\,531{,}5$")])
+    ],
+    c2: [
+      Q(2, 7, "Le sommet de la parabole de $f : x \\mapsto 2(x - 5)(x + 3)$ a pour coordonn\xE9es :", ["$(1\\,;-32)$", "$(-1\\,;-24)$", "$(5\\,;-3)$", "$(2\\,;-15)$"], 0),
+      Q(2, 8, "Les solutions de $-2(x + 1)(x - 3) \u2265 0$ sont les r\xE9els de :", ["$[1\\,;3]$", "$[-1\\,;3]$", "$]-\\infty\\,;1]\\cup[3\\,;+\\infty[$", "$]-\\infty\\,;-1]\\cup[3\\,;+\\infty[$"], 1),
+      Q(2, 9, "La fonction $x \\mapsto 2x^3 - 5$ est :", ["strictement croissante sur $\\mathbb{R}$", "strictement d\xE9croissante sur $\\mathbb{R}$", "croissante puis d\xE9croissante", "d\xE9croissante puis croissante"], 0),
+      Q(2, 10, "L\u2019unique solution r\xE9elle de $x^3 - 64 = 0$ est :", ["\u22128", "8", "\u22124", "4"], 3),
+      E(2, 11, "$f(x) = 3x^2 - 5x - 8$. Les racines de $f$ sont\u2026 " + PL, [vf("1", 0), vf("$\\frac{8}{3}$", 1), vf("\u22121", 1), vf("$-\\frac{8}{3}$", 0)]),
+      E(2, 12, "Parabole tourn\xE9e vers le bas, de sommet $(0\\,;8)$, coupant l\u2019axe des abscisses en \u22122 et 2. Expressions possibles de $f(x)$ : " + PL, [vf("$-2x^2 + 8$", 1), vf("$2x^2 + 8$", 0), vf("$-2(x - 8)^2$", 0), vf("$-2(x - 2)(x + 2)$", 1)]),
+      E(2, 13, "$f(x) = x^3 - 5x^2 + 2x + 9$. Ant\xE9c\xE9dents de 1 par $f$ : " + PL, [vf("\u22121", 1), vf("2", 1), vf("4", 1), vf("7", 0)]),
+      E(2, 14, "$f : x \\mapsto 8(x - 2)(x + 3)(x + 5)$. " + PL, [vf("est positive sur $[-5\\,;2]$", 0), vf("est n\xE9gative sur $[-3\\,;2]$", 1), vf("admet 3 racines distinctes", 1), vf("admet 2 comme racine", 1)]),
+      E(2, 15, "Probl\xE8me. Courbe d\u2019un polyn\xF4me qui coupe l\u2019axe des abscisses en \u22121, 2 et 4, et passe par $(0\\,;4)$.", [qc("Est-ce un polyn\xF4me de degr\xE9 2 ?", ["Non, il a trois racines", "Oui"], 0), qc("Expression possible :", ["$f_1(x) = (x + 1)(x - 2)(x - 4)$", "$f_2(x) = (x - 1)(x + 2)(x + 4)$", "$f_3(x) = \\frac{1}{2}(x + 1)(x - 2)(x - 4)$"], 2, "$f_3(0) = 4$"), qc("$f(x) > 0$ sur :", ["$]-1\\,;2[\\,\\cup\\,]4\\,;+\\infty[$", "$]2\\,;4[$", "$]-\\infty\\,;-1[$"], 0)])
+    ],
+    c3: [
+      Q(3, 6, "Taux de variation de $f : x \\mapsto x^2$ entre 2 et 3 :", ["1", "\u22125", "5", "3"], 2),
+      Q(3, 7, "Tangente \xE0 la courbe de la fonction cube au point d\u2019abscisse 2 :", ["$f^{\\prime}(2)$", "$y = 12x$", "$y = 12x - 16$", "$y = 2^3$"], 2),
+      Q(3, 8, "D\xE9riv\xE9e de $f : x \\mapsto -4x^2 + 2x + 1$ :", ["$-8x + 3$", "$-4x + 2$", "$-8x^2 + 1$", "$-8x + 2$"], 3),
+      Q(3, 9, "D\xE9riv\xE9e de $x \\mapsto 2x^3 - 0{,}5x^2 + x + 8$ :", ["$6x^2 - x + 1$", "$6x^2 - x + 8$", "$6x^2 + 9$", "$6x^3 - x^2 + 1$"], 0),
+      E(3, 10, "$f : x \\mapsto -x^2 + 1$ et $\\tau$ son taux de variation entre \u22121 et 2. " + PL, [vf("$\\tau = 1$", 0), vf("$f$ est croissante", 0), vf("$\\tau$ est n\xE9gatif", 1), vf("$\\tau = \\frac{-3 - 0}{2 + 1}$", 1)]),
+      E(3, 11, "$f : x \\mapsto -3x^2 + x$. Tangente au point d\u2019abscisse 1 : " + PL, [vf("$y = -5x + 3$", 1), vf("$y = -5(x - 1) - 2$", 1), vf("$y = 1(x - 1) + 1$", 0), vf("$y = -5(x + 1) + 3$", 0)]),
+      E(3, 12, "$f^{\\prime}(x) = 2x + 1$. Alors $f$ peut s\u2019\xE9crire : " + PL, [vf("$x^2 + x + 1$", 1), vf("$x^2 + x + 8x$", 0), vf("$x^2 + x - 1$", 1), vf("$x^2 + x$", 1)]),
+      E(3, 13, "$f : x \\mapsto -0{,}2x^3 - 4x$ sur $[-5\\,;5]$, $f^{\\prime}(x) = -0{,}6x^2 - 4$. " + PL, [vf("$f$ est n\xE9gative sur $[-5\\,;5]$", 0), vf("$f$ est d\xE9croissante sur $[-5\\,;5]$", 1), vf("$f^{\\prime}$ est n\xE9gative sur $[-5\\,;5]$", 1), vf("$f^{\\prime}$ est d\xE9croissante sur $[-5\\,;5]$", 0)]),
+      E(3, 14, "Probl\xE8me. $f(x) = -2x^2 + 4x + 7$ sur $[0\\,;5]$ ; sommet $(1\\,;9)$. La tangente au point A d\u2019abscisse 2 passe par B(3 ; 3).", [nm("$f^{\\prime}(1) =$", 0), nm("$f^{\\prime}(2) =$", -4), qc("Tangente en A :", ["$y = -4x + 15$", "$y = -4x + 7$", "$y = 4x - 1$"], 0), qc("$f^{\\prime}(x) =$", ["$-4x + 4$", "$-2x + 4$", "$-4x + 7$"], 0), qc("Variations de $f$ sur $[0\\,;5]$ :", ["croissante sur $[0\\,;1]$, d\xE9croissante sur $[1\\,;5]$", "d\xE9croissante puis croissante", "croissante"], 0)])
+    ],
+    c4: [
+      Q(4, 9, "Sur 120 \xE9tudiants, 41 suivent les cours d\u2019anglais et souhaitent partir \xE0 l\u2019\xE9tranger, 15 souhaitent partir sans avoir suivi les cours. Fr\xE9quence marginale des \xE9l\xE8ves qui souhaitent partir :", ["0,46", "0,47 %", "$\\frac{7}{15}$", "47 %"], 2, "$\\frac{56}{120}$"),
+      Q(4, 10, "12 voitures avec bo\xEEte automatique et GPS, 28 avec bo\xEEte automatique uniquement, 18 avec juste le GPS. Fr\xE9quence du GPS parmi les voitures \xE0 bo\xEEte automatique :", ["0,3", "0,2", "$\\frac{3}{7}$", "0,45"], 0, "$\\frac{12}{40}$"),
+      Q(4, 11, "Tableau : talons (total 81), plates rouges 32, noires 108, total 200. Nombre de chaussures rouges \xE0 talons :", ["$\\frac{60}{200}$", "60", "On ne peut pas savoir", "30 %"], 1),
+      Q(4, 12, "On tire une carte dans un jeu de 52 (trois figures par couleur). T : \xAB tr\xE8fle \xBB, F : \xAB figure \xBB. $P_F(T) =$", ["$\\frac{13}{12}$", "0,25", "$\\frac{12}{13}$", "3"], 1, "$\\frac{3}{12}$"),
+      E(4, 13, "Tableur : ligne 2 Hommes (Or 8, total N2 = 42), ligne 3 Femmes (Or 17, total N3 = 43). Formules \xE0 entrer en K4 pour les fr\xE9quences marginales en \xE9tirant vers la droite : " + PL, [vf("=(8+17)/57", 0), vf("=(K2+K3)/85", 1), vf("=(K2+K3)/(N2+N3)", 0, "les r\xE9f\xE9rences N2, N3 se d\xE9calent"), vf("=(K2+K3)/($N2+$N3)", 1)]),
+      E(4, 14, "Vis : 1,2 g et 0,1 mm : 120 ; 1,2 g et 0,05 mm : 10 ; 1,1 g et 0,1 mm : 24 ; 1,1 g et 0,05 mm : 96. " + PL, [vf("$P_{0,1\\,mm}(1{,}1\\,g) = \\frac{1}{6}$", 1), vf("$P_{1,1\\,g}(0{,}1\\,mm) = 0{,}2$", 1), vf("$P_{1,1\\,g}(0{,}1\\,mm) = \\frac{1}{6}$", 0), vf("$P_{1,2\\,g}(0{,}1\\,mm) = 0{,}5$", 0)]),
+      E(4, 15, "Le service est jug\xE9 bon dans 75 % des cas si l\u2019attente est inf\xE9rieure \xE0 2 min (80 clients) et dans 62,5 % des cas sinon (16 clients). $x$ et $y$ sont les effectifs \xAB Bon \xBB. " + PL, [vf("$x = 60$", 1), vf("$y = 10$", 1), vf("$x = 72$", 0), vf("$y = 8$", 0)]),
+      E(4, 16, "Tableau : A\u2229B : 20 ; \u0100\u2229B : 15 ; A\u2229B\u0304 : 12 ; \u0100\u2229B\u0304 : 53. Fr\xE9quence conditionnelle de B relativement \xE0 A : " + PL, [vf("20 %", 0), vf("0,625", 1), vf("$\\frac{5}{8}$", 1), vf("0,35", 0)]),
+      E(4, 17, "Probl\xE8me. Sur 250 journ\xE9es, Mathis est all\xE9 175 fois au travail \xE0 v\xE9lo et il a plu 100 fois le matin. Lorsqu\u2019il prenait le v\xE9lo, il ne pleuvait pas dans 60 % des cas.", [nm("Fr\xE9quence marginale des matin\xE9es de pluie :", 0.4), nm("Fr\xE9quence marginale de l\u2019utilisation du v\xE9lo :", 0.7), nm("Fr\xE9quence de la voiture parmi les journ\xE9es de pluie :", 0.3, "", "$\\frac{100 - 70}{100}$")])
+    ],
+    c5: [
+      Q(5, 9, "Loi : valeurs \u22126 ; 0,5 ; 4 ; 10 avec probabilit\xE9s 0,25 ; 0,01 ; 0,3 ; ?. Valeur manquante :", ["0,54", "0,35", "0,44", "0,56"], 2),
+      Q(5, 10, "Une tirelire contient cinq pi\xE8ces de 2 \u20AC, cinq de 1 \u20AC et six de 0,50 \u20AC. L\u2019esp\xE9rance de la valeur de la pi\xE8ce pioch\xE9e est :", ["le nombre moyen de pi\xE8ces \xE0 tirer pour obtenir 2 \u20AC", "inf\xE9rieure \xE0 1 \u20AC", "$\\frac{1}{5} \xD7 2 + \\frac{1}{5} \xD7 1 + \\frac{1}{6} \xD7 0{,}5$", "$\\frac{9}{8}$"], 3, "$\\frac{5 \xD7 2 + 5 \xD7 1 + 6 \xD7 0{,}5}{16}$"),
+      Q(5, 11, "Dans un lyc\xE9e, 35 % des \xE9l\xE8ves sont en fili\xE8re technologique. Succ\xE8s : \xAB l\u2019\xE9l\xE8ve est en fili\xE8re technologique \xBB. \xC9preuve de Bernoulli ?", ["Oui, avec $p = 35$", "Non", "Oui, avec $p = 0{,}35$", "Oui, d\u2019esp\xE9rance 3,5"], 2),
+      Q(5, 12, "On tire successivement avec remise deux cartes d\u2019un jeu de 52. Succ\xE8s : \xAB tirer une dame puis un c\u0153ur \xBB. Cette exp\xE9rience :", ["suit un sch\xE9ma de Bernoulli de param\xE8tres 2 et $\\frac{1}{52}$", "ne suit pas un sch\xE9ma de Bernoulli", "suit un sch\xE9ma de Bernoulli de param\xE8tres 2 et $\\frac{1}{26}$", "est une \xE9preuve de Bernoulli"], 3),
+      E(5, 13, "L\u2019esp\xE9rance du r\xE9sultat d\u2019un d\xE9 \xE9quilibr\xE9 \xE0 six faces\u2026 " + PL, [vf("est comprise entre 3 et 4", 1), vf("ne fait pas forc\xE9ment partie des r\xE9sultats du d\xE9", 1), vf("est environ \xE9gale \xE0 0,17", 0), vf("est $\\frac{21}{6}$", 1)]),
+      E(5, 14, "Dans un arbre de probabilit\xE9, les probabilit\xE9s\u2026 " + PL, [vf("doivent \xEAtre \xE9crites sous forme d\xE9cimale", 0), vf("se multiplient pour donner la probabilit\xE9 d\u2019un chemin", 1), vf("des branches issues d\u2019un m\xEAme n\u0153ud ont pour somme 1", 1)]),
+      E(5, 15, "On lance un d\xE9 \xE9quilibr\xE9. Quels \xE9v\xE9nements donnent une \xE9preuve de Bernoulli de param\xE8tre $p = 0{,}5$ ? " + PL, [vf("\xAB Le r\xE9sultat est pair. \xBB", 1), vf("\xAB Le r\xE9sultat est inf\xE9rieur ou \xE9gal \xE0 3. \xBB", 1), vf("\xAB Le r\xE9sultat est 1. \xBB", 0), vf("\xAB Le r\xE9sultat est sup\xE9rieur ou \xE9gal \xE0 5. \xBB", 0)]),
+      E(5, 16, "Dans un sch\xE9ma de Bernoulli\u2026 " + PL, [vf("les \xE9preuves peuvent changer de param\xE8tre", 0), vf("les probabilit\xE9s sont les m\xEAmes lors de la seconde \xE9preuve", 1), vf("les issues sont \xE9quiprobables", 0), vf("l\u2019arbre ne contient que des n\u0153uds \xE0 deux branches", 1)]),
+      E(5, 17, "Probl\xE8me. 95 % des bijoux sont commercialisables ; on en choisit deux (assimil\xE9 \xE0 un tirage avec remise). Succ\xE8s C : \xAB le bijou est correct \xBB.", [nm("Nombre d\u2019\xE9preuves $n$ :", 2), nm("Param\xE8tre $p$ :", 0.95), nm("Probabilit\xE9 de choisir deux bijoux non commercialisables :", 25e-4, "", "$0{,}05^2$")])
+    ],
+    c6: [
+      Q(6, 7, "Mesure en radian d\u2019un angle de 60\xB0 :", ["$\\frac{\\pi}{2}$", "$\\frac{\\pi}{4}$", "$\\frac{\\pi}{3}$", "$\\frac{\\pi}{6}$"], 2),
+      Q(6, 8, "Si $a = \\frac{2\\pi}{3}$, alors :", ["$\\sin(a) = \\cos(a)$", "$\\sin(a) = \\frac{1}{2}$", "$\\sin(a) = \\frac{\\sqrt{3}}{2}$", "$\\sin(a) = -\\frac{1}{2}$"], 2),
+      Q(6, 9, "Le r\xE9el $-\\frac{\\pi}{5}$ admet :", ["un cosinus positif et un sinus positif", "un cosinus positif et un sinus n\xE9gatif", "un cosinus n\xE9gatif et un sinus positif", "un cosinus n\xE9gatif et un sinus n\xE9gatif"], 1),
+      Q(6, 10, "$f(t) = 4\\sin\\left(3t + \\frac{\\pi}{5}\\right)$ est p\xE9riodique de p\xE9riode :", ["$\\frac{2\\pi}{3}$", "$2\\pi$", "$\\frac{\\pi}{5}$", "$\\frac{3}{2\\pi}$"], 0),
+      E(6, 11, "Mesures dont la mesure principale est $\\frac{3\\pi}{4}$ : " + PL, [vf("$\\frac{3\\pi}{4}$", 1), vf("$-\\frac{3\\pi}{4}$", 0), vf("$\\frac{\\pi}{4}$", 0), vf("$-\\frac{5\\pi}{4}$", 1)]),
+      E(6, 12, "La fonction cosinus\u2026 " + PL, [vf("est paire", 1), vf("est impaire", 0), vf("v\xE9rifie $\\cos(0) = 0$", 0), vf("v\xE9rifie $\\cos(0) = 1$", 1)]),
+      E(6, 13, "$f(t) = A\\cos(\\omega t)$ avec $\\omega > 0$ ; la courbe passe par son minimum \u22123 en $t = 0$ et par son maximum 3 en $t = \\pm\\frac{\\pi}{2}$. " + PL, [vf("$A = 3$", 0, "$f(0) = A = -3$"), vf("$\\omega = \\pi$", 0), vf("$\\omega = 2$", 1, "p\xE9riode $\\pi$")]),
+      E(6, 14, "$f(x) = \\sin(x)$ sur $[-\\frac{\\pi}{2}\\,;\\frac{\\pi}{2}]$ est\u2026 " + PL, [vf("positive", 0), vf("impaire", 1), vf("n\xE9gative", 0), vf("croissante", 1)]),
+      E(6, 15, "Solutions dans $\\mathbb{R}$ de $\\cos(x) = -\\frac{\\sqrt{3}}{2}$ ($k \\in \\mathbb{Z}$) : " + PL, [vf("$\\frac{5\\pi}{6} + 2k\\pi$ et $\\frac{7\\pi}{6} + 2k\\pi$", 1, "$\\frac{7\\pi}{6} = -\\frac{5\\pi}{6} + 2\\pi$"), vf("$\\frac{5\\pi}{6} + 2k\\pi$ et $-\\frac{5\\pi}{6} + 2k\\pi$", 1), vf("$\\frac{5\\pi}{3} + 2k\\pi$ et $-\\frac{5\\pi}{3} + 2k\\pi$", 0), vf("seulement $\\frac{5\\pi}{6}$ et $-\\frac{5\\pi}{6}$", 0)]),
+      E(6, 16, "\xC9galit\xE9s vraies : " + PL, [vf("$\\sin\\left(-\\frac{\\pi}{2}\\right) = \\cos(\\pi)$", 1), vf("$\\sin\\left(\\frac{5\\pi}{6}\\right) = \\cos\\left(\\frac{\\pi}{3}\\right)$", 1), vf("$\\sin\\left(\\frac{\\pi}{3}\\right) = \\cos\\left(\\frac{5\\pi}{6}\\right)$", 0), vf("$\\cos\\left(-\\frac{\\pi}{2}\\right) = \\cos\\left(\\frac{\\pi}{2}\\right)$", 1)]),
+      E(6, 17, "Probl\xE8me. $f(t) = 7\\cos(3t)$ ; M est le point d\u2019intersection de la courbe avec l\u2019axe des ordonn\xE9es.", [nm("Ordonn\xE9e de M :", 7), qc("P\xE9riode de $f$ :", ["$\\frac{2\\pi}{3}$", "$2\\pi$", "$3$"], 0), nm("$f\\left(\\frac{\\pi}{4}\\right)$ (au centi\xE8me) :", -4.95, "", "$7\\cos\\frac{3\\pi}{4} = -\\frac{7\\sqrt{2}}{2}$"), qc("Ant\xE9c\xE9dents de 0 :", ["$\\frac{\\pi}{6} + k\\frac{\\pi}{3}$, $k \\in \\mathbb{Z}$", "$k\\pi$", "$\\frac{\\pi}{2} + k\\pi$"], 0)])
+    ],
+    c7: [
+      Q(7, 8, "$AB \xD7 BC \xD7 \\cos(\\widehat{ABC}) =$", ["$\\overrightarrow{AB}\\cdot\\overrightarrow{AC}$", "$\\overrightarrow{BA}\\cdot\\overrightarrow{BC}$", "$\\overrightarrow{AB}\\cdot\\overrightarrow{BC}$", "$\\overrightarrow{BA}\\cdot\\overrightarrow{CB}$"], 1),
+      Q(7, 9, "$\\vec{u}\\binom{2}{-3}$ et $\\vec{v}\\binom{-4}{8}$. Mesure arrondie au degr\xE9 de l\u2019angle entre $\\vec{u}$ et $\\vec{v}$ :", ["3\xB0", "97\xB0", "173\xB0", "60\xB0"], 2, "$\\cos\\theta = \\frac{-32}{\\sqrt{13}\\sqrt{80}}$"),
+      Q(7, 10, "ABCD est un carr\xE9 de c\xF4t\xE9 3. $\\overrightarrow{AB}\\cdot\\overrightarrow{CD}$ vaut :", ["0", "9", "\u22129", "1"], 2),
+      Q(7, 11, "A(\u22121 ; 2), B(2 ; 3), C(1 ; \u22121) et D(\u22127 ; \u22123). Alors :", ["(AB) et (CD) sont perpendiculaires", "(AD) et (BC) sont perpendiculaires", "(BA) et (BC) sont perpendiculaires", "(AC) et (BD) sont perpendiculaires"], 3),
+      Q(7, 12, "$\\vec{u}$ de norme 5 fait un angle de $\\frac{\\pi}{4}$ avec l\u2019axe des abscisses. Son projet\xE9 orthogonal sur l\u2019axe des abscisses est :", ["$\\vec{u}^{\\prime} = 45\\vec{i}$", "$\\vec{u}^{\\prime} = \\frac{5\\sqrt{2}}{2}\\vec{i}$", "$\\vec{u}^{\\prime} = 5\\vec{i}$", "$\\vec{u}^{\\prime} = \\frac{1}{9}\\vec{i}$"], 1),
+      E(7, 13, "Triangle ABC : AB = 6, BC = 7, AC = 9. " + PL, [vf("$\\widehat{BAC} \u2248 51\xB0$", 1), vf("$\\widehat{BAC} \u2248 129\xB0$", 0), vf("$\\widehat{ABC} \u2248 93\xB0$", 0), vf("$\\widehat{ABC} \u2248 87\xB0$", 1)]),
+      E(7, 14, "$\\vec{u}\\binom{-1}{\\frac{1}{3}}$ et $\\vec{v}\\binom{\\frac{2}{3}}{2}$. " + PL, [vf("$\\|\\vec{u}\\| = \\frac{10}{9}$", 0), vf("$\\|\\vec{v}\\| = \\frac{2\\sqrt{10}}{3}$", 1), vf("$\\vec{u}\\cdot\\vec{v} = 0$", 1), vf("$\\vec{u}$ et $\\vec{v}$ ne sont pas orthogonaux", 0)]),
+      E(7, 15, "Parall\xE9logramme ABCD avec AB = 4 et AD = 2. Valeurs possibles des diagonales : " + PL, [vf("AC = $\\sqrt{30}$ et BD = $\\sqrt{10}$", 1), vf("AC = $\\sqrt{15}$ et BD = 5", 1), vf("AC = $\\sqrt{40}$ et BD = $\\sqrt{40}$", 0), vf("AC = 1 et BD = 3", 0)]),
+      E(7, 16, "$(\\overrightarrow{BC} - \\overrightarrow{BA})\\cdot\\overrightarrow{AC} =$ " + PL, [vf("$\\overrightarrow{BC}\\cdot\\overrightarrow{AC} - \\overrightarrow{BA}\\cdot\\overrightarrow{AC}$", 1), vf("$AC^2$", 1), vf("$\\overrightarrow{BC}\\cdot\\overrightarrow{AC} + \\overrightarrow{AB}\\cdot\\overrightarrow{AC}$", 1), vf("$\\overrightarrow{BC}\\cdot\\overrightarrow{AC} - \\overrightarrow{BC}$", 0)]),
+      E(7, 17, "H et K sont les projet\xE9s orthogonaux de A sur (BC) et de C sur (AB). " + PL, [vf("$\\overrightarrow{BA}\\cdot\\overrightarrow{BC} = \\overrightarrow{BH}\\cdot\\overrightarrow{BC}$", 1), vf("$\\overrightarrow{BA}\\cdot\\overrightarrow{BC} = \\overrightarrow{BK}\\cdot\\overrightarrow{BC}$", 0), vf("$\\overrightarrow{BA}\\cdot\\overrightarrow{BC} = \\overrightarrow{BA}\\cdot\\overrightarrow{BK}$", 1), vf("$\\overrightarrow{BA}\\cdot\\overrightarrow{BC} = \\overrightarrow{BA}\\cdot\\overrightarrow{BH}$", 0)]),
+      E(7, 18, "A(1 ; 3), B(5 ; 4), C(6 ; 0) et D(2 ; \u22121). Le quadrilat\xE8re ABCD est\u2026 " + PL, [vf("un carr\xE9", 1), vf("un rectangle", 1), vf("un parall\xE9logramme", 1), vf("un quadrilat\xE8re quelconque", 0)]),
+      E(7, 19, "Probl\xE8me. $\\vec{u}\\binom{-1}{-3}$, $\\vec{w}\\binom{2}{2}$ et $\\vec{v}$ tel que $\\vec{v}\\cdot\\vec{w} = 4$.", [nm("$\\vec{u}\\cdot\\vec{w} =$", -8), nm("$(\\vec{u} + 2\\vec{v})\\cdot\\vec{w} =$", 0), qc("On en conclut que :", ["$\\vec{u} + 2\\vec{v}$ et $\\vec{w}$ sont orthogonaux", "$\\vec{u} + 2\\vec{v} = \\vec{w}$", "$\\vec{v}$ est nul"], 0)])
+    ],
+    c8: [
+      Q(8, 8, "Forme alg\xE9brique de $(1 - 3i)^2$ :", ["$1 + 9i$", "$-8 - 6i$", "$-2 - 6i$", "$-2 + 6i$"], 1),
+      Q(8, 9, "Forme alg\xE9brique de $\\frac{3 - i}{2 + i}$ :", ["$\\frac{7}{5} + \\frac{i}{5}$", "$\\frac{7}{5} - \\frac{i}{5}$", "$\\frac{5}{3} - \\frac{5}{3}i$", "$1 - i$"], 3),
+      E(8, 10, "$z \u2260 i$ et $A = \\frac{1 + iz}{z - i}$. Le conjugu\xE9 de A est\u2026 " + PL, [vf("$\\frac{1 - iz}{z + i}$", 0), vf("$\\frac{1 - i\\bar{z}}{\\bar{z} + i}$", 1), vf("$\\frac{1 + i\\bar{z}}{\\bar{z} - i}$", 0), vf("$\\frac{1 + \\bar{i}\\,\\bar{z}}{\\bar{z} - \\bar{i}}$", 1, "$\\bar{i} = -i$")]),
+      Q(8, 11, "Une forme trigonom\xE9trique de $1 - i$ :", ["$\\sqrt{2}\\left(\\cos\\left(-\\frac{\\pi}{4}\\right) + i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right)$", "$2\\left(\\cos\\left(-\\frac{\\pi}{4}\\right) + i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right)$", "$\\sqrt{2}\\left(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4}\\right)$", "$2\\left(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4}\\right)$"], 0),
+      Q(8, 12, "Si $z$ est un r\xE9el strictement n\xE9gatif, un de ses arguments vaut :", ["0", "$\\pi$", "$\\frac{\\pi}{2}$", "$-\\frac{\\pi}{2}$"], 1),
+      E(8, 13, "A a pour affixe $a = 1 + 2i$ et B a pour affixe $b = 2 - 3i$. " + PL, [vf("$\\text{Re}(a) = 1$", 1), vf("$\\text{Im}(b) = 3$", 0), vf("L\u2019affixe de $\\overrightarrow{AB}$ est $1 - 5i$", 1), vf("$\\bar{b} = 2 - 3i$", 0)]),
+      E(8, 14, "A(3 + 4i), B(3i) et C(2 + 4i). " + PL, [vf("L\u2019affixe de $\\overrightarrow{AB}$ est $-3 - i$", 1), vf("C appartient au cercle de centre A et de rayon AB", 0), vf("La longueur AC vaut 1", 1), vf("$\\overline{z_B}$ est un imaginaire pur", 1)]),
+      E(8, 15, "A(1 \u2212 2i), B(3 \u2212 i), C(7 + 2i), D(9 + 3i) et E(2 \u2212 1,5i). " + PL, [vf("ABCD est un parall\xE9logramme", 0), vf("B est le sym\xE9trique de A par rapport \xE0 E", 1), vf("ABDC est un parall\xE9logramme", 1), vf("E est le sym\xE9trique de A par rapport \xE0 B", 0)]),
+      E(8, 16, "$z = \\sqrt{3} - i$. Un argument de $z$ est\u2026 " + PL, [vf("$\\frac{\\pi}{6}$", 0), vf("$-\\frac{\\pi}{3}$", 0), vf("$-\\frac{\\pi}{6}$", 1), vf("$\\frac{11\\pi}{6}$", 1)]),
+      E(8, 17, "Le quotient $\\frac{1 + i}{1 - i}$\u2026 " + PL, [vf("est un r\xE9el", 0), vf("est un imaginaire pur", 1), vf("est \xE9gal \xE0 $i$", 1), vf("est \xE9gal \xE0 $-i$", 0)]),
+      E(8, 18, "Probl\xE8me. $z_F = -3 + 2i$, $z_M = 5 - 2i$, $z_G = 2\\left(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4}\\right)$.", [qc("Affixe de $\\overrightarrow{FM}$ :", ["$8 - 4i$", "$2 + 0i$", "$-8 + 4i$"], 0), nm("FM (au centi\xE8me) :", 8.94, "", "$\\sqrt{80} = 4\\sqrt{5}$"), nm("Affixe du milieu de [FM] (r\xE9el) :", 1), qc("Forme alg\xE9brique de $z_G$ :", ["$\\sqrt{2} + i\\sqrt{2}$", "$1 + i$", "$2 + 2i$"], 0)])
+    ],
+    c9: [
+      Q(9, 7, "Si l\u2019acc\xE9l\xE9ration instantan\xE9e est nulle, la vitesse instantan\xE9e :", ["augmente", "diminue", "est constante", "on ne peut rien dire"], 2),
+      Q(9, 8, "$f(x) = \\frac{6x}{3x - 2}$ sur $]-\\infty\\,;0{,}5]$. Tangente au point d\u2019abscisse 0 :", ["$y = -3x$", "$y = -3x - \\frac{1}{2}$", "$y = -3$", "$y = 0$"], 0),
+      Q(9, 9, "Approximation affine : en posant $x = a + h$ ($h$ proche de 0), $f(x) \u2248$", ["$f^{\\prime}(a) \xD7 h + f(a)$", "$-f^{\\prime}(a) \xD7 h + f(a)$", "$f(a) \xD7 h + f^{\\prime}(a)$", "$-f(a) \xD7 h + f^{\\prime}(a)$"], 0),
+      Q(9, 10, "D\xE9riv\xE9e de $f(t) = -3\\cos(6t - 2)$ :", ["$-18\\sin(6t - 2)$", "$18\\sin(6t - 2)$", "$18\\sin(t)$", "$-3\\sin(6t - 2)$"], 1),
+      E(9, 11, "$f = xy^2 + y^2 + 3x$. " + PL, [vf("$\\frac{df}{dx} = 4y + 3$", 0), vf("$\\frac{df}{dy} = 2y(x + 1)$", 1), vf("$\\frac{df}{dx} = y^2 + 3$", 1), vf("$\\frac{df}{dy} = 2xy + 2y$", 1)]),
+      E(9, 12, "$f^{\\prime}(x) = 6\\cos(2x) + 5x^4 - 10$. Expressions possibles de $f$ : " + PL, [vf("$x^5 - 10x + 6 + 3\\sin(2x)$", 1), vf("$3\\sin(2x) + x^5 - 10x - 10$", 1), vf("$3\\sin(2x) + x^5 - 10$", 0), vf("$3\\cos(2x) + x^5 - 10x + 5$", 0)]),
+      E(9, 13, "D\xE9riv\xE9e de $f(x) = x^2\\cos(x)$ : " + PL, [vf("$x(2\\cos(x) - x\\sin(x))$", 1), vf("$2x\\cos(x) - x^2\\sin(x)$", 1), vf("$-x^2\\sin(x)$", 0), vf("$-2x\\sin(x)$", 0)]),
+      E(9, 14, "$f(x) = \\frac{3x + 2}{x}$ sur $\\mathbb{R}\\setminus\\{0\\}$. " + PL, [vf("$f$ est croissante sur $]-\\infty\\,;0[$ et $]0\\,;+\\infty[$", 0), vf("$f^{\\prime}$ est toujours positive", 0), vf("$f^{\\prime}$ est toujours n\xE9gative", 1, "$f^{\\prime}(x) = -\\frac{2}{x^2}$"), vf("$f$ est d\xE9croissante sur $]-\\infty\\,;0[$ et $]0\\,;+\\infty[$", 1)]),
+      E(9, 15, "Probl\xE8me. Position d\u2019un train : $f(t) = t^2 + 0{,}5t - 2$ (en m, $t$ en s).", [nm("Vitesse apr\xE8s 5 s :", 10.5, "m/s"), nm("Vitesse apr\xE8s 20 s :", 40.5, "m/s"), nm("Temps pour atteindre 20 m/s :", 9.75, "s"), nm("Temps pour atteindre 100 m/s :", 49.75, "s")])
+    ],
+    c10: [
+      Q(10, 8, "Une primitive de $f(x) = 3x^2 - 2x - 1$ :", ["$x^3 + x^2 + x$", "$x^3 - x^2 + x$", "$x^3 - x^2 - x$", "$x^3 - x^2$"], 2),
+      Q(10, 9, "Les primitives de $f(t) = 3\\sin\\left(3t + \\frac{\\pi}{2}\\right)$ sont $F(t) =$", ["$-\\cos\\left(3t + \\frac{\\pi}{2}\\right) + k$", "$-3\\cos\\left(3t + \\frac{\\pi}{2}\\right) + k$", "$-\\sin\\left(3t + \\frac{\\pi}{2}\\right) + k$", "$-3\\sin\\left(3t + \\frac{\\pi}{2}\\right) + k$"], 0),
+      Q(10, 10, "Primitive de $f(x) = 7x - 2$ avec $F(0) = 4$ :", ["$\\frac{7x^2}{2} - 2$", "$\\frac{7x^2}{2} - 2x + 4$", "$\\frac{7x^2}{2}$", "$\\frac{7x^2}{2} + 4$"], 1),
+      Q(10, 11, "Primitive de $f(t) = 2\\cos(3t + \\pi) + 5$ avec $F(0) = 2$ :", ["$\\frac{2}{3}\\cos(3t + \\pi) + 5t + 2$", "$\\frac{2}{3}\\sin(3t + \\pi) + 5t + 2$", "$\\frac{2}{3}\\sin(3t + \\pi) + 5t$", "$\\frac{2}{3}\\sin(3t + \\pi) + 2$"], 1),
+      E(10, 12, "Primitives de $f(x) = \\frac{4}{3}x^2 - 8x + 10$ : " + PL, [vf("$\\frac{4}{9}x^3 - 4x^2 + 10$", 0), vf("$\\frac{4}{3}x^3 - 4x^2 + 10x$", 0), vf("$\\frac{4}{9}x^3 - 4x^2 + 10x$", 1), vf("$\\frac{4}{9}x^3 - \\frac{8}{2}x^2 + 10x - 2$", 1)]),
+      E(10, 13, "Primitives de $f(x) = 6x^3 - 3x - 5$ : " + PL, [vf("$\\frac{6}{4}x^4 - \\frac{3}{2}x^2 - 5x + 4$", 1), vf("$6x^4 - \\frac{3}{2}x^2 - 5x$", 0), vf("$\\frac{3}{2}x^4 - \\frac{3}{2}x^2 - 5x$", 1), vf("$\\frac{6}{4}x^4 - \\frac{3}{2}x^2 - 5$", 0)]),
+      E(10, 14, "Primitive de $f(t) = -3\\sin\\left(3t + \\frac{\\pi}{2}\\right) - 14t$ avec $F(0) = 4$ : " + PL, [vf("$-\\cos\\left(3t + \\frac{\\pi}{2}\\right) - 7t^2 + 4$", 0), vf("$\\cos\\left(3t + \\frac{\\pi}{2}\\right) - 7t^2 + 4$", 1), vf("$\\sin\\left(3t + \\frac{\\pi}{2}\\right) - 14$", 0), vf("$-\\sin(3t) - 7t^2 + 4$", 1)]),
+      E(10, 15, "Sur $[-1\\,;1]$ : $C_1$ est croissante de \u22125 \xE0 9 ; $C_2$ reste au-dessus de l\u2019axe des abscisses (entre 1 et 6). L\u2019une est la courbe de $f$, l\u2019autre celle d\u2019une primitive F. " + PL, [vf("F est repr\xE9sent\xE9e par $C_1$", 1), vf("F est repr\xE9sent\xE9e par $C_2$", 0), vf("$f$ est repr\xE9sent\xE9e par $C_1$", 0), vf("$f$ est repr\xE9sent\xE9e par $C_2$", 1)]),
+      E(10, 16, "Probl\xE8me. $f(x) = 9x^5 - 4\\sin\\left(x + \\frac{\\pi}{2}\\right)$.", [qc("Une primitive de $f$ :", ["$\\frac{3}{2}x^6 + 4\\cos\\left(x + \\frac{\\pi}{2}\\right)$", "$45x^4 - 4\\cos\\left(x + \\frac{\\pi}{2}\\right)$", "$\\frac{3}{2}x^6 - 4\\cos\\left(x + \\frac{\\pi}{2}\\right)$"], 0), qc("Primitive F telle que $F(0) = 3$ :", ["$\\frac{3}{2}x^6 + 4\\cos\\left(x + \\frac{\\pi}{2}\\right) + 3$", "$\\frac{3}{2}x^6 + 4\\cos\\left(x + \\frac{\\pi}{2}\\right) - 1$", "$\\frac{3}{2}x^6 + 4\\cos\\left(x + \\frac{\\pi}{2}\\right)$"], 0, "$\\cos\\frac{\\pi}{2} = 0$")])
+    ]
+  } });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
