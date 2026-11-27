@@ -40147,6 +40147,118 @@ window.MN_VT = window.MN_VT || function(f, P) {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const N = (a, e) => ({ nr: [["Auto-\xE9valuation", [1, a]], ["Travailler les automatismes", [a + 1, e - 1]], ["Entra\xEEnement", [e, 999]]] });
+  P.expert = { ch: { 1: N(17, 52), 2: N(17, 46), 3: N(17, 57), 4: N(20, 62), 5: N(17, 34), 6: N(14, 40), 7: N(17, 37) } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Nombres complexes, point de vue alg\xE9brique", 2: "Nombres complexes, point de vue g\xE9om\xE9trique", 3: "Divisibilit\xE9 dans \u2124", 4: "PGCD et applications", 5: "Nombres premiers", 6: "Calcul matriciel et applications aux graphes", 7: "Suites et matrices" };
+  const PG = { 1: 31, 2: 63, 3: 101, 4: 129, 5: 153, 6: 187, 7: 217 };
+  const S = (c, n) => "Manuel Maths Tle expertes, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + PG[c] + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(une ou plusieurs bonnes r\xE9ponses)";
+  const R = {
+    1: "**$i^2 = -1$**. $\\frac{1}{a + ib} = \\frac{a - ib}{a^2 + b^2}$ ; **$\\overline{z_1 z_2} = \\bar{z_1}\\,\\bar{z_2}$**. Si $\\Delta < 0$, $az^2 + bz + c = 0$ a deux solutions conjugu\xE9es **$\\frac{-b \\pm i\\sqrt{-\\Delta}}{2a}$**. Si $P(\\alpha) = 0$, **$P(z) = (z - \\alpha)Q(z)$**.",
+    2: "**$|a + ib| = \\sqrt{a^2 + b^2}$**. Forme exponentielle **$z = re^{i\\theta}$** ; $re^{i\\theta} \xD7 r^{\\prime}e^{i\\theta^{\\prime}} = rr^{\\prime}e^{i(\\theta + \\theta^{\\prime})}$. **Moivre** : $(\\cos x + i\\sin x)^n = \\cos(nx) + i\\sin(nx)$. **Euler** : $\\sin x = \\frac{e^{ix} - e^{-ix}}{2i}$.",
+    3: "Si $d \\mid a$ et $d \\mid b$, alors **$d \\mid au + bv$**. Division euclidienne : **$a = bq + r$ avec $0 \u2264 r < b$**. Si **$a \\equiv b\\,[m]$**, alors $a^k \\equiv b^k\\,[m]$ et $a + c \\equiv b + c\\,[m]$.",
+    4: "**B\xE9zout** : $a$ et $b$ premiers entre eux \u27FA il existe $u$, $v$ tels que **$au + bv = 1$**. $ax + by = c$ a des solutions \u27FA **PGCD$(a\\,;b) \\mid c$**. **Gauss** : si $a \\mid bc$ et PGCD$(a\\,;b) = 1$, alors $a \\mid c$.",
+    5: "Si $n = p_1^{a_1} \xD7 \u2026 \xD7 p_k^{a_k}$, $n$ a **$(a_1 + 1)\u2026(a_k + 1)$ diviseurs**. PGCD : **plus petits exposants** des facteurs communs. **Petit th\xE9or\xE8me de Fermat** : $p$ premier ne divisant pas $a$ \u27F9 **$a^{p-1} \\equiv 1\\,[p]$**.",
+    6: "Produit $A \xD7 B$ d\xE9fini si **nb colonnes de A = nb lignes de B** ; taille $(n, p) \xD7 (p, q) = (n, q)$. Inverse de $\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$ : **$\\frac{1}{ad - bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$**. Rotation d\u2019angle $\\theta$ : **$\\begin{pmatrix}\\cos\\theta&-\\sin\\theta\\\\\\sin\\theta&\\cos\\theta\\end{pmatrix}$**.",
+    7: "Cha\xEEne de Markov : **$\\pi_{n+1} = \\pi_n P$**, **$\\pi_n = \\pi_0 P^n$** ; la somme des coefficients de chaque **ligne** de P vaut **1**. Distribution invariante : **$\\pi P = \\pi$**."
+  };
+  const E = (c, n, t, it) => ({ n: String(n), src: S(c, n), t, rule: R[c], it });
+  const Q = (c, n, t, ch, ok, cm) => E(c, n, t, [qc("R\xE9ponse :", ch, ok, cm)]);
+  ADD("expert", { mnx: {
+    c1: [
+      Q(1, 9, "$z_1 = 2 + 3i$ et $z_2 = 1 - 2i$. Forme alg\xE9brique de $z_1 z_2$ :", ["$-4 - i$", "$8 - i$", "$2 + 6i$", "$8 + i$"], 1),
+      Q(1, 10, "Partie imaginaire de $\\frac{2 + 3i}{1 - 2i}$ :", ["$-\\frac{3}{2}$", "$-\\frac{3}{2}i$", "$\\frac{7}{5}i$", "$\\frac{7}{5}$"], 3),
+      Q(1, 11, "Le conjugu\xE9 de $(1 - i)(1 + i)^3$ est :", ["$-4i$", "$4i$", "$1 - 4i$", "$1 + 4i$"], 0),
+      Q(1, 12, "Racines complexes de $P(z) = z^2 - 2z + 10$ :", ["$3 - i$ et $3 + i$", "$1 - 3i$ et $1 + 3i$", "$2 - 2i$ et $2 + 2i$", "$1 - 3i$ et $3 + i$"], 1),
+      E(1, 13, "L\u2019inverse de $i^5$ est : " + PL, [vf("un r\xE9el", 0), vf("un imaginaire pur", 1), vf("\xE9gal \xE0 $i^3$", 1), vf("\xE9gal \xE0 \u22121", 0)]),
+      E(1, 14, "Le quotient $\\frac{1 + i}{1 - i}$ : " + PL, [vf("est un r\xE9el", 0), vf("est un imaginaire pur", 1), vf("est \xE9gal \xE0 $i$", 1), vf("a pour conjugu\xE9 $-i$", 1)]),
+      E(1, 15, "(E) : $z^3 - 1 = 0$. " + PL, [vf("(E) admet trois solutions dans $\\mathbb{C}$.", 1), vf("(E) a pour solutions 1, $i$ et $-i$.", 0), vf("(E) admet une solution r\xE9elle et deux solutions complexes conjugu\xE9es.", 1), vf("(E) a pour solutions 1, $-\\frac{1}{2} - i\\frac{\\sqrt{3}}{2}$ et $-\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}$.", 1)]),
+      E(1, 16, "$P(z) = z^4 + 3z^2 - 4$. Le polyn\xF4me P : " + PL, [vf("se factorise par $z - 1$", 1), vf("se factorise par $z + 1$", 1), vf("se factorise par $z + 2i$", 1), vf("admet quatre racines r\xE9elles", 0, "$P(z) = (z^2 - 1)(z^2 + 4)$")]),
+      E(1, 17, "Probl\xE8me. $z_1 = 1 + i$ et $z_2 = \\bar{z_1}$ ; $Q(z) = z^3 - 6z^2 + 10z - 8$.", [nm("$z_1 + z_2 =$", 2), nm("$z_1 \xD7 z_2 =$", 2), qc("Polyn\xF4me unitaire P de degr\xE9 2 de racines $z_1$, $z_2$ :", ["$z^2 - 2z + 2$", "$z^2 + 2z + 2$", "$z^2 - 2z - 2$"], 0), nm("$\\alpha$ tel que $Q(z) = (z - \\alpha)P(z)$ :", 4)])
+    ],
+    c2: [
+      Q(2, 9, "$z_A = 3 + 2i$, $z_B = -1 + 5i$ et $z_C = i - 1$. Affixe de $\\overrightarrow{AB} - 2\\overrightarrow{AC}$ :", ["$-8 + 2i$", "$-4 - 5i$", "$4 + 5i$", "$8 - 2i$"], 2),
+      Q(2, 10, "Le module de $4 - 3i$ est \xE9gal \xE0 :", ["7", "$\\sqrt{7}$", "5", "25"], 2),
+      Q(2, 11, "Une forme trigonom\xE9trique de $-\\frac{3}{2} + 3i\\frac{\\sqrt{3}}{2}$ :", ["$-3\\left[\\cos\\left(-\\frac{2\\pi}{3}\\right) + i\\sin\\left(-\\frac{2\\pi}{3}\\right)\\right]$", "$3\\left[\\cos\\left(\\frac{2\\pi}{3}\\right) + i\\sin\\left(\\frac{2\\pi}{3}\\right)\\right]$", "$3\\left[\\cos\\left(\\frac{2\\pi}{3}\\right) - i\\sin\\left(\\frac{2\\pi}{3}\\right)\\right]$", "$3\\left[\\cos\\left(-\\frac{2\\pi}{3}\\right) + i\\sin\\left(-\\frac{2\\pi}{3}\\right)\\right]$"], 1),
+      Q(2, 12, "Pour tout r\xE9el $x$, $(\\cos x + i\\sin x)^5 =$", ["$\\cos^5 x + i\\sin^5 x$", "$5\\cos x + 5i\\sin x$", "$\\cos(5x) + \\sin(5x)$", "$\\cos(5x) + i\\sin(5x)$"], 3),
+      E(2, 13, "A, B, C distincts d\u2019affixes $a$, $b$, $c$ avec $\\frac{b - a}{c - a} = -i$. " + PL, [vf("ABC est \xE9quilat\xE9ral.", 0), vf("ABC est isoc\xE8le en A.", 1), vf("ABC est rectangle en A.", 1), vf("ABC est scal\xE8ne.", 0)]),
+      E(2, 14, "$z = 3e^{-i\\frac{\\pi}{6}}$ et $z^{\\prime} = -\\sqrt{2} + \\sqrt{2}i$. " + PL, [vf("$z^3 = 27e^{-i\\frac{\\pi}{2}}$", 1), vf("$z \xD7 z^{\\prime} = 6e^{i\\frac{7\\pi}{12}}$", 1), vf("$z \xD7 z^{\\prime} = \\frac{3(\\sqrt{2} - \\sqrt{6})}{2} + \\frac{3(\\sqrt{2} + \\sqrt{6})}{2}i$", 1)]),
+      E(2, 15, "$z = -3\\sqrt{3} - 3i$. " + PL, [vf("une forme trigonom\xE9trique de $z$ est $6\\left[\\cos\\left(-\\frac{5\\pi}{6}\\right) + i\\sin\\left(-\\frac{5\\pi}{6}\\right)\\right]$", 1), vf("une forme exponentielle de $z$ est $6e^{-i\\frac{5\\pi}{6}}$", 1), vf("une forme exponentielle de $iz$ est $6e^{-i\\frac{\\pi}{3}}$", 1)]),
+      E(2, 16, "Pour tout r\xE9el $x$, $\\sin^3(x) =$ " + PL, [vf("$\\frac{1}{8}i(e^{ix} - e^{-ix})^3$", 1), vf("$-\\frac{1}{8}i(e^{ix} - e^{-ix})^3$", 0), vf("$\\frac{3\\sin(x) - \\sin(3x)}{4}$", 1)])
+    ],
+    c3: [
+      Q(3, 9, "Si $n - 4$ divise $7n + 2$, alors :", ["$n - 4$ divise 28", "30 divise $n - 4$", "$n$ divise 34", "$n - 4$ divise 30"], 3, "$7n + 2 = 7(n - 4) + 30$"),
+      Q(3, 10, "L\u2019\xE9galit\xE9 $1887 = 45 \xD7 41 + 42$ :", ["est la division euclidienne de 1887 par 41", "signifie que 1887 est divisible par 45", "signifie que 41 est le quotient dans la division euclidienne de 1887 par 45", "signifie que 45 est la partie enti\xE8re de $\\frac{1887}{41}$"], 2, "le reste 42 doit \xEAtre inf\xE9rieur au diviseur"),
+      Q(3, 11, "Modulo 5, $23\\,512^4$ est congru \xE0 :", ["2", "17", "1", "8"], 2),
+      Q(3, 12, "$a$, $b$ entiers et $m$ naturel non nul. Si $ab \\equiv 0\\,[m]$, alors :", ["$a$ et $b$ sont divisibles par $m$", "au moins l\u2019un des deux est nul", "$a \\equiv 0\\,[m]$ ou $b \\equiv 0\\,[m]$", "$ab$ est divisible par $m$"], 3),
+      E(3, 13, "\xAB Pour tout entier naturel $n$, $n(4n^2 - 1)$ est divisible par $k$ \xBB : $k$ peut prendre les valeurs : " + PL, [vf("2", 0), vf("3", 1), vf("7", 0), vf("\u22123", 1)]),
+      E(3, 14, "Solutions dans $\\mathbb{Z}$ de $4x \\equiv 3\\,[7]$ : " + PL, [vf("{6}", 0), vf("les entiers $6 + 3k$", 0), vf("les entiers $6 + 7k$", 1), vf("les entiers $x$ tels que $x \\equiv -1\\,[7]$", 1)]),
+      E(3, 15, "Si $a \\equiv b\\,[m]$, alors : " + PL, [vf("$a^2 \\equiv b^2\\,[m^2]$", 0), vf("$a^3 \\equiv b^3\\,[m]$", 1), vf("$b - a$ est un multiple de $m$", 1), vf("$\\frac{a}{2} \\equiv \\frac{b}{2}\\,[m]$", 0)]),
+      E(3, 16, "$7^{2n} - 387^n$ est un multiple de 13 pour : " + PL, [vf("tous les entiers $n$", 0), vf("tous les entiers naturels $n$", 1, "$49 \\equiv 387 \\equiv 10\\,[13]$"), vf("les entiers naturels pairs", 1), vf("les entiers naturels impairs sup\xE9rieurs \xE0 1", 1)]),
+      E(3, 17, "Probl\xE8me. Restes de $3^n$ modulo 7.", [nm("Reste de $3^2$ par 7 :", 2), nm("Reste de $3^3$ par 7 :", 6), nm("Reste de $3^6$ par 7 :", 1), nm("Reste de $3^{2019}$ par 7 :", 6), qc("7 divise $u_n = 1 + 3 + \u2026 + 3^{n-1} = \\frac{1}{2}(3^n - 1)$ lorsque :", ["$n$ est un multiple de 6", "$n$ est pair", "jamais"], 0)])
+    ],
+    c4: [
+      Q(4, 12, "PGCD$(n\\,;75) = 25$ et PGCD$(n\\,;20) = 5$. $n$ peut \xEAtre \xE9gal \xE0 :", ["100", "35", "25", "70"], 2),
+      Q(4, 13, "$a$ et $b$ non nuls divisibles par 68 :", ["PGCD$(a\\,;b) \\mid 68$", "PGCD$(a\\,;b)$ est un multiple de 68", "il existe $(x\\,;y)$ tel que $ax + by = 68$", "il existe $x$, $y$ premiers entre eux tels que $ax + by = 1$"], 1),
+      Q(4, 14, "$a \\in \\mathbb{N}$. Relation entre A : \xAB $12a \\equiv 0\\,[3]$ \xBB et B : \xAB $a \\equiv 0\\,[3]$ \xBB :", ["A \u27FA B", "B \u27F9 A", "A \u27F9 B", "aucune"], 1),
+      Q(4, 15, "$11a = 56b$. On peut affirmer :", ["PGCD$(a\\,;b) = 1$", "$a$ divise $b$", "11 divise $b$", "$b$ divise 11"], 2, "Gauss"),
+      E(4, 16, "\xC9quations ayant des solutions dans $\\mathbb{Z}^2$ : " + PL, [vf("$51x + 39y = 0$", 1), vf("$51x + 39y = 1$", 0), vf("$51x + 39y = 3$", 1), vf("$51x + 39y = 2\\,019$", 1, "PGCD = 3 et $2\\,019 = 3 \xD7 673$")]),
+      E(4, 17, "La congruence $ax \\equiv 1\\,[n]$ signifie que : " + PL, [vf("il existe $b \\in \\mathbb{Z}$ tel que $ax - bn = 1$", 1), vf("$ax = n + 1$", 0), vf("$n$ divise $ax - 1$", 1)]),
+      E(4, 18, "Le PGCD de $3n - 1$ et $5n$ est \xE9gal \xE0 : " + PL, [vf("1 pour tout $n$", 0), vf("5 si, et seulement si, 5 divise $3n - 1$", 1), vf("5 pour tout $n$", 0), vf("5 si, et seulement si, 5 divise $n - 2$", 1)]),
+      E(4, 19, "Vraies pour tout $n$ tel que 2, 6 et 15 divisent $n$ : " + PL, [vf("10 divise $n$", 1), vf("12 divise $n$", 0), vf("30 divise $n$", 1), vf("60 divise $n$", 0)]),
+      E(4, 20, "Probl\xE8me. Syst\xE8me $z \\equiv 0\\,[35]$ et $z \\equiv 6\\,[27]$.", [qc("\xC9quation diophantienne \xE9quivalente :", ["$35x - 27y = 6$", "$35x + 27y = 6$", "$27x - 35y = 1$"], 0), nm("Plus petite solution positive $z$ :", 735), nm("Les solutions sont congrues \xE0 735 modulo :", 945), nm("Attente minimale pour observer les deux plan\xE8tes simultan\xE9ment (en jours) :", 735)])
+    ],
+    c5: [
+      Q(5, 9, "Lequel est premier ?", ["252", "407", "449", "507"], 2),
+      Q(5, 10, "$n = 2^3 \xD7 3^4 \xD7 11 \xD7 17$ : nombre de diviseurs :", ["80", "13", "12", "9"], 0),
+      Q(5, 11, "PGCD de $2^2 \xD7 3^3 \xD7 11^5 \xD7 29$ et de $2^7 \xD7 3 \xD7 31$ :", ["$2^7 \xD7 3^3 \xD7 11^5 \xD7 29 \xD7 31$", "$2^2 \xD7 3$", "$2 \xD7 3 \xD7 11 \xD7 29 \xD7 31$", "$2^9 \xD7 3^4 \xD7 11^5 \xD7 29 \xD7 31$"], 1),
+      Q(5, 12, "Reste de la division euclidienne de $2^{32}$ par 17 :", ["4", "1", "17", "16"], 1),
+      E(5, 13, "Nombres qui divisent $3^2 \xD7 5^3 \xD7 7 \xD7 19$ : " + PL, [vf("75", 1), vf("14", 0), vf("35", 1), vf("27", 0)]),
+      E(5, 14, "Nombres premiers : " + PL, [vf("1", 0), vf("11", 1), vf("317", 1), vf("319", 0, "$319 = 11 \xD7 29$")]),
+      E(5, 15, "$n = 2^3 \xD7 3^2 \xD7 7 \xD7 11^2$ et PGCD$(n\\,;m) = 84$. Valeurs possibles de $m$ : " + PL, [vf("$2^2 \xD7 3 \xD7 7^2 \xD7 11$", 0), vf("$2^2 \xD7 3 \xD7 7^2$", 1), vf("$2^2 \xD7 7^2$", 0), vf("$2^2 \xD7 3 \xD7 7 \xD7 43$", 1)]),
+      E(5, 16, "Deux sont \xE9gaux modulo 11 : " + PL, [vf("$3^{12}$", 1), vf("1", 0), vf("\u22122", 1), vf("$3^{24}$", 0)]),
+      E(5, 17, "Probl\xE8me. $a = 31$, $b = 19$ et $c = 1\\,530$.", [qc("D\xE9composition de $c$ :", ["$2 \xD7 3^2 \xD7 5 \xD7 17$", "$2 \xD7 3 \xD7 5 \xD7 51$", "$2^2 \xD7 3^2 \xD7 5 \xD7 17$"], 0), nm("Nombre de diviseurs de $c$ :", 24), nm("PGCD de $b$ et $c$ :", 1)])
+    ],
+    c6: [
+      Q(6, 6, "$A = \\begin{pmatrix}2&1\\\\5&3\\end{pmatrix}$, $B = \\begin{pmatrix}2&5\\end{pmatrix}$, $C = \\begin{pmatrix}-1&0&3\\\\2&-4&5\\end{pmatrix}$. Le produit $A \xD7 B \xD7 C$ est :", ["une matrice colonne \xE0 deux lignes", "une matrice ligne \xE0 trois colonnes", "une matrice carr\xE9e d\u2019ordre 2", "non d\xE9fini"], 3),
+      Q(6, 7, "M\xEAmes matrices. $B \xD7 A \xD7 C$ est :", ["une matrice colonne", "une matrice ligne", "une matrice carr\xE9e", "non d\xE9fini"], 1),
+      Q(6, 8, "L\u2019inverse de $A = \\begin{pmatrix}2&1\\\\5&3\\end{pmatrix}$ est :", ["non d\xE9fini", "$\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$", "$\\begin{pmatrix}\\frac{1}{2}&1\\\\\\frac{1}{5}&\\frac{1}{3}\\end{pmatrix}$", "$\\begin{pmatrix}3&-1\\\\-5&2\\end{pmatrix}$"], 3),
+      Q(6, 9, "Le produit $A \xD7 C$ est une matrice :", ["carr\xE9e d\u2019ordre 3", "carr\xE9e d\u2019ordre 2", "de taille 2 \xD7 3", "de taille 3 \xD7 2"], 2),
+      E(6, 10, "$A = \\begin{pmatrix}-\\frac{1}{2}&\\frac{\\sqrt{3}}{2}\\\\-\\frac{\\sqrt{3}}{2}&-\\frac{1}{2}\\end{pmatrix}$ est associ\xE9e \xE0 : " + PL, [vf("une sym\xE9trie axiale par rapport \xE0 l\u2019axe des abscisses", 0), vf("une homoth\xE9tie de rapport $\\frac{1}{2}$", 0), vf("une rotation de centre O et d\u2019angle $\\frac{4\\pi}{3}$", 1), vf("une rotation de centre O et d\u2019angle $-\\frac{2\\pi}{3}$", 1)]),
+      E(6, 11, "La m\xEAme matrice A : " + PL, [vf("n\u2019est pas inversible", 0), vf("est inversible", 1), vf("v\xE9rifie $A^3 = I_2$", 1), vf("a pour inverse $A^2$", 1)]),
+      E(6, 12, "$B = \\begin{pmatrix}0&1&0&1\\\\1&0&1&1\\\\0&1&0&0\\\\1&1&0&0\\end{pmatrix}$ est : " + PL, [vf("la matrice d\u2019adjacence d\u2019un graphe", 1), vf("la matrice d\u2019adjacence d\u2019un graphe complet", 0), vf("la matrice identit\xE9", 0), vf("l\u2019inverse de la matrice $-B$", 0)]),
+      E(6, 13, "M\xEAme matrice B : " + PL, [vf("$B^4 = 4B^2 + 2B - I_4$", 1), vf("$B^{-1} = B^4 - 4B^2 - 2B$", 0), vf("$B^{-1} = -B^3 + 4B + 2I_4$", 1), vf("$B^{-1} = B^3 - 4B - 2I_4$", 0)]),
+      E(6, 14, "Probl\xE8me (d\u2019apr\xE8s bac). Graphe du village d\xE9part d\u2019une course cycliste (6 stands).", [qc("Le graphe est-il complet ?", ["Non", "Oui"], 0), qc("Est-il connexe ?", ["Oui", "Non"], 0)])
+    ],
+    c7: [
+      Q(7, 9, "$U_0 = \\begin{pmatrix}2\\\\1\\end{pmatrix}$, $U_{n+1} = AU_n + B$ avec $A = \\begin{pmatrix}2&1\\\\0&2\\end{pmatrix}$ et $B = \\begin{pmatrix}1\\\\0\\end{pmatrix}$.", ["$U_1 = \\begin{pmatrix}6\\\\2\\end{pmatrix}$", "$U_2 = \\begin{pmatrix}16\\\\4\\end{pmatrix}$", "si $V_n = U_n + \\begin{pmatrix}-1\\\\1\\end{pmatrix}$, alors $V_{n+1} = AV_n$", "si $V_n = U_n + \\begin{pmatrix}1\\\\-1\\end{pmatrix}$, alors $V_{n+1} = AV_n$"], 0),
+      Q(7, 10, "Somme des coefficients des ar\xEAtes orient\xE9es issues d\u2019un sommet d\u2019un graphe probabiliste :", ["0", "$\\frac{1}{2}$", "1", "2"], 2),
+      Q(7, 11, "Graphe : boucle 0,1 sur 1, ar\xEAte 1 \u2192 2 de poids 0,9, ar\xEAte 2 \u2192 1 de poids 0,4, boucle 0,6 sur 2. Matrice de transition :", ["$\\begin{pmatrix}0{,}1&0{,}4\\\\0{,}9&0{,}6\\end{pmatrix}$", "$\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$", "$\\begin{pmatrix}0{,}1&0{,}9\\\\0{,}4&0{,}6\\end{pmatrix}$", "$\\begin{pmatrix}0{,}5&0{,}5\\\\0{,}5&0{,}5\\end{pmatrix}$"], 2),
+      Q(7, 12, "$B = \\begin{pmatrix}0{,}2&0{,}4&0{,}4\\\\0{,}5&0{,}2&0{,}3\\\\0{,}8&0&0{,}2\\end{pmatrix}$ et $P_0 = (0{,}5;;0{,}4;;0{,}1)$. $P_1 =$", ["$(0{,}38;;0{,}28;;0{,}34)$", "$(0{,}45;;0{,}22;;0{,}42)$", "$(0;;1;;0)$", "$\\left(\\frac{1}{3};;\\frac{1}{3};;\\frac{1}{3}\\right)$"], 0),
+      E(7, 13, "$P = \\begin{pmatrix}0{,}28&0{,}72\\\\0{,}65&0{,}35\\end{pmatrix}$. " + PL, [vf("$\\pi = \\left(\\frac{72}{137};;\\frac{65}{137}\\right)$", 0), vf("$\\pi = \\left(\\frac{65}{137};;\\frac{72}{137}\\right)$", 1), vf("il existe une unique distribution invariante", 1), vf("il n\u2019existe pas de distribution invariante", 0)]),
+      E(7, 14, "M\xEAme P, $\\pi_0 = (0{,}5;;0{,}5)$. " + PL, [vf("$\\pi_1 = (0{,}465;;0{,}535)$", 1), vf("$\\pi_2 = (0{,}477\\,95;;0{,}522\\,05)$", 1), vf("$\\pi_4 = \\pi$", 0)]),
+      E(7, 15, "Distribution au bout de dix transitions (initiale $\\pi_0$, matrice P) : " + PL, [vf("$\\pi_0 P$", 0), vf("$\\pi_0 P^{10}$", 1), vf("une loi de probabilit\xE9", 1), vf("impossible \xE0 pr\xE9voir", 0)]),
+      E(7, 16, "Cha\xEEne de Markov de matrice de transition $I_3$. Une distribution invariante : " + PL, [vf("est $\\pi = (1;;0;;0)$", 1), vf("est $\\pi = (0{,}5;;0{,}2;;0{,}3)$", 1), vf("est $\\pi = (0;;0;;1)$", 1), vf("n\u2019existe pas", 0)])
+    ]
+  } });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
