@@ -41006,6 +41006,209 @@ window.MN_VT = window.MN_VT || function(f, P) {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const N = (a, e, s) => ({ nr: [["Auto-\xE9valuation", [1, a]], ["Applications directes", [a + 1, e - 1]], ["Entra\xEEnement", [e, s - 1]], ["Synth\xE8se", [s, 999]]] });
+  P.premspe = { ch: {
+    1: N(17, 32, 83),
+    2: N(18, 34, 91),
+    3: N(17, 32, 99),
+    4: N(18, 31, 96),
+    5: N(13, 24, 85),
+    6: N(16, 38, 89),
+    7: N(15, 35, 78),
+    8: N(17, 34, 66),
+    9: N(17, 32, 77),
+    10: N(16, 30, 72),
+    11: N(14, 29, 81),
+    12: N(15, 33, 76)
+  } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Suites num\xE9riques", 2: "Fonctions de r\xE9f\xE9rence", 3: "\xC9quations et in\xE9quations du second degr\xE9", 4: "D\xE9rivation", 5: "Applications de la d\xE9rivation", 6: "Fonction exponentielle" };
+  const PG = { 1: 27, 2: 55, 3: 83, 4: 115, 5: 139, 6: 167 };
+  const S = (c, n) => "Manuel Maths 1re sp\xE9cialit\xE9, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + PG[c] + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(plusieurs r\xE9ponses peuvent \xEAtre justes)";
+  const R1 = "Suite **arithm\xE9tique** : $u_{n+1} = u_n + r$, **$u_n = u_0 + nr$**. Suite **g\xE9om\xE9trique** : $v_{n+1} = q\\,v_n$, **$v_n = v_0 \xD7 q^n$**. $1 + 2 + \u2026 + n = \\frac{n(n+1)}{2}$ ; **$1 + q + \u2026 + q^n = \\frac{1 - q^{n+1}}{1 - q}$** ($q \u2260 1$).";
+  const R2 = "**$|x - a| \u2264 r \\iff a - r \u2264 x \u2264 a + r$**. Forme canonique **$a(x - \\alpha)^2 + \\beta$** : sommet $S(\\alpha\\,;\\beta)$. Position de deux courbes : signe de **$f(x) - g(x)$**.";
+  const R3 = "**$\\Delta = b^2 - 4ac$**. Si $\\Delta > 0$ : **$x_{1,2} = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$** ; $x_1 + x_2 = -\\frac{b}{a}$, $x_1 x_2 = \\frac{c}{a}$. Un trin\xF4me est du **signe de $a$** \xE0 l\u2019ext\xE9rieur des racines.";
+  const R4 = "Tangente en $a$ : **$y = f^{\\prime}(a)(x - a) + f(a)$**. $(x^n)^{\\prime} = nx^{n-1}$ ; $(\\sqrt{x})^{\\prime} = \\frac{1}{2\\sqrt{x}}$ ; $\\left(\\frac{1}{v}\\right)^{\\prime} = -\\frac{v^{\\prime}}{v^2}$ ; **$(g(ax + b))^{\\prime} = a\\,g^{\\prime}(ax + b)$**.";
+  const R5 = "**$f^{\\prime} > 0$ sur I \u27F9 $f$ strictement croissante** ; $f^{\\prime} < 0$ \u27F9 strictement d\xE9croissante. Si $f^{\\prime}$ s\u2019annule **en changeant de signe** en $a$, $f(a)$ est un **extremum local**.";
+  const R6 = "**$e^a \xD7 e^b = e^{a+b}$**, $\\frac{e^a}{e^b} = e^{a-b}$, **$e^x > 0$**. $(e^{ax+b})^{\\prime} = a\\,e^{ax+b}$. **$e^a = e^b \\iff a = b$** ; $e^a \u2264 e^b \\iff a \u2264 b$.";
+  ADD("premspe", { mnx: {
+    c1: [
+      { n: "9", src: S(1, 9), t: "La suite $(w_n)$ d\xE9finie pour tout entier naturel $n$ par $w_0 = -1$ et $w_{n+1} = 3w_n - 2$ est :", rule: R1, it: [qc("R\xE9ponse :", ["g\xE9om\xE9trique de raison 3", "g\xE9om\xE9trique de raison \u22122", "arithm\xE9tique de raison \u22122", "ni arithm\xE9tique ni g\xE9om\xE9trique"], 3, "$w_1 = -5$, $w_2 = -17$ : ni diff\xE9rence ni quotient constants")] },
+      { n: "10", src: S(1, 10), t: "Terme g\xE9n\xE9ral d\u2019une suite arithm\xE9tique de premier terme $u_1 = 2$ et de raison $-5$ :", rule: R1, it: [qc("R\xE9ponse :", ["$u_n = 2 - 5n$", "$u_n = -5 + 2n$", "$u_n = 7 - 5n$", "$u_n = 2 \xD7 (-5)^n$"], 2, "$u_n = 2 - 5(n - 1)$")] },
+      { n: "11", src: S(1, 11), t: "Terme g\xE9n\xE9ral d\u2019une suite g\xE9om\xE9trique de premier terme $v_1 = 2$ et de raison $-5$ :", rule: R1, it: [qc("R\xE9ponse :", ["$v_n = 2 \xD7 (-5)^n$", "$v_n = 2 \xD7 (-5)^{n-1}$", "$v_n = -5 \xD7 2^n$", "$v_n = -5 \xD7 2^{n-1}$"], 1)] },
+      { n: "12", src: S(1, 12), t: "La suite $(t_n)$ d\xE9finie par $t_n = \\frac{1}{2}n - 3$ est :", rule: R1, it: [qc("R\xE9ponse :", ["croissante \xE0 partir de $n = 0$", "d\xE9croissante \xE0 partir de $n = 0$", "ni croissante ni d\xE9croissante", "croissante \xE0 partir de 3"], 0, "arithm\xE9tique de raison $\\frac{1}{2} > 0$")] },
+      { n: "13", src: S(1, 13), t: "La suite $(u_n)$ d\xE9finie par $u_n = -3n + 5$\u2026 " + PL, rule: R1, it: [vf("est une suite arithm\xE9tique de raison \u22123", 1), vf("est une suite arithm\xE9tique de raison 5", 0), vf("a pour premier terme $u_0 = 5$", 1), vf("a pour premier terme $u_0 = -3$", 0)] },
+      { n: "14", src: S(1, 14), t: "La suite $(v_n)$ d\xE9finie par $v_n = -3 \xD7 5^n$\u2026 " + PL, rule: R1, it: [vf("est une suite g\xE9om\xE9trique de raison \u22123", 0), vf("est une suite g\xE9om\xE9trique de raison 5", 1), vf("a pour premier terme $v_0 = 5$", 0), vf("a pour premier terme $v_0 = -3$", 1)] },
+      { n: "15", src: S(1, 15), t: "La somme $2 + 4 + 6 + \u2026 + 20$ est \xE9gale \xE0\u2026 " + PL, rule: R1, it: [vf("110", 1), vf("$2 \xD7 \\frac{10 \xD7 11}{2}$", 1), vf("$\\frac{10 \xD7 11}{2}$", 0), vf("$10 \xD7 11$", 1)] },
+      { n: "16", src: S(1, 16), t: "La somme $1 + 5 + 5^2 + \u2026 + 5^{10}$ est \xE9gale \xE0\u2026 " + PL, rule: R1, it: [vf("$\\frac{1}{4}(5^{11} - 1)$", 1), vf("$\\frac{1 - 5^{10}}{1 - 5}$", 0), vf("$\\frac{1 - 5^{11}}{1 - 5}$", 1), vf("$\\frac{1}{4}(5^{10} - 1)$", 0)] },
+      { n: "17", src: S(1, 17), t: "Probl\xE8me. Chaque ann\xE9e, un club conserve 80 % de ses adh\xE9rents et en accueille 20 nouveaux. En 2018, il y avait 200 adh\xE9rents ; $a_n$ est le nombre d\u2019adh\xE9rents l\u2019ann\xE9e $2018 + n$, $a_0 = 200$.", rule: R1, it: [nm("Adh\xE9rents en 2019 :", 180), nm("Adh\xE9rents en 2020 :", 164), qc("La suite $(a_n)$ est :", ["ni arithm\xE9tique ni g\xE9om\xE9trique", "arithm\xE9tique", "g\xE9om\xE9trique"], 0, "$a_{n+1} = 0{,}8a_n + 20$"), nm("Adh\xE9rents pr\xE9vus en 2030 (arrondi \xE0 l\u2019unit\xE9) :", 107, "", "$a_{12} = 100 + 100 \xD7 0{,}8^{12} \u2248 106{,}9$")] }
+    ],
+    c2: [
+      { n: "9", src: S(2, 9), t: "L\u2019in\xE9quation $|x + 2| < 5$ a pour ensemble de solutions :", rule: R2, it: [qc("R\xE9ponse :", ["$\\{-7\\,;3\\}$", "$]-7\\,;3[$", "$]-\\infty\\,;-7[\\,\\cup\\,]3\\,;+\\infty[$", "$]-3\\,;7[$"], 1)] },
+      { n: "10", src: S(2, 10), t: "Une forme factoris\xE9e de $f(x) = 12 - 3(x + 1)^2$ est :", rule: R2, it: [qc("R\xE9ponse :", ["$3(3 - x)(x + 3)$", "$3(3 - x)(x + 5)$", "$3(5 - x)(x + 5)$", "$-3(x - 1)(x + 3)$"], 3, "$3[2^2 - (x + 1)^2] = 3(1 - x)(x + 3)$")] },
+      { n: "11", src: S(2, 11), t: "La fonction $f$ d\xE9finie sur $\\mathbb{R}$ par $f(x) = -5 - (x - 1)^2$ est :", rule: R2, it: [qc("R\xE9ponse :", ["croissante sur $]-\\infty\\,;1]$", "d\xE9croissante sur $]-\\infty\\,;1]$", "croissante sur $]-\\infty\\,;-5]$", "d\xE9croissante sur $]-\\infty\\,;-5]$"], 0, "parabole tourn\xE9e vers le bas, sommet $(1\\,;-5)$")] },
+      { n: "12", src: S(2, 12), t: "La fonction $f$ d\xE9finie par $f(x) = 2(5 - x)(-x - 1)$ est positive sur :", rule: R2, it: [qc("R\xE9ponse :", ["$]-\\infty\\,;1]\\cup[5\\,;+\\infty[$", "$]-\\infty\\,;-1]\\cup[5\\,;+\\infty[$", "$[-1\\,;5]$", "$[1\\,;5]$"], 1, "$f(x) = 2(x - 5)(x + 1)$")] },
+      { n: "13", src: S(2, 13), t: "La r\xE9union $]-\\infty\\,;-3]\\cup[5\\,;+\\infty[$ est l\u2019ensemble des solutions de\u2026 " + PL, rule: R2, it: [vf("$|x - 1| \u2265 4$", 1), vf("$|x - 1| \u2264 4$", 0), vf("$|1 - x| \u2265 4$", 1), vf("$|x + 1| \u2264 4$", 0)] },
+      { n: "14", src: S(2, 14), t: "La fonction $f(x) = -2x^2 - 4x + 6$ admet pour expression\u2026 " + PL, rule: R2, it: [vf("$-2(x + 3)(x - 1)$", 1), vf("$2(x + 3)(1 - x)$", 1), vf("$-2(x + 1)^2 + 8$", 1), vf("$-2(x - 1)^2 + 8$", 0)] },
+      { n: "15", src: S(2, 15), t: "La courbe de $f : x \\mapsto ax^2 + bx + c$ est au-dessus de l\u2019axe des abscisses. Donc\u2026 " + PL, rule: R2, it: [vf("$a > 0$", 1), vf("$a < 0$", 0), vf("$c > 0$", 1, "$c = f(0) > 0$"), vf("$c < 0$", 0)] },
+      { n: "16", src: S(2, 16), t: "$f(x) = 4x - 1$ et $g(x) = (x + 5)^2 - 17$. Dans un rep\xE8re orthonorm\xE9\u2026 " + PL, rule: R2, it: [vf("$C_f$ est en dessous de $C_g$ sur $[-3\\,;+\\infty[$", 1, "$g(x) - f(x) = (x + 3)^2 \u2265 0$"), vf("$C_g$ est en dessous de $C_f$ sur $[-3\\,;+\\infty[$", 0), vf("$C_f$ est en dessous de $C_g$ sur $]-\\infty\\,;-3]$", 1), vf("$C_f$ est au-dessus de $C_g$ sur $]-\\infty\\,;-3]$", 0)] },
+      { n: "17", src: S(2, 17), t: "$C_f$, parabole d\u2019un polyn\xF4me du second degr\xE9, passe par $(-5\\,;0)$, $(0\\,;15)$, $(3\\,;0)$ et a pour sommet $S(-1\\,;16)$. " + PL, rule: R2, it: [vf("$f$ admet un minimum sur $\\mathbb{R}$", 0), vf("$f(x) = -x^2 - 2x + 15$", 1), vf("$C_f$ coupe l\u2019axe des abscisses en $x = 15$", 0), vf("$f(x) = 16 - (x + 1)^2$", 1)] },
+      { n: "18", src: S(2, 18), t: "Probl\xE8me. $f(x) = (x + m)^2$ et $g(x) = p$. La courbe de $x \\mapsto g(x) - f(x)$ est une parabole de sommet $S(-2\\,;9)$ qui coupe l\u2019axe des ordonn\xE9es en $A(0\\,;5)$.", rule: R2, it: [nm("$m =$", 2), nm("$p =$", 9), qc("$C_g$ est au-dessus de $C_f$ sur :", ["$[-5\\,;1]$", "$[-2\\,;9]$", "$\\mathbb{R}$"], 0, "$9 - (x + 2)^2 \u2265 0 \\iff -3 \u2264 x + 2 \u2264 3$")] }
+    ],
+    c3: [
+      { n: "9", src: S(3, 9), t: "L\u2019\xE9quation $6x^2 + 5x - 4 = 0$ a pour ensemble de solutions :", rule: R3, it: [qc("R\xE9ponse :", ["$\\{\\frac{4}{3}\\,;\\frac{1}{2}\\}$", "$\\{-\\frac{4}{3}\\,;\\frac{1}{2}\\}$", "$\\emptyset$", "$\\{\\frac{4}{3}\\,;-\\frac{1}{2}\\}$"], 1, "$\\Delta = 121$")] },
+      { n: "10", src: S(3, 10), t: "L\u2019in\xE9quation $2x^2 - 9x + 4 > 0$ a pour ensemble de solutions :", rule: R3, it: [qc("R\xE9ponse :", ["$[\\frac{1}{2}\\,;4]$", "$\\emptyset$", "$]-\\infty\\,;\\frac{1}{2}[\\,\\cup\\,]4\\,;+\\infty[$", "$]-\\infty\\,;\\frac{1}{2}]\\cup[4\\,;+\\infty[$"], 2, "racines $\\frac{1}{2}$ et 4")] },
+      { n: "11", src: S(3, 11), t: "\xAB Si $b^2 - 4ac < 0$, alors pour tout r\xE9el $x$, $ax^2 + bx + c < 0$. \xBB", rule: R3, it: [qc("Cette proposition est :", ["Vraie", "Fausse"], 1, "le trin\xF4me est du signe de $a$, qui peut \xEAtre positif")] },
+      { n: "12", src: S(3, 12), t: "\xAB Si, pour tout r\xE9el $x$, $ax^2 + bx + c > 0$, alors $b^2 - 4ac < 0$. \xBB", rule: R3, it: [qc("Cette proposition est :", ["Vraie", "Fausse"], 0)] },
+      { n: "13", src: S(3, 13), t: "$f(x) = 2x^2 - 5x - 3$. " + PL, rule: R3, it: [vf("La somme des deux racines est \xE9gale \xE0 $\\frac{5}{2}$.", 1), vf("$f(x) \u2264 0$ pour tout $x \\in [-\\frac{1}{2}\\,;3]$", 1), vf("$\\Delta < 0$", 0), vf("$f$ admet une racine double.", 0)] },
+      { n: "14", src: S(3, 14), t: "$x_1$ et $x_2$ sont deux nombres dont la somme est 7 et le produit est 4. " + PL, rule: R3, it: [vf("$x_1$ et $x_2$ sont solutions de $x^2 - 7x + 4 = 0$.", 1), vf("Deux tels nombres n\u2019existent pas.", 0, "$\\Delta = 33 > 0$"), vf("$x_1$ et $x_2$ sont solutions de $-3x^2 + 21x - 12 = 0$.", 1), vf("$x_1$ et $x_2$ sont solutions de $x^2 + 4x - 7 = 0$.", 0)] },
+      { n: "15", src: S(3, 15), t: "Tableau de signes : $f(x)$ est positif sur $]-\\infty\\,;-4[$, nul en \u22124, n\xE9gatif entre \u22124 et $\\frac{3}{2}$, nul en $\\frac{3}{2}$, positif ensuite. \xC0 quelles fonctions peut-il correspondre ? " + PL, rule: R3, it: [vf("$f(x) = -2x^2 + 5x - 12$", 0), vf("$f(x) = x^2 + \\frac{5}{2}x - 6$", 1), vf("$f(x) = x^2 + 4x - 1$", 0), vf("$f(x) = 2x^2 + 5x - 12$", 1)] },
+      { n: "16", src: S(3, 16), t: "$m$ est un r\xE9el et $f(x) = x^2 + 4x + m$. " + PL, rule: R3, it: [vf("Si $m > 0$, alors $f(x) \u2265 0$ pour tout r\xE9el $x$.", 0, "$m = 1$ : $\\Delta = 12 > 0$"), vf("Le produit des deux racines (si elles existent) est \xE9gal \xE0 $m$.", 1), vf("Si $m < 0$, alors $f$ admet deux racines r\xE9elles distinctes.", 1), vf("Si $m = 4$, $f$ admet une racine double.", 1)] },
+      { n: "17", src: S(3, 17), t: "Probl\xE8me. $f(x) = -2x^2 + 2x + 3$.", rule: R3, it: [nm("$\\Delta =$", 28), nm("Plus petite racine (au centi\xE8me) :", -0.82, "", "$\\frac{1 - \\sqrt{7}}{2}$"), nm("Plus grande racine (au centi\xE8me) :", 1.82, "", "$\\frac{1 + \\sqrt{7}}{2}$"), qc("$f(x) > 0$ pour :", ["$x$ entre les deux racines", "$x$ \xE0 l\u2019ext\xE9rieur des racines", "aucun $x$"], 0), nm("Abscisse du sommet :", "1/2"), nm("Ordonn\xE9e du sommet :", 3.5)] }
+    ],
+    c4: [
+      { n: "8", src: S(4, 8), t: "$f$ est d\xE9rivable sur $\\mathbb{R}$. La tangente \xE0 $C_f$ au point d\u2019abscisse \u22121 a pour \xE9quation $y = 2x - 1$. Alors :", rule: R4, it: [qc("R\xE9ponse :", ["$f(-1) = -1$", "$f^{\\prime}(-1) = -1$", "$f(-1) = 2$", "$f^{\\prime}(-1) = 2$"], 3)] },
+      { n: "9", src: S(4, 9), t: "$f^{\\prime}(-2) = -4$ et $f(-2) = -1$. La tangente au point d\u2019abscisse \u22122 a pour \xE9quation :", rule: R4, it: [qc("R\xE9ponse :", ["$y = -4x - 1$", "$y = -4x - 9$", "$y = -4x + 9$", "$y = -4x + 7$"], 1, "$y = -4(x + 2) - 1$")] },
+      { n: "10", src: S(4, 10), t: "$f(x) = \\sqrt{x}$ est d\xE9rivable sur $]0\\,;+\\infty[$ et :", rule: R4, it: [qc("R\xE9ponse :", ["$f^{\\prime}(4) = \\frac{1}{4}$", "$f^{\\prime}(1) = 1$", "$f^{\\prime}(2) = \\frac{1}{2}$", "$f^{\\prime}(1) = -\\frac{1}{2}$"], 0)] },
+      { n: "11", src: S(4, 11), t: "$f(x) = \\frac{x^3}{3} - \\frac{x^2}{2} + x - 1$. Alors :", rule: R4, it: [qc("R\xE9ponse :", ["$f^{\\prime}(x) = x^2 - x$", "$f^{\\prime}(x) = x^2 + x + 1$", "$f^{\\prime}(x) = x^2 - x + 1$", "$f^{\\prime}(x) = x^2 - x - 1$"], 2)] },
+      { n: "12", src: S(4, 12), t: "\xAB Si $f$ est d\xE9finie sur I, alors $f^{\\prime}$ est d\xE9finie sur I. \xBB", rule: R4, it: [qc("Cette proposition est :", ["Vraie", "Fausse"], 1, "$\\sqrt{x}$ est d\xE9finie en 0 mais pas d\xE9rivable en 0")] },
+      { n: "13", src: S(4, 13), t: "$f(x) = x^2 + x + 1$. " + PL, rule: R4, it: [vf("$f^{\\prime}(x) = 2x + 1$", 1), vf("$f^{\\prime}(-1) = -1$", 1), vf("$f^{\\prime}(x) = 2x$", 0), vf("$f^{\\prime}(0) = 0$", 0)] },
+      { n: "14", src: S(4, 14), t: "$f(x) = -x^3$. " + PL, rule: R4, it: [vf("$f^{\\prime}(0) = 0$", 1), vf("$f^{\\prime}(1) = -1$", 0), vf("$f^{\\prime}(x) = -3x^2$", 1), vf("$f^{\\prime}(x) = -x^2$", 0)] },
+      { n: "15", src: S(4, 15), t: "$f(x) = g(4x + 2)$. " + PL, rule: R4, it: [vf("$f^{\\prime}(x) = g^{\\prime}(4x + 2)$", 0), vf("$f^{\\prime}(x) = -4g^{\\prime}(4x + 2)$", 0), vf("$f^{\\prime}(x) = 4g^{\\prime}(4x + 2)$", 1), vf("$f^{\\prime}(x) = 4g^{\\prime}(x)$", 0)] },
+      { n: "16", src: S(4, 16), t: "$f(x) = \\frac{1}{x}(\\sqrt{x} - 1)$ sur $]0\\,;+\\infty[$. " + PL, rule: R4, it: [vf("$f^{\\prime}(x) = -\\frac{1}{2x^2\\sqrt{x}}$", 0), vf("$f^{\\prime}(x) = -\\frac{\\sqrt{x}}{2x^3}$", 0), vf("$f^{\\prime}(x) = \\frac{2 - \\sqrt{x}}{2x^2}$", 1), vf("$f^{\\prime}(x) = \\frac{1}{x^2} - \\frac{\\sqrt{x}}{2x^2}$", 1)] },
+      { n: "17", src: S(4, 17), t: "$f(x) = \\sqrt{x}$ et $g(x) = \\frac{1}{f(x)}$ ; $g$ est d\xE9rivable sur $]0\\,;+\\infty[$. " + PL, rule: R4, it: [vf("$g^{\\prime} = \\frac{1}{f^{\\prime}}$", 0), vf("$g^{\\prime} = -\\frac{f^{\\prime}}{f^2}$", 1), vf("$g^{\\prime}(x) = -\\frac{1}{2x\\sqrt{x}}$", 1), vf("$g^{\\prime}(x) = -\\frac{\\sqrt{x}}{2x^2}$", 1)] },
+      { n: "18", src: S(4, 18), t: "Probl\xE8me. $f(x) = \\frac{2x}{x^2 + 1}$ sur $\\mathbb{R}$.", rule: R4, it: [qc("$f^{\\prime}(x) =$", ["$\\frac{2 - 2x^2}{(x^2 + 1)^2}$", "$\\frac{2}{2x}$", "$\\frac{2x^2 - 2}{(x^2 + 1)^2}$"], 0), qc("Points o\xF9 la tangente est parall\xE8le \xE0 l\u2019axe des abscisses :", ["en $x = -1$ et $x = 1$", "en $x = 0$", "aucun"], 0), qc("\xC9quations de ces tangentes :", ["$y = -1$ et $y = 1$", "$y = 0$", "$y = x$"], 0)] }
+    ],
+    c5: [
+      { n: "5", src: S(5, 5), t: "Courbe d\u2019une fonction $f$ sur $[-5\\,;3]$ : $f$ cro\xEEt jusqu\u2019\xE0 un maximum en $x = -3$ (tangente horizontale), d\xE9cro\xEEt jusqu\u2019\xE0 un minimum en $x = 1$ (tangente horizontale), puis cro\xEEt ; elle passe par l\u2019origine.", rule: R5, it: [qc("R\xE9ponse :", ["$f^{\\prime}(0) = 0$", "$f^{\\prime}(-4) < 0$", "Pour tout $x$ de $[-3\\,;1]$, $f^{\\prime}(x) \u2264 0$", "$f^{\\prime}$ s\u2019annule une seule fois sur $[-5\\,;3]$"], 2)] },
+      { n: "6", src: S(5, 6), t: "$f(x) = x^3 - 4{,}8x - 3$ sur $\\mathbb{R}$.", rule: R5, it: [qc("R\xE9ponse :", ["$f$ est strictement croissante sur $\\mathbb{R}$", "$f$ admet un seul extremum local", "3,2 est un minimum local de $f$", "$f$ admet deux extremums locaux"], 3, "$f^{\\prime}(x) = 3x^2 - 4{,}8$ s\u2019annule en $\\pm\\sqrt{1{,}6}$")] },
+      { n: "7", src: S(5, 7), t: "$g(x) = x - 4\\sqrt{x}$ sur $[0\\,;+\\infty[$.", rule: R5, it: [qc("R\xE9ponse :", ["Pour tout $x$, $g(x) \u2265 0$", "$g(4)$ est le maximum de $g$", "$g^{\\prime}(4) = g(4) = 0$", "$g$ est croissante sur $[4\\,;+\\infty[$"], 3, "$g^{\\prime}(x) = 1 - \\frac{2}{\\sqrt{x}}$")] },
+      { n: "8", src: S(5, 8), t: "$g(x) = \\frac{4 - 5x}{x - 2}$ sur $]-\\infty\\,;2[\\,\\cup\\,]2\\,;+\\infty[$.", rule: R5, it: [qc("R\xE9ponse :", ["$g$ est strictement croissante sur $\\mathbb{R}$", "$g$ est strictement croissante sur $]-\\infty\\,;2[\\,\\cup\\,]2\\,;+\\infty[$", "$g$ est strictement croissante sur $]-\\infty\\,;2[$", "6 est le maximum de $g$ sur $]-\\infty\\,;2[$"], 2, "$g^{\\prime}(x) = \\frac{6}{(x - 2)^2}$")] },
+      { n: "9", src: S(5, 9), t: "$f$ est d\xE9rivable et strictement croissante sur $\\mathbb{R}$. Alors\u2026 " + PL, rule: R5, it: [vf("$f^{\\prime}(x) < 0$", 0), vf("$f(x) > 0$", 0), vf("$f^{\\prime}(4) \u2265 0$", 1), vf("$f(4) \u2265 f(-5)$", 1)] },
+      { n: "10", src: S(5, 10), t: "$f(x) = x - 4\\sqrt{x}$ est strictement croissante sur\u2026 " + PL, rule: R5, it: [vf("$[0\\,;+\\infty[$", 0), vf("$[5\\,;+\\infty[$", 1), vf("$[4\\,;+\\infty[$", 1), vf("$[0\\,;4]$", 0)] },
+      { n: "11", src: S(5, 11), t: "$g(x) = x + \\frac{1}{x}$ sur $]0\\,;+\\infty[$. Le minimum de $g$ est\u2026 " + PL, rule: R5, it: [vf("$m$ tel que, pour tout $x$, $g(x) > m$", 0), vf("$m$ tel que, pour tout $x$, $g(x) \u2265 m$ (et atteint)", 1), vf("2", 1), vf("$g(1)$", 1)] },
+      { n: "12", src: S(5, 12), t: "$g(x) = \\frac{1}{4}x^3 - 3x - 1$ sur $\\mathbb{R}$. " + PL, rule: R5, it: [vf("$g(-2)$ est un maximum local de $g$", 1), vf("3 est le maximum de $g$ sur $\\mathbb{R}$", 0), vf("3 est le maximum de $g$ sur $[-3\\,;3]$", 1), vf("$-\\frac{69}{4}$ est le minimum de $g$ sur $[-5\\,;4]$", 1)] },
+      { n: "13", src: S(5, 13), t: "Probl\xE8me. $h(x) = \\sqrt{x}(x^2 - 1)$ sur $[0\\,;+\\infty[$ ; on admet $h^{\\prime}(x) = \\frac{(x\\sqrt{5} + 1)(x\\sqrt{5} - 1)}{2\\sqrt{x}}$.", rule: R5, it: [qc("$h^{\\prime}(x)$ s\u2019annule en :", ["$\\frac{1}{\\sqrt{5}}$", "$\\sqrt{5}$", "1"], 0), qc("$h$ est :", ["d\xE9croissante puis croissante", "croissante puis d\xE9croissante", "croissante"], 0), nm("Minimum de $h$ (au centi\xE8me) :", -0.53, "", "$h\\left(\\frac{1}{\\sqrt{5}}\\right) \u2248 -0{,}535$")] }
+    ],
+    c6: [
+      { n: "7", src: S(6, 7), t: "$\\frac{e^4 \xD7 e^6}{e^2}$ peut s\u2019\xE9crire plus simplement :", rule: R6, it: [qc("R\xE9ponse :", ["$e^{12}$", "$e^{-12}$", "$e^8$", "1"], 2)] },
+      { n: "8", src: S(6, 8), t: "L\u2019ensemble des solutions de $(2x - 1)e^x = 0$ est :", rule: R6, it: [qc("R\xE9ponse :", ["$\\{\\frac{1}{2}\\}$", "$\\{0\\,;\\frac{1}{2}\\}$", "$\\emptyset$", "$\\{0\\}$"], 0)] },
+      { n: "9", src: S(6, 9), t: "$f(x) = 2e^{2x+1}$. Pour tout $x$ :", rule: R6, it: [qc("R\xE9ponse :", ["$f^{\\prime}(x) = 2e^{2x+1}$", "$f^{\\prime}(x) = e^{2x+1}$", "$f^{\\prime}(x) = 4e^{2x+1}$", "$f^{\\prime}(x) = 2(2x + 1)e^{2x+1}$"], 2)] },
+      { n: "10", src: S(6, 10), t: "L\u2019ensemble des solutions de $e^{3x+2} = e^{5x-8}$ est :", rule: R6, it: [qc("R\xE9ponse :", ["$\\{5\\}$", "$\\{-5\\}$", "$\\{-\\frac{2}{3}\\,;\\frac{8}{5}\\}$", "$\\emptyset$"], 0)] },
+      { n: "11", src: S(6, 11), t: "$x$ est un r\xE9el tel que $e^x \u2265 e$. Que peut-on dire sur $x$ ? " + PL, rule: R6, it: [vf("$x > 0$", 1), vf("$x \u2265 0$", 1), vf("$x > 1$", 0), vf("$x \u2265 1$", 1)] },
+      { n: "12", src: S(6, 12), t: "$f(x) = e^{-2x}$. " + PL, rule: R6, it: [vf("$f$ est croissante sur $\\mathbb{R}$", 0), vf("$f$ est d\xE9croissante sur $\\mathbb{R}$", 1), vf("$f$ est positive sur $\\mathbb{R}$", 1), vf("$f$ est n\xE9gative sur $\\mathbb{R}$", 0)] },
+      { n: "13", src: S(6, 13), t: "$g(x) = \\exp(3x) + \\exp(-3x)$ est\u2026 " + PL, rule: R6, it: [vf("paire", 1), vf("impaire", 0), vf("positive", 1), vf("n\xE9gative", 0)] },
+      { n: "14", src: S(6, 14), t: "La courbe de $f(x) = a \xD7 e^{bx}$ est d\xE9croissante, au-dessus de l\u2019axe des abscisses (elle coupe l\u2019axe des ordonn\xE9es entre 0 et 1). " + PL, rule: R6, it: [vf("$a > 0$", 1), vf("$a < 0$", 0), vf("$b > 0$", 0), vf("$b < 0$", 1)] },
+      { n: "15", src: S(6, 15), t: "Parmi les r\xE9els suivants, lesquels sont solutions de $\\exp(x^2 - 7x + 9) \u2265 \\exp(3x - 12)$ ? " + PL, rule: R6, it: [vf("0", 1), vf("\u22124", 1), vf("4", 0, "$(x - 3)(x - 7) \u2265 0$"), vf("10", 1)] },
+      { n: "16", src: S(6, 16), t: "Probl\xE8me. B\xE9n\xE9fice en milliers d\u2019euros : $f(x) = (10x - 20)e^{-0{,}1x}$, $x$ en milliers de composants.", rule: R6, it: [nm("Perte si l\u2019entreprise ne fabrique rien (en milliers d\u2019euros) :", 20), qc("$f^{\\prime}(x) =$", ["$(12 - x)e^{-0{,}1x}$", "$10e^{-0{,}1x}$", "$(x - 12)e^{-0{,}1x}$"], 0), nm("Production pour un b\xE9n\xE9fice maximal (en milliers) :", 12), nm("B\xE9n\xE9fice maximal (en milliers d\u2019euros, au centi\xE8me) :", 30.12, "", "$100e^{-1{,}2}$")] }
+    ]
+  } });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 7: "Trigonom\xE9trie", 8: "Fonctions trigonom\xE9triques", 9: "Produit scalaire", 10: "Configurations g\xE9om\xE9triques", 11: "Probabilit\xE9s conditionnelles", 12: "Variables al\xE9atoires r\xE9elles" };
+  const PG = { 7: 189, 8: 211, 9: 239, 10: 263, 11: 291, 12: 315 };
+  const S = (c, n) => "Manuel Maths 1re sp\xE9cialit\xE9, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + PG[c] + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(plusieurs r\xE9ponses peuvent \xEAtre justes)";
+  const R7 = "**$\\pi$ rad = 180\xB0**. Deux r\xE9els ont le m\xEAme point image s\u2019ils diff\xE8rent d\u2019un **multiple de $2\\pi$**. **$\\cos^2 x + \\sin^2 x = 1$** ; $\\cos(-x) = \\cos x$, $\\sin(-x) = -\\sin x$.";
+  const R8 = "**cos est paire, sin est impaire**, toutes deux **$2\\pi$-p\xE9riodiques**. $\\cos(x + \\pi) = -\\cos x$. **$(\\cos(ax + b))^{\\prime} = -a\\sin(ax + b)$**, $(\\sin(ax + b))^{\\prime} = a\\cos(ax + b)$.";
+  const R9 = "**$\\vec{u}\\cdot\\vec{v} = xx^{\\prime} + yy^{\\prime}$** (rep\xE8re orthonorm\xE9) $= \\|\\vec{u}\\|\\,\\|\\vec{v}\\|\\cos(\\vec{u},\\vec{v})$. **$\\vec{u}\\cdot\\vec{v} = 0 \\iff \\vec{u} \\perp \\vec{v}$**. $\\|\\vec{u} - \\vec{v}\\|^2 = \\|\\vec{u}\\|^2 + \\|\\vec{v}\\|^2 - 2\\vec{u}\\cdot\\vec{v}$. Droite de vecteur normal $\\binom{a}{b}$ : **$ax + by + c = 0$**.";
+  const R10 = "Cercle de centre $\\Omega(a\\,;b)$ et de rayon $r$ : **$(x - a)^2 + (y - b)^2 = r^2$**. Cercle de diam\xE8tre [AB] : **$\\overrightarrow{MA}\\cdot\\overrightarrow{MB} = 0$**. Th\xE9or\xE8me de la m\xE9diane : **$MA^2 + MB^2 = 2MI^2 + \\frac{AB^2}{2}$** (I milieu de [AB]).";
+  const R11 = "**$P_A(B) = \\frac{P(A \\cap B)}{P(A)}$** ; $P(A \\cap B) = P(A) \xD7 P_A(B)$. A et B **ind\xE9pendants** \u27FA **$P(A \\cap B) = P(A) \xD7 P(B)$**. Probabilit\xE9s totales : $P(B) = P(A \\cap B) + P(\\bar{A} \\cap B)$.";
+  const R12 = "**$E(X) = \\sum x_i\\,p_i$**, **$V(X) = \\sum p_i (x_i - E(X))^2 = E(X^2) - E(X)^2$**, **$\\sigma(X) = \\sqrt{V(X)}$**. Jeu \xE9quitable : $E(X) = 0$ ; favorable si $E(X) > 0$.";
+  ADD("premspe", { mnx: {
+    c7: [
+      { n: "8", src: S(7, 8), t: "M est un point du cercle trigonom\xE9trique tel que :", rule: R7, it: [qc("R\xE9ponse :", ["$\\widehat{IOM} = 72\xB0$, alors M est le point image de $\\frac{\\pi}{5}$", "$\\widehat{IOM} = 260\xB0$, alors M est le point image de $\\frac{10\\pi}{9}$", "$\\widehat{IOM} = 126\xB0$, alors M est le point image de $\\frac{7\\pi}{10}$", "$\\widehat{IOM} = 60\xB0$, alors M est le point image de $\\frac{\\pi}{6}$"], 2, "$126 \xD7 \\frac{\\pi}{180} = \\frac{7\\pi}{10}$")] },
+      { n: "9", src: S(7, 9), t: "Un seul de ces r\xE9els n\u2019a pas le m\xEAme point image que les autres sur le cercle trigonom\xE9trique. Lequel ?", rule: R7, it: [qc("R\xE9ponse :", ["$\\frac{29\\pi}{6}$", "$\\frac{125\\pi}{6}$", "$\\frac{-31\\pi}{6}$", "$\\frac{-85\\pi}{6}$"], 3, "les trois autres sont associ\xE9s \xE0 $\\frac{5\\pi}{6}$, lui \xE0 $-\\frac{\\pi}{6}$")] },
+      { n: "10", src: S(7, 10), t: "Soit $a = -\\frac{\\pi}{4}$. Laquelle est vraie ?", rule: R7, it: [qc("R\xE9ponse :", ["$\\sin(a) = \\sin\\left(\\frac{\\pi}{4}\\right)$", "$\\sin(a) = \\frac{\\sqrt{2}}{2}$", "$\\cos(a) = -\\cos\\left(\\frac{\\pi}{4}\\right)$", "$\\cos(a) = \\frac{\\sqrt{2}}{2}$"], 3)] },
+      { n: "11", src: S(7, 11), t: "Le r\xE9el $\\frac{7\\pi}{12}$ admet :", rule: R7, it: [qc("R\xE9ponse :", ["un cosinus positif et un sinus positif", "un cosinus positif et un sinus n\xE9gatif", "un cosinus n\xE9gatif et un sinus positif", "un cosinus n\xE9gatif et un sinus n\xE9gatif"], 2, "$\\frac{7\\pi}{12}$ = 105\xB0")] },
+      { n: "12", src: S(7, 12), t: "Sur le cercle trigonom\xE9trique, A est le point de coordonn\xE9es $\\left(\\frac{\\sqrt{3}}{2}\\,;-\\frac{1}{2}\\right)$. A est le point image de\u2026 " + PL, rule: R7, it: [vf("$-\\frac{5\\pi}{6}$", 0), vf("$\\frac{11\\pi}{6}$", 1), vf("$\\frac{47\\pi}{6}$", 1), vf("$-\\frac{\\pi}{6}$", 1)] },
+      { n: "13", src: S(7, 13), t: "$\\sin\\left(\\frac{-21\\pi}{6}\\right)$ est \xE9gal \xE0\u2026 " + PL, rule: R7, it: [vf("$\\sin\\left(\\frac{\\pi}{2}\\right)$", 1), vf("$\\frac{\\pi}{2}$", 0), vf("1", 1), vf("\u22121", 0)] },
+      { n: "14", src: S(7, 14), t: "Triangle ABC rectangle en B avec BC = 2 et AC = 4. " + PL, rule: R7, it: [vf("$\\widehat{BCA} = 30\xB0$", 0, "$\\widehat{BCA} = 60\xB0$"), vf("$\\widehat{BAC} = 30\xB0$", 1, "$\\sin\\widehat{BAC} = \\frac{2}{4}$"), vf("BA = $2\\sqrt{3}$", 1), vf("BA = $\\sqrt{12}$", 1)] },
+      { n: "15", src: S(7, 15), t: "Probl\xE8me. Piste circulaire de rayon 1 hm (au milieu du couloir). Marie court dans le sens direct ; son entra\xEEneur est plac\xE9 \xE0 l\u2019angle $\\frac{4\\pi}{3}$ de son point de d\xE9part. Elle doit faire 5 tours complets avant de le retrouver.", rule: R7, it: [nm("Distance parcourue en retrouvant l\u2019entra\xEEneur (en km, au centi\xE8me) :", 3.56, "km", "$\\left(10\\pi + \\frac{4\\pi}{3}\\right) \xD7 0{,}1$"), nm("Nombre de tours complets pour courir au minimum 10 km :", 16, "", "1 tour \u2248 0,628 km")] }
+    ],
+    c8: [
+      { n: "7", src: S(8, 7), t: "La fonction cosinus :", rule: R8, it: [qc("R\xE9ponse :", ["est paire", "est impaire", "n\u2019est ni paire ni impaire", "est paire et impaire"], 0)] },
+      { n: "8", src: S(8, 8), t: "La fonction sinus :", rule: R8, it: [qc("R\xE9ponse :", ["est $\\pi$-p\xE9riodique", "est $2\\pi$-p\xE9riodique", "est $3\\pi$-p\xE9riodique", "n\u2019est pas p\xE9riodique"], 1)] },
+      { n: "9", src: S(8, 9), t: "$\\cos(x + 3\\pi)$ est \xE9gal \xE0 :", rule: R8, it: [qc("R\xE9ponse :", ["$\\cos(x)$", "$\\cos(3\\pi)$", "$\\cos(x + \\pi)$", "$\\cos(-x)$"], 2)] },
+      { n: "10", src: S(8, 10), t: "Pour montrer qu\u2019une fonction est impaire sur $\\mathbb{R}$, il suffit de montrer que :", rule: R8, it: [qc("R\xE9ponse :", ["$f(-x) = -f(x)$ pour un certain $x$", "$f(-x) = f(x)$ pour un certain $x$", "$f(-x) = -f(x)$ pour tout $x \\in \\mathbb{R}$", "$f(-x) = f(x)$ pour tout $x \\in \\mathbb{R}$"], 2)] },
+      { n: "11", src: S(8, 11), t: "La fonction $f : x \\mapsto \\frac{1}{\\sin(x)}$ est :", rule: R8, it: [qc("R\xE9ponse :", ["d\xE9rivable sur $\\mathbb{R}$", "d\xE9rivable sur $]0\\,;\\pi[$", "d\xE9rivable sur $]0\\,;+\\infty[$", "d\xE9rivable sur $]-\\infty\\,;0[$"], 1, "$\\sin$ s\u2019annule en $\\pi$, $2\\pi$\u2026")] },
+      { n: "12", src: S(8, 12), t: "Les courbes repr\xE9sentatives des fonctions cosinus et sinus\u2026 " + PL, rule: R8, it: [vf("sont des sinuso\xEFdes", 1), vf("sont des droites", 0), vf("sont invariantes par translation de vecteur $2\\pi\\vec{i}$", 1), vf("sont invariantes par translation de vecteur $-2\\pi\\vec{i}$", 1)] },
+      { n: "13", src: S(8, 13), t: "$C_1$ est la courbe de cosinus et $C_2$ celle de sinus. " + PL, rule: R8, it: [vf("$C_1$ et $C_2$ sont identiques", 0), vf("$C_1$ est l\u2019image de $C_2$ par la translation de vecteur $-\\frac{\\pi}{2}\\vec{i}$", 1, "$\\cos x = \\sin\\left(x + \\frac{\\pi}{2}\\right)$"), vf("$C_1$ est l\u2019image de $C_2$ par la translation de vecteur $6\\pi\\vec{i}$", 0)] },
+      { n: "14", src: S(8, 14), t: "La fonction $f : x \\mapsto \\cos(x) \xD7 \\sin(x)$\u2026 " + PL, rule: R8, it: [vf("est paire", 0), vf("est impaire", 1), vf("est p\xE9riodique", 1), vf("n\u2019est pas p\xE9riodique", 0)] },
+      { n: "15", src: S(8, 15), t: "Pour $x \\in [0\\,;2\\pi]$, l\u2019in\xE9quation $\\sin(x) \u2264 0$ est v\xE9rifi\xE9e pour\u2026 " + PL, rule: R8, it: [vf("$x \\in [0\\,;\\frac{\\pi}{2}]$", 0), vf("$x \\in [\\pi\\,;2\\pi]$", 1), vf("$x \\in ]0\\,;\\frac{\\pi}{2}[$", 0), vf("$x \\in ]\\pi\\,;2\\pi[$", 1)] },
+      { n: "16", src: S(8, 16), t: "Une expression de la d\xE9riv\xE9e de $x \\mapsto \\cos(2x - 4)$ est\u2026 " + PL, rule: R8, it: [vf("$2\\cos(x)$", 0), vf("$2\\cos(2x - 4)$", 0), vf("$-2\\sin(x)$", 0), vf("$-2\\sin(2x - 4)$", 1)] },
+      { n: "17", src: S(8, 17), t: "Probl\xE8me. $f : x \\mapsto 1 + \\cos(x)$.", rule: R8, it: [nm("P\xE9riode de $f$ (en multiple de $\\pi$, ex. 2 pour $2\\pi$) :", 2), qc("$f$ est :", ["paire", "impaire", "ni paire ni impaire"], 0), qc("Sur $[0\\,;\\pi]$, $f$ est :", ["d\xE9croissante de 2 \xE0 0", "croissante de 0 \xE0 2", "constante"], 0), qc("Sur $[\\pi\\,;2\\pi]$, $f$ est :", ["croissante de 0 \xE0 2", "d\xE9croissante de 2 \xE0 0"], 0), nm("Maximum de $f$ :", 2), nm("Minimum de $f$ :", 0)] }
+    ],
+    c9: [
+      { n: "9", src: S(9, 9), t: "A, B et C sont trois points distincts du plan. Alors $\\overrightarrow{BA}\\cdot\\overrightarrow{BC}$ est \xE9gal \xE0 :", rule: R9, it: [qc("R\xE9ponse :", ["$\\overrightarrow{AB}\\cdot\\overrightarrow{BC}$", "$\\overrightarrow{AB}\\cdot\\overrightarrow{CB}$", "$BA \xD7 BC$", "$-BA \xD7 BC$"], 1)] },
+      { n: "10", src: S(9, 10), t: "$\\vec{u}\\binom{3}{-2}$ et $\\vec{v}\\binom{-4}{1}$. Alors :", rule: R9, it: [qc("R\xE9ponse :", ["$\\vec{u}\\cdot\\vec{v} = -5$", "$\\vec{u}\\cdot\\vec{v} = 11$", "$\\vec{u}\\cdot\\vec{v} = -14$", "$\\vec{u}\\cdot\\vec{v} = -10$"], 2)] },
+      { n: "11", src: S(9, 11), t: "A(1 ; 2), B(5 ; 3), C(3 ; 1) et D(2 ; \u22123).", rule: R9, it: [qc("R\xE9ponse :", ["(AB) et (CD) sont perpendiculaires", "(AD) et (BC) sont perpendiculaires", "(AC) et (BD) sont perpendiculaires", "il n\u2019y a pas de droites perpendiculaires"], 2, "$\\overrightarrow{AC}\\cdot\\overrightarrow{BD} = 2 \xD7 (-3) + (-1) \xD7 (-6) = 0$")] },
+      { n: "12", src: S(9, 12), t: "La droite passant par A(0 ; \u22127) et de vecteur normal $\\vec{n}\\binom{2}{-5}$ a pour \xE9quation :", rule: R9, it: [qc("R\xE9ponse :", ["$2x - 5y + 35 = 0$", "$4x - 10y - 70 = 0$", "$-5x - 2y + 14 = 0$", "$5x + 2y + 14 = 0$"], 1)] },
+      { n: "13", src: S(9, 13), t: "Quels produits scalaires $\\overrightarrow{AB}\\cdot\\overrightarrow{AC}$ sont \xE9gaux \xE0 \u22122 ? " + PL, rule: R9, it: [vf("AB = 2, AC = 3 et $(\\overrightarrow{AB},\\overrightarrow{AC}) = \\pi$", 0, "on obtient \u22126"), vf("AB = 4, $\\overrightarrow{HB} = \\frac{33}{8}\\overrightarrow{AB}$ (H pied de la hauteur issue de C)", 0, "on obtient \u221250"), vf("AB = 5, AC = 4 et BC = 6", 0, "on obtient 2,5"), vf("$\\overrightarrow{AB}\\binom{1}{-1}$ et $\\overrightarrow{BC}\\binom{2}{6}$", 1, "$\\overrightarrow{AC}\\binom{3}{5}$")] },
+      { n: "14", src: S(9, 14), t: "$\\|\\vec{u}\\| = 4$, $\\|\\vec{v}\\| = 5$ et $\\|\\vec{u} - \\vec{v}\\| = 1$. " + PL, rule: R9, it: [vf("$\\vec{u}\\cdot\\vec{v} = 20$", 1), vf("$\\vec{u}\\cdot\\vec{v} = 4$", 0), vf("$(\\vec{u},\\vec{v}) = 0$", 1), vf("$\\|\\vec{u} + \\vec{v}\\| = 9$", 1)] },
+      { n: "15", src: S(9, 15), t: "Rep\xE8re orthonorm\xE9 : $\\vec{u}\\binom{2}{\\frac{1}{2}}$ et $\\vec{v}\\binom{3}{-4}$. " + PL, rule: R9, it: [vf("$\\|\\vec{u}\\| = \\frac{\\sqrt{17}}{2}$", 1), vf("$\\|\\vec{v}\\|^2 = 5$", 0), vf("$\\vec{u}\\cdot\\vec{v} = 8$", 0), vf("$\\vec{v}\\cdot\\vec{u} = 4$", 1)] },
+      { n: "16", src: S(9, 16), t: "Le vecteur $\\vec{u}\\binom{2}{-1}$ est un vecteur normal \xE0 la droite d\u2019\xE9quation\u2026 " + PL, rule: R9, it: [vf("$4x - 2y + 10 = 0$", 1), vf("$-2x - 4y + 5 = 0$", 0), vf("$8x + 4y = 0$", 0), vf("$\\frac{1}{2}y - x - 7 = 0$", 1)] },
+      { n: "17", src: S(9, 17), t: "Probl\xE8me. Rep\xE8re orthonorm\xE9 : $\\vec{u}\\binom{-1}{4}$ et $\\vec{v}\\binom{\\frac{3}{2}}{2}$.", rule: R9, it: [nm("$\\vec{u}\\cdot\\vec{v} =$", 6.5), nm("$\\vec{u}\\cdot(\\vec{u} + \\vec{v}) =$", 23.5), nm("$-\\vec{v}\\cdot(4\\vec{u} - \\vec{v}) =$", -19.75), nm("$(2\\vec{u} + 3\\vec{v})\\cdot(\\vec{v} - 5\\vec{u}) =$", -235.75)] }
+    ],
+    c10: [
+      { n: "8", src: S(10, 8), t: "L\u2019ensemble des points M(x ; y) v\xE9rifiant $(x - 1)^2 + (y + 3)^2 = 4$ est un cercle de centre $\\Omega$ et de rayon $r$ avec :", rule: R10, it: [qc("R\xE9ponse :", ["$\\Omega(1\\,;-3)$ et $r = 4$", "$\\Omega(1\\,;-3)$ et $r = 2$", "$\\Omega(-1\\,;3)$ et $r = 4$", "$\\Omega(-1\\,;3)$ et $r = 2$"], 1)] },
+      { n: "9", src: S(10, 9), t: "\xC9quation du cercle de centre O(\u22122 ; 5) et de rayon $r = \\sqrt{8}$ :", rule: R10, it: [qc("R\xE9ponse :", ["$(x + 2)^2 + (y - 5)^2 = \\sqrt{8}$", "$(x - 2)^2 + (y + 5)^2 = \\sqrt{8}$", "$(x + 2)^2 + (y - 5)^2 - 8 = 0$", "$(x - 2)^2 + (y + 5)^2 - 8 = 0$"], 2)] },
+      { n: "10", src: S(10, 10), t: "L\u2019ensemble des points M qui v\xE9rifient $\\overrightarrow{MA} = k\\overrightarrow{AB}$, o\xF9 $k$ est un r\xE9el, est :", rule: R10, it: [qc("R\xE9ponse :", ["un point", "la droite (AB)", "le cercle de diam\xE8tre [AB]", "une droite perpendiculaire \xE0 (AB)"], 1)] },
+      { n: "11", src: S(10, 11), t: "Dans le rectangle ABCD, O est le point d\u2019intersection des diagonales. La droite (OA) est une m\xE9diane du triangle :", rule: R10, it: [qc("R\xE9ponse :", ["OAB", "ABC", "ADC", "BCD"], 3, "(OA) = (AC) passe par C et par O, milieu de [BD]")] },
+      { n: "12", src: S(10, 12), t: "Dans un triangle non plat isoc\xE8le en A, la droite qui passe par A et par le milieu de [BC] est\u2026 " + PL, rule: R10, it: [vf("une m\xE9diane", 1), vf("un c\xF4t\xE9", 0), vf("une hauteur", 1), vf("une m\xE9diatrice", 1)] },
+      { n: "13", src: S(10, 13), t: "A(3 ; 1) et B(\u22121 ; 4). Une \xE9quation du cercle de diam\xE8tre [AB] est\u2026 " + PL, rule: R10, it: [vf("$x^2 + y^2 + 3x - 4y - 3 = 0$", 0), vf("$(x - 1)^2 + \\left(y - \\frac{5}{2}\\right)^2 = \\frac{25}{4}$", 1), vf("$x^2 + y^2 - 2x - 5y + 1 = 0$", 1), vf("$(x - 3)(x + 1) + (y - 1)(y - 4) = 0$", 1)] },
+      { n: "14", src: S(10, 14), t: "A et B sont deux points du plan. Quel point M minimise $MA^2 + MB^2$ ?", rule: R10, it: [qc("R\xE9ponse :", ["le point M tel que ABM est \xE9quilat\xE9ral", "les points M de la droite (AB)", "le point M milieu de [AB]", "les points M du segment [AB]"], 2, "$MA^2 + MB^2 = 2MI^2 + \\frac{AB^2}{2}$")] },
+      { n: "15", src: S(10, 15), t: "ABC est un triangle rectangle en B. L\u2019ensemble des points M qui v\xE9rifient $MA^2 - MB^2 = \\overrightarrow{AB}\\cdot\\overrightarrow{BC}$ est :", rule: R10, it: [qc("R\xE9ponse :", ["une droite", "un cercle", "un point", "vide"], 0, "une droite perpendiculaire \xE0 (AB)")] }
+    ],
+    c11: [
+      { n: "6", src: S(11, 6), t: "$P(A) = 0{,}7$ et $P_A(\\bar{B}) = 0{,}2$. Valeur de $P(A \\cap B)$ :", rule: R11, it: [qc("R\xE9ponse :", ["0,14", "0,56", "0,9", "2"], 1, "$0{,}7 \xD7 0{,}8$")] },
+      { n: "7", src: S(11, 7), t: "$P(A) = \\frac{1}{3}$, $P(B) = \\frac{2}{5}$ et $P(A \\cap B) = \\frac{6}{31}$. Que valent $P_A(B)$ et $P_B(A)$ ?", rule: R11, it: [qc("R\xE9ponse :", ["$P_A(B) = \\frac{18}{31}$ et $P_B(A) = \\frac{15}{31}$", "$P_A(B) = \\frac{1}{3}$ et $P_B(A) = \\frac{2}{5}$", "$P_A(B) = 1$ et $P_B(A) = 0$", "$P_A(B) = P_B(A) = 0{,}5$"], 0)] },
+      { n: "8", src: S(11, 8), t: "A et B sont ind\xE9pendants. On peut alors affirmer que $P_A(B) = P_B(A)$.", rule: R11, it: [qc("R\xE9ponse :", ["Vrai", "Faux"], 1, "$P_A(B) = P(B)$ et $P_B(A) = P(A)$")] },
+      { n: "9", src: S(11, 9), t: "A et B sont ind\xE9pendants si et seulement si :", rule: R11, it: [qc("R\xE9ponse :", ["$P(A \\cup B) = P(A) + P(B)$", "$P(A \\cap B) = P(A) \xD7 P(B)$", "$P(A \\cup B) = P(A) \xD7 P(B)$", "$P(A \\cap B) = P(A) + P(B)$"], 1)] },
+      { n: "10", src: S(11, 10), t: "A et B sont des \xE9v\xE9nements ind\xE9pendants. Alors\u2026 " + PL, rule: R11, it: [vf("$P(A) = P(B)$", 0), vf("$P(A \\cap B) = P(A) \xD7 P(B)$", 1), vf("$P(A \\cap B) = 0$", 0), vf("$P_B(A) = P(A)$", 1)] },
+      { n: "11", src: S(11, 11), t: "Tableau : $P(A \\cap B) = 0{,}05$, $P(\\bar{B}) = 0{,}8$, $P(\\bar{A}) = 0{,}7$. Case \u2460 = total de la colonne A, \u2461 = $P(\\bar{A} \\cap B)$, \u2462 = total de B, \u2463 = $P(\\bar{A} \\cap \\bar{B})$, \u2464 = $P(A \\cap \\bar{B})$, \u2465 = total g\xE9n\xE9ral. " + PL, rule: R11, it: [vf("La case \u2465 contient 1.", 1), vf("La somme des cases \u2464 et \u2463 est 0,8.", 1), vf("La case \u2461 contient 0,7.", 0, "elle contient 0,15"), vf("La case \u2460 contient $P_B(\\bar{A})$.", 0, "elle contient $P(A) = 0{,}3$")] },
+      { n: "12", src: S(11, 12), t: "A1 : A et B sont incompatibles. A2 : A et B sont ind\xE9pendants. " + PL, rule: R11, it: [vf("A1 implique toujours A2.", 0), vf("A2 implique toujours A1.", 0), vf("Si $P(A) = 0$ alors A1 et A2 sont vraies.", 1), vf("Si A2 est vraie, alors $P(A) = P(B)$.", 0)] },
+      { n: "14", src: S(11, 14), t: "Probl\xE8me. S\u2019il fait beau, \xC9milie donne un contr\xF4le avec une probabilit\xE9 de 0,2 ; s\u2019il fait mauvais, avec une probabilit\xE9 de 0,4. La probabilit\xE9 qu\u2019il fasse beau est 0,1.", rule: R11, it: [nm("Probabilit\xE9 que la journ\xE9e soit perturb\xE9e par le mauvais temps et par un contr\xF4le :", 0.36, "", "$0{,}9 \xD7 0{,}4$"), nm("Probabilit\xE9 qu\u2019un contr\xF4le soit donn\xE9 :", 0.38, "", "$0{,}1 \xD7 0{,}2 + 0{,}9 \xD7 0{,}4$")] }
+    ],
+    c12: [
+      { n: "6-10", src: S(12, "6 \xE0 10"), t: "Loi de X : $P(X = -2) = \\frac{1}{6}$, $P(X = 0) = \\frac{1}{12}$, $P(X = 3) = \\frac{1}{4}$, $P(X = 7) = \\frac{1}{2}$.", rule: R12, it: [qc("**6.** $P(X \u2265 0) =$", ["$\\frac{1}{6}$", "$\\frac{1}{4}$", "$\\frac{5}{6}$", "$\\frac{3}{4}$"], 2), qc("**7.** $P(-2 < X < 7) =$", ["$\\frac{1}{3}$", "1", "$\\frac{1}{2}$", "$\\frac{5}{6}$"], 0), qc("**8.** $E(X) =$", ["2", "4", "$\\frac{48}{12}$", "$\\frac{47}{12}$"], 3), qc("**9.** $V(X) \u2248$", ["12,08", "0,65", "10,80", "\u22124,28"], 0), qc("**10.** $\\sigma(X) \u2248$", ["2,98", "3,48", "2,53", "3,23"], 1)] },
+      { n: "11", src: S(12, 11), t: "Apr\xE8s avoir mis\xE9 5 \u20AC, on peut recevoir 50 \u20AC avec une probabilit\xE9 de 0,01 ; recevoir 10 \u20AC avec une probabilit\xE9 de 0,09 ; r\xE9cup\xE9rer sa mise avec une probabilit\xE9 de 0,3 ou bien perdre sa mise. Ce jeu est :", rule: R12, it: [qc("R\xE9ponse :", ["favorable au joueur", "\xE9quitable", "d\xE9favorable au joueur"], 2, "esp\xE9rance du gain : \u22122,10 \u20AC")] },
+      { n: "12", src: S(12, 12), t: "X donne le gain d\u2019un joueur \xE0 un jeu ; $E(X) = 5$. " + PL, rule: R12, it: [vf("Si on joue 1 000 fois \xE0 ce jeu, on gagnera 5 000 \u20AC.", 0), vf("Si plusieurs joueurs jouent 1 000 fois chacun, ils gagneront, en moyenne, 5 000 \u20AC chacun.", 1), vf("Si on joue un grand nombre de parties, on gagnera, en moyenne, 5 \u20AC par partie.", 1), vf("Si on joue un grand nombre de parties, on gagnera 5 \u20AC par partie jou\xE9e.", 0)] },
+      { n: "13", src: S(12, 13), t: "On lance deux d\xE9s \xE0 six faces ; X est la somme des nombres obtenus. " + PL, rule: R12, it: [vf("$P(X = 1) = 0$", 1), vf("$E(X) = 6$", 0, "$E(X) = 7$"), vf("$\\sigma(X) \u2248 2{,}16$", 0, "$\\sigma(X) \u2248 2{,}42$"), vf("$P(X = 2) = P(X = 12)$", 1)] },
+      { n: "14", src: S(12, 14), t: "Roue \xE0 8 secteurs \xE9gaux : quatre secteurs \xAB 1 \xBB, trois secteurs \xAB 3 \xBB et un secteur \xAB 5 \xBB. X est le gain. " + PL, rule: R12, it: [vf("$\\{X = 1\\}$ est l\u2019\xE9v\xE9nement contraire de $\\{X > 1\\}$", 1), vf("$P(X = 1) = P(X = 3) + P(X = 5)$", 1), vf("$P(X > 1) = \\frac{1}{2}$", 1), vf("$P(X = 5) = 5 \xD7 P(X = 1)$", 0)] }
+    ]
+  } });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
