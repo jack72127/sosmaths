@@ -46740,6 +46740,19 @@ window.M4PLAN = {
       ["Entra\xEEnement", [["Rotation", R(31, 38)], ["Homoth\xE9tie", R(39, 47)]]],
       ["Approfondissement", [["Approfondissement", R(48, 53)], ["Club de maths", R(54, 54)]]],
       ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(55, 58)]]]
+    ] },
+    13: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(9, 10)], ["QCM : r\xE9ponses multiples", R(11, 12)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(13, 16)]]],
+      ["Automatismes", [["La sph\xE8re", R(17, 21)], ["La sph\xE8re terrestre", R(22, 28)], ["Sections de solides", R(29, 32)], ["Calculer dans les sections", R(33, 38)]]],
+      ["Entra\xEEnement", [["La sph\xE8re", R(39, 49)], ["La sph\xE8re terrestre", R(50, 59)], ["Sections de solides", R(60, 67)]]],
+      ["Approfondissement", [["Approfondissement", R(68, 73)], ["Club de maths", R(74, 75)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(76, 80)]]]
+    ] },
+    14: { r: [
+      ["Automatismes", [["Grandeurs produits et quotients", R(8, 19)], ["Vitesse moyenne", R(20, 28)]]],
+      ["Entra\xEEnement", [["Grandeurs produits et grandeurs quotients", R(29, 38)], ["Vitesse moyenne", R(39, 41)]]],
+      ["Approfondissement", [["Approfondissement", R(42, 47)], ["Club de maths", R(48, 48)]]]
     ] }
   } };
 })();
@@ -46908,6 +46921,41 @@ window.M4PLAN = {
         { n: "12-50", src: S(244, 50), t: "Hexagone r\xE9gulier ABCDEF de centre O (C et B en haut, D \xE0 gauche, A \xE0 droite, E et F en bas). Image du triangle BCO par\u2026", rule: TR, it: [tx("la sym\xE9trie d\u2019axe (BE) :", ["BAO", "BOA", "ABO", "AOB", "OAB", "OBA"]), tx("la sym\xE9trie de centre O :", ["EFO", "EOF", "FEO", "FOE", "OEF", "OFE"]), tx("la translation qui transforme B en A :", ["AOF", "AFO", "OAF", "OFA", "FAO", "FOA"]), tx("la rotation de centre O d\u2019angle 60\xB0 (sens antihoraire) :", ["CDO", "COD", "DCO", "DOC", "OCD", "ODC"])] },
         { n: "12-55", src: S(246, 55), t: "D\u2019apr\xE8s brevet. Hexagone r\xE9gulier ABCDEF de centre O (A et B en haut, F \xE0 gauche, C \xE0 droite, E et D en bas).", rule: TR, it: [tx("Image du quadrilat\xE8re CDEO par la sym\xE9trie de centre O :", ["FABO"]), tx("Image du segment [AO] par la sym\xE9trie d\u2019axe (CF) :", ["[EO]", "EO", "[OE]", "OE"]), tx("La rotation de centre O transforme OAB en OCD. Image du triangle BOC :", ["DOE", "DEO", "EDO", "EOD", "ODE", "OED"]), tx("Image du losange ODCB par la rotation de centre O d\u2019angle 60\xB0 (sens horaire) :", ["OEDC"])] },
         { n: "12-56", src: S(246, 56), t: "D\u2019apr\xE8s brevet. Les points A, B, C, D, E sont r\xE9guli\xE8rement espac\xE9s sur une demi-droite d\u2019origine O (OA = AB = BC = CD = DE). Les figures A \xE0 E sont obtenues par des homoth\xE9ties de centre O.", rule: TR, it: [nm("Rapport de l\u2019homoth\xE9tie qui transforme la figure A en figure C :", 3), qc("Image de la figure E par l\u2019homoth\xE9tie de rapport $\\frac{3}{5}$ :", ["la figure C", "la figure B", "la figure D"], 0), qc("Figure dont l\u2019aire est quatre fois celle de la figure A :", ["la figure B", "la figure D", "la figure C"], 0, "rapport 2 : aire multipli\xE9e par $2^2 = 4$")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 13 \xAB G\xE9om\xE9trie dans l\u2019espace \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const ESP = "Sph\xE8re de rayon $R$ : **aire $4\\pi R^2$** ; boule : **volume $\\frac{4}{3}\\pi R^3$**. C\xF4ne ou pyramide : **$V = \\frac{1}{3} \xD7 \\text{aire de la base} \xD7 h$**. La section d\u2019un pav\xE9, d\u2019un cylindre, d\u2019un c\xF4ne ou d\u2019une pyramide par un plan parall\xE8le \xE0 la base est de m\xEAme nature que la base ; en r\xE9duction de rapport $k$, les volumes sont multipli\xE9s par **$k^3$**.";
+  const GEO = "Sur la sph\xE8re terrestre : un **parall\xE8le** est un cercle perpendiculaire \xE0 l\u2019axe des p\xF4les, un **m\xE9ridien** un demi-cercle d\u2019un p\xF4le \xE0 l\u2019autre. **Latitude** (N/S, de 0\xB0 \xE0 90\xB0) et **longitude** (E/O, de 0\xB0 \xE0 180\xB0, \xE0 partir du m\xE9ridien de Greenwich).";
+  ADD("trois", {
+    mnx: {
+      c13: [
+        { n: "13-9", src: S(258, 9), t: "Sur la sph\xE8re dessin\xE9e, les points E, C, A et B sont sur la sph\xE8re, O est son centre et D est \xE0 l\u2019int\xE9rieur.", rule: ESP, it: [qc("Quel point appartient \xE0 la sph\xE8re ?", ["D", "A", "O", "AC"], 1)] },
+        { n: "13-10", src: S(258, 10), t: "Une seule r\xE9ponse est juste.", rule: GEO, it: [qc("Un point situ\xE9 sur le m\xE9ridien de Greenwich a :", ["pour longitude 0\xB0", "pour latitude 0\xB0", "pour longitude 90\xB0", "pour latitude 180\xB0"], 0)] },
+        { n: "13-11", src: S(258, 11), t: "Les coordonn\xE9es g\xE9ographiques de Paris sont 48\xB0 N et 2\xB0 E. Ainsi\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: GEO, it: [vf("sa latitude est 48\xB0 N", 1), vf("sa longitude est 48\xB0 N", 0), vf("son altitude est 48\xB0 N", 0), vf("elle est situ\xE9e sur le m\xE9ridien 48\xB0 N", 0)] },
+        { n: "13-12", src: S(258, 12), t: "Section d\u2019un c\xF4ne de r\xE9volution de rayon de base 5 cm et de hauteur 7 cm par un plan parall\xE8le \xE0 la base (entre le sommet et la base).", rule: ESP, it: [vf("un rectangle de dimensions 7 cm et 5 cm", 0), vf("un cercle de rayon inf\xE9rieur \xE0 5 cm", 1), vf("un cercle de rayon 7 cm", 0)] },
+        { n: "13-13", src: S(259, 13), t: "On sectionne une pyramide \xE0 base carr\xE9e de c\xF4t\xE9 6 cm par un plan parall\xE8le \xE0 sa base, avec un coefficient de r\xE9duction $k$.", rule: ESP, it: [qc("La section est :", ["un carr\xE9 de c\xF4t\xE9 $6k$", "un rectangle de c\xF4t\xE9s 6 et $k$", "un triangle"], 0), nm("C\xF4t\xE9 de la section pour $k = 0{,}4$ :", 2.4, "cm")] },
+        { n: "13-14", src: S(259, 14), t: "Pav\xE9 droit coup\xE9 par un plan parall\xE8le \xE0 l\u2019ar\xEAte [AD] : la section est EFGH, avec EF = 25 cm et HK = 20 cm (K sur [AE], HK \u22A5 AE).", rule: ESP, it: [qc("Nature du quadrilat\xE8re EFGH :", ["un rectangle", "un losange", "un trap\xE8ze"], 0), qc("EFGH est un carr\xE9 \xE0 condition que :", ["HE = EF = 25 cm", "HK = EF", "KE = HK"], 0), nm("Valeur de KE pour que la section soit un carr\xE9 :", 15, "cm", "$KE^2 + 20^2 = 25^2$")] },
+        { n: "13-15", src: S(259, 15), t: "Boule de bois de rayon 3 cm. On veut une section de rayon 1,5 cm (moiti\xE9 du rayon). La hauteur de coupe est la distance entre le centre de la boule et le centre de la section.", rule: ESP, it: [qc("Formule en B2 :", ["=RACINE(9-A2^2)", "=RACINE(9+A2^2)", "=9-A2^2"], 0), nm("Hauteur de coupe exacte (au milli\xE8me) :", 2.598, "cm", "$\\sqrt{3^2 - 1{,}5^2} = \\sqrt{6{,}75}$"), qc("Intervalle satisfaisant :", ["entre 2,59 cm et 2,60 cm", "entre 2,51 cm et 2,52 cm", "entre 1,49 cm et 1,50 cm"], 0)] },
+        { n: "13-16", src: S(259, 16), t: "Toulouse (44\xB0 N ; 1\xB0 E) et Toronto (44\xB0 N ; 79\xB0 O) sont sur le m\xEAme parall\xE8le. Rayon de la Terre : 6 371 km.", rule: GEO, it: [nm("Angle entre les deux villes (cellule C2) :", 80, "\xB0"), nm("Rayon du parall\xE8le 44\xB0 N (\xE0 l\u2019unit\xE9) :", 4583, "km", "$6\\,371 \xD7 \\cos 44\xB0$"), nm("Longueur du parall\xE8le (\xE0 l\u2019unit\xE9) :", 28795, "km"), nm("Distance entre les deux villes sur ce parall\xE8le (\xE0 l\u2019unit\xE9) :", 6399, "km", "$28\\,795 \xD7 \\frac{80}{360}$")] },
+        { n: "13-76", src: S(268, 76), t: "D\u2019apr\xE8s brevet. Pyramide du Louvre : pyramide r\xE9guli\xE8re \xE0 base carr\xE9e de c\xF4t\xE9 35,5 m dont les quatre ar\xEAtes issues du sommet mesurent 33,14 m.", rule: ESP, it: [nm("Hauteur r\xE9elle (au centim\xE8tre) :", 21.64, "m"), nm("C\xF4t\xE9 de la base sur le patron \xE0 l\u2019\xE9chelle $\\frac{1}{800}$ (au mm) :", 44.4, "mm"), nm("Ar\xEAtes lat\xE9rales sur le patron (au mm) :", 41.4, "mm")] },
+        { n: "13-77", src: S(268, 77), t: "D\u2019apr\xE8s brevet. C\xF4ne de frites : BS = 20 cm, FS = 5 cm, AC = 12 cm ; la sauce remplit le petit c\xF4ne de rayon EF et de hauteur FS. 400 c\xF4nes ; 80 % des acheteurs prennent de la sauce tomate, les autres de la mayonnaise. Mayonnaise : cylindre de diam\xE8tre 5 cm et de hauteur 15 cm ; tomate : 500 mL.", rule: ESP, it: [nm("Rayon EF :", 1.5, "cm"), nm("Volume de sauce par c\xF4ne (au centi\xE8me) :", 11.78, "cm\xB3"), nm("Bouteilles de mayonnaise :", 4), nm("Bouteilles de sauce tomate :", 8)] },
+        { n: "13-78", src: S(268, 78), t: "Lausanne (46\xB0 N ; 6\xB0 E) et Saint-Z\xE9non (46\xB0 N ; 73\xB0 O) sont sur le 46e parall\xE8le Nord. Rayon de la Terre : 6 371 km.", rule: GEO, it: [nm("Mesure de l\u2019angle $\\widehat{JLO}$ :", 46, "\xB0"), nm("Rayon du 46e parall\xE8le (\xE0 l\u2019unit\xE9) :", 4426, "km"), nm("Longueur du 46e parall\xE8le (\xE0 l\u2019unit\xE9) :", 27807, "km"), nm("Distance entre les deux cousins le long du parall\xE8le (\xE0 l\u2019unit\xE9) :", 6102, "km", "$27\\,807 \xD7 \\frac{79}{360}$")] }
       ]
     }
   });
