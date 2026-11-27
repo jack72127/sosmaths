@@ -46221,6 +46221,124 @@ window.M4PLAN = {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const G = (B) => ({ pg: [["Validation des acquis", [B + 1, B + 1]], ["Auto-\xE9valuation", [B + 7, B + 7]], ["Exercices", [B + 8, B + 11]]] });
+  P.tlepro = { ch: { 1: G(10), 2: G(24), 3: G(38), 4: G(52), 5: G(66), 6: G(80), 7: G(94), 8: G(108) } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Statistiques \xE0 deux variables", 2: "Probabilit\xE9s", 3: "Suites num\xE9riques", 4: "Fonctions polyn\xF4mes de degr\xE9 3", 5: "Fonctions exponentielles et logarithme d\xE9cimal", 6: "Calculs commerciaux et financiers", 7: "Vecteurs", 8: "Trigonom\xE9trie" };
+  const B = { 1: 10, 2: 24, 3: 38, 4: 52, 5: 66, 6: 80, 7: 94, 8: 108 };
+  const S = (c, k, n) => "Manuel Math\xE9matiques Tle bac pro, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + (B[c] + k) + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PL = "(une ou plusieurs bonnes r\xE9ponses)";
+  const R = {
+    1: "Droite d\u2019ajustement **$y = ax + b$** ; plus le coefficient de d\xE9termination **$R^2$ est proche de 1**, meilleur est l\u2019ajustement. Ajustement puissance : **$y = a \xD7 b^x$** ; logarithmique : **$y = a \xD7 \\log(x) + b$**.",
+    2: "**$P(A \\cap B) = P(A) \xD7 P_A(B)$**. **$P(\\bar{A}) = 1 - P(A)$**. A et B **ind\xE9pendants** \u27FA **$P(A \\cap B) = P(A) \xD7 P(B)$**. $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$.",
+    3: "Suite **arithm\xE9tique** : **$u_n = u_1 + (n - 1)r$** ; somme = **nombre de termes \xD7 $\\frac{\\text{premier} + \\text{dernier}}{2}$**. Suite **g\xE9om\xE9trique** : **$u_n = u_1 \xD7 q^{n-1}$**.",
+    4: "**$(x^3)^{\\prime} = 3x^2$**, $(x^2)^{\\prime} = 2x$, $(ax)^{\\prime} = a$. Si $f^{\\prime}$ s\u2019annule **en changeant de signe**, $f$ admet un **extremum local**.",
+    5: "**$10^{\\log x} = x$**, **$\\log(10^a) = a$**, $\\log(ab) = \\log a + \\log b$. $a^x = b \\iff x = \\frac{\\log b}{\\log a}$. $x \\mapsto q^x$ est **d\xE9croissante si $0 < q < 1$**, croissante si $q > 1$.",
+    6: "Int\xE9r\xEAts simples : **$I = C \xD7 t \xD7 n$** ; int\xE9r\xEAts compos\xE9s : **$C_n = C_0(1 + t)^n$**. Taux mensuel \xE9quivalent : **$(1 + t_a)^{\\frac{1}{12}} - 1$**.",
+    7: "**$\\overrightarrow{AB}\\begin{pmatrix}x_B - x_A\\\\y_B - y_A\\\\z_B - z_A\\end{pmatrix}$**, **$\\|\\overrightarrow{AB}\\| = \\sqrt{x^2 + y^2 + z^2}$**. Chasles : **$\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$**.",
+    8: "**$\\cos^2 x + \\sin^2 x = 1$** ; $\\cos(x + 2\\pi) = \\cos x$. Grandeur sinuso\xEFdale **$i(t) = I_{max}\\sin(\\omega t + \\varphi)$**, vecteur de Fresnel **$(I_{max}\\,;\\varphi)$** ; **$\\omega = 2\\pi f$**."
+  };
+  const V = (c, n, t, it) => ({ n: "V" + n, src: S(c, 1, "V" + n), t, rule: R[c], it });
+  const A = (c, n, t, it) => ({ n: String(n), src: S(c, 7, n), t, rule: R[c], it });
+  const AQ = (c, n, t, ch, ok, cm) => A(c, n, t, [qc("R\xE9ponse :", ch, ok, cm)]);
+  ADD("tlepro", { mnx: {
+    c1: [
+      V(1, 1, "Club de tennis : rang 1 = 2016 \u2026 rang 5 = 2020. Droite d\u2019ajustement : $y = 10{,}6x + 39{,}2$.", [qc("Le rang 8 correspond \xE0 l\u2019ann\xE9e :", ["2022", "2023", "2024", "2025"], 1), qc("L\u2019ann\xE9e 2028 correspond au rang :", ["12", "13", "14", "15"], 1), qc("Adh\xE9rents pr\xE9vus en 2026 (\xE0 l\u2019unit\xE9) :", ["145", "155", "156", "166"], 2), qc("Ann\xE9e \xE0 partir de laquelle on d\xE9passera 200 adh\xE9rents :", ["2027", "2029", "2031", "2033"], 2)]),
+      A(1, 2, "Pour r\xE9aliser un ajustement puissance, on utilise une courbe d\u2019\xE9quation :", [qc("R\xE9ponse :", ["$y = a \xD7 b^x$", "$y = ax^2 + bx + c$", "$y = a \xD7 \\log(x) + b$", "$y = ax + b$"], 0)]),
+      A(1, 4, "Pour r\xE9aliser un ajustement logarithmique, on utilise une courbe d\u2019\xE9quation :", [qc("R\xE9ponse :", ["$y = ax + b$", "$y = a \xD7 \\log(x) + b$", "$y = a \xD7 b^x$", "$y = ax^2 + bx + c$"], 1)]),
+      A(1, "P", "Probl\xE8me. Koalas (en milliers) : rang 1 (2011) : 15 ; 2 : 12,2 ; 3 : 10 ; 5 : 6,5 ; 8 : 4 ; 10 : 2,5. Mod\xE8le puissance : $y = 18 \xD7 0{,}82^x$ ($R^2 = 0{,}9986$).", [nm("Nombre de koalas la dixi\xE8me ann\xE9e :", 2500), nm("Ann\xE9e correspondante :", 2020), vf("L\u2019ajustement est pertinent.", 1, "$R^2$ tr\xE8s proche de 1"), nm("Nombre de koalas pr\xE9vu en 2024 (rang 14, \xE0 la centaine pr\xE8s) :", 1100, "", "$18 \xD7 0{,}82^{14} \u2248 1{,}10$ millier"), nm("Ann\xE9e \xE0 partir de laquelle on comptera moins de 1 000 koalas :", 2025)])
+    ],
+    c2: [
+      V(2, 1, "Urne : trois boules blanches (1 \xE0 3) et six rouges (4 \xE0 9). R : \xAB rouge \xBB, B : \xAB blanche \xBB, A : \xAB chiffre pair \xBB. " + PL, [vf("$P(R) = \\frac{6}{9}$", 1), vf("$P(R \\cap A) = \\frac{1}{3}$", 1), vf("$P(B \\cup A) = \\frac{6}{9}$", 1), vf("$P_A(R) = \\frac{3}{4}$", 1), vf("$P(\\bar{A}) = \\frac{1}{3}$", 0, "$P(\\bar{A}) = \\frac{5}{9}$")]),
+      A(2, 1, "Arbre : $P(A) = 0{,}7$, $P_A(C) = 0{,}1$ ; $P(B) = 0{,}3$, $P_B(C) = 0{,}4$ (sinon D). " + PL, [vf("$P(A) = 0{,}7$", 1), vf("$P_B(D) = 0{,}6$", 1), vf("$P(\\bar{A}) = 0{,}3$", 1), vf("$P_B(C) = 0{,}1$", 0)]),
+      A(2, 2, "M\xEAme arbre. " + PL, [vf("$P_A(D) = 0{,}9$", 1), vf("$P_B(D) = 0{,}3$", 0), vf("$P_A(C) = 0{,}8$", 0), vf("$P(A \\cap D) = 0{,}63$", 1)]),
+      A(2, 3, "M\xEAme arbre. " + PL, [vf("$P(C) = P_A(C) + P_B(C)$", 0), vf("$P(C) = 0{,}5$", 0), vf("$P(C) = 1 - P(D)$", 1), vf("$P(C) = 0{,}19$", 1)]),
+      A(2, 4, "$P(A) = 0{,}5$ ; $P_A(B) = 0{,}7$ et $P_{\\bar{A}}(B) = 0{,}1$. " + PL, [vf("$P(A \\cap B) = 0{,}35$", 1), vf("$P(\\bar{A}) = 0{,}5$", 1), vf("$P(\\bar{A} \\cap B) = 0{,}05$", 1), vf("$P(B) = 0{,}4$", 1)]),
+      A(2, 5, "$P(A) = 0{,}5$, $P(B) = 0{,}25$ et $P(A \\cap B) = 0{,}125$. " + PL, [vf("A et B sont ind\xE9pendants.", 1), vf("A et B sont \xE9quiprobables.", 0), vf("$P(A \\cup B) = 0{,}625$", 1), vf("$P(A \\cup B) = 0{,}75$", 0)]),
+      A(2, 6, "Deux lancers d\u2019une pi\xE8ce \xE9quilibr\xE9e. $P_1$ : \xAB pile au 1er lancer \xBB, $F_2$ : \xAB face au 2e lancer \xBB. " + PL, [vf("$P(P_1 \\cap F_2) = \\frac{1}{4}$", 1), vf("Si on obtient pile au 1er lancer, on obtient forc\xE9ment pile au 2e.", 0), vf("$P(P_1) = P(F_2)$", 1), vf("$P_1$ et $F_2$ sont ind\xE9pendants.", 1)]),
+      A(2, "P", "Probl\xE8me. Festival : 30 % des achats au stand B. Stand B : 25 % de hot dogs, 60 % de sandwichs (le reste en churros). Stand A : 5 % de churros. Les churros seront arr\xEAt\xE9s s\u2019ils font moins de 10 % des ventes.", [nm("$P(A) =$", 0.7), nm("$P_B(C) =$", 0.15), nm("$P(A \\cap C) =$", 0.035), nm("$P(B \\cap C) =$", 0.045), nm("$P(C) =$", 0.08), qc("L\u2019association continuera-t-elle \xE0 vendre des churros ?", ["Non (8 % < 10 %)", "Oui"], 0)])
+    ],
+    c3: [
+      V(3, 1, "$u_n = 7n - 5$.", [nm("$u_1 =$", 2), nm("$u_2 =$", 9), nm("$u_3 =$", 16), nm("$u_4 =$", 23), qc("La suite est :", ["croissante", "d\xE9croissante"], 0)]),
+      V(3, 2, "Production de 1 700 unit\xE9s la premi\xE8re ann\xE9e, puis +130 unit\xE9s par an ; $u_n$ est la production de la $n$-i\xE8me ann\xE9e.", [qc("La suite est arithm\xE9tique :", ["Vrai", "Faux"], 0), nm("Premier terme :", 1700), nm("Raison :", 130), qc("$u_n =$", ["$130 + (n - 1) \xD7 1\\,700$", "$1\\,700 + (n - 1) \xD7 130$"], 1), nm("Production de la 10e ann\xE9e :", 2870), nm("Total des dix premi\xE8res ann\xE9es :", 22850)]),
+      A(3, 1, "Suites pouvant \xEAtre g\xE9om\xE9triques (quatre premiers termes donn\xE9s) : " + PL, [vf("1 ; 3 ; 9 ; 27 ; 54", 0), vf("3 ; 6 ; 9 ; 12 ; 15", 0), vf("\u22123 ; \u221215 ; \u221275 ; \u2212375", 1)]),
+      AQ(3, 3, "Les trois premiers termes de la suite g\xE9om\xE9trique avec $u_1 = 2$ et $q = 3$ :", ["$u_1 = 2$ ; $u_2 = 6$ ; $u_3 = 18$", "$u_1 = 6$ ; $u_2 = 18$ ; $u_3 = 54$", "$u_1 = 2$ ; $u_2 = 3$ ; $u_3 = 6$", "$u_1 = 2$ ; $u_2 = 1$ ; $u_3 = 3$"], 0),
+      AQ(3, 4, "$(u_n)$ g\xE9om\xE9trique avec $u_0 = 56$ et $q = 0{,}2$.", ["La suite est croissante avec $u_3 = 2{,}24$.", "La suite est d\xE9croissante avec $u_2 = 2{,}24$.", "La suite est croissante avec $u_2 = 2{,}24$.", "La suite est d\xE9croissante avec $u_3 = 2{,}24$."], 1),
+      AQ(3, 5, "$(t_n)$ g\xE9om\xE9trique avec $t_1 = 1{,}5$ et $q = 2$.", ["$t_{11} = 1\\,536$", "$t_{11} = 115{,}33$", "$t_{11} = 768$", "$t_{11} = 3\\,072$"], 0),
+      AQ(3, 6, "$(u_n)$ g\xE9om\xE9trique avec $u_1 = -10$ et $u_2 = -5$. Raison :", ["$q = -2$", "$q = 0{,}5$", "$q = 2$", "$q = -0{,}5$"], 1),
+      A(3, "P", "Probl\xE8me. Tom place 1 500 \u20AC \xE0 int\xE9r\xEAts compos\xE9s de 4,5 % par an pour acheter une moto \xE0 2 250 \u20AC dans neuf ans.", [nm("Raison de la suite g\xE9om\xE9trique des montants :", 1.045), nm("Montant apr\xE8s neuf ans (au centime) :", 2229.15, "\u20AC", "$1\\,500 \xD7 1{,}045^9$"), qc("Tom pourra-t-il acheter la moto dans neuf ans ?", ["Non", "Oui"], 0)])
+    ],
+    c4: [
+      V(4, 1, "$f(x) = 2x^2 + 12x - 14 = 2(x - 1)(x + 7)$.", [qc("$f$ est une fonction polyn\xF4me de :", ["degr\xE9 1", "degr\xE9 2"], 1), qc("Sa repr\xE9sentation graphique est :", ["une droite", "une parabole"], 1), qc("L\u2019\xE9quation $f(x) = 0$ admet :", ["0 solution", "1 solution", "2 solutions", "3 solutions"], 2)]),
+      V(4, 2, "D\xE9riv\xE9es.", [qc("$f(x) = 3x$ : $f^{\\prime}(x) =$", ["3", "$3x$", "0"], 0), qc("$g(x) = -2x + 4$ : $g^{\\prime}(x) =$", ["\u22122", "4", "$-2x$"], 0), qc("$h(x) = -4x^2$ : $h^{\\prime}(x) =$", ["$-8x$", "$-4x$", "$-8x^2$"], 0), qc("$i(t) = -5t^2 + 2t - 1$ : $i^{\\prime}(t) =$", ["$-10t + 2$", "$-5t + 2$", "$-10t + 1$"], 0)]),
+      AQ(4, 1, "$f$ polyn\xF4me de degr\xE9 3. Sa d\xE9riv\xE9e est un polyn\xF4me de degr\xE9 :", ["1", "2", "3", "4"], 1),
+      AQ(4, 2, "$k(x) = (x + 2)(x + 3)(x - 1)$ est un polyn\xF4me de degr\xE9 :", ["1", "2", "3", "4"], 2),
+      A(4, 3, "$g(x) = \\frac{2}{3}x^3 - 2x^2 - 6x + 1$. " + PL, [vf("$g^{\\prime}(x) = 2(x - 3)(x + 1)$", 1), vf("$g^{\\prime}(x) = 2x^2 - 4x - 6$", 1), vf("$g^{\\prime}(x) = 2(x + 3)(x - 1)$", 0), vf("$g^{\\prime}(x) = -3x^2 - 4x - 6$", 0)]),
+      A(4, 4, "L\u2019\xE9quation $x^3 + 2x^2 - 3x = 0$ admet pour solution : " + PL, [vf("2", 0), vf("\u22123", 1), vf("1", 1), vf("0", 1)]),
+      A(4, 5, "Tableau de variations de $h$ : $-8$ en $-2$, cro\xEEt jusqu\u2019\xE0 22 en 5, d\xE9cro\xEEt jusqu\u2019\xE0 3 en 7, cro\xEEt jusqu\u2019\xE0 18,5 en 13.", [qc("Sur $[-2\\,;13]$, $h^{\\prime}$ admet :", ["0 racine", "1 racine", "2 racines", "3 racines"], 2), qc("Sur $]5\\,;13[$, $h$ admet un minimum local en :", ["$x = -2$", "$x = 5$", "$x = 7$", "$x = 13$"], 2), qc("Sur $[-2\\,;13]$, l\u2019\xE9quation $h(x) = 0$ admet :", ["0 solution", "1 solution", "2 solutions", "3 solutions"], 1)]),
+      A(4, "P", "Probl\xE8me. $f(x) = 2x^3 - 3x^2 - 12x + 2$ sur $[-4\\,;4]$.", [qc("$f^{\\prime}(x) =$", ["$6x^2 - 6x - 12$", "$6x^2 - 3x - 12$", "$2x^2 - 3x - 12$"], 0), nm("$a =$", 6), nm("$x_1 =$ (la plus petite racine)", -1), nm("$x_2 =$", 2), nm("Maximum local (en $x = -1$) :", 9), nm("Minimum local (en $x = 2$) :", -18), nm("Nombre de solutions de $f(x) = 5$ sur $[-4\\,;4]$ :", 3)])
+    ],
+    c5: [
+      V(5, 1, "Puissances. " + PL, [vf("$\\frac{7^5}{21^5} = 3^{-5}$", 1), vf("$\\frac{7^5}{21^5} = (-3)^{-5}$", 0), vf("$4^{18} \xD7 4^2 = 16^{10}$", 1), vf("$4^{18} \xD7 4^2 = (16^5)^4$", 0), vf("$(3^2)^4 = 6\\,561$", 1), vf("$5^{-2} = 0{,}04$", 1), vf("$\\left(\\frac{8}{9}\\right)^3 = \\frac{512}{729}$", 1), vf("$\\left(\\frac{8}{9}\\right)^3 = \\frac{24}{27}$", 0)]),
+      V(5, 2, "Claire \xE9crit : $(7^2 \xD7 7^3)^4 = (7^5)^4 = 7^9$.", [qc("Son erreur :", ["$(7^5)^4 = 7^{20}$ : on multiplie les exposants", "$7^2 \xD7 7^3 = 7^6$", "aucune erreur"], 0)]),
+      AQ(5, 1, "$f(x) = 0{,}99^x$ sur $\\mathbb{R}$. $f$ est :", ["strictement croissante", "strictement d\xE9croissante", "d\xE9croissante puis croissante", "croissante puis d\xE9croissante"], 1),
+      AQ(5, 2, "$10^{\\log(7)}$ est \xE9gal \xE0 :", ["$10^7$", "$\\log(7)$", "7", "$\\frac{1}{7}$"], 2),
+      AQ(5, 3, "$3^{1{,}4} \xD7 3^{2{,}6} = 3^4$", ["Vrai", "Faux"], 0),
+      AQ(5, 4, "$\\log(10^{4{,}5})$ est \xE9gal \xE0 :", ["$\\log(4{,}5)$", "$10^{4{,}5}$", "4,5", "\u22124,5"], 2),
+      AQ(5, 5, "Si $f(x) = 2 \xD7 5^{3x}$, alors $\\frac{f(x+1)}{f(x)}$ est \xE9gal \xE0 :", ["125", "$5^{3x+2}$", "15", "5"], 0),
+      A(5, 6, "$\\log\\left(\\frac{1}{2 - \\sqrt{3}}\\right)$ est \xE9gal \xE0 : " + PL, [vf("$-\\log(\\sqrt{3} - 1)$", 0), vf("$-\\log(2 - \\sqrt{3})$", 1), vf("$\\log(1 + \\sqrt{3})$", 0), vf("$\\log(2 + \\sqrt{3})$", 1)]),
+      AQ(5, 7, "L\u2019\xE9quation $1{,}1^x = 2$ a pour solution :", ["$\\frac{\\log(2)}{\\log(1{,}1)}$", "$\\frac{\\log(1{,}1)}{\\log 2}$", "$\\frac{2}{1{,}1}$", "$\\frac{\\log(1{,}1)}{2}$"], 0),
+      A(5, 8, "$f(x) = \\log(5x)$ sur $]0\\,;+\\infty[$. " + PL, [vf("est strictement d\xE9croissante", 0), vf("est strictement croissante", 1), vf("n\u2019existe pas pour $x \u2264 0$", 1), vf("existe pour $x = 0$ et $\\log(0) = 1$", 0)]),
+      A(5, "P", "Probl\xE8me. Temp\xE9rature d\u2019une dose de vaccin : $\\theta(t) = 32 - 40 \xD7 0{,}97^t$ ($t$ en min).", [nm("Temp\xE9rature \xE0 la sortie du cong\xE9lateur :", -8, "\xB0C"), nm("Temp\xE9rature au bout de 5 min (\xE0 l\u2019unit\xE9) :", -2, "\xB0C"), nm("Temps pour atteindre 0 \xB0C (\xE0 la minute) :", 7, "min"), nm("Temps pour d\xE9passer 20 \xB0C (\xE0 la minute) :", 40, "min"), nm("Remise au cong\xE9lateur : $\\theta(t) = -6 - \\log\\left(\\frac{1 + t}{10}\\right)$. Temps pour atteindre \u22128 \xB0C :", 999, "min")])
+    ],
+    c6: [
+      V(6, 1, "Int\xE9r\xEAts simples.", [qc("Taux annuel 3 % : taux mensuel :", ["36 %", "0,25 %", "25 %", "2,5 %"], 1), qc("Taux journalier 0,02 % : taux annuel :", ["5,55 %", "0,48 %", "0,24 %", "7,2 %"], 3), qc("Int\xE9r\xEAt simple de 5 000 \u20AC \xE0 2,5 % pendant quatre ans :", ["50 \u20AC", "500 \u20AC", "5 000 \u20AC", "50 000 \u20AC"], 1), qc("Capital qui rapporte 600 \u20AC \xE0 2 % pendant 25 mois :", ["14 400 \u20AC", "1 200 \u20AC", "62 500 \u20AC"], 0), qc("Taux annuel d\u2019un capital de 1 618 \u20AC qui rapporte 72,81 \u20AC en trois ans :", ["2 %", "1,5 %", "13,5 %", "15 %"], 1), qc("Taux mensuel pour 2 000 \u20AC qui rapporte 400 \u20AC en huit mois :", ["2,5 %", "0,25 %", "25 %", "0,025 %"], 0)]),
+      V(6, 2, "2 000 \u20AC plac\xE9s \xE0 2 % (int\xE9r\xEAts simples) pendant cinq ans.", [nm("Int\xE9r\xEAt simple :", 200, "\u20AC"), nm("Valeur acquise :", 2200, "\u20AC")]),
+      V(6, 3, "1 000 \u20AC plac\xE9s \xE0 3 % (int\xE9r\xEAts simples) pendant 150 jours (ann\xE9e de 360 jours).", [nm("Valeur acquise :", 1012.5, "\u20AC")]),
+      V(6, 4, "Co\xFBt total de 1 800 \u20AC pour 60 objets.", [nm("Co\xFBt moyen unitaire :", 30, "\u20AC")]),
+      AQ(6, 1, "Valeur acquise par 1 500 \u20AC \xE0 int\xE9r\xEAts compos\xE9s pendant trois ans \xE0 3 % par an :", ["4 635 \u20AC", "1 639 \u20AC", "2 850 \u20AC", "1 968 \u20AC"], 1),
+      AQ(6, 2, "Valeur acquise par 800 \u20AC \xE0 int\xE9r\xEAts compos\xE9s pendant 15 mois \xE0 1,5 % par mois :", ["1 800 \u20AC", "980 \u20AC", "12 180 \u20AC", "1 000 \u20AC"], 3),
+      AQ(6, 3, "Valeur acquise par 2 200 \u20AC \xE0 int\xE9r\xEAts compos\xE9s pendant 23 mois \xE0 2 % par an :", ["2 285 \u20AC", "2 244 \u20AC", "3 469 \u20AC", "3 212 \u20AC"], 0),
+      AQ(6, 4, "Dur\xE9e pour que 500 \u20AC \xE0 8 % par an (int\xE9r\xEAts compos\xE9s) deviennent 1 259 \u20AC :", ["12 ans", "14 ans", "15 ans", "19 ans"], 0),
+      AQ(6, 6, "Dur\xE9e pour que 1 000 \u20AC \xE0 3 % par an (int\xE9r\xEAts compos\xE9s) deviennent 1 605 \u20AC :", ["18 ans", "16 ans", "3 ans", "19 ans"], 1),
+      AQ(6, 7, "Taux mensuel \xE9quivalent \xE0 un taux annuel de 9 % (int\xE9r\xEAts compos\xE9s) :", ["0,72 %", "0,75 %", "2 %", "10,8 %"], 0),
+      AQ(6, 8, "2 000 \u20AC pendant 4 ans : 3 % les deux premi\xE8res ann\xE9es, 30 % les deux suivantes. Taux unique \xE9quivalent :", ["15,7 %", "16,5 %", "30 %", "33 %"], 0),
+      A(6, "P", "Probl\xE8me. Emprunt de 35 000 \u20AC au taux mensuel de 0,22 %, rembours\xE9 en cinq annuit\xE9s constantes.", [nm("Taux annuel \xE9quivalent (en %, au dixi\xE8me) :", 2.7, "%", "$1{,}0022^{12} - 1 \u2248 0{,}0267$"), nm("Int\xE9r\xEAt de la 1re ann\xE9e (taux 2,7 %) :", 945, "\u20AC")])
+    ],
+    c7: [
+      AQ(7, 6, "$\\overrightarrow{AB} + \\overrightarrow{BE} =$", ["$\\overrightarrow{EA}$", "$\\overrightarrow{AE}$", "$\\overrightarrow{GE}$", "$\\overrightarrow{BD}$"], 1),
+      A(7, "P", "Probl\xE8me. Barre de centre de gravit\xE9 G(2 ; 2 ; 4), \xE9lingues fix\xE9es en A(2 ; 0,5 ; 4,1) et B(2 ; 3,5 ; 4,1) ; C est \xE0 la verticale de G, \xE0 1,50 m.", [nm("Cote de C :", 5.5), nm("Ordonn\xE9e de $\\overrightarrow{AC}$ :", 1.5), nm("Cote de $\\overrightarrow{AC}$ :", 1.4), nm("Longueur AC (\xE0 0,01 m) :", 2.05, "m", "$\\sqrt{1{,}5^2 + 1{,}4^2}$"), nm("Longueur BC (\xE0 0,01 m) :", 2.05, "m")])
+    ],
+    c8: [
+      V(8, 1, "Valeurs remarquables. " + PL, [vf("$\\cos\\left(\\frac{5\\pi}{6}\\right) = -\\frac{\\sqrt{3}}{2}$", 1), vf("$\\sin\\left(\\frac{3\\pi}{2}\\right) = 1$", 0), vf("$\\cos\\left(\\frac{\\pi}{4}\\right) = \\sin\\left(\\frac{3\\pi}{4}\\right)$", 1), vf("$\\cos\\left(\\frac{\\pi}{4}\\right) = \\cos\\left(\\frac{3\\pi}{4}\\right)$", 0), vf("$\\cos\\left(\\frac{4\\pi}{3}\\right) = -\\cos\\left(\\frac{\\pi}{3}\\right)$", 1), vf("$\\cos\\left(\\frac{4\\pi}{3}\\right) = -\\frac{\\sqrt{3}}{2}$", 0), vf("$\\sin\\left(\\frac{\\pi}{4} + 2\\pi\\right) = \\sin\\left(\\frac{\\pi}{4} - 2\\pi\\right)$", 1)]),
+      AQ(8, 1, "$i(t) = 4\\sin\\left(314t + \\frac{\\pi}{2}\\right)$. Valeur de $i$ \xE0 $t = 0$ :", ["4", "\u22124", "0", "314"], 0),
+      AQ(8, 2, "Vecteur de Fresnel associ\xE9 \xE0 $i(t) = 4\\sin\\left(314t + \\frac{\\pi}{2}\\right)$ :", ["$(314\\,;0{,}5)$", "$\\left(2\\,;\\frac{\\pi}{2}\\right)$", "$\\left(4\\,;\\frac{\\pi}{2}\\right)$", "$\\left(\\frac{4}{\\sqrt{2}}\\,;0{,}5\\right)$"], 2),
+      A(8, 3, "Sur $]-\\pi\\,;\\pi]$, l\u2019\xE9quation $\\cos(x) = 0$ admet comme solution : " + PL, [vf("$\\pi$", 0), vf("$\\frac{\\pi}{2}$", 1), vf("0", 0), vf("$-\\frac{\\pi}{2}$", 1)]),
+      AQ(8, 4, "Sur $]-\\pi\\,;\\pi]$, l\u2019\xE9quation $\\sin(x) = \\frac{1}{2}$ admet comme solution :", ["$-\\frac{\\pi}{6}$", "$-\\frac{5\\pi}{6}$", "$\\frac{\\pi}{6}$", "0"], 2),
+      AQ(8, 6, "Tension sinuso\xEFdale de fr\xE9quence 50 Hz, valeur maximale 230 V, phase \xE0 l\u2019origine nulle :", ["$u(t) = 230\\sin\\left(100\\pi t - \\frac{\\pi}{4}\\right)$", "$u(t) = 230\\sin(120\\pi t)$", "$u(t) = 230\\sin(100\\pi t)$", "$u(t) = 230\\sqrt{2}(100\\pi t + \\pi)$"], 2),
+      AQ(8, 7, "Nombre de solutions de $\\cos(x) = 0{,}3$ sur $]-\\pi\\,;\\pi]$ :", ["2", "0", "1", "une infinit\xE9"], 0),
+      AQ(8, 8, "Solutions de $\\cos(x) = 0{,}3$ sur $]-\\pi\\,;\\pi]$ :", ["environ 1,266 rad et \u22121,266 rad", "$\\cos^{-1}(0{,}7)$", "pas de solution possible", "72\xB0"], 0),
+      AQ(8, 9, "Nombre de solutions de $0{,}2\\sin\\left(314x + \\frac{\\pi}{4}\\right) = 1$ sur $]-\\pi\\,;\\pi]$ :", ["2", "0", "4", "une infinit\xE9"], 1, "il faudrait $\\sin = 5 > 1$"),
+      A(8, "P", "Probl\xE8me. $i_3(t) = 5\\sin\\left(\\pi t + \\frac{5\\pi}{16}\\right)$ et $i_1(t) = 3\\sin(\\pi t)$.", [nm("Angle de $\\frac{5\\pi}{16}$ rad en degr\xE9s :", 56.25, "\xB0")])
+    ]
+  } });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
