@@ -46638,6 +46638,202 @@ window.M4PLAN = {
   });
 })();
 (function() {
+  const R = (a, b) => {
+    const L = [];
+    for (let i = a; i <= b; i++) L.push(i);
+    return L;
+  };
+  const P = window.MNPLAN = window.MNPLAN || {};
+  P.trois = { ch: {
+    1: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(7, 10)], ["QCM : r\xE9ponses multiples", R(11, 14)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(15, 19)]]],
+      ["Automatismes", [["Division euclidienne", R(20, 26)], ["Crit\xE8res de divisibilit\xE9", R(27, 33)], ["Nombres premiers", R(34, 39)], ["D\xE9composition en produit de facteurs premiers", R(40, 48)], ["Fractions irr\xE9ductibles", R(49, 54)]]],
+      ["Entra\xEEnement", [["Divisibilit\xE9", R(55, 66)], ["Nombres premiers et fractions irr\xE9ductibles", R(67, 79)]]],
+      ["Approfondissement", [["Approfondissement", R(80, 87)], ["Club de maths", R(88, 89)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(90, 95)]]]
+    ] },
+    2: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(11, 14)], ["QCM : r\xE9ponses multiples", R(15, 17)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(18, 21)]]],
+      ["Automatismes", [["Nombres relatifs", R(22, 25)], ["Nombres en \xE9criture fractionnaire", R(26, 33)], ["Puissances de base quelconque", R(34, 42)], ["Notation scientifique et pr\xE9fixes", R(43, 46)]]],
+      ["Entra\xEEnement", [["R\xE8gles de calculs", R(47, 66)], ["Puissances et notation scientifique", R(67, 80)]]],
+      ["Approfondissement", [["Approfondissement", R(81, 88)], ["Club de maths", R(89, 91)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(92, 96)]]]
+    ] },
+    3: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(7, 10)], ["QCM : r\xE9ponses multiples", R(11, 14)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(15, 17)]]],
+      ["Automatismes", [["Simplifier, r\xE9duire et mod\xE9liser", R(18, 21)], ["D\xE9velopper et r\xE9duire", R(22, 30)], ["Factoriser une expression", R(31, 32)], ["Utiliser une identit\xE9 remarquable", R(33, 39)]]],
+      ["Entra\xEEnement", [["Distributivit\xE9", R(40, 62)], ["Identit\xE9 remarquable", R(63, 69)]]],
+      ["Approfondissement", [["Approfondissement", R(70, 75)], ["Club de maths", R(76, 79)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(80, 84)]]]
+    ] }
+  } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 1 \xAB Nombres entiers \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const fc = (n) => ({ k: "fact", n });
+  const ir = (e, lab) => ({ k: "calc", e, lab, irr: 1 });
+  const DE = "Division euclidienne de $a$ par $b$ : **$a = b \xD7 q + r$** avec **$0 \u2264 r < b$**.";
+  const PRE = "Un nombre **premier** a **exactement deux diviseurs** : 1 et lui-m\xEAme. Tout entier \u2265 2 se **d\xE9compose de fa\xE7on unique** en produit de facteurs premiers.";
+  const CRI = "Divisible par **2** : unit\xE9s 0, 2, 4, 6, 8 ; par **3** : **somme des chiffres** multiple de 3 ; par **5** : unit\xE9s 0 ou 5 ; par **9** : somme des chiffres multiple de 9.";
+  const IRR = "Pour rendre une fraction **irr\xE9ductible**, on **d\xE9compose** num\xE9rateur et d\xE9nominateur en produits de facteurs premiers et on **simplifie par les facteurs communs**.";
+  const PG = "Le **plus grand diviseur commun** de deux nombres s\u2019obtient avec leurs d\xE9compositions en facteurs premiers (produit des facteurs communs).";
+  ADD("trois", {
+    mnx: {
+      c1: [
+        { n: "1-7", src: S(18, 7), t: "Une seule r\xE9ponse est juste.", rule: DE, it: [qc("L\u2019\xE9galit\xE9 $114 = 15 \xD7 7 + 9$ correspond \xE0 la division euclidienne de :", ["114 par 15", "114 par 9", "114 par 7", "15 par 7"], 0, "le reste 9 est inf\xE9rieur \xE0 15, pas \xE0 7")] },
+        { n: "1-8", src: S(18, 8), t: "Une seule r\xE9ponse est juste.", rule: PRE, it: [qc("Le nombre 31 est :", ["premier", "pair", "non premier", "divisible par 3"], 0)] },
+        { n: "1-9", src: S(18, 9), t: "Une seule r\xE9ponse est juste.", rule: PRE, it: [qc("Les six premiers nombres premiers sont :", ["1, 2, 3, 5, 7 et 11", "1, 2, 3, 4, 5 et 6", "2, 3, 5, 7, 11 et 13", "1, 4, 6, 8, 9 et 10"], 2, "1 n\u2019est pas premier")] },
+        { n: "1-10", src: S(18, 10), t: "Une seule r\xE9ponse est juste.", rule: PRE, it: [qc("La d\xE9composition en un produit de facteurs premiers de 132 est :", ["$2 \xD7 6 \xD7 11$", "$2 \xD7 3 \xD7 22$", "$4 \xD7 3 \xD7 11$", "$2^2 \xD7 3 \xD7 11$"], 3)] },
+        { n: "1-11", src: S(18, 11), t: "3 021 est un nombre\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: CRI, it: [vf("impair", 1), vf("premier", 0, "$3 + 0 + 2 + 1 = 6$ : 3 021 est divisible par 3"), vf("divisible par 3", 1), vf("non premier", 1)] },
+        { n: "1-12", src: S(18, 12), t: "$\\frac{540}{288}$ est \xE9gal \xE0\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: IRR, it: [vf("$\\frac{270}{144}$", 1), vf("$\\frac{54}{28}$", 0), vf("$\\frac{15}{8}$", 1), vf("$\\frac{60}{32}$", 1)] },
+        { n: "1-13", src: S(18, 13), t: "903 est\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: CRI, it: [vf("divisible par 21 mais pas par 42", 1, "$903 = 21 \xD7 43$, et 903 est impair"), vf("divisible par 9 et par 3", 0, "$9 + 0 + 3 = 12$"), vf("divisible par 3 mais pas par 9", 1), vf("divisible ni par 3 ni par 9", 0)] },
+        { n: "1-14", src: S(18, 14), t: "La d\xE9composition en un produit de facteurs premiers de 660 est\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: PRE, it: [vf("$2^2 \xD7 3 \xD7 5 \xD7 11$", 1), vf("$2^2 \xD7 15 \xD7 11$", 0, "15 n\u2019est pas premier"), vf("$2^2 \xD7 5 \xD7 11 \xD7 3$", 1, "l\u2019ordre des facteurs ne compte pas"), vf("$2^2 \xD7 5 \xD7 33$", 0, "33 n\u2019est pas premier")] },
+        { n: "1-15", src: S(19, 15), t: "\xC0 l\u2019aide de la calculatrice (touche \xAB D\xE9comp \xBB), d\xE9composer en un produit de facteurs premiers.", rule: PRE, it: [fc(587300), fc(277134), fc(789880)] },
+        { n: "1-16", src: S(19, 16), t: "liste1 = {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024} et liste2 = {1, 2, 4, 8, 11, 16, 22, 44, 88, 176}.", rule: IRR, it: [qc("Les nombres des listes 1 et 2 sont :", ["les diviseurs de 1 024 et de 176", "les multiples de 1 024 et de 176", "des nombres premiers"], 0), ir("176/1024")] },
+        { n: "1-18", src: S(19, 18), t: "Avec la commande ListeDiviseurs de GeoGebra, d\xE9terminer la liste des diviseurs.", it: [{ k: "divs", n: 515 }, { k: "divs", n: 176 }, { k: "divs", n: 252 }] },
+        { n: "1-19", src: S(19, 19), t: "Un programme Scratch demande un num\xE9rateur et un d\xE9nominateur puis les divise par 2, 3, 4\u2026 tant que c\u2019est possible, jusqu\u2019\xE0 10.", rule: IRR, it: [nm("Avec la fraction $\\frac{9}{27}$, le programme affiche la fraction :", "1/3"), ir("66/110")] },
+        { n: "1-73", src: S(25, 73), t: "D\xE9composer en produits de facteurs premiers, puis simplifier.", rule: IRR, it: [fc(1767), fc(1302), ir("1302/1767")] },
+        { n: "1-74", src: S(25, 74), t: "Fraction $\\frac{288}{224}$.", rule: IRR, it: [qc("Sans calcul, $\\frac{288}{224}$ n\u2019est pas irr\xE9ductible car :", ["288 et 224 sont pairs", "288 est un carr\xE9", "224 est premier"], 0), fc(288), fc(224), ir("288/224")] },
+        { n: "1-76", src: S(25, 76), t: "Calculer et donner le r\xE9sultat sous forme irr\xE9ductible.", rule: IRR, it: [ir("7/9 \u2212 5/6", "A"), ir("13/7 \xD7 14 \xD7 5/26", "B"), nm("$C = \\dfrac{\\frac{3}{7} \xD7 2}{\\frac{5}{3} - 1} =$", "9/7")] },
+        { n: "1-77", src: S(25, 77), t: "Trouver la fraction \xE9gale \xE0 $\\frac{360}{504}$ dont le d\xE9nominateur est \xE9gal \xE0 1 001.", rule: IRR, it: [fc(360), fc(504), ir("360/504"), nm("Quotient de la division euclidienne de 1 001 par 7 :", 143), nm("$\\frac{360}{504} = \\frac{\u2026}{1001}$ : num\xE9rateur", 715)] },
+        { n: "1-78", src: S(25, 78), t: "$D = \\frac{756}{441} + \\frac{19}{21}$.", rule: IRR, it: [fc(756), fc(441), ir("756/441"), ir("756/441+19/21", "D")] },
+        { n: "1-80", src: S(26, 80), t: "On pose $F = \\frac{n+9}{n-6}$, o\xF9 $n$ est un entier strictement sup\xE9rieur \xE0 6.", rule: IRR, it: [nm("Pour $n = 9$ : $F =$", 6), nm("Pour $n = 25$ : $F =$ (fraction irr\xE9ductible)", "34/19"), nm("Pour $n = 46$ : $F =$ (fraction irr\xE9ductible)", "11/8"), { k: "set", q: "Valeurs de $n$ pour lesquelles $F$ est entier ($F = 1 + \\frac{15}{n-6}$) :", a: ["7", "9", "11", "21"], c: "$n - 6$ divise 15" }] },
+        { n: "1-81", src: S(26, 81), t: "Terrain rectangulaire de 1 309 m sur 1 001 m. Pins r\xE9guli\xE8rement espac\xE9s, distance enti\xE8re entre 3 et 8 m, un pin \xE0 chaque sommet.", rule: PG, it: [{ k: "divs", n: 1309 }, { k: "divs", n: 1001 }, { k: "set", q: "Diviseurs communs de 1 309 et 1 001 :", a: ["1", "7", "11", "77"] }, nm("Distance entre deux pins :", 7, "m"), nm("Nombre de pins :", 27072, "", "$(1309 \xF7 7 + 1) \xD7 (1001 \xF7 7 + 1) = 188 \xD7 144$")] },
+        { n: "1-82", src: S(26, 82), t: "On donne $a = \\frac{1}{2}$, $b = -\\frac{1}{3}$ et $c = \\frac{1}{4}$.", rule: IRR, it: [nm("$A = a + b + c =$", "5/12"), nm("$B = a \xD7 b + c =$", "1/12"), nm("$C = a \xD7 (b + c) =$", "\u22121/24"), nm("$D = \\dfrac{a+b}{c} =$", "2/3")] },
+        { n: "1-83", src: S(26, 83), t: "Calculer et donner le r\xE9sultat sous forme irr\xE9ductible.", rule: IRR, it: [ir("222/667 + 2/3", "A"), nm("$B = \\frac{2}{5} + \\frac{3}{5} \xF7 \\left(1 - \\frac{1}{10}\\right) =$", "16/15"), { k: "num", q: "$D = \\frac{5 \xD7 10^{2000}}{20 \xD7 10^{2001}} =$", a: "1/40" }, { k: "num", q: "$E = \\frac{5{,}1 \xD7 10^2 - 270 \xD7 0{,}1}{4{,}83 \xD7 10^2} =$", a: "1" }, nm("$F = \\frac{4}{3} - 3 \xD7 \\frac{13+1}{13-1} =$", "\u221213/6")] },
+        { n: "1-84", src: S(26, 84), t: "Sans calculatrice.", it: [{ k: "calc", e: "\u22124^2 + 10^3 \xD7 0,1 + (\u22123)^2", lab: "A" }, vf("A est un multiple de 3.", 1, "$93 = 3 \xD7 31$")] },
+        { n: "1-86", src: S(27, 86), t: "N s\u2019\xE9crit $115x$ (divisible par 5 et par 3) et M s\u2019\xE9crit $14y5$ (divisible par 9).", rule: CRI + " " + IRR, it: [nm("$x =$", 5), nm("$y =$", 8), ir("1155/1485")] },
+        { n: "1-87", src: S(27, 87), t: "1 euro = 6,559 57 francs.", it: [nm("Prix d\u2019un s\xE8che-cheveux \xE0 128 francs (arrondi au centime) :", 19.51, "\u20AC"), nm("Prix d\u2019un manteau \xE0 1 200 francs (arrondi au centime) :", 182.94, "\u20AC"), nm("Prix d\u2019un r\xE9frig\xE9rateur \xE0 372,50 \u20AC (arrondi au centime) :", 2443.44, "francs"), nm("Prix d\u2019une jupe \xE0 29,73 \u20AC (arrondi au centime) :", 195.02, "francs")] },
+        { n: "1-88", src: S(27, 88), t: "D\xE9fi : nombre de quatre chiffres. Unit\xE9s = centaines ; dizaines = unit\xE9s de mille ; unit\xE9s + dizaines est un nombre premier ; unit\xE9s et dizaines sont des carr\xE9s parfaits ; le nombre form\xE9 par les deux derniers chiffres est un carr\xE9 parfait.", it: [nm("Qui suis-je ?", 4949)] },
+        { n: "1-89", src: S(27, 89), t: "\xC9nigme : 283 roses et 397 tulipes ; apr\xE8s avoir d\xE9cor\xE9 le plus grand nombre de chars de fa\xE7on identique, il reste 3 roses et 2 tulipes.", rule: PG, it: [nm("Nombre de chars :", 5, "", "PGCD de 280 et 395"), nm("Roses par char :", 56), nm("Tulipes par char :", 79)] },
+        { n: "1-90", src: S(28, 90), t: "D\u2019apr\xE8s brevet. \xAB Pour tous les nombres entiers $n$ compris entre 2 et 9, le nombre $2^n - 1$ est un nombre premier. \xBB", rule: PRE, it: [vf("L\u2019affirmation est vraie.", 0, "$2^4 - 1 = 15 = 3 \xD7 5$")] },
+        { n: "1-91", src: S(28, 91), t: "D\u2019apr\xE8s brevet. Laboratoire A : proportion de souris malades $\\frac{46}{145}$. Laboratoire B : $\\frac{140}{870}$.", rule: IRR, it: [vf("On peut simplifier $\\frac{46}{145}$.", 0, "$46 = 2 \xD7 23$ et $145 = 5 \xD7 29$"), fc(140), fc(870), ir("140/870")] },
+        { n: "1-92", src: S(28, 92), t: "D\u2019apr\xE8s brevet. Mosa\xEFque sur un rectangle de 108 cm sur 225 cm, avec des carreaux carr\xE9s identiques, sans d\xE9coupe.", rule: PG, it: [vf("Carole peut utiliser des carreaux de 3 cm de c\xF4t\xE9.", 1), vf("Carole peut utiliser des carreaux de 6 cm de c\xF4t\xE9.", 0, "225 n\u2019est pas divisible par 6"), nm("Dimension maximale des carreaux :", 9, "cm"), nm("Nombre de carreaux :", 300, "", "$12 \xD7 25$")] },
+        { n: "1-93", src: S(28, 93), t: "D\u2019apr\xE8s brevet. Nombres 850 et 714.", rule: IRR, it: [fc(850), fc(714), ir("850/714")] },
+        { n: "1-94", src: S(28, 94), t: "D\u2019apr\xE8s brevet. Pierre partage \xE9quitablement 84 sucettes et 147 bonbons.", rule: PG, it: [nm("Nombre maximal de personnes :", 21), nm("Sucettes par part :", 4), nm("Bonbons par part :", 7)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 2 \xAB Calcul num\xE9rique \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const tx = (q, a, c) => ({ k: "txt", q, a, c });
+  const REL = "Soustraire revient \xE0 **ajouter l\u2019oppos\xE9** ; diviser revient \xE0 **multiplier par l\u2019inverse**. Un produit est **n\xE9gatif** si le nombre de facteurs n\xE9gatifs est **impair**.";
+  const FRA = "**$\\frac{a}{c} + \\frac{b}{c} = \\frac{a+b}{c}$** ; **$\\frac{a}{b} \xD7 \\frac{c}{d} = \\frac{a \xD7 c}{b \xD7 d}$** ; **$\\frac{a}{b} \xF7 \\frac{c}{d} = \\frac{a}{b} \xD7 \\frac{d}{c}$**.";
+  const PUI = "**$a^n = a \xD7 a \xD7 \u2026 \xD7 a$** ($n$ facteurs) ; **$a^{-n} = \\frac{1}{a^n}$** ; **$a^0 = 1$** ; **$a^m \xD7 a^n = a^{m+n}$** ; **$(a^m)^n = a^{mn}$**.";
+  const SCI = "Notation scientifique : **$a \xD7 10^n$** avec **$1 \u2264 a < 10$**. Pr\xE9fixes : **m\xE9ga $10^6$**, kilo $10^3$, milli $10^{-3}$, **micro $10^{-6}$**, **nano $10^{-9}$**.";
+  ADD("trois", {
+    mnx: {
+      c2: [
+        { n: "2-11", src: S(38, 11), t: "Une seule r\xE9ponse est juste.", rule: REL, it: [qc("$(-5) - (-13) =$", ["8", "\u221218", "\u22128", "18"], 0)] },
+        { n: "2-12", src: S(38, 12), t: "Une seule r\xE9ponse est juste.", rule: FRA, it: [qc("$\\frac{7}{3} + \\frac{7}{10} =$", ["$\\frac{7}{13}$", "$\\frac{91}{30}$", "$\\frac{14}{13}$", "$\\frac{14}{30}$"], 1)] },
+        { n: "2-13", src: S(38, 13), t: "Une seule r\xE9ponse est juste.", rule: PUI, it: [qc("$4^{-6} =$", ["$-4^6$", "$\\frac{1}{4096}$", "$(-4)^6$", "$-\\frac{1}{4^6}$"], 1)] },
+        { n: "2-14", src: S(38, 14), t: "Une seule r\xE9ponse est juste.", rule: SCI, it: [qc("La distance Terre-Lune est d\u2019environ 384 400 km. Sa notation scientifique est :", ["$3{,}844 \xD7 10^5$ km", "$3\\,844 \xD7 10^2$ km", "384 giga km", "384 400 000 km"], 0)] },
+        { n: "2-15", src: S(38, 15), t: "Le produit de trois nombres est n\xE9gatif si\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: REL, it: [vf("tous les nombres sont positifs.", 0), vf("un seul des nombres est positif.", 0, "deux facteurs n\xE9gatifs : produit positif"), vf("deux des nombres sont positifs.", 1), vf("aucun des nombres n\u2019est positif.", 1)] },
+        { n: "2-16", src: S(38, 16), t: "Quels calculs ont pour r\xE9sultat 0 ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: FRA, it: [vf("La somme d\u2019un nombre et de son oppos\xE9.", 1), vf("$\\frac{1}{3} - \\frac{1}{3} \xD7 2$", 0, "$= -\\frac{1}{3}$"), vf("La somme d\u2019un nombre et de son inverse.", 0), vf("$4^0 - \\frac{3}{4} \xD7 \\frac{16}{12}$", 1, "$1 - 1 = 0$")] },
+        { n: "2-17", src: S(38, 17), t: "Quels pr\xE9fixes sont correctement associ\xE9s \xE0 la puissance de 10 ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: SCI, it: [vf("M\xE9ga et $10^6$", 1), vf("Milli et $10^3$", 0, "milli : $10^{-3}$"), vf("Micro et $10^{-6}$", 1), vf("Nano et $10^{-9}$", 1)] },
+        { n: "2-18", src: S(39, 18), t: "Programme : choisir un nombre, lui ajouter 4, multiplier le r\xE9sultat par \u22121.", rule: REL, it: [nm("R\xE9sultat affich\xE9 pour 6 :", -10), nm("R\xE9sultat affich\xE9 pour \u221210 :", 6)] },
+        { n: "2-19", src: S(39, 19), t: "L\u2019algorithme demande un nombre $a$ et un entier $n$ ; si $n > 0$ il multiplie $n$ fois 1 par $a$, sinon il calcule $1 \xF7 a$ r\xE9p\xE9t\xE9 $-n$ fois.", rule: PUI, it: [qc("\xC0 quoi sert cet algorithme ?", ["\xE0 calculer $a^n$", "\xE0 calculer $a \xD7 n$", "\xE0 calculer $n^a$"], 0)] },
+        { n: "2-20", src: S(39, 20), t: "Tester l\u2019\xE9galit\xE9 de deux fractions par le produit en croix.", rule: FRA, it: [vf("$\\frac{11\\,214}{65\\,536}$ et $\\frac{5\\,607}{32\\,768}$ sont \xE9gales.", 1, "$11\\,214 \xD7 32\\,768 = 5\\,607 \xD7 65\\,536$")] },
+        { n: "2-21", src: S(39, 21), t: "Le programme met deux fractions au m\xEAme d\xE9nominateur puis les additionne. Calculer (fraction irr\xE9ductible).", rule: FRA, it: [{ k: "calc", e: "13/5 + 7/9", lab: "A", irr: 1 }, { k: "calc", e: "3/4 + 7/8", lab: "B", irr: 1 }, { k: "calc", e: "27/12 + 25/4", lab: "C", irr: 1 }] },
+        { n: "2-81", src: S(46, 81), t: "$A = \\frac{6}{14} - \\frac{17}{14} \xF7 \\frac{5}{7}$ et $B = \\frac{8 \xD7 10^8 \xD7 1{,}6}{0{,}4 \xD7 10^{-2}}$.", rule: FRA + " " + SCI, it: [nm("$A =$ (fraction irr\xE9ductible)", "\u221289/70"), nm("\xC9criture d\xE9cimale de $B$ :", 32e10), { k: "pw", q: "\xC9criture scientifique de $B$ :", x: 32e10 }] },
+        { n: "2-82", src: S(46, 82), t: "$A = \\dfrac{\\frac{5}{2} \xD7 \\frac{3}{4} + 1}{\\frac{1}{10} + \\frac{7}{5}}$ et $B = (2^2 + 7\\,035^0)^3 - (2^4 + 7{,}5)^2$.", rule: FRA + " " + PUI, it: [nm("$A =$ (fraction irr\xE9ductible)", "23/12"), nm("Valeur approch\xE9e de $A$ au milli\xE8me :", 1.917), nm("$B =$", "\u2212427,25"), { k: "pw", q: "\xC9criture scientifique de $B$ :", x: -427.25 }] },
+        { n: "2-83", src: S(46, 83), t: "$A = \\frac{2}{5} + \\frac{1}{4}$, $B = \\frac{2}{5} - \\frac{1}{4}$ et $C = \\frac{A}{B}$ ; $D = (2^3)^2$, $E = 4^5 \xD7 3^5$ et $F = \\frac{5^{26}}{5^{17}}$.", rule: FRA + " " + PUI, it: [nm("$C =$ (fraction irr\xE9ductible)", "13/3"), nm("$D = 2^{n}$ avec $n =$", 6), nm("$E = 12^{n}$ avec $n =$", 5), nm("$F = 5^{n}$ avec $n =$", 9)] },
+        { n: "2-84", src: S(46, 84), t: "Vrai ou faux ? Justifier.", rule: FRA, it: [vf("$\\frac{3}{5} + \\frac{1}{2} = \\frac{3+1}{5+2}$", 0, "$\\frac{3}{5} + \\frac{1}{2} = \\frac{11}{10}$"), vf("Un peintre utilise $\\frac{1}{6}$ du pot pour une couche (int\xE9rieur et ext\xE9rieur) d\u2019un volet. Pour quatre paires de volets et trois couches, il lui faut deux pots.", 0, "$8 \xD7 3 \xD7 \\frac{1}{6} = 4$ pots")] },
+        { n: "2-85", src: S(47, 85), t: "72 000 places : $\\frac{1}{3}$ pour les Br\xE9siliens (organisateurs), $\\frac{1}{6}$ pour les supporters de chaque \xE9quipe, $\\frac{1}{24}$ pour les sponsors, le reste en vente libre.", rule: FRA, it: [nm("Places r\xE9serv\xE9es aux supporters fran\xE7ais lors d\u2019un match de la France :", 12e3), nm("Quand le Br\xE9sil joue, fraction des places r\xE9serv\xE9es aux supporters br\xE9siliens :", "1/2"), nm("Places en vente libre :", 21e3)] },
+        { n: "2-86", src: S(47, 86), t: "Un producteur vend les $\\frac{3}{5}$ de sa production \xE0 un supermarch\xE9 ; un fabricant de jus ach\xE8te les $\\frac{3}{4}$ de ce qui reste ; il lui reste finalement 2 tonnes. Prix : supermarch\xE9 1,30 \u20AC/kg, jus 0,90 \u20AC/kg, particuliers 2,30 \u20AC le sachet de 2 kg.", rule: FRA, it: [nm("Fraction de la production achet\xE9e par le fabricant de jus :", "3/10"), nm("Fraction qui reste au producteur :", "1/10"), nm("Production initiale :", 20, "tonnes"), nm("Recette totale :", 23300, "\u20AC")] },
+        { n: "2-87", src: S(47, 87), t: "$A = 12 \xD7 \\left(\\frac{3}{4} - 1\\right)^2$.", rule: FRA + " " + PUI, it: [nm("$A =$", "3/4")] },
+        { n: "2-88", src: S(47, 88), t: "Sur une droite gradu\xE9e en centim\xE8tres, on partage l\u2019intervalle entre $\\frac{1}{8}$ et $\\frac{3}{4}$ en quatre segments de m\xEAme longueur.", rule: FRA, it: [nm("Longueur de chaque segment :", "5/32", "cm")] },
+        { n: "2-89", src: S(47, 89), t: "D\xE9fi : coder en binaire par divisions euclidiennes successives par 2 (exemple : 77 s\u2019\xE9crit 1001101).", it: [tx("Code binaire de 58 :", ["111010"]), tx("Code binaire de 755 :", ["1011110011"])] },
+        { n: "2-90", src: S(47, 90), t: "Casse-t\xEAte : d\xE9coder.", it: [nm("Valeur d\xE9cimale de 1010 (binaire) :", 10), nm("Valeur d\xE9cimale de 10111 (binaire) :", 23), nm("Valeur d\xE9cimale de 10 (hexad\xE9cimal) :", 16), nm("Valeur d\xE9cimale de AB2D (hexad\xE9cimal) :", 43821)] },
+        { n: "2-91", src: S(47, 91), t: "Casse-t\xEAte : un cinqui\xE8me des macarons est \xE0 la vanille, il y a 10 macarons au caf\xE9 de plus qu\u2019\xE0 la vanille et 32 au chocolat.", it: [nm("Nombre total de macarons :", 70)] },
+        { n: "2-92", src: S(48, 92), t: "D\u2019apr\xE8s brevet. Vrai ou faux ?", rule: SCI, it: [vf("Une \xE9olienne produit 5 GWh par an ; une personne a besoin de 7 000 kWh par an. Une \xE9olienne ne couvre pas les besoins de 1 000 personnes pour un an.", 1, "$5 \xD7 10^6$ kWh $< 7 \xD7 10^6$ kWh"), vf("45 %, $\\frac{305}{612}$, 0,5 et $730 \xD7 10^{-3}$ sont rang\xE9s dans l\u2019ordre croissant.", 1, "$0{,}45 < 0{,}498\u2026 < 0{,}5 < 0{,}73$"), vf("Disque externe : 1 000 photos de 900 ko et 65 vid\xE9os de 700 Mo ; ordinateur de 250 Go dont 200 Go utilis\xE9s. Le transfert de tout le disque n\u2019est pas possible.", 0, "$0{,}9 + 45{,}5 = 46{,}4$ Go $< 50$ Go")] },
+        { n: "2-93", src: S(48, 93), t: "D\u2019apr\xE8s brevet. $A = 2 \xD7 10^2 + 10^1 + 10^{-1} + 2 \xD7 10^{-2}$.", rule: SCI, it: [nm("\xC9criture d\xE9cimale de A :", 210.12), { k: "pw", q: "\xC9criture scientifique de A :", x: 210.12 }, nm("$A = \u2026 \xD7 10^{-2}$ :", 21012), nm("$A = 210 + \u2026$ (fraction irr\xE9ductible inf\xE9rieure \xE0 1) :", "3/25")] },
+        { n: "2-94", src: S(48, 94), t: "D\u2019apr\xE8s brevet. \xC9missions de gaz \xE0 effet de serre (en millions de tonnes \xE9quivalent CO\u2082) : France 549,4 en 1990 et 490,2 en 2013 ; Union europ\xE9enne 5 680,9 en 1990, en baisse de 21 % en 2013.", rule: FRA, it: [nm("\xC9missions de l\u2019Union europ\xE9enne en 2013 (\xE0 0,1 pr\xE8s) :", 4487.9, "millions de tonnes"), vf("Diminuer de $\\frac{2}{5}$ par rapport \xE0 1990 revient \xE0 diminuer d\u2019environ $\\frac{1}{3}$ par rapport \xE0 2013.", 1, "$549{,}4 \xD7 \\frac{3}{5} \u2248 329{,}6$ et $490{,}2 \xD7 \\frac{2}{3} \u2248 326{,}8$")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 3 \xAB Calcul litt\xE9ral \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const li = (q, a, c) => ({ k: "lit", q, a, c });
+  const DIS = "Simple distributivit\xE9 : **$k(a + b) = ka + kb$** ; double distributivit\xE9 : **$(a + b)(c + d) = ac + ad + bc + bd$** ; **$-(a + b) = -a - b$**.";
+  const IR = "Identit\xE9 remarquable : **$(a + b)(a - b) = a^2 - b^2$** (d\xE9velopper \u2192, \u2190 factoriser).";
+  const FAC = "Factoriser avec un facteur commun : **$ka + kb = k(a + b)$**.";
+  ADD("trois", {
+    mnx: {
+      c3: [
+        { n: "3-7", src: S(56, 7), t: "Une seule r\xE9ponse est juste.", rule: DIS, it: [qc("$-(-5x + 1)$ est \xE9gal \xE0 :", ["$-5x - 1$", "$5x - 1$", "$5x + 1$", "$-5x + 1$"], 1)] },
+        { n: "3-8", src: S(56, 8), t: "Une seule r\xE9ponse est juste.", rule: DIS, it: [qc("$(2x - 3)(-x + 5)$ est \xE9gal \xE0 :", ["$2x^2 + 13x + 15$", "$-2x^2 + 7x - 15$", "$-2x^2 + 13x - 15$", "$2x^2 + 7x - 15$"], 2)] },
+        { n: "3-9", src: S(56, 9), t: "Une seule r\xE9ponse est juste.", rule: IR, it: [qc("$(x - 3)(x + 3)$ est \xE9gal \xE0 :", ["$x^2 - 9$", "$x^2 - 6x + 9$", "$x^2 + 9$", "$x^2 + 6x + 9$"], 0)] },
+        { n: "3-10", src: S(56, 10), t: "Une seule r\xE9ponse est juste.", rule: IR, it: [qc("La forme factoris\xE9e de $9x^2 - 16$ est :", ["$(9x - 4)(9x + 4)$", "$(3x + 16)(3x - 16)$", "$(3x + 4)(3x + 4)$", "$(3x + 4)(3x - 4)$"], 3)] },
+        { n: "3-11", src: S(56, 11), t: "Dans quel(s) cas peut-on utiliser la double distributivit\xE9 ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: DIS, it: [vf("$(x - 5) \xD7 (2x + 4)$", 1), vf("$(x - 5) + (2x + 4)$", 0), vf("$x - 5 \xD7 (2x + 4)$", 0), vf("$(x - 5)(2x + 4)$", 1)] },
+        { n: "3-12", src: S(56, 12), t: "$(2x - 6)(x + 8)$ est \xE9gal \xE0\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: DIS, it: [vf("$2x^2 + 10x - 48$", 1), vf("$2x^2 + 10x + 48$", 0), vf("$2x^2 + 22x - 48$", 0), vf("$2x^2 + 16x - 6x + 48$", 0, "$-6 \xD7 8 = -48$")] },
+        { n: "3-13", src: S(56, 13), t: "Dans quel(s) cas peut-on utiliser l\u2019identit\xE9 remarquable $a^2 - b^2$ pour factoriser ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: IR, it: [vf("$x^2 - 36$", 1), vf("$x^2 - \\frac{9}{25}$", 1), vf("$4x^2 - 9$", 1), vf("$x^2 + 4$", 0)] },
+        { n: "3-14", src: S(56, 14), t: "La forme factoris\xE9e de $x^2 - 1$ est\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: IR, it: [vf("$(x + 1)(x + 1)$", 0), vf("$(x + 1)(x - 1)$", 1), vf("$(x - 1)(x + 1)$", 1), vf("$(x - 1)(x - 1)$", 0)] },
+        { n: "3-15", src: S(57, 15), t: "Programme : choisir un nombre, ajouter 5, multiplier le r\xE9sultat par 2, soustraire le double du nombre de d\xE9part.", rule: DIS, it: [nm("R\xE9sultat obtenu quel que soit le nombre de d\xE9part :", 10), li("R\xE9sultat en fonction de $x$ (forme r\xE9duite) :", "10", "$2(x + 5) - 2x = 10$")] },
+        { n: "3-16", src: S(57, 16), t: "D\u2019apr\xE8s brevet. Le programme Scratch met A \xE0 la r\xE9ponse, puis A + 3, puis A \xD7 2, puis A \u2212 5.", rule: DIS, it: [qc("Les deux derni\xE8res \xE9tapes du programme sont :", ["Multiplier par 2 puis soustraire 5", "Soustraire 5 puis multiplier par 2", "Multiplier par 5 puis soustraire 2"], 0), nm("R\xE9sultat pour 8 :", 17), li("R\xE9sultat pour $x$ (forme r\xE9duite) :", "2x+1"), nm("Nombre \xE0 choisir pour obtenir 6 :", 2.5)] },
+        { n: "3-17", src: S(57, 17), t: "D\u2019apr\xE8s brevet. Programme 1 : choisir un nombre, soustraire 5, multiplier par 4. Programme 2 : choisir un nombre, multiplier par 6, soustraire 20, soustraire le double du nombre de d\xE9part.", rule: DIS, it: [nm("Programme 1 appliqu\xE9 \xE0 3 :", -8), nm("Programme 2 appliqu\xE9 \xE0 3 :", -8), nm("R\xE9sultat commun pour \u22122 :", -28), qc("Formule \xE0 saisir dans la cellule B2 :", ["=(A2-5)*4", "=A2-5*4", "=(A2*6-20)-2*A2*4"], 0), li("R\xE9sultat commun pour $x$ (forme r\xE9duite) :", "4x-20")] },
+        { n: "3-70", src: S(64, 70), t: "Puits g\xE9othermique en tronc de c\xF4ne : grande base de 46 cm de diam\xE8tre, petite base de 20 cm, hauteur 2 500 m. $V = \\frac{\\pi}{3} \xD7 h \xD7 (R^2 + R \xD7 r + r^2)$.", it: [nm("Volume du puits (arrondi \xE0 l\u2019unit\xE9) :", 225, "m\xB3", "$R = 0{,}23$ m et $r = 0{,}1$ m : $V \u2248 224{,}9$ m\xB3")] },
+        { n: "3-71", src: S(64, 71), t: "Masse d\u2019alcool (en g) : $m = V \xD7 d \xD7 7{,}9$ ($V$ en cL, $d$ degr\xE9 d\u2019alcool). Boisson n\xB01 : 0,05 et 33 cL ; boisson n\xB02 : 0,12 et 125 mL.", it: [nm("Masse d\u2019alcool de la boisson n\xB01 :", 13.035, "g"), nm("Masse d\u2019alcool de la boisson n\xB02 :", 11.85, "g"), qc("La boisson qui a la masse d\u2019alcool la plus \xE9lev\xE9e est :", ["la boisson n\xB01", "la boisson n\xB02"], 0)] },
+        { n: "3-72", src: S(64, 72), t: "Programme : choisir un nombre entier n\xE9gatif, le multiplier par 2, ajouter 3, multiplier le r\xE9sultat par \u22124, ajouter 4.", rule: DIS + " " + FAC, it: [nm("R\xE9sultat pour \u22123 :", 16), { k: "lit", q: "R\xE9sultat pour $x$ d\xE9velopp\xE9 et r\xE9duit :", a: "-8x-8", red: 1 }, vf("Le r\xE9sultat s\u2019\xE9crit $-8(x + 1)$ : c\u2019est toujours un multiple de 8.", 1)] },
+        { n: "3-73", src: S(64, 73), t: "Paul construit une suite de maisons avec des allumettes : 6 allumettes \xE0 l\u2019\xE9tape 1, 11 \xE0 l\u2019\xE9tape 2, 16 \xE0 l\u2019\xE9tape 3.", it: [nm("Allumettes pour l\u2019\xE9tape 4 :", 21), li("Nombre d\u2019allumettes \xE0 l\u2019\xE9tape $n$ :", "5n+1"), nm("Allumettes pour l\u2019\xE9tape 2020 :", 10101)] },
+        { n: "3-74", src: S(65, 74), t: "Programme : choisir un nombre entier, le multiplier par 3, soustraire 6, \xE9lever le r\xE9sultat au carr\xE9.", rule: DIS, it: [nm("R\xE9sultat pour \u22122 :", 144), li("R\xE9sultat pour $x$ :", "(3x-6)^2"), vf("$(3x - 6)^2 = 9(x - 2)^2$ : c\u2019est toujours un multiple de 9.", 1)] },
+        { n: "3-75", src: S(65, 75), t: "$C = (2x - 3)(-x + 1) + 3$.", rule: DIS + " " + FAC, it: [{ k: "lit", q: "$C$ d\xE9velopp\xE9 et r\xE9duit :", a: "-2x^2+5x", red: 1 }, { k: "lit", q: "$C$ factoris\xE9 :", a: "x(-2x+5)", fac: 1 }, nm("$C$ pour $x = 0$ :", 0), nm("$C$ pour $x = \\frac{3}{2}$ :", 3), nm("$C$ pour $x = \\frac{5}{2}$ :", 0)] },
+        { n: "3-76", src: S(65, 76), t: "\xC9nigme : \xAB Ajoutez 3 \xE0 votre \xE2ge, multipliez par 10, divisez ensuite par 5 puis retranchez 5. \xBB Emma annonce 47 ; le magicien r\xE9pond 23 ans.", it: [li("Nombre annonc\xE9 pour un \xE2ge $a$ :", "2a+1"), nm("\xC2ge d\u2019un spectateur qui annonce 61 :", 30)] },
+        { n: "3-77", src: S(65, 77), t: "Casse-t\xEAte : Sarah choisit un entier $n$. \xC0 la somme des carr\xE9s des deux entiers qui le suivent, elle retranche la somme des carr\xE9s des deux entiers qui le pr\xE9c\xE8dent.", rule: IR, it: [li("R\xE9sultat en fonction de $n$ :", "12n"), nm("R\xE9sultat pour $n = 10$ :", 120)] },
+        { n: "3-78", src: S(65, 78), t: "D\xE9fi : pour un nombre $n$ entre 26 et 100 : \xE9tape 1, soustraire 25 et multiplier par 100 ; \xE9tape 2, soustraire 50 et \xE9lever au carr\xE9 ; \xE9tape 3, ajouter les deux r\xE9sultats.", it: [li("R\xE9sultat en fonction de $n$ :", "n^2"), nm("$38^2 =$", 1444, "", "$13 \xD7 100 + 12^2$")] },
+        { n: "3-79", src: S(65, 79), t: "Casse-t\xEAte : Mia a $n$ bonbons, Sofia 15 de plus que Mia, \xC9lise 3 de plus que Sofia. Mia en mange 5, Sofia 6, \xC9lise 7 ; elles partagent ce qui reste \xE9quitablement.", it: [li("Bonbons re\xE7us par chacune :", "n+5", "$(3n + 15) \xF7 3$")] },
+        { n: "3-80", src: S(66, 80), t: "D\u2019apr\xE8s brevet. Programme : choisir un nombre, le multiplier par 4, ajouter 8, multiplier le r\xE9sultat par 2.", rule: IR + " " + DIS, it: [nm("R\xE9sultat pour \u22121 :", 8), nm("Nombre de d\xE9part pour obtenir 30 :", 1.75), { k: "lit", q: "$B = (4 + x)^2 - x^2$ d\xE9velopp\xE9 et r\xE9duit :", a: "8x+16", red: 1 }, vf("$A = 2(4x + 8)$ et $B$ sont \xE9gales pour tout $x$.", 1)] },
+        { n: "3-81", src: S(66, 81), t: "D\u2019apr\xE8s brevet. Gaspard borde un carr\xE9 de $n$ carreaux bleus de c\xF4t\xE9 avec des carreaux blancs (motif $n$).", it: [nm("Carreaux blancs pour le motif 4 :", 20), nm("C\xF4t\xE9 du carr\xE9 bleu avec 144 carreaux bleus :", 12), nm("Carreaux blancs pour ce carr\xE9 :", 52), qc("L\u2019expression qui ne convient pas est :", ["$2 \xD7 n + 2 \xD7 (n + 2)$", "$4 \xD7 (n + 2)$", "$4 \xD7 (n + 2) - 4$"], 1, "$4(n + 2)$ compte deux fois les coins")] },
+        { n: "3-82", src: S(66, 82), t: "D\u2019apr\xE8s brevet. Nina : choisir un nombre, soustraire 1, multiplier par \u22122, ajouter 2. Claire : choisir un nombre, multiplier par $-\\frac{1}{2}$, ajouter 1.", rule: DIS, it: [nm("R\xE9sultat de Nina pour 1 :", 2), nm("R\xE9sultat de Claire pour 1 :", 0.5), nm("Nombre de d\xE9part pour que Nina obtienne 0 :", 2), { k: "lit", q: "R\xE9sultat de Nina pour $x$ (forme r\xE9duite) :", a: "-2x+4", red: 1 }, vf("Le r\xE9sultat de Nina est toujours quatre fois celui de Claire.", 1, "$-2x + 4 = 4\\left(-\\frac{1}{2}x + 1\\right)$")] }
+      ]
+    }
+  });
+})();
+(function() {
   if (window.__m4) return;
   window.__m4 = 1;
   const CLS = "quatre";
@@ -46823,13 +47019,19 @@ window.M4PLAN = {
         if (!m) return;
         for (let x = +m[2]; x <= (m[3] ? +m[3] : +m[2]); x++) (I[m[1] + "-" + x] = I[m[1] + "-" + x] || []).push(e);
       });
-      return D.ch[k].r.map(([t, subs]) => ({ t, subs: subs.map(([name, nums]) => {
+      const used = /* @__PURE__ */ new Set(), R = D.ch[k].r.map(([t, subs]) => ({ t, subs: subs.map(([name, nums]) => {
         const L = [];
         nums.forEach((x) => (I[k + "-" + x] || []).forEach((e) => {
-          if (!L.includes(e)) L.push(e);
+          if (!L.includes(e)) {
+            L.push(e);
+            used.add(e);
+          }
         }));
         return { name, u: units(L) };
       }).filter((s) => s.u.length) })).filter((r) => r.subs.length);
+      const rest = P.L.filter((e) => !used.has(e));
+      if (rest.length) R.push({ t: "Autres exercices", subs: window.MANUEL_API && MANUEL_API.types ? MANUEL_API.types(rest) : [{ name: "Exercices", u: units(rest) }] });
+      return R;
     }
     if (!P.L.length) return [];
     const T = window.MANUEL_API && MANUEL_API.types ? MANUEL_API.types(P.L) : [{ name: "Exercices", u: units(P.L) }];
