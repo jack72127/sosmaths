@@ -46716,6 +46716,30 @@ window.M4PLAN = {
       ["Entra\xEEnement", [["G\xE9n\xE9ralit\xE9s", R(39, 44)], ["Calculs de probabilit\xE9s", R(45, 57)]]],
       ["Approfondissement", [["Approfondissement", R(58, 61)], ["Club de maths", R(62, 63)]]],
       ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(64, 68)]]]
+    ] },
+    10: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(6, 7)], ["QCM : r\xE9ponses multiples", R(8, 9)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(10, 12)]]],
+      ["Automatismes", [["\xC9nonc\xE9 du th\xE9or\xE8me de Thal\xE8s", R(13, 19)], ["Droites parall\xE8les ou non", R(20, 25)], ["Agrandissement et r\xE9duction", R(26, 31)], ["Triangles semblables", R(32, 37)]]],
+      ["Entra\xEEnement", [["Th\xE9or\xE8me de Thal\xE8s et sa r\xE9ciproque", R(38, 47)], ["Configurations particuli\xE8res", R(48, 58)]]],
+      ["Approfondissement", [["Approfondissement", R(59, 63)], ["Club de maths", R(64, 65)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(66, 70)]]]
+    ] },
+    11: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(11, 14)], ["QCM : r\xE9ponses multiples", R(15, 18)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(19, 23)]]],
+      ["Automatismes", [["Vocabulaire et formules", R(24, 30)], ["Calculer une longueur", R(31, 40)], ["Calculer un angle", R(41, 45)]]],
+      ["Entra\xEEnement", [["Calculer des longueurs et des angles", R(46, 70)]]],
+      ["Approfondissement", [["Approfondissement", R(71, 74)], ["Club de maths", R(75, 76)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(77, 81)]]]
+    ] },
+    12: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(5, 7)], ["QCM : r\xE9ponses multiples", R(8, 11)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(12, 14)]]],
+      ["Automatismes", [["Rotation", R(15, 21)], ["Homoth\xE9tie", R(22, 30)]]],
+      ["Entra\xEEnement", [["Rotation", R(31, 38)], ["Homoth\xE9tie", R(39, 47)]]],
+      ["Approfondissement", [["Approfondissement", R(48, 53)], ["Club de maths", R(54, 54)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(55, 58)]]]
     ] }
   } };
 })();
@@ -46775,6 +46799,115 @@ window.M4PLAN = {
         { n: "1-92", src: S(28, 92), t: "D\u2019apr\xE8s brevet. Mosa\xEFque sur un rectangle de 108 cm sur 225 cm, avec des carreaux carr\xE9s identiques, sans d\xE9coupe.", rule: PG, it: [vf("Carole peut utiliser des carreaux de 3 cm de c\xF4t\xE9.", 1), vf("Carole peut utiliser des carreaux de 6 cm de c\xF4t\xE9.", 0, "225 n\u2019est pas divisible par 6"), nm("Dimension maximale des carreaux :", 9, "cm"), nm("Nombre de carreaux :", 300, "", "$12 \xD7 25$")] },
         { n: "1-93", src: S(28, 93), t: "D\u2019apr\xE8s brevet. Nombres 850 et 714.", rule: IRR, it: [fc(850), fc(714), ir("850/714")] },
         { n: "1-94", src: S(28, 94), t: "D\u2019apr\xE8s brevet. Pierre partage \xE9quitablement 84 sucettes et 147 bonbons.", rule: PG, it: [nm("Nombre maximal de personnes :", 21), nm("Sucettes par part :", 4), nm("Bonbons par part :", 7)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 10 \xAB Th\xE9or\xE8me de Thal\xE8s et triangles semblables \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const SEM = "Deux triangles sont **semblables** si leurs **angles sont \xE9gaux deux \xE0 deux**, ou si les **longueurs de leurs c\xF4t\xE9s sont proportionnelles**.";
+  const THA = "**Thal\xE8s** : si $(BC) // (MN)$ avec A, M, B et A, N, C align\xE9s, alors **$\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}$**. **R\xE9ciproque** : si les points sont align\xE9s dans le m\xEAme ordre et $\\frac{AM}{AB} = \\frac{AN}{AC}$, alors $(BC) // (MN)$.";
+  ADD("trois", {
+    mnx: {
+      c10: [
+        { n: "10-8", src: S(196, 8), t: "ABC est un triangle tel que $\\widehat{CAB} = 30\xB0$ et $\\widehat{CBA} = 60\xB0$. EFG est un triangle rectangle en E et $\\widehat{EGF} = 60\xB0$. (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: SEM, it: [vf("ABC est rectangle en C.", 1), vf("$\\widehat{EFG} = 90\xB0$", 0, "$\\widehat{EFG} = 30\xB0$"), vf("Les deux triangles sont semblables.", 1), vf("$\\widehat{FEG} = 30\xB0$", 0, "$\\widehat{FEG} = 90\xB0$")] },
+        { n: "10-9", src: S(196, 9), t: "ABC est un triangle isoc\xE8le et $\\widehat{BAC} = 30\xB0$. EFG est isoc\xE8le en E et $\\widehat{FEG} = 30\xB0$. (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: SEM, it: [vf("Les triangles peuvent \xEAtre semblables.", 1, "si ABC est isoc\xE8le en A : angles 30\xB0, 75\xB0, 75\xB0 comme EFG"), vf("Les triangles sont semblables.", 0, "si ABC est isoc\xE8le en B, ses angles sont 30\xB0, 30\xB0, 120\xB0"), vf("Il n\u2019est pas possible que les triangles soient semblables.", 0), vf("Si ABC est isoc\xE8le en A, alors les triangles sont semblables.", 1)] },
+        { n: "10-12", src: S(197, 12), t: "Triangle ABC : AB = 6,4 cm, BC = 7,2 cm, CA = 7,8 cm. Triangle DEF : DE = 9,6 cm, DF = 10,8 cm, EF = 11,7 cm.", rule: SEM, it: [nm("Coefficient $\\frac{DF}{BC}$ :", 1.5), vf("Les triangles ABC et DEF sont semblables.", 1, "$\\frac{9{,}6}{6{,}4} = \\frac{10{,}8}{7{,}2} = \\frac{11{,}7}{7{,}8} = 1{,}5$")] },
+        { n: "10-66", src: S(206, 66), t: "D\u2019apr\xE8s brevet. (SA) // (OK), R, A, O align\xE9s et R, S, K align\xE9s. SA = 5 cm ; OA = 3,8 cm ; OR = 6,84 cm ; KR = 7,2 cm.", rule: THA, it: [nm("Longueur RA :", 3.04, "cm"), nm("Longueur OK :", 11.25, "cm"), nm("P\xE9rim\xE8tre du triangle ORK :", 25.29, "cm")] },
+        { n: "10-67", src: S(206, 67), t: "D\u2019apr\xE8s brevet. C, D, A align\xE9s ; B, E, A align\xE9s ; (DE) \u22A5 (AD). AB = 6,25 ; AC = 5 ; BC = 3,75 ; AD = 3,2. M sur [AC] et N sur [AB] avec AM = 4 et AN = 5.", rule: THA, it: [vf("Le triangle ABC est rectangle en C.", 1, "$5^2 + 3{,}75^2 = 39{,}0625 = 6{,}25^2$"), vf("Les droites (BC) et (DE) sont parall\xE8les.", 1, "perpendiculaires toutes deux \xE0 (AC)"), nm("DE =", 2.4), vf("Les droites (MN) et (BC) sont parall\xE8les.", 1, "$\\frac{AM}{AC} = \\frac{4}{5} = \\frac{AN}{AB}$")] },
+        { n: "10-68", src: S(206, 68), t: "D\u2019apr\xE8s brevet. C, B, E align\xE9s. ABC rectangle en A, $\\widehat{ACB} = 61\xB0$ ; BDC rectangle en B avec CB = 7,5 cm et CD = 8,5 cm. Triangle BEF : BF = 6 cm, FE = 3,2 cm, BE = 6,8 cm.", rule: SEM, it: [nm("BD =", 4, "cm"), vf("Les triangles CBD et BEF sont semblables.", 1, "c\xF4t\xE9s proportionnels : coefficient 0,8"), vf("Sophie a raison : l\u2019angle $\\widehat{BFE}$ est droit.", 1, "il correspond \xE0 l\u2019angle droit $\\widehat{CBD}$")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 11 \xAB Trigonom\xE9trie dans le triangle rectangle \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const TRI = "Dans un triangle rectangle : **$\\cos = \\frac{\\text{adjacent}}{\\text{hypot\xE9nuse}}$**, **$\\sin = \\frac{\\text{oppos\xE9}}{\\text{hypot\xE9nuse}}$**, **$\\tan = \\frac{\\text{oppos\xE9}}{\\text{adjacent}}$** (CAH SOH TOA). Calculatrice en **mode degr\xE9** ; Arccos, Arcsin, Arctan donnent l\u2019angle.";
+  ADD("trois", {
+    mnx: {
+      c11: [
+        { n: "11-11", src: S(216, 11), t: "Une seule r\xE9ponse est juste.", rule: TRI, it: [qc("L\u2019hypot\xE9nuse d\u2019un triangle ABC rectangle en A est le c\xF4t\xE9 :", ["[AB]", "[AC]", "[BC]", "Ce triangle n\u2019a pas d\u2019hypot\xE9nuse."], 2)] },
+        { n: "11-12", src: S(216, 12), t: "Une seule r\xE9ponse est juste.", rule: TRI, it: [qc("Le sinus d\u2019un angle aigu est :", ["un nombre quelconque", "un nombre inf\xE9rieur \xE0 1", "un nombre n\xE9gatif", "un nombre entier"], 1)] },
+        { n: "11-13", src: S(216, 13), t: "Une seule r\xE9ponse est juste ($x$ est la mesure d\u2019un angle aigu).", rule: TRI, it: [qc("Si $\\sin x = 0{,}5$ alors :", ["$x = 60\xB0$", "$x = 30\xB0$", "$x = 0{,}5$", "on ne peut pas savoir"], 1)] },
+        { n: "11-14", src: S(216, 14), t: "Une seule r\xE9ponse est juste.", rule: TRI, it: [qc("La touche arctan de la calculatrice permet de :", ["trouver une longueur", "trouver une mesure d\u2019angle", "toujours trouver un nombre entier", "trouver la tangente d\u2019un angle aigu"], 1)] },
+        { n: "11-15", src: S(216, 15), t: "Les angles aigus dans un triangle rectangle\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TRI, it: [vf("sont compl\xE9mentaires", 1), vf("sont suppl\xE9mentaires", 0), vf("sont droits", 0), vf("ont une somme \xE9gale \xE0 90\xB0", 1)] },
+        { n: "11-16", src: S(216, 16), t: "Dans le triangle ABC rectangle en A\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TRI, it: [vf("le c\xF4t\xE9 oppos\xE9 \xE0 $\\widehat{ACB}$ est [AB]", 1), vf("l\u2019hypot\xE9nuse est [BC]", 1), vf("le c\xF4t\xE9 adjacent \xE0 $\\widehat{ACB}$ est [AB]", 0, "c\u2019est [AC]"), vf("le plus petit c\xF4t\xE9 est [BC]", 0, "l\u2019hypot\xE9nuse est le plus grand c\xF4t\xE9")] },
+        { n: "11-17", src: S(216, 17), t: "Dans le triangle ABC rectangle en A\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TRI, it: [vf("$\\cos\\widehat{ACB} = \\sin\\widehat{CBA}$", 1), vf("$\\cos\\widehat{ACB} = \\frac{AC}{CB}$", 1), vf("$\\cos\\widehat{ACB} = \\tan\\widehat{CBA}$", 0), vf("$\\cos\\widehat{ACB} = \\frac{AC}{AB}$", 0)] },
+        { n: "11-18", src: S(216, 18), t: "$\\cos 30\xB0$ est un nombre\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TRI, it: [vf("n\xE9gatif", 0), vf("environ \xE9gal \xE0 0,15", 0, "$\\cos 30\xB0 \u2248 0{,}87$"), vf("positif", 1), vf("plus petit que 1", 1)] },
+        { n: "11-19", src: S(217, 19), t: "Programme qui calcule BC dans un triangle ABC rectangle en A \xE0 partir de AC et de la mesure de $\\widehat{ACB}$.", rule: TRI, it: [qc("Calcul \xE0 programmer pour BC :", ["AC \xF7 cos(ACB)", "AC \xD7 cos(ACB)", "AC \xF7 tan(ACB)"], 0), qc("Pour calculer AB, il faut plut\xF4t :", ["AC \xD7 tan(ACB)", "AC \xF7 tan(ACB)", "AC \xD7 sin(ACB)"], 0), nm("Avec AC = 7 cm et $\\widehat{ACB} = 40\xB0$, BC (arrondi au mm) :", 9.1, "cm")] },
+        { n: "11-20", src: S(217, 20), t: "Le programme demande AC et AB (ABC rectangle en A) puis dit atan de (AB / AC).", rule: TRI, it: [qc("Il permet de calculer :", ["la mesure de l\u2019angle $\\widehat{ACB}$", "la mesure de l\u2019angle $\\widehat{ABC}$", "la longueur BC"], 0), qc("Pour afficher aussi $\\widehat{ABC}$, on peut dire :", ["atan de (AC / AB)", "atan de (AB / AC)", "asin de (AB / AC)"], 0)] },
+        { n: "11-21", src: S(217, 21), t: "Feuille de calcul : angles aigus $x$ de 5\xB0 \xE0 85\xB0, colonnes $\\cos(x)$, $\\sin(x)$ et $\\cos^2(x) + \\sin^2(x)$.", rule: TRI, it: [nm("Valeur affich\xE9e dans toute la colonne D :", 1), vf("Pour tout angle aigu $x$, $\\cos^2 x + \\sin^2 x = 1$.", 1, "$\\left(\\frac{AB}{BC}\\right)^2 + \\left(\\frac{AC}{BC}\\right)^2 = \\frac{AB^2 + AC^2}{BC^2} = 1$ (Pythagore)")] },
+        { n: "11-22", src: S(217, 22), t: "Scratch : s\u2019orienter \xE0 \u221290, avancer de 180, tourner \xE0 droite de 90\xB0, avancer de 240, s\u2019orienter \xE0 180, puis tourner \xE0 gauche de \u2026 degr\xE9s et avancer de \u2026 pas pour fermer le triangle rectangle.", rule: TRI, it: [nm("Angle de rotation (arrondi au centi\xE8me) :", 36.87, "\xB0", "$\\tan = \\frac{180}{240}$"), nm("Longueur du dernier c\xF4t\xE9 :", 300, "pas", "$\\sqrt{180^2 + 240^2}$")] },
+        { n: "11-23", src: S(217, 23), t: "Avec GeoGebra : triangle ABC rectangle en B, on compare les cosinus et sinus des angles $\\widehat{BAC}$ et $\\widehat{ACB}$.", rule: TRI, it: [vf("$\\cos\\widehat{BAC} = \\sin\\widehat{ACB}$", 1, "les deux valent $\\frac{AB}{AC}$"), vf("$\\sin\\widehat{BAC} = \\cos\\widehat{ACB}$", 1, "les deux valent $\\frac{BC}{AC}$")] },
+        { n: "11-77", src: S(226, 77), t: "D\u2019apr\xE8s brevet. (ER) et (FT) s\xE9cantes en A ; AE = 8 cm, AF = 10 cm, EF = 6 cm, AR = 12 cm, AT = 14 cm.", rule: TRI, it: [vf("Le triangle EAF est rectangle en E.", 1, "$8^2 + 6^2 = 100 = 10^2$"), nm("Mesure de $\\widehat{RAT}$ au degr\xE9 pr\xE8s :", 37, "\xB0", "$\\cos\\widehat{EAF} = \\frac{8}{10}$")] },
+        { n: "11-78", src: S(226, 78), t: "D\u2019apr\xE8s brevet. D\xE9part C, arriv\xE9e A, AC = 5,6 km. Voilier 1 : C \u2192 B \u2192 A avec ABC rectangle en B et AB = 4,8 km. Voilier 2 : C \u2192 D \u2192 A avec ADC rectangle en D et $\\widehat{DCA} = 24\xB0$.", rule: TRI, it: [nm("Distance du voilier 1 (au dixi\xE8me) :", 7.7, "km"), nm("Distance du voilier 2 (au dixi\xE8me) :", 7.4, "km"), qc("Le trajet le plus court est celui du :", ["voilier 1", "voilier 2"], 1)] },
+        { n: "11-79", src: S(226, 79), t: "D\u2019apr\xE8s brevet. Terrasse : AD = 0,27 m, CG = 0,15 m (hauteur), DC = 5 m. BCDP est un rectangle. L\u2019angle $\\widehat{ABP}$ doit mesurer entre 1\xB0 et 1,5\xB0.", rule: TRI, it: [nm("AP =", 0.12, "m"), nm("$\\widehat{ABP}$ (au centi\xE8me) :", 1.37, "\xB0"), vf("Le projet v\xE9rifie la condition.", 1)] },
+        { n: "11-80", src: S(226, 80), t: "D\u2019apr\xE8s brevet. Figure 2 : triangle ABC rectangle en A, $\\widehat{ACB} = 53\xB0$ et BC = 36 cm.", rule: TRI, it: [nm("AB (arrondi au millim\xE8tre) :", 28.8, "cm", "$36 \xD7 \\sin 53\xB0$")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 12 \xAB Transformations dans le plan et leurs effets \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const tx = (q, a, c) => ({ k: "txt", q, a, c });
+  const TR = "Sym\xE9tries, translations et rotations **conservent** les longueurs, les angles, le parall\xE9lisme et les **aires**. Une **homoth\xE9tie** de rapport $k$ conserve les angles et le parall\xE9lisme ; les longueurs sont multipli\xE9es par **$|k|$** et les aires par **$k^2$**. Rotation de 180\xB0 = homoth\xE9tie de rapport \u22121 = **sym\xE9trie centrale**.";
+  ADD("trois", {
+    mnx: {
+      c12: [
+        { n: "12-5", src: S(236, 5), t: "Une seule r\xE9ponse est juste.", rule: TR, it: [qc("Par une rotation de centre O et d\u2019angle 60\xB0, l\u2019image d\u2019un triangle rectangle est un triangle :", ["quelconque", "rectangle", "\xE9quilat\xE9ral", "cela d\xE9pend des mesures du triangle"], 1)] },
+        { n: "12-6", src: S(236, 6), t: "Une seule r\xE9ponse est juste.", rule: TR, it: [qc("Une rotation de centre O et d\u2019angle 180\xB0 est assimilable \xE0 une :", ["translation", "sym\xE9trie centrale", "sym\xE9trie axiale", "homoth\xE9tie de rapport 1"], 1)] },
+        { n: "12-7", src: S(236, 7), t: "Une seule r\xE9ponse est juste.", rule: TR, it: [qc("L\u2019homoth\xE9tie de centre O et de rapport $k = -1$ est assimilable \xE0 :", ["aucune transformation", "une translation", "une sym\xE9trie centrale", "une sym\xE9trie axiale"], 2)] },
+        { n: "12-8", src: S(236, 8), t: "Une rotation conserve\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TR, it: [vf("les mesures d\u2019angles", 1), vf("les aires", 1), vf("les longueurs", 1), vf("le parall\xE9lisme", 1)] },
+        { n: "12-9", src: S(236, 9), t: "Dans l\u2019homoth\xE9tie de centre O et de rapport $k$, l\u2019image de M est M\u2032. OM = 3 et OM\u2032 = 6. $k$ peut \xEAtre \xE9gal \xE0\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TR, it: [vf("2", 1), vf("0,5", 0), vf("\u22122", 1), vf("\u22120,5", 0)] },
+        { n: "12-10", src: S(236, 10), t: "Une homoth\xE9tie de rapport $k$, avec $k$ diff\xE9rent de 1 ou \u22121, conserve\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TR, it: [vf("les mesures d\u2019angles", 1), vf("les longueurs", 0), vf("les aires", 0), vf("le parall\xE9lisme", 1)] },
+        { n: "12-11", src: S(236, 11), t: "Quelles transformations conservent les aires ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: TR, it: [vf("Une homoth\xE9tie", 0, "les aires sont multipli\xE9es par $k^2$"), vf("Une sym\xE9trie axiale", 1), vf("Une rotation", 1), vf("Une translation", 1)] },
+        { n: "12-12", src: S(237, 12), t: "D\u2019apr\xE8s brevet. Le programme trace un carr\xE9 de c\xF4t\xE9 300, avance de Longueur / 6 (soit 50 pas), puis trace un carr\xE9 et un triangle plus petits, de m\xEAme base.", rule: TR, it: [nm("Valeur de Longueur \xE0 la ligne 9 :", 200), qc("Transformation qui donne le petit carr\xE9 \xE0 partir du grand :", ["une homoth\xE9tie", "une rotation", "une sym\xE9trie axiale"], 0), nm("Rapport de r\xE9duction :", "2/3")] },
+        { n: "12-13", src: S(237, 13), t: "GeoGebra : curseur $k$ de 0 \xE0 4 (incr\xE9ment 0,1) et image d\u2019un polygone par l\u2019homoth\xE9tie de centre O et de rapport $k$.", rule: TR, it: [qc("On obtient une r\xE9duction de la figure pour :", ["$0 < k < 1$", "$k > 1$", "$k = 1$"], 0), qc("Pour $k = 1$, la figure image est :", ["superpos\xE9e \xE0 la figure de d\xE9part", "r\xE9duite", "agrandie"], 0)] },
+        { n: "12-14", src: S(237, 14), t: "Sur GeoGebra, un curseur affiche $\\alpha = 124$ ; la figure $F_1$ est obtenue \xE0 partir de $F$, de m\xEAme forme et de m\xEAme taille, en tournant autour du point O.", rule: TR, it: [qc("Transformation qui permet d\u2019obtenir $F_1$ :", ["une rotation de centre O d\u2019angle 124\xB0", "une homoth\xE9tie de rapport 124", "une translation"], 0)] },
+        { n: "12-45", src: S(243, 45), t: "Triangle ABC : AB = 2,43 m, BC = 3,24 m, AC = 4,05 m. Le triangle EFG est rectangle en E.", rule: TR, it: [qc("Nature du triangle ABC :", ["rectangle en B", "\xE9quilat\xE9ral", "isoc\xE8le en A"], 0, "$2{,}43^2 + 3{,}24^2 = 16{,}4025 = 4{,}05^2$")] },
+        { n: "12-46", src: S(243, 46), t: "Un rectangle ABCD a pour longueur $L$ et largeur $\\ell$. On construit son image A\u2032B\u2032C\u2032D\u2032 par l\u2019homoth\xE9tie de centre O et de rapport $k$.", rule: TR, it: [qc("Aire $A_1$ du rectangle ABCD :", ["$L \xD7 \\ell$", "$2(L + \\ell)$", "$k \xD7 L \xD7 \\ell$"], 0), qc("Dimensions de A\u2032B\u2032C\u2032D\u2032 :", ["$|k| \xD7 L$ et $|k| \xD7 \\ell$", "$L + k$ et $\\ell + k$", "$k^2 \xD7 L$ et $k^2 \xD7 \\ell$"], 0), qc("Aire $A_2$ de A\u2032B\u2032C\u2032D\u2032 :", ["$k^2 \xD7 L \xD7 \\ell$", "$k \xD7 L \xD7 \\ell$", "$2k \xD7 L \xD7 \\ell$"], 0)] },
+        { n: "12-49", src: S(244, 49), t: "A\u2032B\u2032C\u2032D\u2032 est l\u2019image du carr\xE9 ABCD par la rotation de centre O d\u2019angle 45\xB0 (sens antihoraire) et A\u2033B\u2033C\u2033D\u2033 son image par la rotation de centre O d\u2019angle 135\xB0 (sens horaire).", rule: TR, it: [qc("A\u2033B\u2033C\u2033D\u2033 est l\u2019image de A\u2032B\u2032C\u2032D\u2032 par :", ["la sym\xE9trie de centre O", "une translation", "une sym\xE9trie axiale"], 0, "rotation de 180\xB0")] },
+        { n: "12-50", src: S(244, 50), t: "Hexagone r\xE9gulier ABCDEF de centre O (C et B en haut, D \xE0 gauche, A \xE0 droite, E et F en bas). Image du triangle BCO par\u2026", rule: TR, it: [tx("la sym\xE9trie d\u2019axe (BE) :", ["BAO", "BOA", "ABO", "AOB", "OAB", "OBA"]), tx("la sym\xE9trie de centre O :", ["EFO", "EOF", "FEO", "FOE", "OEF", "OFE"]), tx("la translation qui transforme B en A :", ["AOF", "AFO", "OAF", "OFA", "FAO", "FOA"]), tx("la rotation de centre O d\u2019angle 60\xB0 (sens antihoraire) :", ["CDO", "COD", "DCO", "DOC", "OCD", "ODC"])] },
+        { n: "12-55", src: S(246, 55), t: "D\u2019apr\xE8s brevet. Hexagone r\xE9gulier ABCDEF de centre O (A et B en haut, F \xE0 gauche, C \xE0 droite, E et D en bas).", rule: TR, it: [tx("Image du quadrilat\xE8re CDEO par la sym\xE9trie de centre O :", ["FABO"]), tx("Image du segment [AO] par la sym\xE9trie d\u2019axe (CF) :", ["[EO]", "EO", "[OE]", "OE"]), tx("La rotation de centre O transforme OAB en OCD. Image du triangle BOC :", ["DOE", "DEO", "EDO", "EOD", "ODE", "OED"]), tx("Image du losange ODCB par la rotation de centre O d\u2019angle 60\xB0 (sens horaire) :", ["OEDC"])] },
+        { n: "12-56", src: S(246, 56), t: "D\u2019apr\xE8s brevet. Les points A, B, C, D, E sont r\xE9guli\xE8rement espac\xE9s sur une demi-droite d\u2019origine O (OA = AB = BC = CD = DE). Les figures A \xE0 E sont obtenues par des homoth\xE9ties de centre O.", rule: TR, it: [nm("Rapport de l\u2019homoth\xE9tie qui transforme la figure A en figure C :", 3), qc("Image de la figure E par l\u2019homoth\xE9tie de rapport $\\frac{3}{5}$ :", ["la figure C", "la figure B", "la figure D"], 0), qc("Figure dont l\u2019aire est quatre fois celle de la figure A :", ["la figure B", "la figure D", "la figure C"], 0, "rapport 2 : aire multipli\xE9e par $2^2 = 4$")] }
       ]
     }
   });
