@@ -46752,6 +46752,168 @@ window.M4PLAN = {
   window.M4 = { home: () => root && home(), chap: (n, r) => root && chap(n, r || 0) };
 })();
 (function() {
+  if (window.__mnx) return;
+  window.__mnx = 1;
+  const CFG = window.MNCFG = Object.assign({
+    cinq: { lab: "5e", parts: [{ t: "Nombres et calculs", ch: [1, 2, 3, 4] }, { t: "Organisation et gestion de donn\xE9es", ch: [6, 8] }, { t: "Espace et g\xE9om\xE9trie", ch: [13, 14] }] },
+    trois: { lab: "3e", parts: [{ t: "Nombres et calculs", ch: [1, 2, 3, 4] }, { t: "Organisation et gestion de donn\xE9es, fonctions", ch: [5, 6, 7, 8, 9] }, { t: "Espace et g\xE9om\xE9trie", ch: [10, 11, 12, 13] }, { t: "Grandeurs et mesures", ch: [14] }] },
+    seconde: { lab: "2de", parts: [{ t: "Nombres et calculs", ch: ["Ensembles de nombres", "Intervalles et valeur absolue", "Calcul num\xE9rique", "Calcul litt\xE9ral", "R\xE9solution d\u2019\xE9quations et d\u2019in\xE9quations", "R\xE9solution de syst\xE8mes", "Arithm\xE9tique", "Synth\xE8se des nombres et calculs"] }, { t: "Fonctions", ch: [1, 2, 3, 4] }, { t: "G\xE9om\xE9trie", ch: [5, 6, 7, 8] }, { t: "Statistiques et probabilit\xE9s", ch: [9, 10, 11] }] },
+    secpro: { lab: "2de Bac Pro", parts: [{ t: "Statistique et probabilit\xE9s", ch: [1, 2] }, { t: "Alg\xE8bre \u2013 Analyse", ch: [3, 4, 5] }, { t: "Calculs commerciaux et financiers", ch: [6] }, { t: "G\xE9om\xE9trie", ch: [7] }] },
+    premspe: { lab: "1re sp\xE9cialit\xE9", parts: [{ t: "Alg\xE8bre et analyse", ch: [1, 2, 3, 4, 5, 6] }, { t: "G\xE9om\xE9trie et trigonom\xE9trie", ch: [7, 8, 9, 10] }, { t: "Probabilit\xE9s", ch: [11, 12] }] },
+    premtec: { lab: "1re technologique", parts: [{ t: "Analyse", ch: [1, 2, 3] }, { t: "Probabilit\xE9s", ch: [4, 5] }, { t: "G\xE9om\xE9trie et nombres complexes", ch: [6, 7, 8] }, { t: "Analyse (compl\xE9ments)", ch: [9, 10] }] },
+    premgen: { lab: "1re enseignement scientifique", parts: [{ t: "Automatismes", ch: ["Calcul num\xE9rique", "Passer d\u2019une \xE9criture \xE0 une autre", "Ordres de grandeur", "Applications num\xE9riques", "\xC9quations de type", "Appliquer un pourcentage", "Taux d\u2019\xE9volution"] }, { t: "Chapitres", ch: [1, 2, 3, 4, 5, 6] }] },
+    tlespe: { lab: "Tle sp\xE9cialit\xE9", parts: [{ t: "Combinatoire et d\xE9nombrement", ch: [1] }, { t: "G\xE9om\xE9trie dans l\u2019espace", ch: [2, 3] }, { t: "Analyse", ch: [4, 5, 6, 7, 8, 9, 10, 11] }, { t: "Probabilit\xE9s", ch: [12, 13, 14] }] },
+    expert: { lab: "Tle maths expertes", parts: [{ t: "Nombres complexes", ch: [1, 2] }, { t: "Arithm\xE9tique", ch: [3, 4, 5] }, { t: "Matrices et graphes", ch: [6, 7] }] },
+    tlepro: { lab: "Tle Bac Pro", parts: [{ t: "Statistique et probabilit\xE9s", ch: [1, 2] }, { t: "Alg\xE8bre \u2013 Analyse", ch: [3, 4, 5] }, { t: "Calculs commerciaux et financiers", ch: [6] }, { t: "G\xE9om\xE9trie", ch: [7, 8] }] }
+  }, window.MNCFG || {});
+  const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const units = (L) => {
+    const U = [];
+    L.forEach((e) => (e.it || []).forEach((it, j) => U.push({ e, it, j })));
+    return U;
+  };
+  const PLANS = {};
+  function plan(cls) {
+    if (PLANS[cls]) return PLANS[cls];
+    const M = (window.MANUEL || {})[cls] || {}, C = {}, ord = [];
+    Object.keys(M).forEach((c) => Object.keys(M[c]).forEach((l) => M[c][l].forEach((e) => {
+      const s = String(e.src || "");
+      let m = s.match(/chapitre (\d+) « ([^»]*?) »/), k, t;
+      if (m) {
+        k = +m[1];
+        t = m[2];
+      } else {
+        m = s.match(/« ([^»]*?) »/);
+        if (!m) return;
+        t = m[1].trim();
+        k = t;
+      }
+      const P = CFG[cls] && CFG[cls].parts;
+      if (typeof k === "string" && P) {
+        P.forEach((p) => p.ch.forEach((x) => {
+          if (typeof x === "string" && k.indexOf(x) === 0) k = x;
+        }));
+      }
+      const pg = +((s.match(/p\. (\d+)/) || [])[1] || 0), num = +((String(e.n || "").match(/\d+/g) || []).pop() || 0);
+      if (!C[k]) {
+        C[k] = { t, L: [] };
+        ord.push(k);
+      }
+      C[k].L.push({ e, pg, num, i: C[k].L.length });
+    })));
+    Object.keys(C).forEach((k) => C[k].L.sort((a2, b) => a2.pg - b.pg || a2.num - b.num || a2.i - b.i));
+    let parts = ((CFG[cls] || {}).parts || []).map((p) => ({ t: p.t, ch: p.ch.filter((k) => C[k]) })).filter((p) => p.ch.length);
+    const seen = /* @__PURE__ */ new Set();
+    parts.forEach((p) => p.ch.forEach((k) => seen.add(String(k))));
+    const rest = ord.filter((k) => !seen.has(String(k))).sort((a2, b) => (typeof a2 === "number" ? a2 : 1e3) - (typeof b === "number" ? b : 1e3));
+    if (rest.length) parts.push({ t: parts.length ? "Autres chapitres" : "Chapitres", ch: rest });
+    const ch = {};
+    let a = 0;
+    parts.forEach((p) => p.ch.forEach((k) => {
+      ch[k] = { t: C[k].t, x: typeof k === "number" ? "" : String.fromCharCode(65 + a++), L: C[k].L.map((o) => o.e) };
+    }));
+    return PLANS[cls] = { parts, ch };
+  }
+  function rubs(cls, k) {
+    const P = plan(cls).ch[k], D = (window.MNPLAN || {})[cls];
+    if (D && D.ch && D.ch[k] && D.ch[k].r) {
+      const I = {};
+      P.L.forEach((e) => {
+        const m = String(e.n || "").match(/^(\d+)-(\d+)(?:-(\d+))?/);
+        if (!m) return;
+        for (let x = +m[2]; x <= (m[3] ? +m[3] : +m[2]); x++) (I[m[1] + "-" + x] = I[m[1] + "-" + x] || []).push(e);
+      });
+      return D.ch[k].r.map(([t, subs]) => ({ t, subs: subs.map(([name, nums]) => {
+        const L = [];
+        nums.forEach((x) => (I[k + "-" + x] || []).forEach((e) => {
+          if (!L.includes(e)) L.push(e);
+        }));
+        return { name, u: units(L) };
+      }).filter((s) => s.u.length) })).filter((r) => r.subs.length);
+    }
+    if (!P.L.length) return [];
+    const T = window.MANUEL_API && MANUEL_API.types ? MANUEL_API.types(P.L) : [{ name: "Exercices", u: units(P.L) }];
+    return [{ t: "Exercices", subs: T }];
+  }
+  const css = '.mn-on>:not(.m4){display:none!important}\n.mnx .m4-num{font-size:15px}[id^="ch-"]:not(.mn-on)>.mnx{display:none}.mnx-toggle{display:none}[id^="ch-"]:not(.mn-on)>.mnx-toggle{display:block;margin:10px auto;padding:8px 14px;border-radius:10px;border:2px solid #1565c0;background:#fff;color:#1565c0;font:inherit;font-weight:800;cursor:pointer}';
+  const ST = {};
+  const title = (P, k) => (P.ch[k].x ? "" : "Chapitre " + k + " \xB7 ") + P.ch[k].t;
+  function home(root, cls) {
+    const P = plan(cls), m = root.querySelector(":scope>.m4");
+    delete m.dataset.n;
+    m.innerHTML = P.parts.map((p) => '<div class="m4-part">'.concat(esc(p.t), '</div><div class="m4-grid">').concat(p.ch.map((k) => '<button type="button" class="m4-ch" data-k="'.concat(esc(k), '"><span class="m4-num">').concat(P.ch[k].x || k, "</span><span>").concat(esc(P.ch[k].t), "</span></button>")).join(""), "</div>")).join("") + '<div class="m4-old"><button type="button">Afficher l\u2019ancienne page de '.concat(esc((CFG[cls] || {}).lab || cls), "</button></div>");
+    m.querySelectorAll(".m4-ch").forEach((b) => b.onclick = () => {
+      const k = /^\d+$/.test(b.dataset.k) ? +b.dataset.k : b.dataset.k;
+      chap(root, cls, k, 0);
+    });
+    m.querySelector(".m4-old button").onclick = () => {
+      root.classList.remove("mn-on");
+      window.scrollTo(0, 0);
+    };
+  }
+  function chap(root, cls, k, r) {
+    const P = plan(cls), R = rubs(cls, k), m = root.querySelector(":scope>.m4");
+    m.dataset.n = String(k);
+    m.dataset.cls = cls;
+    m.innerHTML = '<div class="m4-top"><button type="button" class="m4-back">\u2039 Chapitres</button><h2 class="m4-h">'.concat(esc(title(P, k)), "</h2></div>") + (R.length > 1 ? '<div class="m4-tabs">'.concat(R.map((x, i) => '<button type="button" class="m4-tab'.concat(i === r ? " on" : "", '" data-r="').concat(i, '">').concat(esc(x.t), "</button>")).join(""), "</div>") : "") + (R.length ? '<div class="mn-box m4-box"></div>' : "<p>Exercices en pr\xE9paration.</p>");
+    m.querySelector(".m4-back").onclick = () => {
+      home(root, cls);
+      window.scrollTo(0, 0);
+    };
+    m.querySelectorAll(".m4-tab").forEach((b) => b.onclick = () => chap(root, cls, k, +b.dataset.r));
+    const box = m.querySelector(".m4-box");
+    if (box && window.MANUEL_API && MANUEL_API.mount) {
+      const x = R[r] || R[0];
+      box._ch = title(P, k);
+      box._pre = x.t + " \u203A ";
+      MANUEL_API.mount(box, x.subs, "mn/" + cls + "/" + k + "/" + r);
+    }
+    window.scrollTo(0, 0);
+  }
+  function setup(cls) {
+    const root = document.getElementById("ch-" + cls);
+    if (!root) return;
+    if (root.querySelector(":scope>.m4")) return;
+    if (!plan(cls).parts.length) return;
+    const m = document.createElement("div");
+    m.className = "m4 mnx";
+    m.dataset.cls = cls;
+    root.insertBefore(m, root.firstChild);
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "mnx-toggle";
+    b.textContent = "\u{1F4D8} Revenir au manuel num\xE9rique de " + ((CFG[cls] || {}).lab || cls);
+    b.onclick = () => {
+      root.classList.add("mn-on");
+      window.scrollTo(0, 0);
+    };
+    root.appendChild(b);
+    root.classList.add("mn-on");
+    home(root, cls);
+  }
+  const all = () => Object.keys(CFG).forEach(setup);
+  function boot() {
+    const s = document.createElement("style");
+    s.textContent = css;
+    document.head.appendChild(s);
+    all();
+    let t = 0;
+    new MutationObserver(() => {
+      clearTimeout(t);
+      t = setTimeout(all, 80);
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.body) boot();
+  else document.addEventListener("DOMContentLoaded", boot);
+  window.MNX = { plan, home: (cls) => {
+    const r = document.getElementById("ch-" + cls);
+    if (r) home(r, cls);
+  }, chap: (cls, k, r) => {
+    const R = document.getElementById("ch-" + cls);
+    if (R) chap(R, cls, k, r || 0);
+  } };
+})();
+(function() {
   "use strict";
   if (window.__booster) return;
   window.__booster = 1;
@@ -47285,13 +47447,15 @@ window.M4PLAN = {
     const C = M4PLAN.ch;
     return +Object.keys(C).find((k) => C[k].t === t) || null;
   }
-  function hook4() {
-    const m = document.querySelector("#ch-quatre>.m4");
+  function hookAll() {
+    document.querySelectorAll('[id^="ch-"]>.m4').forEach(hook4);
+  }
+  function hook4(m) {
     if (!m || m._smDone === m.firstChild) return;
     const top = m.querySelector(".m4-top");
     if (!top) return;
     m._smDone = m.firstChild;
-    const n = chapOf(m);
+    const cls = m.dataset.cls || "quatre", n = cls === "quatre" ? chapOf(m) : m.dataset.n;
     if (!n) return;
     let tabs = m.querySelector(".m4-tabs");
     if (!tabs) {
@@ -47317,7 +47481,7 @@ window.M4PLAN = {
       restore();
       tabs.querySelectorAll(".m4-tab").forEach((x) => x.classList.toggle("on", x === b));
       box.classList.add("sm-box");
-      page(box, "quatre", n);
+      page(box, cls, n);
     };
   }
   function boot() {
@@ -47330,10 +47494,10 @@ window.M4PLAN = {
       clearTimeout(t);
       t = setTimeout(() => {
         if (HOSTED && !HOSTED.closest(".sm-box")) restore();
-        hook4();
+        hookAll();
       }, 60);
     }).observe(document.body, { childList: true, subtree: true });
-    hook4();
+    hookAll();
   }
   if (document.body) boot();
   else document.addEventListener("DOMContentLoaded", boot);
