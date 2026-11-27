@@ -46668,6 +46668,30 @@ window.M4PLAN = {
       ["Entra\xEEnement", [["Distributivit\xE9", R(40, 62)], ["Identit\xE9 remarquable", R(63, 69)]]],
       ["Approfondissement", [["Approfondissement", R(70, 75)], ["Club de maths", R(76, 79)]]],
       ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(80, 84)]]]
+    ] },
+    4: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(7, 10)], ["QCM : r\xE9ponses multiples", R(11, 13)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(14, 16)]]],
+      ["Automatismes", [["\xC9quations du 1er degr\xE9", R(17, 23)], ["\xC9quations produit", R(24, 28)], ["\xC9quations x\xB2 = a", R(29, 32)], ["Mod\xE9liser", R(33, 37)]]],
+      ["Entra\xEEnement", [["\xC9quations du premier degr\xE9", R(38, 44)], ["\xC9quations produit", R(45, 53)], ["\xC9quations de la forme x\xB2 = a", R(54, 61)], ["Mod\xE9liser un probl\xE8me", R(62, 73)]]],
+      ["Approfondissement", [["Approfondissement", R(74, 81)], ["Club de maths", R(82, 83)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(84, 88)]]]
+    ] },
+    5: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(6, 9)], ["QCM : r\xE9ponses multiples", R(10, 11)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(12, 14)]]],
+      ["Automatismes", [["Vocabulaire et notation", R(15, 19)], ["Expression alg\xE9brique d\u2019une fonction", R(20, 26)], ["Repr\xE9sentation graphique d\u2019une fonction", R(27, 29)], ["Tableau de valeurs d\u2019une fonction", R(30, 33)]]],
+      ["Entra\xEEnement", [["Introduction aux fonctions", R(34, 51)], ["Repr\xE9sentation graphique d\u2019une fonction", R(52, 55)], ["Tableau de valeurs d\u2019une fonction", R(56, 57)]]],
+      ["Approfondissement", [["Approfondissement", R(58, 63)], ["Club de maths", R(64, 65)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(66, 70)]]]
+    ] },
+    6: { r: [
+      ["R\xE9vision", [["QCU : r\xE9ponse unique", R(9, 11)], ["QCM : r\xE9ponses multiples", R(12, 13)]]],
+      ["Outils num\xE9riques", [["Outils num\xE9riques", R(14, 18)]]],
+      ["Automatismes", [["Calculer avec une fonction lin\xE9aire", R(19, 24)], ["D\xE9terminer si une fonction est lin\xE9aire", R(25, 28)], ["Calculer avec une fonction affine", R(29, 32)], ["D\xE9terminer si une fonction est affine ou non", R(33, 35)], ["Repr\xE9senter une fonction", R(36, 40)]]],
+      ["Entra\xEEnement", [["Fonctions lin\xE9aires", R(41, 53)], ["Fonctions affines", R(54, 63)]]],
+      ["Approfondissement", [["Approfondissement", R(64, 70)]]],
+      ["Pr\xE9parer le brevet", [["Pr\xE9parer le brevet", R(71, 75)]]]
     ] }
   } };
 })();
@@ -46829,6 +46853,139 @@ window.M4PLAN = {
         { n: "3-80", src: S(66, 80), t: "D\u2019apr\xE8s brevet. Programme : choisir un nombre, le multiplier par 4, ajouter 8, multiplier le r\xE9sultat par 2.", rule: IR + " " + DIS, it: [nm("R\xE9sultat pour \u22121 :", 8), nm("Nombre de d\xE9part pour obtenir 30 :", 1.75), { k: "lit", q: "$B = (4 + x)^2 - x^2$ d\xE9velopp\xE9 et r\xE9duit :", a: "8x+16", red: 1 }, vf("$A = 2(4x + 8)$ et $B$ sont \xE9gales pour tout $x$.", 1)] },
         { n: "3-81", src: S(66, 81), t: "D\u2019apr\xE8s brevet. Gaspard borde un carr\xE9 de $n$ carreaux bleus de c\xF4t\xE9 avec des carreaux blancs (motif $n$).", it: [nm("Carreaux blancs pour le motif 4 :", 20), nm("C\xF4t\xE9 du carr\xE9 bleu avec 144 carreaux bleus :", 12), nm("Carreaux blancs pour ce carr\xE9 :", 52), qc("L\u2019expression qui ne convient pas est :", ["$2 \xD7 n + 2 \xD7 (n + 2)$", "$4 \xD7 (n + 2)$", "$4 \xD7 (n + 2) - 4$"], 1, "$4(n + 2)$ compte deux fois les coins")] },
         { n: "3-82", src: S(66, 82), t: "D\u2019apr\xE8s brevet. Nina : choisir un nombre, soustraire 1, multiplier par \u22122, ajouter 2. Claire : choisir un nombre, multiplier par $-\\frac{1}{2}$, ajouter 1.", rule: DIS, it: [nm("R\xE9sultat de Nina pour 1 :", 2), nm("R\xE9sultat de Claire pour 1 :", 0.5), nm("Nombre de d\xE9part pour que Nina obtienne 0 :", 2), { k: "lit", q: "R\xE9sultat de Nina pour $x$ (forme r\xE9duite) :", a: "-2x+4", red: 1 }, vf("Le r\xE9sultat de Nina est toujours quatre fois celui de Claire.", 1, "$-2x + 4 = 4\\left(-\\frac{1}{2}x + 1\\right)$")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 4 \xAB \xC9quations \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const st = (q, a, c) => ({ k: "set", q, a, c });
+  const li = (q, a, c) => ({ k: "lit", q, a, c });
+  const E1 = "\xC9quation du 1er degr\xE9 **$ax + b = cx + d$** : on soustrait $cx$ puis $b$ aux deux membres, puis on divise par $a - c$.";
+  const EP = "\xC9quation produit : **$A \xD7 B = 0$** \xE9quivaut \xE0 **$A = 0$ ou $B = 0$**.";
+  const EC = "\xC9quation **$x^2 = a$** : si **$a > 0$**, deux solutions **$-\\sqrt{a}$ et $\\sqrt{a}$** ; si $a = 0$, une solution 0 ; si $a < 0$, aucune solution.";
+  const MOD = "Mod\xE9liser : **choisir l\u2019inconnue**, **mettre en \xE9quation**, **r\xE9soudre**, **v\xE9rifier**, **r\xE9pondre au probl\xE8me**.";
+  ADD("trois", {
+    mnx: {
+      c4: [
+        { n: "4-7", src: S(76, 7), t: "Une seule r\xE9ponse est juste.", rule: E1, it: [qc("$9x - 4 = 3x + 20$ a pour solution :", ["2", "4", "$\\frac{8}{3}$", "18"], 1)] },
+        { n: "4-8", src: S(76, 8), t: "Une seule r\xE9ponse est juste.", rule: EP, it: [qc("$3x(4x + 1) = 0$ a pour solutions :", ["\u22123 et \u22124", "0 et \u22120,25", "0 et 0,25", "3 et 4"], 1)] },
+        { n: "4-9", src: S(76, 9), t: "Une seule r\xE9ponse est juste.", rule: EP, it: [qc("$\\frac{1}{2}x^2 + 8x = 0$ a pour solutions :", ["0 et \u221216", "$\\frac{1}{8}$ et 2", "$\\frac{1}{2}$ et 8", "0 et 16"], 0, "$x\\left(\\frac{1}{2}x + 8\\right) = 0$")] },
+        { n: "4-10", src: S(76, 10), t: "Une seule r\xE9ponse est juste.", rule: EC, it: [qc("\u22124 et 4 sont les solutions de l\u2019\xE9quation :", ["$x^2 = 4$", "$x^2 = 8$", "$x^2 = 16$", "$x^2 = 2$"], 2)] },
+        { n: "4-11", src: S(76, 11), t: "Quelles propositions sont des solutions de $(x + 7)(x - 4)(5x + 2) = 0$ ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: EP, it: [vf("7", 0), vf("4", 1), vf("$-\\frac{2}{5}$", 1), vf("\u22124", 0)] },
+        { n: "4-12", src: S(76, 12), t: "$x^2 - 25 = 0$ a pour solutions\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: EC, it: [vf("\u22125 et 5", 1), vf("\u221212,5 et 12,5", 0), vf("$-\\sqrt{25}$ et $\\sqrt{25}$", 1), vf("cette \xE9quation n\u2019a aucune solution", 0)] },
+        { n: "4-13", src: S(76, 13), t: "$10x - 5 = 2x + 43$ admet exactement la m\xEAme solution que les \xE9quations\u2026 (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: E1 + " " + EC, it: [vf("$x + 7 = 2x + 1$", 1, "solution 6"), vf("$x^2 = 36$", 0, "deux solutions : \u22126 et 6"), vf("$(x - 6)^2 = 0$", 1), vf("$\\frac{x}{3} - 2 = \\frac{x}{2} - 3$", 1)] },
+        { n: "4-14", src: S(77, 14), t: "Programme Scratch qui r\xE9sout $ax + b = cx + d$ avec la formule $x = \\frac{d - b}{a - c}$.", rule: E1, it: [vf("Le programme fonctionne pour $3x + 1 = 3x + 5$.", 0, "$a - c = 0$ : division par z\xE9ro"), nm("Solution de $2x + 7 = 5x - 2$ :", 3), qc("L\u2019\xE9quation $19x + 4 = 19x + 4$ a :", ["une seule solution", "aucune solution", "une infinit\xE9 de solutions"], 2), qc("L\u2019\xE9quation $13x + 2 = 13x + 5$ a :", ["une seule solution", "aucune solution", "une infinit\xE9 de solutions"], 1), nm("Solution de $8x + 2 = x + 3$ :", "1/7")] },
+        { n: "4-15", src: S(77, 15), t: "Un tableur calcule $11x + 7$ (colonne B), $16x - 4$ (colonne C) et leur produit (colonne D) pour $x$ de \u22122 \xE0 6.", rule: E1 + " " + EP, it: [qc("Formule \xE9crite en B2 :", ["=11*A2+7", "=11*B2+7", "=A2+11*7"], 0), nm("Solution de $11x + 7 = 51$ :", 4), nm("Une solution de $(11x + 7)(16x - 4) = 812$ :", 2), { k: "enc", x: "11/5" }, { k: "enc", x: "-7/11" }, { k: "enc", x: "1/4" }] },
+        { n: "4-59", src: S(82, 59), t: "On souhaite r\xE9soudre $(3x + 8)^2 = 36$.", rule: EC, it: [st("Solutions de $y^2 = 36$ :", ["-6", "6"]), st("Solutions de $(3x + 8)^2 = 36$ :", ["-14/3", "-2/3"]), st("Solutions de $(5x - 4)^2 = 49$ :", ["-3/5", "11/5"])] },
+        { n: "4-60", src: S(82, 60), t: "R\xE9soudre les \xE9quations suivantes.", rule: EC, it: [st("$x^2 = \\frac{16}{9}$ :", ["-4/3", "4/3"]), st("$2x^2 + 3x + 5 = x^2 + 4x + 41 - x$ :", ["-6", "6"]), st("$x(x + 7) - 10 = 7x + 15$ :", ["-5", "5"]), st("$(x + 1)^2 = 0$ :", ["-1"]), st("$(2x + 3)^2 = 9$ :", ["-3", "0"])] },
+        { n: "4-61", src: S(82, 61), t: "M\xE9thode d\u2019Al-Khw\xE2rizm\xEE pour $x^2 + 10x = 39$ : un carr\xE9 de c\xF4t\xE9 $x$ et deux rectangles $x \xD7 5$ plac\xE9s dans un grand carr\xE9 de c\xF4t\xE9 $x + 5$.", rule: EC, it: [nm("Aire de la partie blanche :", 25), nm("Aire du grand carr\xE9 si $x^2 + 10x = 39$ :", 64), st("Solutions de $(x + 5)^2 = 64$ :", ["-13", "3"])] },
+        { n: "4-62", src: S(82, 62), t: "Sam et Alice ont 200 \u20AC \xE0 eux deux. Alice poss\xE8de 15 \u20AC de plus que Sam.", rule: MOD, it: [nm("Somme de Sam :", 92.5, "\u20AC"), nm("Somme d\u2019Alice :", 107.5, "\u20AC")] },
+        { n: "4-63", src: S(82, 63), t: "Anne a eu 14, 15 et 19 \xE0 ses trois premiers contr\xF4les. Elle veut 17 de moyenne avec un quatri\xE8me.", rule: MOD, it: [nm("Note \xE0 obtenir :", 20)] },
+        { n: "4-64", src: S(82, 64), t: "Jardin en forme de L : AB = 37 m, ED = DC = CB = $x$. La cl\xF4ture mesure 202 m.", rule: MOD, it: [nm("$x =$", 32, "m", "$74 + 4x = 202$")] },
+        { n: "4-65", src: S(82, 65), t: "On augmente de 4 cm la longueur d\u2019un carr\xE9 et on diminue de 2 cm sa largeur : le rectangle a la m\xEAme aire que le carr\xE9.", rule: MOD, it: [nm("C\xF4t\xE9 du carr\xE9 :", 4, "cm", "$(c + 4)(c - 2) = c^2$")] },
+        { n: "4-66", src: S(82, 66), t: "On soustrait le m\xEAme nombre au num\xE9rateur et au d\xE9nominateur de $\\frac{41}{62}$ : on obtient l\u2019inverse de $\\frac{41}{62}$.", rule: MOD, it: [nm("Ce nombre est :", 103)] },
+        { n: "4-67", src: S(83, 67), t: "Chemin 1 : \xD7 3 puis + 10. Chemin 2 : + 4 puis \xD7 7. Les deux chemins m\xE8nent au m\xEAme r\xE9sultat.", rule: MOD, it: [nm("Nombre \xE0 inscrire dans la case \xAB ? \xBB :", -4.5)] },
+        { n: "4-68", src: S(83, 68), t: "Programme : choisir un nombre, soustraire 7, mettre au carr\xE9.", rule: EC, it: [vf("Ce programme peut donner un r\xE9sultat n\xE9gatif.", 0, "un carr\xE9 est positif"), st("Nombres \xE0 choisir pour obtenir 100 :", ["-3", "17"])] },
+        { n: "4-69", src: S(83, 69), t: "Programme A : multiplier par 5, soustraire 4. Programme B : ajouter 7, multiplier par \u22122.", rule: E1, it: [nm("Nombre de d\xE9part donnant le m\xEAme r\xE9sultat :", "\u221210/7", "", "$5x - 4 = -2(x + 7)$")] },
+        { n: "4-70", src: S(83, 70), t: "La somme de cinq nombres entiers cons\xE9cutifs est \xE9gale \xE0 470.", rule: MOD, it: [nm("Le plus petit de ces nombres :", 92), nm("Le plus grand :", 96)] },
+        { n: "4-71", src: S(83, 71), t: "Un jardin rectangulaire mesure 15 m de plus en longueur qu\u2019en largeur ; la cl\xF4ture mesure 162 m.", rule: MOD, it: [nm("Largeur :", 33, "m"), nm("Longueur :", 48, "m"), nm("Aire du jardin :", 1584, "m\xB2")] },
+        { n: "4-72", src: S(83, 72), t: "75 pi\xE8ces de 1 \u20AC et de 2 \u20AC pour un montant de 127 \u20AC.", rule: MOD, it: [nm("Pi\xE8ces de 1 \u20AC :", 23), nm("Pi\xE8ces de 2 \u20AC :", 52)] },
+        { n: "4-73", src: S(83, 73), t: "Axelle, Bruno et Cathy ont 60 ans \xE0 eux trois. Bruno a 10 ans de moins qu\u2019Axelle et Axelle a le triple de l\u2019\xE2ge de Cathy.", rule: MOD, it: [qc("Erreur de Jeanne (qui note $x$ l\u2019\xE2ge de Bruno) :", ["l\u2019\xE2ge d\u2019Axelle est $x + 10$, pas $x - 10$", "l\u2019\xE2ge de Cathy est $3x$", "la somme vaut 60 + 10"], 0), nm("\xC2ge de Cathy :", 10, "ans", "on pose $x$ = \xE2ge de Cathy : $x + 3x + 3x - 10 = 60$"), nm("\xC2ge d\u2019Axelle :", 30, "ans"), nm("\xC2ge de Bruno :", 20, "ans")] },
+        { n: "4-74", src: S(84, 74), t: "Triangle ABC : AB = 9 cm, AC = $x$ cm et BC = $x + 4$ cm, rectangle en A.", rule: E1, it: [nm("$x =$", "65/8", "cm", "$81 + x^2 = (x + 4)^2$ donne $8x + 16 = 81$")] },
+        { n: "4-75", src: S(84, 75), t: "R\xE9soudre les \xE9quations suivantes.", rule: E1 + " " + EP + " " + EC, it: [st("$7(x - 2) + 3x + 6 = 0$ :", ["0.8"]), st("$(3x - 5)(10x + 7) = 0$ :", ["5/3", "-7/10"]), st("$-\\frac{1}{8}(4x - 16) = -\\frac{7}{2}x - 3$ :", ["-5/3"]), st("$12x^2 - 3x = 0$ :", ["0", "1/4"]), st("$4x^2 - 64 = 0$ :", ["-4", "4"]), st("$(2x + 1)(3x - 3) = (6x + 14)(x - 1)$ :", ["1"]), st("$(x + 3)(12x + 15) + (x + 3)(4x - 2) = 0$ :", ["-3", "-13/16"])] },
+        { n: "4-76", src: S(84, 76), t: "R est sur [IT] et A sur [TN] : IR = 10, RT = $x + 3$, TA = $x + 7$, AN = 15. Les droites (RA) et (IN) sont parall\xE8les.", rule: E1, it: [nm("$x =$", 5, "", "$\\frac{x+3}{x+13} = \\frac{x+7}{x+22}$")] },
+        { n: "4-77", src: S(84, 77), t: "H est sur [BC] : AB = $x + 7$, BH = $x + 3$, AC = $x + 35$, HC = $x + 34$. Les triangles ABH et AHC sont rectangles en H.", rule: E1, it: [nm("$x =$", "29/6", "", "$AH^2 = 8x + 40 = 2x + 69$")] },
+        { n: "4-78", src: S(85, 78), t: "\xC0 chaque coin d\u2019une feuille A4 (21 cm \xD7 29,7 cm), on d\xE9coupe un carr\xE9 de c\xF4t\xE9 $c$ cm. L\u2019aire restante est 223,7 cm\xB2.", rule: EC, it: [nm("$c =$", 10, "cm", "$623{,}7 - 4c^2 = 223{,}7$")] },
+        { n: "4-79", src: S(85, 79), t: "Triangle ABC rectangle en A : $\\widehat{ABC} = 2x + 15$ et $\\widehat{ACB} = x$ (en degr\xE9s). AB = 20 cm.", it: [nm("$x =$", 25, "\xB0"), nm("AC (arrondi au millim\xE8tre) :", 42.9, "cm"), nm("Aire du triangle (arrondie au mm\xB2) :", 428.9, "cm\xB2")] },
+        { n: "4-80", src: S(85, 80), t: "Un c\xF4ne a le m\xEAme volume qu\u2019une boule de m\xEAme rayon $r$ que sa base.", it: [li("Hauteur $h$ du c\xF4ne en fonction de $r$ :", "4r", "$\\frac{1}{3}\\pi r^2 h = \\frac{4}{3}\\pi r^3$")] },
+        { n: "4-81", src: S(85, 81), t: "Salle de 12 000 places. \xC0 19 \u20AC : 2 000 tickets ; chaque baisse de 0,50 \u20AC fait vendre 500 tickets de plus. T(x) = (2 000 + 500x)(19 \u2212 0,5x) pour $x$ baisses.", it: [nm("Tickets vendus \xE0 18,50 \u20AC :", 2500), nm("Tickets vendus \xE0 15 \u20AC :", 6e3), nm("Total des ventes \xE0 19 \u20AC :", 38e3, "\u20AC"), nm("Total des ventes \xE0 17 \u20AC :", 68e3, "\u20AC"), nm("Total des ventes \xE0 9 \u20AC :", 108e3, "\u20AC"), nm("Nombre de baisses donnant le total maximal :", 17), nm("Tarif \xE0 appliquer :", 10.5, "\u20AC"), nm("Places alors vendues :", 10500)] },
+        { n: "4-82", src: S(85, 82), t: "\xC9nigmes.", rule: EC, it: [nm("Lorsqu\u2019on m\u2019augmente de 5, mon carr\xE9 augmente de 49. Qui suis-je ?", 2.4), nm("Lorsqu\u2019on me diminue de 3, mon carr\xE9 diminue de 51. Qui suis-je ?", 10), st("Lorsqu\u2019on me triple, mon carr\xE9 augmente de 9 248. Qui puis-je \xEAtre ?", ["-34", "34"])] },
+        { n: "4-83", src: S(85, 83), t: "D\xE9fi : compl\xE9ter la grille avec les nombres demand\xE9s.", rule: EP + " " + EC, it: [nm("Produit des solutions de $(x - 5)(x - 7) = 0$ :", 35), nm("Solution de $4x + 97 = 3x + 156$ :", 59), nm("Nombre de solutions de $3x^2 = 0$ :", 1), nm("Produit des solutions de $(2x + 8)(x + 17) = 0$ :", 68), nm("Somme des solutions de $(2x - 90)(x - 50) = 0$ :", 95), nm("Nombre de solutions de $2x(x + 1)(x - \\sqrt{3}) = 0$ :", 3), nm("Produit de la solution de $11x + 77 = 0$ par la solution n\xE9gative de $x^2 = 36$ :", 42), nm("Diff\xE9rence entre la solution positive de $2x^2 = 20\\,000$ et celle de $7x = 56$ :", 92), nm("Solution de $9x + 17 = 7x + 19$ :", 1), nm("Solution positive de $x^2 = 1\\,369$ :", 37)] },
+        { n: "4-84", src: S(86, 84), t: "D\u2019apr\xE8s brevet. Triangle \xE9quilat\xE9ral de c\xF4t\xE9 $4x + 1$ et rectangle de c\xF4t\xE9s $4x + 1{,}5$ et $2x$.", rule: E1, it: [li("P\xE9rim\xE8tre du rectangle :", "12x+3"), nm("Valeur de $x$ pour laquelle le p\xE9rim\xE8tre du rectangle vaut 18 cm :", 1.25), vf("Les deux figures ont le m\xEAme p\xE9rim\xE8tre pour toutes les valeurs de $x$.", 1, "$3(4x + 1) = 12x + 3$")] },
+        { n: "4-85", src: S(86, 85), t: "D\u2019apr\xE8s brevet. Programme A : soustraire 3, calculer le carr\xE9. Programme B : calculer le carr\xE9, ajouter le triple du nombre de d\xE9part, ajouter 7.", rule: E1, it: [nm("Programme A appliqu\xE9 \xE0 1 :", 4), nm("Programme B appliqu\xE9 \xE0 \u22125 :", 17), qc("Formule saisie en B3 et \xE9tir\xE9e vers la droite :", ["=B1^2+3*B1+7", "=(B1-3)^2", "=B2^2+3*B2+7"], 0), { k: "lit", q: "R\xE9sultat du programme A d\xE9velopp\xE9 :", a: "x^2-6x+9", red: 1 }, li("R\xE9sultat du programme B :", "x^2+3x+7"), nm("Nombre de d\xE9part donnant le m\xEAme r\xE9sultat :", "2/9")] },
+        { n: "4-86", src: S(86, 86), t: "D\u2019apr\xE8s brevet. Trois petits triangles \xE9quilat\xE9raux identiques sont d\xE9coup\xE9s dans les coins d\u2019un triangle \xE9quilat\xE9ral de c\xF4t\xE9 6 cm. La somme de leurs p\xE9rim\xE8tres \xE9gale le p\xE9rim\xE8tre de l\u2019hexagone restant.", rule: MOD, it: [nm("C\xF4t\xE9 des petits triangles :", 1.5, "cm", "$9a = 3a + 3(6 - 2a)$")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 5 \xAB Notion de fonction \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const st = (q, a, c) => ({ k: "set", q, a, c });
+  const FO = "Une fonction $f$ associe \xE0 un nombre $x$ (l\u2019**ant\xE9c\xE9dent**) un unique nombre **$f(x)$** (l\u2019**image**) : **$f : x \\mapsto f(x)$**. L\u2019image se lit sur l\u2019axe des **ordonn\xE9es**, l\u2019ant\xE9c\xE9dent sur l\u2019axe des **abscisses**.";
+  ADD("trois", {
+    mnx: {
+      c5: [
+        { n: "5-6", src: S(96, 6), t: "On donne $f : 2 \\mapsto -8$ et $f(4) = -6$. Une seule affirmation est vraie.", rule: FO, it: [qc("Quelle affirmation est vraie ?", ["L\u2019image de \u22128 par $f$ est 2.", "Un ant\xE9c\xE9dent de 2 par $f$ est \u22128.", "L\u2019image de 4 par $f$ est \u22126.", "Un ant\xE9c\xE9dent de 4 par $f$ est \u22126."], 2)] },
+        { n: "5-7", src: S(96, 7), t: "Une seule r\xE9ponse est juste.", rule: FO, it: [qc("$g : x \\mapsto x^2 - 9$. L\u2019image de \u22123 par $g$ est :", ["\u221218", "0", "18", "81"], 1)] },
+        { n: "5-8", src: S(96, 8), t: "Tableau de valeurs de $h$ : $h(-2) = 3$ ; $h(-1) = -0{,}5$ ; $h(0) = -1{,}5$ ; $h(1) = -2$.", rule: FO, it: [qc("Quelle affirmation est vraie ?", ["L\u2019image de \u22122 par $h$ est 3.", "Un ant\xE9c\xE9dent de \u22121 par $h$ est \u22120,5.", "L\u2019image de \u22122 par $h$ est 1.", "Un ant\xE9c\xE9dent de 0 par $h$ est \u22121,5."], 0)] },
+        { n: "5-9", src: S(96, 9), t: "Une seule r\xE9ponse est juste.", rule: FO, it: [qc("$j(x) = 2x - 3$. Un ant\xE9c\xE9dent de 0 par $j$ est :", ["3", "1", "\u22123", "1,5"], 3)] },
+        { n: "5-10", src: S(96, 10), t: "La courbe de $k$ est une parabole passant par (0 ; 1), (\u22121 ; 2) et (1 ; 2). Quelles affirmations sont vraies ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: FO, it: [vf("Un ant\xE9c\xE9dent de 1 par $k$ est 0.", 1), vf("Un ant\xE9c\xE9dent de 2 par $k$ est 5.", 0), vf("L\u2019image de 0 par $k$ est 1.", 1), vf("L\u2019image de \u22121 par $k$ est 2.", 1)] },
+        { n: "5-11", src: S(96, 11), t: "La courbe de $\\ell$ est la droite passant par (\u22122 ; 0) et (0 ; 1). Quelles affirmations sont vraies ? (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: FO, it: [vf("Un ant\xE9c\xE9dent de 1 par $\\ell$ est 1.", 0, "c\u2019est 0"), vf("Un ant\xE9c\xE9dent de 0 par $\\ell$ est \u22122.", 1), vf("L\u2019image de 2 par $\\ell$ est 2.", 1), vf("L\u2019image de 0 par $\\ell$ est 0.", 0, "c\u2019est 1")] },
+        { n: "5-12", src: S(97, 12), t: "$f(x) = -4x + 1{,}5$ : programmes Scratch qui calculent une image et un ant\xE9c\xE9dent.", rule: FO, it: [nm("Image de 5,8 par $f$ :", -21.7), nm("Ant\xE9c\xE9dent de \u22129,7 par $f$ :", 2.8)] },
+        { n: "5-13", src: S(97, 13), t: "Le programme de C\xE9lian calcule $y = 2{,}1 \xD7 x + 5{,}9$ pour $x$ allant de 0 \xE0 $n - 1$.", rule: FO, it: [{ k: "lit", q: "$f(x) =$", a: "2.1x+5.9", red: 1 }, nm("Image de 10 par $f$ :", 26.9), nm("$f\\left(\\frac{1}{3}\\right) =$", 6.6), nm("Ant\xE9c\xE9dent de 29 par $f$ :", 11), nm("$x$ tel que $f(x) = 3{,}8$ :", -1), { k: "tab", h: ["$x$", "$y$"], rows: [["0", "1", "2"], ["?5,9", "?8", "?10,1"]] }, qc("Le second programme dit si le point B\u2026", ["appartient \xE0 la courbe de $f$", "est l\u2019origine du rep\xE8re", "a une abscisse positive"], 0)] },
+        { n: "5-14", src: S(97, 14), t: "Tableur : $g(x) = x^2 + 2x + 1$ pour $x$ = \u22123, \u22122, 0, 3, 5 (valeurs 4, 1, 1, 16, 36).", rule: FO, it: [qc("Formule entr\xE9e en B2 :", ["=B1^2+2*B1+1", "=B2^2+2*B2+1", "=A1^2+2*A1+1"], 0), nm("Image de 3 par $g$ :", 16), nm("$g(-3) =$", 4), st("Ant\xE9c\xE9dents de 1 pr\xE9sents dans le tableau :", ["-2", "0"]), nm("$g(\u2026) = 36$ :", 5), nm("$g(6) =$", 49), nm("$g(7) =$", 64), nm("$g(8) =$", 81, "", "$g(x) = (x + 1)^2$"), nm("$g(9) =$", 100)] },
+        { n: "5-66", src: S(106, 66), t: "D\u2019apr\xE8s brevet. Vitesse de rotation d\u2019un hand-spinner (en tours par seconde) en fonction du temps (en s) : droite de (0 ; 20) jusqu\u2019\xE0 l\u2019arr\xEAt vers 93 s. $V(t) = -0{,}214 \xD7 t + V_{initiale}$.", rule: FO, it: [vf("Le temps et la vitesse de rotation sont proportionnels.", 0, "la droite ne passe pas par l\u2019origine"), nm("Vitesse initiale :", 20, "tours/s"), nm("$V(30)$ pour une vitesse initiale de 20 tours/s :", 13.58, "tours/s"), nm("Temps d\u2019arr\xEAt (arrondi au dixi\xE8me) :", 93.5, "s", "$20 \xF7 0{,}214 \u2248 93{,}46$"), vf("Lanc\xE9 deux fois plus vite, il tourne deux fois plus longtemps.", 1, "le temps d\u2019arr\xEAt vaut $V_{initiale} \xF7 0{,}214$")] },
+        { n: "5-67", src: S(106, 67), t: "D\u2019apr\xE8s brevet. Tableur : formule =3*B1-4 ; $x$ de \u22122 \xE0 4, $f(x)$ : \u221210, \u22127, \u22124, \u22121, 2, 5, 8.", rule: FO, it: [nm("Image de \u22121 par $f$ :", -7), nm("Ant\xE9c\xE9dent de 5 pr\xE9sent dans le tableau :", 3), { k: "lit", q: "$f(x) =$", a: "3x-4", red: 1 }, nm("$f(10) =$", 26)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Maths 3e, chapitre 6 \xAB Fonctions affines \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const AF = "Fonction affine **$f : x \\mapsto ax + b$** : droite de **coefficient directeur $a$** et d\u2019**ordonn\xE9e \xE0 l\u2019origine $b$**. Si $b = 0$ : fonction **lin\xE9aire** $x \\mapsto ax$ (proportionnalit\xE9, droite passant par l\u2019origine). Si $a = 0$ : fonction **constante**.";
+  ADD("trois", {
+    mnx: {
+      c6: [
+        { n: "6-9", src: S(116, 9), t: "$f$ est la fonction lin\xE9aire de coefficient \u22123. Une seule r\xE9ponse est juste.", rule: AF, it: [qc("Quelle affirmation est vraie ?", ["L\u2019image de 0 est 3.", "L\u2019ant\xE9c\xE9dent de 3 est 1.", "On a $f(6) = -2$.", "L\u2019ant\xE9c\xE9dent de \u22126 par $f$ est 2."], 3)] },
+        { n: "6-10", src: S(116, 10), t: "Tableau de valeurs : $f(-8) = -\\frac{5}{3}$ ; $f(0) = \\frac{1}{3}$ ; $f(4) = \\frac{4}{3}$. Une seule r\xE9ponse est juste.", rule: AF, it: [qc("Quelle affirmation est vraie ?", ["$f$ est une fonction lin\xE9aire.", "$f$ peut \xEAtre une fonction affine avec $b = \\frac{1}{3}$.", "On a $f\\left(\\frac{4}{3}\\right) = 4$.", "$f$ peut \xEAtre une fonction affine avec $a = \\frac{1}{3}$."], 1)] },
+        { n: "6-11", src: S(116, 11), t: "$f : x \\mapsto -3x + 5$. Une seule r\xE9ponse est juste.", rule: AF, it: [qc("Quelle affirmation est vraie ?", ["On a $f(-1) = 2$.", "Un ant\xE9c\xE9dent de 19 est 8.", "Quand $x$ augmente de 1, $f(x)$ diminue de 3.", "Sa repr\xE9sentation graphique est une droite de coefficient directeur 5."], 2)] },
+        { n: "6-12", src: S(116, 12), t: "$f : x \\mapsto 1{,}5x$. (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: AF, it: [vf("L\u2019origine du rep\xE8re est un point de la repr\xE9sentation graphique de $f$.", 1), vf("Les grandeurs repr\xE9sent\xE9es par $f(x)$ et $x$ sont proportionnelles.", 1), vf("L\u2019image de 1,5 par $f$ est 1.", 0, "$f(1{,}5) = 2{,}25$"), vf("A(\u22128 ; \u221212) appartient \xE0 la repr\xE9sentation graphique de $f$.", 1)] },
+        { n: "6-13", src: S(116, 13), t: "La droite (d) passe par les points (0 ; 3) et (4 ; 0) ; elle repr\xE9sente $f : x \\mapsto ax + b$. (plusieurs r\xE9ponses peuvent \xEAtre justes)", rule: AF, it: [vf("$b = 3$", 1), vf("$a = -\\frac{4}{3}$", 0), vf("$a = \\frac{3}{4}$", 0), vf("$a = -\\frac{3}{4}$", 1)] },
+        { n: "6-14", src: S(117, 14), t: "Le programme dit \xAB L\u2019image par $f$ est \xBB puis calcule $-5 \xD7$ (nombre choisi) $+ 8$.", rule: AF, it: [{ k: "lit", q: "$f(x) =$", a: "-5x+8", red: 1 }, nm("Coefficient $a$ :", -5), nm("Coefficient $b$ :", 8), vf("$f$ est une fonction affine.", 1)] },
+        { n: "6-15", src: S(117, 15), t: "Le programme met $i$ \xE0 0 puis, jusqu\u2019\xE0 ce que $i = 6$, dit $9 \xD7 i$ et ajoute 1 \xE0 $i$.", rule: AF, it: [{ k: "set", q: "Valeurs affich\xE9es :", a: ["0", "9", "18", "27", "36", "45"] }, { k: "lit", q: "Expression de $f(x)$ :", a: "9x", red: 1 }] },
+        { n: "6-18", src: S(117, 18), t: "Location de VTT. Tarif A : assurance de 10 \u20AC et 4,30 \u20AC par heure. Tarif B : 37 \u20AC la journ\xE9e.", rule: AF, it: [qc("Formule saisie en B2 :", ["=10+4,3*A2", "=4,3+10*A2", "=37*A2"], 0), { k: "tab", h: ["Temps (h)", "Tarif A (\u20AC)"], rows: [["3", "4", "5", "6", "7", "8", "9"], ["?22,9", "?27,2", "?31,5", "?35,8", "?40,1", "?44,4", "?48,7"]] }, qc("De 9 h \xE0 14 h, le tarif le plus avantageux est :", ["le tarif A", "le tarif B"], 0, "5 h : 31,50 \u20AC < 37 \u20AC"), vf("Pour 9 heures, le tarif B est le plus avantageux.", 1, "48,70 \u20AC > 37 \u20AC")] },
+        { n: "6-71", src: S(126, 71), t: "D\u2019apr\xE8s brevet. Murs d\u2019aire inf\xE9rieure \xE0 100 m\xB2. Peintre A : 15 \u20AC par m\xB2 ; peintre B : 10 \u20AC par m\xB2 et 100 \u20AC d\u2019installation ; peintre C : 700 \u20AC quelle que soit l\u2019aire.", rule: AF, it: [nm("Tarif du peintre A pour 40 m\xB2 :", 600, "\u20AC"), nm("Tarif du peintre B pour 40 m\xB2 :", 500, "\u20AC"), { k: "lit", q: "$b(x) =$", a: "10x+100", red: 1 }, qc("La fonction $a(x) = 15x$ est :", ["lin\xE9aire", "constante", "ni affine ni lin\xE9aire"], 0), nm("$a(60) =$", 900, "\u20AC"), nm("Ant\xE9c\xE9dent de 300 par $a$ :", 20), nm("Solution de $15x = 10x + 100$ :", 20, "", "pour 20 m\xB2, A et B co\xFBtent le m\xEAme prix"), nm("B est le moins cher pour une aire comprise entre 20 m\xB2 et \u2026 m\xB2 :", 60)] },
+        { n: "6-72", src: S(126, 72), t: "D\u2019apr\xE8s brevet. Tableur : $f(x)$ pour $x$ de \u22122 \xE0 4 donne \u221210, \u22127, \u22124, \u22121, 2, 5, 8 (formule =3*B1-4). Programme : choisir un nombre, ajouter 3, multiplier par 2, soustraire 5.", rule: AF, it: [nm("Image de \u22121 par $f$ :", -7), nm("Ant\xE9c\xE9dent de 5 par $f$ :", 3), { k: "lit", q: "$f(x) =$", a: "3x-4", red: 1 }, nm("$f(10) =$", 26), nm("R\xE9sultat du programme pour 8 :", 17), { k: "lit", q: "$g(x)$ (forme r\xE9duite) :", a: "2x+1", red: 1 }, nm("Nombre \xE0 choisir pour obtenir 6 :", 2.5), nm("Nombre pour lequel $f$ et $g$ donnent le m\xEAme r\xE9sultat :", 5)] }
       ]
     }
   });
