@@ -39382,6 +39382,356 @@ window.MN_VT = window.MN_VT || function(f, P) {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const G = (F, R, N) => ({ pg: [["Questions flash", "flash"], ["Je m\u2019entra\xEEne", [F, R - 1]], ["Je r\xE9sous des probl\xE8mes", [R, N - 1]], ["Exercices num\xE9riques", [N, N + 1]]] });
+  P.cinq = { ch: {
+    1: G(18, 24, 28),
+    2: G(38, 44, 50),
+    3: G(60, 68, 74),
+    4: G(84, 92, 98),
+    6: G(130, 136, 144),
+    8: G(174, 180, 188),
+    13: G(290, 296, 302),
+    14: G(312, 318, 324)
+  } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 1 \xAB Arithm\xE9tique \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const AR = "Pour partager **\xE9quitablement** deux quantit\xE9s en un maximum de lots identiques, on cherche le **plus grand diviseur commun** des deux nombres. Division euclidienne : **dividende = diviseur \xD7 quotient + reste**, avec reste < diviseur.";
+  ADD("cinq", {
+    mnx: {
+      c1: [
+        { n: "46", src: S(24, 46), t: "Probl\xE8me r\xE9solu. L\xE9a ach\xE8te 2 livres \xE0 12 \u20AC l\u2019unit\xE9 et 4 magazines \xE0 2 \u20AC. Elle donne un billet de 50 \u20AC au caissier.", rule: AR, it: [nm("Combien le caissier rendra-t-il \xE0 L\xE9a ?", 18, "\u20AC", "$50 - (2 \xD7 12 + 4 \xD7 2) = 18$")] },
+        { n: "47", src: S(24, 47), t: "Maxime a achet\xE9 une planche de 200 cm de longueur et y a d\xE9coup\xE9 4 bouts de 12 cm chacun.", rule: AR, it: [nm("Longueur de planche restante :", 152, "cm", "$200 - 4 \xD7 12$")] },
+        { n: "48", src: S(25, 48), t: "Probl\xE8me r\xE9solu. Un parfumeur veut composer des coffrets identiques avec 28 flacons et 49 petits savons, en les utilisant tous.", rule: AR, it: [nm("Nombre maximal de coffrets :", 7), nm("Flacons par coffret :", 4), nm("Savons par coffret :", 7)] },
+        { n: "49", src: S(25, 49), t: "Vers le Brevet. Un fleuriste dispose de 126 iris et de 210 roses. Il veut faire des bouquets identiques en utilisant toutes les fleurs.", rule: AR, it: [vf("Il peut r\xE9aliser 15 bouquets.", 0, "126 n\u2019est pas divisible par 15"), vf("Il peut r\xE9aliser 14 bouquets.", 1, "$126 = 14 \xD7 9$ et $210 = 14 \xD7 15$"), nm("Nombre maximal de bouquets :", 42), nm("Iris par bouquet :", 3), nm("Roses par bouquet :", 5)] },
+        { n: "50", src: S(26, 50), t: "Vers le Brevet. Un chocolatier dispose de 1 575 bonbons au chocolat blanc et de 4 410 bonbons au chocolat noir. Il veut cr\xE9er des assortiments identiques en utilisant tous les chocolats.", rule: AR, it: [nm("Nombre maximal de bo\xEEtes :", 315), nm("Chocolats blancs par bo\xEEte :", 5), nm("Chocolats noirs par bo\xEEte :", 14)] },
+        { n: "51", src: S(26, 51), t: "Vers le Brevet. Un p\xE2tissier dispose de 411 framboises et de 685 fraises. Il veut r\xE9partir ses fruits en les utilisant tous et en obtenant le maximum de g\xE2teaux identiques.", rule: AR, it: [nm("Nombre maximal de g\xE2teaux :", 137, "", "$411 = 3 \xD7 137$ et $685 = 5 \xD7 137$"), nm("Framboises par g\xE2teau :", 3), nm("Fraises par g\xE2teau :", 5)] },
+        { n: "52", src: S(26, 52), t: "Les Kruls ont tous le m\xEAme nombre de mains et le m\xEAme nombre de pieds. Dans le vestiaire de leur vaisseau : 1 540 gants et 2 772 bottes.", rule: AR, it: [vf("L\u2019\xE9quipage pouvait se composer de 4 Kruls.", 1, "1 540 et 2 772 sont divisibles par 4"), nm("Nombre maximal de Kruls dans l\u2019\xE9quipage :", 308), nm("Nombre de mains d\u2019un Krul (dans ce cas) :", 5), nm("Nombre de pieds d\u2019un Krul (dans ce cas) :", 9)] },
+        { n: "54", src: S(26, 54), t: "Championnat : une victoire rapporte 3 points, un nul 1 point. Parigny : 17 victoires, 3 d\xE9faites, 60 points, 53 buts marqu\xE9s, 30 encaiss\xE9s. Marcieux : 10 victoires, 10 nuls. Montp\xE9zat : 18 victoires, 6 nuls, 5 d\xE9faites, 53 buts marqu\xE9s, 27 encaiss\xE9s. \xC0 \xE9galit\xE9 de points, on d\xE9partage \xE0 la diff\xE9rence de buts.", rule: AR, it: [nm("Points de Marcieux :", 40, "", "$10 \xD7 3 + 10$"), nm("Nombre de matchs nuls de Parigny :", 9, "", "$60 - 17 \xD7 3$"), nm("Points de Montp\xE9zat :", 60), nm("Diff\xE9rence de buts de Montp\xE9zat :", 26), qc("\xC9quipe en t\xEAte du championnat :", ["Montp\xE9zat", "Parigny", "Marcieux"], 0, "60 points chacune, mais +26 contre +23")] },
+        { n: "55", src: S(27, 55), t: "On souhaite cl\xF4turer un terrain rectangulaire de 2 717 m sur 1 463 m avec des poteaux espac\xE9s r\xE9guli\xE8rement (un poteau \xE0 chaque coin), en utilisant le moins de poteaux possible. L\u2019espace est un nombre entier de m\xE8tres.", rule: AR, it: [nm("Espace entre deux poteaux :", 209, "m", "$2\\,717 = 13 \xD7 209$ et $1\\,463 = 7 \xD7 209$"), nm("Nombre de poteaux en tout :", 40, "", "$2 \xD7 (13 + 7)$")] },
+        { n: "56", src: S(27, 56), t: "Prouvez que les affirmations suivantes sont fausses \xE0 l\u2019aide d\u2019un contre-exemple.", rule: AR, it: [vf("Si un nombre est pair, alors la somme de ses diviseurs est paire.", 0, "2 : $1 + 2 = 3$"), vf("Plus un nombre est grand, plus la somme de ses diviseurs est grande.", 0, "6 : $1 + 2 + 3 + 6 = 12$ ; 7 : $1 + 7 = 8$")] },
+        { n: "58", src: S(27, 58), t: "Un p\xE8re l\xE8gue ses 17 chameaux : au plus \xE2g\xE9 la moiti\xE9, au second le tiers, au troisi\xE8me le neuvi\xE8me. Le sage pr\xEAte son chameau (18 chameaux), puis r\xE9cup\xE8re le sien.", rule: AR, it: [nm("Chameaux de l\u2019a\xEEn\xE9 :", 9), nm("Chameaux du deuxi\xE8me :", 6), nm("Chameaux du troisi\xE8me :", 2), nm("Chameaux qui restent pour le sage :", 1, "", "$18 - 17$")] },
+        { n: "60", src: S(28, 60), t: "Tableur : ENT(X) donne la partie enti\xE8re de X. Dividende en B1, diviseur en B2, quotient en B4, reste en B5.", rule: AR, it: [nm("ENT(1,23) =", 1), qc("Formule en B4 :", ["=ENT(B1/B2)", "=B1/B2", "=B1-B2"], 0), qc("Formule en B5 :", ["=B1-B2*B4", "=B1/B2-B4", "=ENT(B1-B2)"], 0), nm("Division de 24 par 7 : quotient", 3), nm("Division de 24 par 7 : reste", 3), nm("25 789 = 127 \xD7 203 + \u2026", 8), nm("114 536 = 834 \xD7 137 + \u2026", 278), nm("25 478 354 877 = 11 213 \xD7 2 272 215 + \u2026", 8082)] },
+        { n: "61", src: S(28, 61), t: "Scratch : programme de la division euclidienne par soustractions successives.", rule: AR, it: [nm("Division de 126 par 14 : quotient", 9), nm("Division de 126 par 14 : reste", 0)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 13 \xAB Triangles \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const TG = "La **somme des angles** d\u2019un triangle vaut **180\xB0**. **In\xE9galit\xE9 triangulaire** : chaque c\xF4t\xE9 est **inf\xE9rieur \xE0 la somme des deux autres**. Dans un triangle \xE9quilat\xE9ral, les angles mesurent 60\xB0 et chaque m\xE9diatrice est aussi une hauteur.";
+  ADD("cinq", {
+    mnx: {
+      c13: [
+        { n: "32", src: S(297, 32), t: "Probl\xE8me r\xE9solu. ABC est un triangle \xE9quilat\xE9ral et D est le milieu du segment [AB].", rule: TG, it: [nm("Mesure de l\u2019angle $\\widehat{ADC}$ :", 90, "\xB0"), nm("Mesure de l\u2019angle $\\widehat{ACD}$ :", 30, "\xB0"), vf("Les triangles ADC et CDB sont semblables.", 1, "angles de 90\xB0, 60\xB0 et 30\xB0")] },
+        { n: "35", src: S(298, 35), t: "Un jardinier veut planter un peuplier, un ch\xEAne et un noisetier : le noisetier \xE0 5,6 m du ch\xEAne, le peuplier \xE0 12,3 m du noisetier, et le peuplier et le ch\xEAne distants de 6,4 m.", rule: TG, it: [vf("Le jardinier peut mettre son plan en pratique.", 0, "$5{,}6 + 6{,}4 = 12 < 12{,}3$")] },
+        { n: "36", src: S(298, 36), t: "ABCD est un carr\xE9 de centre E (intersection des diagonales).", rule: TG, it: [nm("Mesure de l\u2019angle $\\widehat{AEB}$ :", 90, "\xB0"), nm("Mesure de l\u2019angle $\\widehat{EAB}$ :", 45, "\xB0"), vf("Le triangle ABE est rectangle et isoc\xE8le en E.", 1)] },
+        { n: "37", src: S(298, 37), t: "Sudoku : trouvez la valeur de chaque lettre.", rule: TG, it: [nm("A : la mesure d\u2019un angle plat divis\xE9e par 36", 5), nm("B : le dixi\xE8me d\u2019un angle du triangle \xE9quilat\xE9ral", 6), nm("C : la somme des angles d\u2019un triangle divis\xE9e par la valeur de l\u2019angle droit", 2), nm("D : l\u2019angle au sommet d\u2019un triangle isoc\xE8le dont les angles \xE0 la base valent 86,5\xB0", 7, "\xB0"), nm("G : le nombre de c\xF4t\xE9s d\u2019un triangle", 3), nm("H : l\u2019angle manquant d\u2019un triangle qui a des angles de 89\xB0 et 87\xB0", 4, "\xB0"), nm("I : le dixi\xE8me de l\u2019angle droit", 9, "\xB0")] },
+        { n: "39", src: S(299, 39), t: "Triangle ABC tel que AB = 5 cm, $\\widehat{ABC}$ est \xE9gal au double de $\\widehat{CAB}$ et $\\widehat{BCA}$ au triple de $\\widehat{CAB}$.", rule: TG, it: [nm("$\\widehat{CAB}$ =", 30, "\xB0", "$x + 2x + 3x = 180\xB0$"), nm("$\\widehat{ABC}$ =", 60, "\xB0"), nm("$\\widehat{BCA}$ =", 90, "\xB0")] },
+        { n: "43", src: S(299, 43), t: "On consid\xE8re un segment [AB]. On trace le cercle de centre A passant par B et le cercle de centre B passant par A. D est un point d\u2019intersection des deux cercles.", rule: TG, it: [qc("Le triangle ABD est :", ["\xE9quilat\xE9ral", "rectangle", "quelconque"], 0, "AD = AB = BD (rayons)")] },
+        { n: "45", src: S(299, 45), t: "Tracez un triangle \xE9quilat\xE9ral, ses m\xE9diatrices puis ses hauteurs.", rule: TG, it: [vf("Dans un triangle \xE9quilat\xE9ral, les m\xE9diatrices et les hauteurs sont confondues.", 1)] },
+        { n: "47", src: S(300, 47), t: "En d\xE9coupant judicieusement le quadrilat\xE8re ABCD en deux triangles (par une diagonale) :", rule: TG, it: [nm("Somme des angles d\u2019un quadrilat\xE8re :", 360, "\xB0", "$2 \xD7 180\xB0$")] },
+        { n: "49", src: S(300, 49), t: "Hauteur de l\u2019immeuble : l\u2019ombre de l\u2019immeuble mesure 15 m. Au m\xEAme moment, un b\xE2ton vertical de 2 m a une ombre de 3 m.", rule: TG, it: [nm("Hauteur de l\u2019immeuble :", 10, "m", "$15 \xD7 \\frac{2}{3}$")] },
+        { n: "56", src: S(302, 56), t: "Tableur : El\xE9ana conna\xEEt deux angles d\u2019un triangle (75\xB0 et 42\xB0) et veut calculer le troisi\xE8me.", rule: TG, it: [qc("Formule en B3 :", ["=180-B1-B2", "=B1+B2", "=180-B1+B2"], 0), nm("Troisi\xE8me angle :", 63, "\xB0"), nm("Troisi\xE8me angle si le 2e mesure en fait 49\xB0 :", 56, "\xB0")] },
+        { n: "Maths autrement", src: S(303, "\xAB Les maths autrement \xBB"), t: "Th\xE9or\xE8me de Viviani : M est un point \xE0 l\u2019int\xE9rieur d\u2019un triangle \xE9quilat\xE9ral ; MD, ME et MF sont les distances de M aux trois c\xF4t\xE9s, et $h$ la hauteur du triangle.", rule: TG, it: [vf("Quel que soit le point M, $MD + ME + MF = h$.", 1)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 14 \xAB Angles et droites parall\xE8les \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PA = "Un quadrilat\xE8re dont les **diagonales ont le m\xEAme milieu** est un **parall\xE9logramme** ; si de plus elles sont **de m\xEAme longueur**, c\u2019est un **rectangle** ; si elles sont **perpendiculaires**, c\u2019est un **losange** ; les deux \xE0 la fois : un **carr\xE9**. Deux droites coup\xE9es par une s\xE9cante sont parall\xE8les si les **angles alternes-internes** (ou correspondants) sont \xE9gaux.";
+  ADD("cinq", {
+    mnx: {
+      c14: [
+        { n: "49", src: S(318, 49), t: "Probl\xE8me r\xE9solu. A, B et C ne sont pas align\xE9s. A\u2032 et B\u2032 sont les sym\xE9triques de A et B par rapport \xE0 C.", rule: PA, it: [qc("Nature du quadrilat\xE8re ABA\u2032B\u2032 :", ["un parall\xE9logramme", "un trap\xE8ze quelconque", "un triangle"], 0, "ses diagonales ont le m\xEAme milieu C"), vf("Les droites (AB) et (A\u2032B\u2032) sont parall\xE8les.", 1)] },
+        { n: "50", src: S(318, 50), t: "C est un cercle de centre O et de rayon 6,2 cm ; A et B sont deux points de ce cercle. M est le sym\xE9trique de A par rapport \xE0 O et N celui de B.", rule: PA, it: [vf("M et N appartiennent au cercle.", 1, "OM = OA et ON = OB"), qc("Nature du quadrilat\xE8re ABMN :", ["un rectangle", "un losange", "un trap\xE8ze"], 0, "diagonales de m\xEAme milieu O et de m\xEAme longueur 12,4 cm")] },
+        { n: "51", src: S(319, 51), t: "Probl\xE8me r\xE9solu. ABCD est un carr\xE9 et A\u2032B\u2032C\u2032D\u2032 son sym\xE9trique par rapport \xE0 D.", rule: PA, it: [qc("Nature du quadrilat\xE8re ACA\u2032C\u2032 :", ["un carr\xE9", "un rectangle non carr\xE9", "un losange non carr\xE9"], 0)] },
+        { n: "54", src: S(320, 54), t: "ABCD est un rectangle de centre O tel que $\\widehat{ODC} = 63\xB0$.", rule: PA, it: [nm("$\\widehat{OCD}$ =", 63, "\xB0", "OD = OC : triangle isoc\xE8le"), nm("$\\widehat{DOC}$ =", 54, "\xB0"), nm("$\\widehat{AOD}$ =", 126, "\xB0")] },
+        { n: "57", src: S(320, 57), t: "Triangle ABC ; M milieu de [AB] ; la parall\xE8le \xE0 (BC) passant par M coupe [AC] en N ; la parall\xE8le \xE0 (AB) passant par N coupe [BC] en O.", rule: PA, it: [qc("Nature du quadrilat\xE8re MNOB :", ["un parall\xE9logramme", "un losange", "un rectangle"], 0, "c\xF4t\xE9s oppos\xE9s parall\xE8les"), vf("N est le milieu de [AC].", 1, "th\xE9or\xE8me de la droite des milieux")] },
+        { n: "64", src: S(321, 64), t: "[GA] mesure 12 cm ; d est sa m\xE9diatrice et M le milieu de [GA]. Le cercle de centre M coupe d en N et H ; GNAH est un parall\xE9logramme (et m\xEAme un losange).", rule: PA, it: [nm("\xC9cartement de compas pour que GNAH soit un carr\xE9 :", 6, "cm", "MN = MG")] },
+        { n: "69", src: S(322, 69), t: "Comment montrer que votre table est rectangulaire \xE0 l\u2019aide d\u2019un m\xE8tre ruban ?", rule: PA, it: [qc("Il suffit de v\xE9rifier que :", ["les c\xF4t\xE9s oppos\xE9s sont \xE9gaux et les diagonales ont la m\xEAme longueur", "les quatre c\xF4t\xE9s sont \xE9gaux", "une seule diagonale mesure plus que la longueur"], 0)] },
+        { n: "Maths autrement", src: S(325, "\xAB Les maths autrement \xBB"), t: "Autour de quadrilat\xE8res. Th\xE9bault : on construit des carr\xE9s \xE0 l\u2019ext\xE9rieur des c\xF4t\xE9s d\u2019un parall\xE9logramme ABCD ; M, N, O, P sont leurs centres. Varignon : I, J, K, L sont les milieux des c\xF4t\xE9s d\u2019un quadrilat\xE8re quelconque ABCD.", rule: PA, it: [qc("Nature du quadrilat\xE8re MNOP (Th\xE9bault) :", ["un carr\xE9", "un rectangle quelconque", "un trap\xE8ze"], 0), qc("Nature du quadrilat\xE8re IJKL (Varignon) :", ["un parall\xE9logramme", "toujours un carr\xE9", "un trap\xE8ze quelconque"], 0)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 2 \xAB Nombres relatifs \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const RE = "M\xEAme signe : **on additionne les distances \xE0 z\xE9ro et on garde le signe**. Signes contraires : **on soustrait les distances \xE0 z\xE9ro et on prend le signe de celui qui a la plus grande distance \xE0 z\xE9ro**. Soustraire un nombre, c\u2019est **additionner son oppos\xE9** : $a - b = a + (-b)$.";
+  ADD("cinq", {
+    mnx: {
+      c2: [
+        { n: "50", src: S(44, 50), t: "Probl\xE8me r\xE9solu. Lundi, la temp\xE9rature est inconnue. Mardi, elle baisse de 3,8 \xB0C ; mercredi, elle augmente de 2,7 \xB0C ; jeudi, elle augmente de 0,5 \xB0C ; vendredi, elle chute de 4 \xB0C ; enfin, samedi, elle augmente de 0,7 \xB0C pour atteindre 20 \xB0C.", rule: RE, it: [nm("Temp\xE9rature du lundi :", 23.9, "\xB0C", "$20 - 0{,}7 + 4 - 0{,}5 - 2{,}7 + 3{,}8$")] },
+        { n: "51", src: S(45, 51), t: "Probl\xE8me r\xE9solu.", rule: RE, it: [nm("$1 - 2 + 3 - 4 + 5 - 6 + \u2026 + 99 - 100 =$", -50, "", "50 couples valant chacun $-1$")] },
+        { n: "53", src: S(46, 53), t: "Vrai ou faux ? Est-il possible de\u2026", rule: RE, it: [vf("trouver deux nombres n\xE9gatifs dont la somme est positive", 0), vf("trouver deux nombres inf\xE9rieurs \xE0 10 dont la diff\xE9rence est \xE9gale \xE0 20", 1, "$5 - (-15) = 20$"), vf("trouver deux nombres compris entre \u221210 et 10 dont la somme est \xE9gale \xE0 \u22125", 1, "$-2 + (-3) = -5$"), vf("trouver deux nombres n\xE9gatifs dont la diff\xE9rence est n\xE9gative", 1, "$-5 - (-2) = -3$"), vf("trouver deux nombres dont la somme est \xE9gale \xE0 la diff\xE9rence", 1, "$7 + 0 = 7 - 0$"), vf("trouver un nombre \xE9gal \xE0 son oppos\xE9", 1, "0")] },
+        { n: "55", src: S(46, 55), t: "Temp\xE9ratures maximales / minimales de la semaine (\xB0C) : L 11 / 2 ; Ma 12,3 / 3,1 ; Me 12,7 / 0,2 ; J 10,2 / \u22121,4 ; V 10,3 / \u22120,3 ; S 9,4 / \u22122 ; D 10 / 0,7. L\u2019amplitude thermique est la diff\xE9rence entre la temp\xE9rature maximale et la temp\xE9rature minimale.", rule: RE, it: [nm("Amplitude du lundi :", 9, "\xB0C"), nm("Amplitude du jeudi :", 11.6, "\xB0C", "$10{,}2 - (-1{,}4)$"), nm("Amplitude du samedi :", 11.4, "\xB0C"), qc("Jour le plus froid :", ["samedi", "jeudi", "lundi"], 0), qc("Jour de la plus forte amplitude :", ["mercredi", "jeudi", "samedi"], 0, "$12{,}7 - 0{,}2 = 12{,}5$")] },
+        { n: "56", src: S(46, 56), t: "Il fait 7 \xB0C de plus \xE0 Tel-Aviv qu\u2019\xE0 Madrid ; 8 \xB0C de moins \xE0 Zagreb qu\u2019\xE0 Paris ; 11 \xB0C \xE0 Madrid ; la temp\xE9rature \xE0 Moscou est inf\xE9rieure de 29 \xB0C \xE0 celle de Zagreb ; \xE0 Paris, il fait 16 \xB0C de moins qu\u2019\xE0 Tel-Aviv.", rule: RE, it: [nm("Tel-Aviv :", 18, "\xB0C"), nm("Paris :", 2, "\xB0C"), nm("Zagreb :", -6, "\xB0C"), nm("Moscou :", -35, "\xB0C")] },
+        { n: "57", src: S(46, 57), t: "H\xE9rode Antipas est n\xE9 en 21 av. J.-C. et mort en 39 ap. J.-C., apr\xE8s 43 ans de r\xE8gne (on calcule avec les nombres relatifs : 21 av. J.-C. \u2192 \u221221).", rule: RE, it: [nm("\xC2ge \xE0 sa mort (calcul $39 - (-21)$) :", 60, "ans"), nm("Ann\xE9e o\xF9 il est devenu roi (nombre relatif) :", -4, "", "$39 - 43 = -4$, soit 4 av. J.-C.")] },
+        { n: "58", src: S(46, 58), t: "La d\xE9marche de Peter.", rule: RE, it: [nm("$A = 7 - 13 + 8 - 5 =$", -3), vf("Peter obtient le bon r\xE9sultat.", 1)] },
+        { n: "59", src: S(47, 59), t: "Un plongeur qui reste une heure \xE0 35 m de profondeur doit r\xE9aliser un palier de 6 min \xE0 6 m de profondeur, puis un autre \xE0 3 m.", rule: RE, it: [nm("De combien de m\xE8tres remonte-t-il jusqu\u2019au premier palier ?", 29, "m"), nm("Puis jusqu\u2019au deuxi\xE8me palier ?", 3, "m"), nm("Position du premier palier sur un axe gradu\xE9 vertical (profondeurs n\xE9gatives) :", -6, "m")] },
+        { n: "60", src: S(47, 60), t: "Snooker, avant la derni\xE8re manche : Marc 13 ; Laetitia 8 ; Julien 3 ; Fanny \u22122 ; Patrice \u22129. Derni\xE8re manche : Marc perd 7 points, Fanny en gagne 6, Laetitia en perd 3, Patrice r\xE9alise un score de \u22125 et Julien marque 3 points de moins que Fanny. Fanny est p\xE9nalis\xE9e de 2 points.", rule: RE, it: [nm("Score final de Marc :", 6), nm("Score final de Laetitia :", 5), nm("Score final de Julien :", 6), nm("Score final de Fanny :", 2), nm("Score final de Patrice :", -14)] },
+        { n: "61", src: S(47, 61), t: "Terminus. 7 personnes sont dans le bus. 1er arr\xEAt : 3 descendent, 6 montent. 2e arr\xEAt : 4 descendent. 3e arr\xEAt : 9 montent et 6 descendent. Au terminus, tout le monde descend.", rule: RE, it: [nm("Nombre de personnes qui descendent au terminus :", 9)] },
+        { n: "62", src: S(47, 62), t: "Jeu vid\xE9o. \xC9quipe bleue : Arthur \u221238, Frank 51 ; \xE9quipe rouge : Momo \u22124, Laura \u22127. Derni\xE8re manche : Laura marque 5 points, Frank 8 points, Momo 4 points de moins que Frank, et Arthur l\u2019oppos\xE9 de Laura.", rule: RE, it: [nm("Score final de l\u2019\xE9quipe bleue :", 16), nm("Score final de l\u2019\xE9quipe rouge :", -2), qc("\xC9quipe gagnante :", ["bleue", "rouge"], 0)] },
+        { n: "63", src: S(47, 63), t: "Rome antique (dates en nombres relatifs) : Cic\xE9ron mort en 43 av. J.-C. \xE0 63 ans ; Auguste n\xE9 en 63 av. J.-C. et mort \xE0 77 ans ; Pline l\u2019Ancien mort \xE0 56 ans en 79 ap. J.-C. ; Tite-Live n\xE9 en 59 av. J.-C., mort \xE0 76 ans ; Jules C\xE9sar assassin\xE9 \xE0 56 ans en 44 av. J.-C. ; S\xE9n\xE8que n\xE9 en 4 av. J.-C., a v\xE9cu 69 ans.", rule: RE, it: [qc("Qui est n\xE9 le premier ?", ["Cic\xE9ron", "Jules C\xE9sar", "Auguste", "Tite-Live"], 0, "n\xE9 en \u2212106"), qc("Qui est n\xE9 le dernier ?", ["Pline l\u2019Ancien", "S\xE9n\xE8que", "Auguste"], 0, "n\xE9 en 23"), qc("Qui est mort le premier ?", ["Jules C\xE9sar", "Cic\xE9ron", "Auguste"], 0, "\u221244")] },
+        { n: "64", src: S(48, 64), t: "Jean avait 72,35 \u20AC sur son compte au d\xE9but de l\u2019ann\xE9e ; Sara avait une dette de 28 \u20AC. Depuis, Jean a re\xE7u 90 \u20AC et d\xE9pens\xE9 124,49 \u20AC. Sara a maintenant 31,14 \u20AC sur son compte.", rule: RE, it: [nm("Somme sur le compte de Jean :", 37.86, "\u20AC"), qc("Qui a le plus d\u2019argent ?", ["Jean", "Sara"], 0), nm("Argent re\xE7u par Sara :", 59.14, "\u20AC", "$31{,}14 - (-28)$")] },
+        { n: "70", src: S(48, 70), t: "Quel est le signe du produit $(+1) \xD7 (-2) \xD7 (+3) \xD7 \u2026 \xD7 (+999) \xD7 (-1\\,000)$ ?", rule: "Un produit de nombres relatifs non nuls est **positif** si le nombre de facteurs n\xE9gatifs est **pair**, **n\xE9gatif** s\u2019il est impair.", it: [qc("Signe :", ["positif", "n\xE9gatif"], 0, "500 facteurs n\xE9gatifs (les pairs)")] },
+        { n: "71", src: S(48, 71), t: "Quel est le signe du produit $(-100) \xD7 (-99) \xD7 (-98) \xD7 \u2026 \xD7 (+99) \xD7 (+100)$ ?", rule: "Un produit qui contient le facteur **0** est **nul**.", it: [qc("Ce produit est :", ["nul", "positif", "n\xE9gatif"], 0, "il contient le facteur 0")] },
+        { n: "72", src: S(49, 72), t: "Un troc \xE9quitable ? Daniel donne 1 \u20AC \xE0 Nicolas, le lendemain Nicolas lui donne 2 \u20AC, puis Daniel 3 \u20AC, et ainsi de suite chaque jour pendant un an (365 jours).", rule: RE, it: [vf("Le troc est \xE9quitable.", 0), nm("Somme perdue par Daniel au bout de 365 jours :", 183, "\u20AC", "les jours impairs, il donne 1 \u20AC de plus")] },
+        { n: "73", src: S(49, 73), t: "Sally, Marion, Fanny et David prennent chacun un soda \xE0 3,20 \u20AC ; la location de la table est de 12 \u20AC. Sally paie toutes les boissons, Fanny paie la table. On partage tout \xE9quitablement.", rule: RE, it: [nm("Part de chacun :", 6.2, "\u20AC"), nm("Somme que Sally doit r\xE9cup\xE9rer :", 6.6, "\u20AC"), nm("Somme que Fanny doit r\xE9cup\xE9rer :", 5.8, "\u20AC")] },
+        { n: "76", src: S(50, 76), t: "Tableur : temp\xE9ratures moyennes \xE0 Montr\xE9al (\xB0C) : janvier \u221210,2 ; f\xE9vrier \u22128,4 ; mars \u22122,3 ; avril 5,7 ; mai 13,4 ; juin 18,2 ; juillet 20,9 ; ao\xFBt 19,6 ; septembre 14,6 ; octobre 8,1 ; novembre 1,8 ; d\xE9cembre \u22126,3.", rule: RE, it: [qc("Mois le plus froid :", ["janvier", "f\xE9vrier", "d\xE9cembre"], 0), qc("Paul veut au moins 10 \xB0C sans d\xE9passer 18 \xB0C. Il peut partir en :", ["mai ou septembre", "juin ou juillet", "avril ou octobre"], 0), nm("Nombre de mois cons\xE9cutifs sous 5 \xB0C (de novembre \xE0 mars) :", 5)] },
+        { n: "Maths autrement", src: S(51, "\xAB Les maths autrement \xBB"), t: "De nombreuses \xE9chelles de temp\xE9rature. Kelvin : on ajoute 273,15 \xE0 la temp\xE9rature en degr\xE9s Celsius. Fahrenheit : $T_F = 1{,}8 \xD7 T_C + 32$.", rule: RE, it: [nm("0 \xB0C en kelvins :", 273.15, "K"), nm("\u2212140 \xB0C en kelvins :", 133.15, "K"), nm("180 K en degr\xE9s Celsius :", -93.15, "\xB0C"), nm("36,8 \xB0C en degr\xE9s Fahrenheit :", 98.24, "\xB0F"), nm("\u221240 \xB0C en degr\xE9s Fahrenheit :", -40, "\xB0F"), nm("212 \xB0F en degr\xE9s Celsius :", 100, "\xB0C")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 3 \xAB Nombres fractionnaires \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const FR = "Une **proportion** = $\\frac{\\text{partie}}{\\text{total}}$. Prendre une fraction d\u2019une quantit\xE9 : **$\\frac{a}{b}$ de $Q$ = $\\frac{a \xD7 Q}{b}$**. Pour comparer ou additionner des fractions, on les met **au m\xEAme d\xE9nominateur**. R\xE9ponses sous forme de fraction simplifi\xE9e ($a/b$) ou d\xE9cimale.";
+  ADD("cinq", {
+    mnx: {
+      c3: [
+        { n: "62", src: S(68, 62), t: "Probl\xE8me r\xE9solu. Sur un semi-marathon de 21 km, apr\xE8s 30 min : Jean a parcouru 4,2 km ; Aminata a parcouru le quart de la distance ; Charlotte est \xE0 18 km de l\u2019arriv\xE9e ; Lucas a parcouru les trois dixi\xE8mes de la course.", rule: FR, it: [nm("Distance parcourue par Aminata :", 5.25, "km"), nm("Distance parcourue par Lucas :", 6.3, "km"), qc("Classement provisoire :", ["Lucas, Aminata, Jean, Charlotte", "Aminata, Lucas, Jean, Charlotte", "Jean, Lucas, Aminata, Charlotte"], 0)] },
+        { n: "63", src: S(68, 63), t: "ABC est un triangle tel que AB = 12 cm, BC = 7 cm et AC = 6 cm.", rule: FR, it: [nm("Proportion que repr\xE9sente la longueur AC par rapport au p\xE9rim\xE8tre :", "6/25"), nm("\xC9criture d\xE9cimale de cette fraction :", 0.24)] },
+        { n: "64", src: S(69, 64), t: "Probl\xE8me r\xE9solu. Le r\xE9frig\xE9rateur de Jack mesure 1,60 m de hauteur et 70 cm de largeur. Les aimants sont des rectangles de 10 cm sur 5 cm, deux par paquet. Il veut recouvrir le quart de la porte.", rule: FR, it: [nm("Nombre de paquets de g\xE2teaux n\xE9cessaires :", 28)] },
+        { n: "65", src: S(69, 65), t: "Fractions dans l\u2019espace : on a retir\xE9 d\u2019un cylindre de r\xE9volution une part (en vert) correspondant \xE0 un angle de 45\xB0 (le reste correspond \xE0 315\xB0).", rule: FR, it: [nm("Rapport entre le volume de la partie verte et celui du cylindre :", "1/8"), nm("Volume de la partie verte si le cylindre a un volume de 80 cm\xB3 :", 10, "cm\xB3")] },
+        { n: "66", src: S(70, 66), t: "Le journal de Fran\xE7ois a 30 pages : 12 sont consacr\xE9es aux \xE9lections pr\xE9sidentielles am\xE9ricaines, 6 \xE0 l\u2019actualit\xE9 \xE9conomique, 6 au sport et 6 \xE0 la culture.", rule: FR, it: [nm("Proportion de pages consacr\xE9es aux \xE9lections :", "2/5"), nm("Fran\xE7ois d\xE9teste le sport, l\u2019\xE9conomie et la culture. Proportion du journal qu\u2019il va lire :", "2/5")] },
+        { n: "67", src: S(70, 67), t: "Une bonne r\xE9daction a 3 parties, chacune compos\xE9e de 3 sous-parties, et chaque sous-partie a 3 exemples. S\xE9bastien a \xE9crit 9 exemples.", rule: FR, it: [nm("Nombre d\u2019exemples conseill\xE9s par le professeur :", 27), nm("Proportion des exemples de S\xE9bastien par rapport au nombre recommand\xE9 :", "1/3")] },
+        { n: "68", src: S(70, 68), t: "\xC9l\xE8ves de 5e : filles, 63 inscrites en latin et 51 non inscrites ; gar\xE7ons, 58 inscrits et 55 non inscrits.", rule: FR, it: [nm("Nombre d\u2019\xE9l\xE8ves de 5e :", 227), nm("Proportion de gar\xE7ons parmi les \xE9l\xE8ves inscrits en latin :", "58/121"), nm("Proportion de filles inscrites en latin parmi les filles :", "21/38")] },
+        { n: "69", src: S(70, 69), t: "La dentition d\u2019un adulte : 8 incisives, 4 canines, 8 pr\xE9molaires et 12 molaires.", rule: FR, it: [nm("Proportion d\u2019incisives (d\xE9cimal) :", 0.25), nm("Proportion de canines (d\xE9cimal) :", 0.125), nm("Proportion de molaires (d\xE9cimal) :", 0.375)] },
+        { n: "70", src: S(70, 70), t: "Points gagn\xE9s : Roger 42 (9 coups droits, 18 revers, 3 services gagnants, 12 fautes de l\u2019adversaire) ; Rafa\xEBl 45 (25 coups droits, 7 revers, 3 services gagnants, 10 fautes de l\u2019adversaire).", rule: FR, it: [nm("Proportion des points gagn\xE9s par Roger sur son coup favori (revers) :", "3/7"), nm("Proportion de points gagn\xE9s par Rafa\xEBl sur le total des points :", "15/29"), nm("Proportion de services gagnants sur le total des points :", "2/29")] },
+        { n: "71", src: S(70, 71), t: "L\u2019intensit\xE9 sonore du premier \xE9cho est \xE9gale aux trois quarts de celle du cri ; celle du deuxi\xE8me \xE9cho aux trois quarts de celle du premier, etc.", rule: FR, it: [nm("Proportion de l\u2019intensit\xE9 du 2e \xE9cho par rapport au cri :", "9/16"), nm("Proportion de l\u2019intensit\xE9 du 3e \xE9cho par rapport au cri :", "27/64")] },
+        { n: "72", src: S(71, 72), t: "Dix amis se partagent 50 \u0153ufs : le 1er \xE9limin\xE9 re\xE7oit un \u0153uf, le 2e deux \u0153ufs, et ainsi de suite jusqu\u2019au 9e \xE9limin\xE9 ; le gagnant r\xE9cup\xE8re le reste.", rule: FR, it: [nm("Proportion d\u2019\u0153ufs re\xE7ue par le 5e \xE9limin\xE9 :", "1/10"), nm("Proportion d\u2019\u0153ufs restant quand la moiti\xE9 des participants est \xE9limin\xE9e :", "7/10"), nm("Nombre d\u2019\u0153ufs du gagnant :", 5), nm("Place \xE0 laquelle il faut terminer pour avoir le plus d\u2019\u0153ufs :", 2, "e", "le 9e \xE9limin\xE9 re\xE7oit 9 \u0153ufs")] },
+        { n: "75", src: S(71, 75), t: "Jean remporte la course du coll\xE8ge en r\xE9alisant 3 km en 11 min. Le deuxi\xE8me arrive 2 min apr\xE8s Jean.", rule: FR, it: [nm("Temps de Jean pour 1 km :", "11/3", "min"), nm("Temps du deuxi\xE8me pour 3 km :", 13, "min"), nm("Temps du deuxi\xE8me pour 1 km :", "13/3", "min")] },
+        { n: "76", src: S(71, 76), t: "Alix : 10 \xE9pisodes de 15 min par DVD. Elle peut regarder la t\xE9l\xE9vision 1 h par jour. Elle dispose de 3 h avant le d\xEEner et fait ses devoirs pendant 1 h 30.", rule: FR, it: [nm("Fraction du temps avant le d\xEEner pass\xE9e devant sa s\xE9rie :", "1/3"), nm("Fraction du temps avant le d\xEEner pass\xE9e \xE0 travailler :", "1/2"), vf("Elle peut voir les 2 DVD en une semaine.", 1, "4 \xE9pisodes par jour : 20 \xE9pisodes en 5 jours")] },
+        { n: "77", src: S(71, 77), t: "Je partage un g\xE2teau en trois parts \xE9gales, puis je coupe une part en 3 petites parts \xE9gales, et une petite part en 3 tr\xE8s petites parts \xE9gales. Je mange une tr\xE8s petite part.", rule: FR, it: [nm("Proportion du g\xE2teau mang\xE9e :", "1/27")] },
+        { n: "78", src: S(71, 78), t: "Un sachet de 30 bonbons : un tiers au caramel, un cinqui\xE8me \xE0 la fraise et un sixi\xE8me \xE0 l\u2019abricot ; le reste est au citron.", rule: FR, it: [nm("Bonbons au caramel :", 10), nm("Bonbons \xE0 la fraise :", 6), nm("Bonbons \xE0 l\u2019abricot :", 5), nm("Bonbons au citron :", 9), nm("Proportion de bonbons au citron :", "3/10")] },
+        { n: "79", src: S(72, 79), t: "4 kg de confiture r\xE9partis dans 16 pots ; Moussa emporte 5 pots. Un pot vide p\xE8se 50 g.", rule: FR, it: [nm("Masse de confiture dans un pot :", 250, "g"), nm("Masse que Moussa transporte :", 1500, "g")] },
+        { n: "80", src: S(72, 80), t: "Les quatre neuvi\xE8mes du troupeau de 63 moutons de M. Patchou sont malades, et un mouton sur trois dans le troupeau de 48 moutons de M. Poutchi.", rule: FR, it: [nm("Moutons sains chez M. Patchou :", 35), nm("Moutons sains chez M. Poutchi :", 32), qc("Troupeau qui contient le plus de moutons sains :", ["celui de M. Patchou", "celui de M. Poutchi"], 0)] },
+        { n: "81", src: S(72, 81), t: "Martin mange deux paquets de c\xE9r\xE9ales par semaine ; un paquet contient 375 g.", rule: FR, it: [nm("Fraction de paquet mang\xE9e par jour :", "2/7"), nm("Masse de c\xE9r\xE9ales mang\xE9e par jour (au gramme pr\xE8s) :", 107, "g", "$\\frac{750}{7} \u2248 107{,}1$")] },
+        { n: "83", src: S(72, 83), t: "Une galette des rois de 400 g est partag\xE9e en 6 parts \xE9gales ; la f\xE8ve p\xE8se 20 g.", rule: FR, it: [nm("Masse d\u2019une part (fraction) :", "200/3", "g"), nm("Fraction de la masse de la galette que repr\xE9sente la f\xE8ve :", "1/20")] },
+        { n: "86", src: S(72, 86), t: "Un carr\xE9 a pour p\xE9rim\xE8tre $\\frac{32}{7}$ cm.", rule: FR, it: [nm("Mesure exacte du c\xF4t\xE9 :", "8/7", "cm")] },
+        { n: "87", src: S(73, 87), t: "Raid : les $\\frac{5}{12}$ du parcours se font en VTT ; la longueur \xE0 pied repr\xE9sente $\\frac{1}{4}$ de celle en VTT ; le reste en cano\xEB.", rule: FR, it: [nm("Fraction du parcours \xE0 pied :", "5/48"), nm("Fraction du parcours en cano\xEB :", "23/48")] },
+        { n: "89", src: S(73, 89), t: "\xC9tude d\u2019une s\xE9rie : $A = 1 + \\frac{1}{2}$, $B = 1 + \\frac{1}{2} + \\frac{1}{4}$, $C = B + \\frac{1}{8}$, et ainsi de suite.", rule: FR, it: [nm("$A =$", "3/2"), nm("$B =$", "7/4"), nm("$C =$", "15/8"), nm("$D = C + \\frac{1}{16} =$", "31/16"), nm("$F = 1 + \\frac{1}{2} + \u2026 + \\frac{1}{64} =$", "127/64"), nm("Nombre entier dont les r\xE9sultats se rapprochent :", 2)] },
+        { n: "90", src: S(73, 90), t: "M. Martin poss\xE8de 20 assiettes bleues. Chaque jour, M. Durand lui \xE9change une assiette bleue contre deux blanches.", rule: FR, it: [nm("Au bout de combien de jours M. Martin n\u2019a-t-il plus qu\u2019une assiette bleue sur trois ?", 10, "jours", "$\\frac{20 - n}{20 + n} = \\frac{1}{3}$")] },
+        { n: "91", src: S(73, 91), t: "Un cinqui\xE8me des macarons est \xE0 la vanille. Il y a 10 macarons au caf\xE9 de plus qu\u2019\xE0 la vanille et 32 macarons au chocolat.", rule: FR, it: [nm("Nombre total de macarons :", 70), nm("Macarons \xE0 la vanille :", 14)] },
+        { n: "92", src: S(74, 92), t: "Tableur : num\xE9rateur en B1, d\xE9nominateur en B2 ; fraction en B4 et pourcentage en B5.", rule: FR, it: [qc("Formule en B4 :", ["=B1/B2", "=B2/B1", "=B1*B2"], 0), nm("$\\frac{1\\,774}{2\\,018}$ en pourcentage (au centi\xE8me) :", 87.91, "%"), nm("$\\frac{184}{513}$ en pourcentage (au centi\xE8me) :", 35.87, "%"), nm("$\\frac{41\\,511}{51\\,844}$ en pourcentage (au centi\xE8me) :", 80.07, "%")] },
+        { n: "93", src: S(74, 93), t: "Produit en croix : $\\frac{a}{b} = \\frac{c}{d}$ si $a \xD7 d = c \xD7 b$.", rule: FR, it: [vf("$\\frac{11\\,214}{65\\,536} = \\frac{5\\,607}{32\\,768}$", 1, "$11\\,214 = 2 \xD7 5\\,607$ et $65\\,536 = 2 \xD7 32\\,768$")] },
+        { n: "94", src: S(74, 94), t: "Mise au m\xEAme d\xE9nominateur : calculez.", rule: FR, it: [nm("$\\frac{13}{5} + \\frac{7}{9} =$", "152/45"), nm("$\\frac{3}{4} + \\frac{5}{6} =$", "19/12"), nm("$\\frac{27}{12} + \\frac{25}{4} =$", "17/2")] },
+        { n: "Maths autrement", src: S(75, "\xAB Les maths autrement \xBB"), t: "L\u2019\u0153il d\u2019Horus : six morceaux repr\xE9sentent $\\frac{1}{2}, \\frac{1}{4}, \\frac{1}{8}, \\frac{1}{16}, \\frac{1}{32}, \\frac{1}{64}$.", rule: FR, it: [nm("Somme des six fractions :", "63/64"), nm("Fraction manquante pour obtenir 1 :", "1/64"), vf("$\\frac{3}{4} = \\frac{1}{2} + \\frac{1}{4}$", 1), vf("$\\frac{2}{7} = \\frac{1}{4} + \\frac{1}{28}$", 1)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 4 \xAB Calcul litt\xE9ral \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const LI = "Une **expression litt\xE9rale** contient des lettres qui d\xE9signent des nombres. On **remplace** la lettre par sa valeur pour calculer. **Distributivit\xE9** : $k(a + b) = ka + kb$. Un **contre-exemple** suffit \xE0 montrer qu\u2019une \xE9galit\xE9 est fausse.";
+  ADD("cinq", {
+    mnx: {
+      c4: [
+        { n: "62", src: S(92, 62), t: "Probl\xE8me r\xE9solu. On multiplie la longueur et la largeur d\u2019un rectangle par 3.", rule: LI, it: [nm("Par combien son aire est-elle multipli\xE9e ?", 9, "", "$3L \xD7 3\\ell = 9 \xD7 L\\ell$")] },
+        { n: "64", src: S(93, 64), t: "D\xE9montrez les \xE9galit\xE9s suivantes (d\xE9veloppement).", rule: LI, it: [vf("$(a - b)^2 = a^2 - 2ab + b^2$", 1), vf("$(a - b)(a + b) = a^2 - b^2$", 1), vf("$(a + b)^2 = a^2 + b^2$", 0, "contre-exemple : $a = b = 1$")] },
+        { n: "65", src: S(94, 65), t: "Lucile offre aux 3 fr\xE8res et s\u0153urs des cadeaux qui co\xFBtent le m\xEAme prix que l\u2019\xE2ge qu\u2019ils ont. Zo\xE9 a deux ans de plus que Juliette, qui a trois ans de moins que Paul. $x$ est l\u2019\xE2ge de Paul.", rule: LI, it: [qc("Prix total \xE0 payer :", ["$3x - 4$", "$3x + 5$", "$x - 1$"], 0, "$x + (x - 3) + (x - 1)$"), nm("Prix total si Paul a 12 ans :", 32, "\u20AC")] },
+        { n: "66", src: S(94, 66), t: "St\xE9phane veut acheter 4 croissants et 2 pains au chocolat ($x$ = prix d\u2019un croissant, $y$ = prix d\u2019un pain au chocolat).", rule: LI, it: [qc("Prix \xE0 payer :", ["$4x + 2y$", "$6xy$", "$4y + 2x$"], 0), nm("Prix si $x = 1$ \u20AC et $y = 1{,}20$ \u20AC :", 6.4, "\u20AC")] },
+        { n: "67", src: S(94, 67), t: "Le cahier de maths de C\xE9line a 96 pages. Elle \xE9crit une demi-page de cours et une page d\u2019exercices par heure de cours de maths. Elle a 3 h 30 de cours de maths par semaine.", rule: LI, it: [nm("Pages utilis\xE9es par semaine :", 5.25), qc("Pages utilis\xE9es en $x$ heures :", ["$1{,}5x$", "$x + 1{,}5$", "$0{,}5x$"], 0), vf("Sur 36 semaines, C\xE9line aura assez de place dans son cahier.", 0, "$5{,}25 \xD7 36 = 189 > 96$")] },
+        { n: "69", src: S(94, 69), t: "Thomas dessine des hexagones : 1 \xE0 la 1re \xE9tape, 7 \xE0 la 2e \xE9tape, 19 \xE0 la 3e \xE9tape.", rule: LI, it: [nm("Hexagones \xE0 ajouter pour obtenir l\u2019\xE9tape 4 :", 18), nm("Hexagones dans le dessin de la 4e \xE9tape :", 37)] },
+        { n: "70", src: S(94, 70), t: "Mme Dory a deux enfants : l\u2019un est deux fois plus vieux que l\u2019autre. Chaque mois, chacun re\xE7oit le double de son \xE2ge en euros. $x$ est l\u2019\xE2ge du plus jeune.", rule: LI, it: [qc("Argent donn\xE9 chaque mois cette ann\xE9e :", ["$6x$", "$3x$", "$4x$"], 0, "$2x + 2 \xD7 2x$"), qc("Argent donn\xE9 chaque mois l\u2019ann\xE9e prochaine :", ["$6x + 4$", "$6x + 2$", "$6x + 1$"], 0, "$2(x + 1) + 2(2x + 1)$")] },
+        { n: "72", src: S(94, 72), t: "Christian construit un enclos rectangulaire contre un mur avec 8 m de cl\xF4ture (le mur sert de 4e c\xF4t\xE9). $x$ est la largeur (c\xF4t\xE9 perpendiculaire au mur).", rule: LI, it: [nm("Aire de l\u2019enclos pour une largeur de 1,5 m :", 7.5, "m\xB2"), qc("Longueur en fonction de $x$ :", ["$8 - 2x$", "$8 - x$", "$4 - x$"], 0), qc("Aire en fonction de $x$ :", ["$x(8 - 2x)$", "$x(8 - x)$", "$8x$"], 0), nm("Aire pour $x = 2$ :", 8, "m\xB2"), vf("Un enclos carr\xE9 serait plus efficace.", 0, "carr\xE9 : $x = \\frac{8}{3}$ et aire \u2248 7,1 m\xB2 < 8 m\xB2")] },
+        { n: "73", src: S(95, 73), t: "On forme un rectangle de longueur 3 allumettes et de largeur 1 allumette, que l\u2019on agrandit \xE0 chaque \xE9tape d\u2019une allumette sur chacun de ses c\xF4t\xE9s.", rule: LI, it: [nm("Allumettes \xE0 l\u2019\xE9tape 1 :", 8), nm("Allumettes pour un rectangle de 30 allumettes de largeur :", 128, "", "longueur 32 : $2 \xD7 (32 + 30)$"), qc("Allumettes pour un rectangle de largeur $n$ :", ["$4n + 4$", "$2n + 3$", "$4n$"], 0)] },
+        { n: "74", src: S(95, 74), t: "Cha\xEEne de triangles isoc\xE8les. Position initiale : un triangle avec 3 allumettes. \xC0 chaque \xE9tape, on ajoute 2 allumettes \xE0 gauche et 2 \xE0 droite pour obtenir 2 triangles de plus.", rule: LI, it: [nm("Allumettes pour conclure la 9e \xE9tape :", 39, "", "$3 + 4 \xD7 9$"), nm("Nombre d\u2019\xE9tapes qu\u2019on peut terminer avec 100 allumettes :", 24), nm("Allumettes pour former 33 triangles :", 67)] },
+        { n: "75", src: S(95, 75), t: "Max place le m\xEAme nombre de boules sur chaque ar\xEAte d\u2019une pyramide \xE0 base carr\xE9e (une boule \xE0 chaque sommet). Avec 3 boules par ar\xEAte, il obtient 13 boules.", rule: LI, it: [nm("Boules en tout avec 4 boules par ar\xEAte :", 21), nm("Boules en tout avec 12 boules par ar\xEAte :", 85), qc("Boules en tout avec $n$ boules par ar\xEAte :", ["$8n - 11$", "$8n$", "$5n + 8$"], 0, "5 sommets + $8(n - 2)$")] },
+        { n: "76", src: S(95, 76), t: "On double la longueur d\u2019une seule ar\xEAte d\u2019un parall\xE9l\xE9pip\xE8de rectangle.", rule: LI, it: [nm("Le volume est multipli\xE9 par :", 2)] },
+        { n: "77", src: S(96, 77), t: "Parall\xE9l\xE9pip\xE8de rectangle d\u2019ar\xEAtes 7 cm, 2,2 cm et 4 cm.", rule: LI, it: [nm("Surface totale :", 104.4, "cm\xB2", "$2 \xD7 (7 \xD7 2{,}2 + 7 \xD7 4 + 2{,}2 \xD7 4)$")] },
+        { n: "79", src: S(96, 79), t: "\xAB Tapis fractal \xBB : \xE0 chaque \xE9tape, chaque carr\xE9 vert est partag\xE9 en 9 carr\xE9s \xE9gaux et on retire celui du centre. Le carr\xE9 initial a pour c\xF4t\xE9 $x$.", rule: LI, it: [qc("Aire verte \xE0 la 1re \xE9tape :", ["$\\frac{8}{9}x^2$", "$\\frac{1}{9}x^2$", "$8x^2$"], 0), qc("Aire verte \xE0 la 2e \xE9tape :", ["$\\frac{64}{81}x^2$", "$\\frac{16}{81}x^2$", "$\\frac{8}{81}x^2$"], 0), nm("Aire verte pour $x = 3$ m \xE0 la 3e \xE9tape (au centi\xE8me) :", 6.32, "m\xB2", "$9 \xD7 \\left(\\frac{8}{9}\\right)^3 = \\frac{512}{81}$")] },
+        { n: "80", src: S(96, 80), t: "La magicienne : pense \xE0 un nombre ; multiplie-le par 4 ; enl\xE8ve 5 ; multiplie par 2 ; enl\xE8ve 7 fois le nombre de d\xE9part ; ajoute 15.", rule: LI, it: [qc("R\xE9sultat en fonction du nombre $x$ de d\xE9part :", ["$x + 5$", "$x - 5$", "$8x + 5$"], 0, "$2(4x - 5) - 7x + 15$"), qc("Pour retrouver le nombre de d\xE9part, elle :", ["enl\xE8ve 5 au r\xE9sultat", "ajoute 5 au r\xE9sultat", "divise le r\xE9sultat par 5"], 0)] },
+        { n: "81", src: S(96, 81), t: "Choisir un nombre ; le multiplier par 4 ; soustraire 8 ; ajouter au r\xE9sultat le nombre choisi ; ajouter 5.", rule: LI, it: [nm("R\xE9sultat pour 1 :", 2), nm("R\xE9sultat pour 3,74 :", 15.7), qc("Expression du r\xE9sultat :", ["$5x - 3$", "$4x - 3$", "$5x + 13$"], 0), qc("Programme plus court \xE9quivalent :", ["multiplier par 5 puis soustraire 3", "multiplier par 4 puis ajouter 5", "ajouter 5 puis multiplier par 3"], 0)] },
+        { n: "82", src: S(96, 82), t: "Hypoth\xE8ses : on calcule $a \xD7 (a + a) - a \xD7 a$.", rule: LI, it: [nm("Pour $a = 3$ :", 9), nm("Pour $a = 10$ :", 100), vf("Pour tout nombre $a$ : $a \xD7 (a + a) - a \xD7 a = a^2$", 1, "$2a^2 - a^2 = a^2$")] },
+        { n: "83", src: S(97, 83), t: "Martin tend un lacet de 40 cm de long en forme de rectangle.", rule: LI, it: [nm("Aire du carr\xE9 obtenu :", 100, "cm\xB2"), qc("Aire d\u2019un rectangle de largeur $x$ :", ["$x(20 - x)$", "$x(40 - x)$", "$40x$"], 0), vf("Une aire de rectangle est sup\xE9rieure \xE0 celle du carr\xE9.", 0, "le carr\xE9 a la plus grande aire")] },
+        { n: "84", src: S(97, 84), t: "Trouvez un produit qui est \xE9gal \xE0 la somme $2x^2 + 7x + 3$.", rule: LI, it: [qc("$2x^2 + 7x + 3 =$", ["$(2x + 1)(x + 3)$", "$(2x + 3)(x + 1)$", "$(x + 7)(2x + 3)$"], 0)] },
+        { n: "86", src: S(97, 86), t: "Le chiffre 76.", rule: LI, it: [vf("Le produit de deux nombres se terminant par 76 se termine aussi par 76.", 1, "ex. $176 \xD7 276 = 48\\,576$")] },
+        { n: "88", src: S(98, 88), t: "Scratch : demander un nombre ; mettre nombre \xE0 r\xE9ponse ; mettre nombre \xE0 nombre + 3 ; mettre nombre \xE0 2 \xD7 nombre ; dire nombre.", rule: LI, it: [qc("R\xE9sultat final en fonction de $x$ :", ["$2(x + 3)$", "$2x + 3$", "$x + 6$"], 0), nm("R\xE9sultat pour 5 :", 16)] },
+        { n: "90", src: S(98, 90), t: "Vers le Brevet. Pour Chaimaa : \xD7 9 puis \u2212 8. Pour C\xE9line : \xD7 (\u22123) puis + 31.", rule: LI, it: [nm("R\xE9sultat de Chaimaa pour 2 :", 10), nm("R\xE9sultat de C\xE9line pour 2 :", 25), nm("Nombre de d\xE9part pour lequel les deux r\xE9sultats sont \xE9gaux :", 3.25, "", "$9x - 8 = -3x + 31$")] },
+        { n: "Maths autrement", src: S(99, "\xAB Les maths autrement \xBB"), t: "L\u2019\xE9nergie d\u2019une math\xE9maticienne (\xC9milie du Ch\xE2telet). Newton : $E_c = \\frac{1}{2} m \xD7 V$ ; Leibniz : $E_c = \\frac{1}{2} m \xD7 V \xD7 V$. L\u2019exp\xE9rience montre que la d\xE9formation est multipli\xE9e par 4 quand la vitesse double.", rule: LI, it: [vf("C\u2019est Leibniz qui avait raison.", 1), nm("Si la vitesse est multipli\xE9e par 3, l\u2019\xE9nergie est multipli\xE9e par :", 9)] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 6 \xAB Proportionnalit\xE9 \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const PP = "Deux grandeurs sont **proportionnelles** si l\u2019on passe de l\u2019une \xE0 l\u2019autre en **multipliant par un m\xEAme nombre** (coefficient de proportionnalit\xE9). **Prendre $t$ %** d\u2019une quantit\xE9, c\u2019est la multiplier par $\\frac{t}{100}$. Augmenter de $t$ % : **\xD7 $(1 + \\frac{t}{100})$** ; diminuer de $t$ % : **\xD7 $(1 - \\frac{t}{100})$**.";
+  ADD("cinq", {
+    mnx: {
+      c6: [
+        { n: "44", src: S(136, 44), t: "Probl\xE8me r\xE9solu. La lumi\xE8re parcourt 300 000 km en une seconde. Distances au Soleil (millions de km) : Mercure 60, V\xE9nus 108, Terre 150, Mars 228.", rule: PP, it: [nm("Temps pour atteindre Mercure :", 200, "s"), nm("Temps pour atteindre V\xE9nus :", 360, "s"), nm("Temps pour atteindre la Terre :", 500, "s"), nm("Temps pour atteindre Mars :", 760, "s")] },
+        { n: "45", src: S(137, 45), t: "Probl\xE8me r\xE9solu. Un pot de 0,7 kg de p\xE2te \xE0 tartiner co\xFBte 4,90 \u20AC ; un pot de 1,3 kg co\xFBte 8,30 \u20AC.", rule: PP, it: [nm("Prix au kilo du petit pot :", 7, "\u20AC"), qc("Le moins cher au kilo :", ["le pot de 1,3 kg", "le pot de 0,7 kg"], 0, "$1{,}3 \xD7 7 = 9{,}10 > 8{,}30$")] },
+        { n: "46", src: S(137, 46), t: "Alix \xE9crit des adresses sur des enveloppes. Elle commence \xE0 14 h. \xC0 14 h 05, elle en a \xE9crit 6, et 14 de plus \xE0 14 h 15.", rule: PP, it: [vf("Elle travaille \xE0 un rythme r\xE9gulier.", 0, "6 en 5 min, mais 14 en 10 min")] },
+        { n: "47", src: S(138, 47), t: "Compl\xE9tez astucieusement les tableaux de proportionnalit\xE9. a. 550 feuilles A4 p\xE8sent 2 860 g. b. Une r\xE9sistance de 6 \u03A9 donne une tension de 4,8 V.", rule: PP, it: [nm("Masse de 225 feuilles :", 1170, "g"), nm("Masse de 4 950 feuilles :", 25740, "g"), nm("Masse d\u2019une feuille :", 5.2, "g"), nm("Tension pour 5 \u03A9 :", 4, "V"), nm("Tension pour 30 \u03A9 :", 24, "V"), nm("Tension pour 75 \u03A9 :", 60, "V")] },
+        { n: "48", src: S(138, 48), t: "La largeur du rectangle ABCD vaut toujours 1 cm ; la longueur AB est not\xE9e $a$.", rule: PP, it: [qc("P\xE9rim\xE8tre en fonction de $a$ :", ["$2a + 2$", "$4a$", "$a + 1$"], 0), nm("P\xE9rim\xE8tre pour $a = 10$ :", 22, "cm"), vf("Le p\xE9rim\xE8tre est proportionnel \xE0 la longueur $a$.", 0, "$a = 1$ : 4 cm ; $a = 2$ : 6 cm")] },
+        { n: "49", src: S(138, 49), t: "P\xE2tes en gros : emballage 35 centimes (pour les deux formats) et p\xE2tes 10 centimes les 100 g.", rule: PP, it: [nm("Prix d\u2019un paquet de 500 g :", 0.85, "\u20AC"), nm("Prix d\u2019un paquet de 5 kg :", 5.35, "\u20AC"), vf("Le prix total est proportionnel au poids de p\xE2tes.", 0, "\xE0 cause de l\u2019emballage")] },
+        { n: "50", src: S(138, 50), t: "La voiture de Nicolas consomme en moyenne 7,3 L d\u2019essence aux 100 km.", rule: PP, it: [nm("Essence pour 300 km :", 21.9, "L"), nm("Essence pour 400 km :", 29.2, "L"), nm("Distance parcourue avec 25 L (au km pr\xE8s) :", 342, "km")] },
+        { n: "51", src: S(138, 51), t: "Un baril de 8,4 kg de lessive co\xFBte 18,90 \u20AC.", rule: PP, it: [nm("Coefficient (prix au kilo) :", 2.25, "\u20AC"), nm("Prix de 5 kg :", 11.25, "\u20AC"), nm("Quantit\xE9 pour 3,78 \u20AC :", 1.68, "kg"), nm("Prix de 75,6 kg :", 170.1, "\u20AC")] },
+        { n: "52", src: S(138, 52), t: "LV1 d\u2019une classe de 5e : filles 7 en allemand et 14 en anglais ; gar\xE7ons 8 en allemand et 10 en anglais.", rule: PP, it: [nm("Pourcentage de filles dans la classe (au centi\xE8me) :", 53.85, "%"), nm("Pourcentage de gar\xE7ons qui ont pris l\u2019anglais (au centi\xE8me) :", 25.64, "%"), nm("Pourcentage de filles qui \xE9tudient l\u2019allemand (au centi\xE8me) :", 17.95, "%")] },
+        { n: "53", src: S(138, 53), t: "Temps interm\xE9diaires d\u2019un marathonien : 34 min aux 10 km ; $\\frac{13}{15}$ h aux 15 km ; 1 h 26 aux 25 km.", rule: PP, it: [nm("$\\frac{13}{15}$ h en minutes :", 52, "min"), vf("Le temps est proportionnel \xE0 la distance parcourue.", 0, "3,4 min/km ; 3,47 min/km ; 3,44 min/km")] },
+        { n: "56", src: S(139, 56), t: "Il faut 0,2 h \xE0 Tom pour \xE9plucher 37 pommes de terre.", rule: PP, it: [nm("Pommes de terre \xE9pluch\xE9es en 48 min :", 148), nm("Pommes de terre \xE9pluch\xE9es en 2 h 06 min (enti\xE8res) :", 388)] },
+        { n: "58", src: S(139, 58), t: "Ferdinand reproduit au $\\frac{1}{25}$ un avion de longueur 8,61 m, d\u2019envergure 11,20 m et de hauteur 2,95 m.", rule: PP, it: [nm("Longueur de la maquette :", 34.44, "cm"), nm("Envergure de la maquette :", 44.8, "cm"), nm("Hauteur de la maquette :", 11.8, "cm")] },
+        { n: "59", src: S(139, 59), t: "Usain Bolt : 100 m en 9,58 s et 200 m en 19,19 s.", rule: PP, it: [nm("Vitesse moyenne sur 100 m (au centi\xE8me) :", 10.44, "m/s"), nm("Vitesse moyenne sur 200 m (au centi\xE8me) :", 10.42, "m/s"), qc("Le plus rapide :", ["le 100 m", "le 200 m"], 0)] },
+        { n: "60", src: S(139, 60), t: "Le jardin de Lucas fait 12 m sur 6 m. Sur 10 m\xB2, il y a 5 800 tr\xE8fles ; sur 60 tr\xE8fles, exactement 1 a 4 feuilles.", rule: PP, it: [nm("Nombre de tr\xE8fles \xE0 4 feuilles dans le jardin :", 696)] },
+        { n: "61", src: S(139, 61), t: "T\xE9l\xE9viseurs : diagonale 100,62 cm pour 445,50 \u20AC et 110,92 cm pour 528 \u20AC.", rule: PP, it: [vf("Le prix est proportionnel \xE0 la diagonale.", 0, "$445{,}5 \xF7 100{,}62 \u2248 4{,}43$ et $528 \xF7 110{,}92 \u2248 4{,}76$")] },
+        { n: "62", src: S(140, 62), t: "Pour une catapulte : 1 \xE9lastique, 1 paille, un dixi\xE8me de rouleau de ruban adh\xE9sif, 4 languettes en bois, 3 cuill\xE8res. Anna ach\xE8te 1 bo\xEEte de 20 \xE9lastiques (1,20 \u20AC), 1 bo\xEEte de 50 pailles (1,90 \u20AC), 1 rouleau de ruban (2,35 \u20AC), 1 sachet de 10 languettes (0,90 \u20AC) et 1 sachet de 10 cuill\xE8res (1,15 \u20AC).", rule: PP, it: [nm("Montant total des achats :", 7.5, "\u20AC"), nm("Co\xFBt r\xE9el du mat\xE9riel d\u2019une catapulte (au centime) :", 1.04, "\u20AC"), nm("Nombre maximal de catapultes :", 2, "", "languettes : $10 \xF7 4$")] },
+        { n: "64", src: S(140, 64), t: "Sauce : 200 g de cr\xE8me liquide (30 g de mati\xE8res grasses pour 100 g), 120 g d\u2019Edam (24 g pour 100 g) et 100 g de Camembert (19 g pour 100 g).", rule: PP, it: [nm("Masse de mati\xE8res grasses :", 107.8, "g"), nm("Pourcentage de mati\xE8res grasses (au centi\xE8me) :", 25.67, "%"), nm("Apr\xE8s \xE9vaporation de 80 g d\u2019eau (au centi\xE8me) :", 31.71, "%")] },
+        { n: "65", src: S(140, 65), t: "Aire d\u2019un secteur de disque : $A = \\frac{\\alpha}{360} \xD7 \\pi \xD7 r^2$.", rule: PP, it: [nm("Aire pour $r = 1$ cm et $\\alpha = 90\xB0$ (au centi\xE8me) :", 0.79, "cm\xB2"), nm("Aire pour $r = 1$ cm et $\\alpha = 180\xB0$ (au centi\xE8me) :", 1.57, "cm\xB2"), vf("\xC0 rayon fix\xE9, l\u2019aire est proportionnelle \xE0 l\u2019angle.", 1), nm("Aire pour $\\alpha = 30\xB0$ et $r = 2$ cm (au centi\xE8me) :", 1.05, "cm\xB2"), vf("\xC0 angle fix\xE9, l\u2019aire est proportionnelle au rayon.", 0, "elle d\xE9pend de $r^2$")] },
+        { n: "66", src: S(141, 66), t: "Phil m\xE9lange 0,2 L de jus de pomme (25 % de fruit) et 0,1 L de jus d\u2019orange (50 % de fruit).", rule: PP, it: [nm("Teneur en fruit du cocktail (au centi\xE8me) :", 33.33, "%")] },
+        { n: "67", src: S(141, 67), t: "Christophe a pay\xE9 520 \u20AC de loyer pour le mois d\u2019ao\xFBt (31 jours), mais son contrat se termine au 23 ao\xFBt.", rule: PP, it: [nm("Somme rembours\xE9e (au centime) :", 134.19, "\u20AC", "$520 \xD7 \\frac{8}{31}$")] },
+        { n: "68", src: S(141, 68), t: "Le prix d\u2019un pot de confiture a augment\xE9 de 25 % ; son ancien prix \xE9tait de 1,80 \u20AC.", rule: PP, it: [nm("Nouveau prix :", 2.25, "\u20AC")] },
+        { n: "69", src: S(141, 69), t: "Le prix d\u2019un smartphone vient d\u2019\xEAtre r\xE9duit de 20 % ; il co\xFBte maintenant 224 \u20AC.", rule: PP, it: [nm("Prix avant la r\xE9duction :", 280, "\u20AC")] },
+        { n: "70", src: S(141, 70), t: "Un lot de 12 paires de chaussettes co\xFBte 6,20 \u20AC.", rule: PP, it: [nm("Nombre de paires avec 31 \u20AC :", 60)] },
+        { n: "71", src: S(141, 71), t: "Dans la classe de Franck, il y avait autant de gar\xE7ons que de filles. Depuis l\u2019arriv\xE9e de Miriam, le pourcentage de filles d\xE9passe celui des gar\xE7ons de 4 %.", rule: PP, it: [nm("Nombre d\u2019\xE9l\xE8ves dans la classe :", 25, "", "$\\frac{1}{25} = 4$ %")] },
+        { n: "72", src: S(141, 72), t: "Une tomate de 80 g contient 95 % d\u2019eau. Apr\xE8s s\xE9chage, le pourcentage d\u2019eau n\u2019est plus que de 90 %.", rule: PP, it: [nm("Masse de mati\xE8re s\xE8che :", 4, "g"), nm("Masse de la tomate maintenant :", 40, "g")] },
+        { n: "73", src: S(141, 73), t: "Arthur court 200 m en 24 s. Bless\xE9, sa vitesse diminue de 30 %.", rule: PP, it: [nm("Vitesse initiale :", 30, "km/h"), nm("Nouvelle vitesse :", 21, "km/h")] },
+        { n: "74", src: S(141, 74), t: "Soldes. Tee-shirt : 10,90 \u20AC, \u221220 %. Chemise : 24,90 \u20AC, r\xE9duction de 2,49 \u20AC. Jean : 39 \u20AC, prix apr\xE8s r\xE9duction 31,20 \u20AC. Cale\xE7ons : 15 \u20AC, r\xE9duction de 4,50 \u20AC. Chaussures : 48,50 \u20AC, \u221225 %.", rule: PP, it: [nm("Prix du tee-shirt apr\xE8s r\xE9duction :", 8.72, "\u20AC"), nm("Pourcentage de r\xE9duction de la chemise :", 10, "%"), nm("Pourcentage de r\xE9duction du jean :", 20, "%"), nm("Pourcentage de r\xE9duction des cale\xE7ons :", 30, "%"), nm("Prix des chaussures apr\xE8s r\xE9duction (au centime) :", 36.38, "\u20AC")] },
+        { n: "75", src: S(142, 75), t: "On modifie les dimensions d\u2019un carr\xE9.", rule: PP, it: [nm("Horizontale \u221230 % et verticale \u221260 % : l\u2019aire diminue de", 72, "%", "$0{,}7 \xD7 0{,}4 = 0{,}28$"), nm("Horizontale +90 % et verticale +20 % : l\u2019aire augmente de", 128, "%", "$1{,}9 \xD7 1{,}2 = 2{,}28$"), nm("Horizontale \u221260 % et verticale +120 % : l\u2019aire diminue de", 12, "%", "$0{,}4 \xD7 2{,}2 = 0{,}88$")] },
+        { n: "77", src: S(142, 77), t: "Un pot de confiture co\xFBte 1,90 \u20AC. Promotion 1 : pour 3 pots achet\xE9s, le 4e est offert. Promotion 2 : 20 % de remise sur chaque pot. Arthur a aussi des bons de r\xE9duction de 40 centimes par pot.", rule: PP, it: [qc("Le plus int\xE9ressant pour 5 pots :", ["les bons de 40 centimes (7,50 \u20AC)", "la promotion 1 (7,60 \u20AC)", "la promotion 2 (7,60 \u20AC)"], 0), qc("Le plus int\xE9ressant pour 12 pots :", ["la promotion 1 (17,10 \u20AC)", "la promotion 2 (18,24 \u20AC)", "les bons (18 \u20AC)"], 0)] },
+        { n: "78", src: S(142, 78), t: "IXe l\xE9gislature : 33 femmes parmi les 577 d\xE9put\xE9s. XIVe l\xE9gislature : 155 femmes parmi les 577 d\xE9put\xE9s.", rule: PP, it: [nm("Pourcentage de femmes (IXe, au centi\xE8me) :", 5.72, "%"), nm("Pourcentage de femmes (XIVe, au centi\xE8me) :", 26.86, "%"), nm("Le pourcentage a \xE9t\xE9 multipli\xE9 par (au dixi\xE8me) :", 4.7)] },
+        { n: "79", src: S(142, 79), t: "Soldes. Veste A : 28 \u20AC, sold\xE9e \xE0 \u221215 %, puis nouvelle baisse de 20 % sur le prix d\xE9j\xE0 sold\xE9. Veste B : 29,90 \u20AC, sold\xE9e \xE0 20 \u20AC.", rule: PP, it: [nm("R\xE9duction sur la veste A :", 4.2, "\u20AC"), nm("Nouveau prix de la veste A :", 23.8, "\u20AC"), nm("Pourcentage de r\xE9duction de la veste B (\xE0 l\u2019unit\xE9) :", 33, "%"), nm("Prix final de la veste A :", 19.04, "\u20AC"), nm("Pourcentage global de r\xE9duction de la veste A :", 32, "%"), qc("R\xE9duction la plus int\xE9ressante :", ["veste B (33 %)", "veste A (32 %)"], 0)] },
+        { n: "80", src: S(143, 80), t: "Le prix d\u2019une paire de baskets (100 \u20AC) augmente de 40 %, puis baisse de 40 %.", rule: PP, it: [nm("Prix final :", 84, "\u20AC"), nm("Augmentation n\xE9cessaire pour revenir au prix de d\xE9part (au centi\xE8me) :", 19.05, "%")] },
+        { n: "81", src: S(143, 81), t: "Diane a devin\xE9 les trois quarts des bonnes r\xE9ponses. Enzo a devin\xE9 deux bonnes r\xE9ponses de plus que Diane et a obtenu 80 %.", rule: PP, it: [nm("Nombre de questions pos\xE9es :", 40, "", "$0{,}8n - 0{,}75n = 2$")] },
+        { n: "82", src: S(143, 82), t: "Un f\xFBt se vide en une demi-heure avec le 1er robinet, en 1 h avec le 2e, en 1 h 30 avec le 3e et en 2 h avec le 4e.", rule: PP, it: [nm("Temps pour vider le f\xFBt avec les quatre robinets \xE0 la fois :", 14.4, "min")] },
+        { n: "83", src: S(144, 83), t: "Logiciel de g\xE9om\xE9trie : longueur d\u2019un arc de cercle de rayon $r$ et d\u2019angle $\\alpha$ : $\\frac{\\alpha}{360} \xD7 2\\pi r$.", rule: PP, it: [vf("La longueur de l\u2019arc est proportionnelle \xE0 l\u2019angle.", 1), nm("Longueur de l\u2019arc pour $r = 5$ cm et $\\alpha = 90\xB0$ (au centi\xE8me) :", 7.85, "cm")] },
+        { n: "Maths autrement", src: S(145, "\xAB Les maths autrement \xBB"), t: "Le Tour du monde en 80 jours. Dur\xE9es : Londres\u2013Suez 7 j ; Suez\u2013Bombay 13 j ; Bombay\u2013Calcutta 3 j ; Calcutta\u2013Hong Kong 13 j ; Hong Kong\u2013Yokohama 6 j ; Yokohama\u2013San Francisco 22 j ; San Francisco\u2013New York 7 j ; New York\u2013Londres 9 j.", rule: PP, it: [nm("Dur\xE9e totale du voyage :", 80, "jours"), nm("Un n\u0153ud vaut 1,852 km/h. 20 n\u0153uds en km/h :", 37.04, "km/h")] }
+      ]
+    }
+  });
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const S = (p, n) => "Manuel Cycle 4, chapitre 8 \xAB Statistiques \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const ST = "**Moyenne** = $\\frac{\\text{somme des valeurs}}{\\text{effectif total}}$ (pond\xE9r\xE9e : somme des valeurs \xD7 effectifs). **M\xE9diane** : valeur qui partage la s\xE9rie rang\xE9e dans l\u2019ordre croissant en deux groupes de m\xEAme effectif. **\xC9tendue** = plus grande valeur \u2212 plus petite valeur. **Fr\xE9quence** = $\\frac{\\text{effectif}}{\\text{effectif total}}$.";
+  ADD("cinq", {
+    mnx: {
+      c8: [
+        { n: "36", src: S(180, 36), t: "Probl\xE8me r\xE9solu. Pousses de bl\xE9 de 29 \xE9l\xE8ves : taille (cm) 0, 8, 12, 14, 16, 17, 18, 19, 20, 21, 22 avec les effectifs 1, 2, 2, 4, 2, 2, 3, 3, 4, 4, 2.", rule: ST, it: [nm("Taille moyenne (au dixi\xE8me) :", 16.6, "cm", "$\\frac{481}{29}$")] },
+        { n: "37", src: S(181, 37), t: "Probl\xE8me r\xE9solu. Consommation quotidienne d\u2019eau (L) de 21 familles : 100 ; 169 ; 150 ; 100 ; 146 ; 204 ; 169 ; 141 ; 156 ; 110 ; 141 ; 150 ; 204 ; 150 ; 141 ; 180 ; 250 ; 180 ; 146 ; 200 ; 260.", rule: ST, it: [nm("M\xE9diane de la s\xE9rie :", 150, "L", "11e valeur")] },
+        { n: "38", src: S(181, 38), t: "Notes d\u2019une classe : 5 ; 5 ; 5 ; 5 ; 6 ; 6 ; 6 ; 7 ; 7 ; 7,5 ; 7,5 ; 9 ; 10 ; 12 ; 12 ; 15 ; 16 ; 17 ; 17 ; 18.", rule: ST, it: [nm("M\xE9diane de la s\xE9rie :", 7.5), vf("La moyenne est repr\xE9sentative du niveau de la classe.", 0, "des notes extr\xEAmes la tirent vers le haut ; la m\xE9diane est 7,5")] },
+        { n: "42", src: S(182, 42), t: "\xAB \xCAtes-vous satisfait de vos conditions de travail ? \xBB : 31 salari\xE9s tr\xE8s satisfaits, 23 peu satisfaits, 13 pas satisfaits du tout et 8 ne se sont pas prononc\xE9s.", rule: ST, it: [nm("Nombre de salari\xE9s interrog\xE9s :", 75), nm("Fr\xE9quence des \xAB tr\xE8s satisfaits \xBB (en %, au centi\xE8me) :", 41.33, "%"), nm("Angle du secteur \xAB tr\xE8s satisfaits \xBB dans le diagramme circulaire :", 148.8, "\xB0"), vf("Les salari\xE9s sont majoritairement satisfaits.", 0, "31 sur 75 : moins de la moiti\xE9")] },
+        { n: "43", src: S(182, 43), t: "En 2010, en France, la production d\u2019\xE9lectricit\xE9 s\u2019\xE9l\xE8ve \xE0 550 TWh : 407,9 TWh nucl\xE9aires, 68 TWh hydrauliques, 59,4 TWh thermiques, 9,6 TWh \xE9oliens, 0,6 TWh solaires et 4,5 TWh d\u2019autres \xE9nergies renouvelables.", rule: ST, it: [nm("Part du nucl\xE9aire (en %, au centi\xE8me) :", 74.16, "%"), nm("Part de l\u2019hydraulique (en %, au centi\xE8me) :", 12.36, "%"), nm("Part du thermique (en %) :", 10.8, "%")] },
+        { n: "44", src: S(182, 44), t: "D\xE9mographie 2005 : France 51,4 % de femmes et 48,6 % d\u2019hommes (61 114 000 habitants) ; Andorre 47,9 % de femmes et 52,1 % d\u2019hommes (83 900 habitants).", rule: ST, it: [vf("La somme des pourcentages vaut 100 % pour chacun des deux \xC9tats.", 1), vf("Si on regroupe les deux populations, il y a une majorit\xE9 de femmes.", 1, "environ 51,4 %")] },
+        { n: "48", src: S(183, 48), t: "Dans la classe d\u2019Augustin, il y a 30 \xE9l\xE8ves : 10 % ont 15 ans, 40 % ont 13 ans et 50 % ont 14 ans.", rule: ST, it: [nm("\xC2ge moyen d\u2019un \xE9l\xE8ve :", 13.7, "ans")] },
+        { n: "50", src: S(184, 50), t: "Enseignants de l\u2019\xC9ducation nationale (milliers), public / total : 2007 838 / 983 ; 2008 829 / 973 ; 2009 799 / 940 ; 2010 804 / 944 ; 2011 790 / 928.", rule: ST, it: [nm("Pourcentage d\u2019enseignants dans le public de 2007 \xE0 2011 (au centi\xE8me) :", 85.15, "%", "$\\frac{4\\,060}{4\\,768}$")] },
+        { n: "51", src: S(184, 51), t: "La ville A compte 60 000 voitures (25 % blanches) et la ville B 18 000 voitures (60 % blanches).", rule: ST, it: [nm("Voitures blanches dans la ville A :", 15e3), nm("Voitures blanches dans la ville B :", 10800), vf("Il y a plus de voitures blanches dans la ville B que dans la ville A.", 0)] },
+        { n: "56", src: S(185, 56), t: "Anciennes r\xE9gions class\xE9es par superficie (km\xB2) : [0 ; 10 000[ : 6 ; [10 000 ; 20 000[ : 7 ; [20 000 ; 30 000[ : 6 ; [30 000 ; 40 000[ : 4 ; [40 000 ; 50 000[ : 3 ; > 50 000 : 1.", rule: ST, it: [nm("Nombre de r\xE9gions :", 27), qc("Intervalle de la m\xE9diane :", ["[20 000 ; 30 000[", "[10 000 ; 20 000[", "[30 000 ; 40 000["], 0, "14e valeur")] },
+        { n: "59", src: S(186, 59), t: "Taux de natalit\xE9 en 2011 (\u2030) : Autriche 8,67 ; Italie 9,18 ; Suisse 9,53 ; Pologne 10,01 ; Belgique 10,06 ; Espagne 10,66 ; Russie 11,05 ; France 12,29 ; Royaume-Uni 12,29.", rule: ST, it: [nm("Taux moyen (au centi\xE8me) :", 10.42, "\u2030"), nm("Taux m\xE9dian :", 10.06, "\u2030"), nm("Nouvelle moyenne en ajoutant Monaco 6,94 ; Japon 7,31 ; Allemagne 8,30 (au centi\xE8me) :", 9.69, "\u2030")] },
+        { n: "60", src: S(186, 60), t: "Aquitaine (2010) : Dordogne 414 milliers d\u2019habitants, 9 060 km\xB2 ; Gironde 1 448 milliers, 10 000 km\xB2 ; Landes 384 milliers, 9 243 km\xB2 ; Lot-et-Garonne 332 milliers, 5 361 km\xB2 ; Pyr\xE9n\xE9es-Atlantiques 655 milliers, 7 645 km\xB2.", rule: ST, it: [nm("Population totale (milliers) :", 3233), nm("Densit\xE9 de la Gironde (au dixi\xE8me) :", 144.8, "hab./km\xB2"), nm("Densit\xE9 de la r\xE9gion (au centi\xE8me) :", 78.26, "hab./km\xB2"), nm("Part de l\u2019ancienne r\xE9gion dans la Nouvelle-Aquitaine de 5 844 000 habitants (au centi\xE8me) :", 55.32, "%")] },
+        { n: "61", src: S(187, 61), t: "Salaires (\u20AC) : 900 (1 employ\xE9), 1 300 (18), 1 600 (43), 1 850 (13), 2 050 (7), 2 775 (2), 4 957 (1).", rule: ST, it: [nm("Effectif total :", 85), nm("Salaire moyen (au centime) :", 1670.67, "\u20AC"), nm("Salaire m\xE9dian :", 1600, "\u20AC"), nm("\xC9tendue :", 4057, "\u20AC")] },
+        { n: "62", src: S(187, 62), t: "pH de 20 solutions : 0 ; 5 ; 3 ; 2 ; 4 ; 5 ; 6 ; 1 ; 3 ; 2 ; 4 ; 5 ; 1 ; 0 ; 1 ; 2 ; 4 ; 6 ; 3 ; 5.", rule: ST, it: [vf("Toutes ces solutions sont acides (pH < 7).", 1), nm("Moyenne :", 3.1), nm("M\xE9diane :", 3), nm("\xC9tendue :", 6)] }
+      ]
+    }
+  });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
@@ -47513,6 +47863,17 @@ window.M4PLAN = {
       }).filter((s) => s.u.length) })).filter((r) => r.subs.length);
       const rest = P.L.filter((e) => !used.has(e));
       if (rest.length) R.push({ t: "Autres exercices", subs: window.MANUEL_API && MANUEL_API.types ? MANUEL_API.types(rest) : [{ name: "Exercices", u: units(rest) }] });
+      return R;
+    }
+    if (D && D.ch && D.ch[k] && D.ch[k].pg) {
+      const TY = (L) => window.MANUEL_API && MANUEL_API.types ? MANUEL_API.types(L) : [{ name: "Exercices", u: units(L) }], pgOf = (e) => +((String(e.src || "").match(/p\. (\d+)/) || [])[1] || 0), fl = (e) => /flash/i.test(String(e.src || ""));
+      const used = /* @__PURE__ */ new Set(), R = D.ch[k].pg.map(([t, w]) => {
+        const L = P.L.filter((e) => !used.has(e) && (w === "flash" ? fl(e) : !fl(e) && pgOf(e) >= w[0] && pgOf(e) <= w[1]));
+        L.forEach((e) => used.add(e));
+        return { t, subs: L.length ? TY(L) : [] };
+      }).filter((r) => r.subs.length);
+      const rest = P.L.filter((e) => !used.has(e));
+      if (rest.length) R.push({ t: "Autres exercices", subs: TY(rest) });
       return R;
     }
     if (!P.L.length) return [];
