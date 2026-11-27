@@ -40447,6 +40447,94 @@ window.MN_VT = window.MN_VT || function(f, P) {
   });
 })();
 (function() {
+  const P = window.MNPLAN = window.MNPLAN || {};
+  const N = (e, p) => ({ nr: [["M\xE9thodes et automatismes", [1, e - 1]], ["Entra\xEEnement", [e, p - 1]], ["Pour aller plus loin", [p, 999]]] });
+  P.premgen = { ch: { 1: N(18, 34), 2: N(24, 44), 3: N(33, 62), 4: N(27, 52), 5: N(16, 37), 6: N(31, 59) } };
+})();
+(function() {
+  const M = window.MANUEL = window.MANUEL || {};
+  const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
+    const C = M[cls] = M[cls] || {};
+    Object.keys(o).forEach((c) => {
+      C[c] = C[c] || {};
+      Object.keys(o[c]).forEach((l) => {
+        C[c][l] = (C[c][l] || []).concat(o[c][l]);
+      });
+    });
+  });
+  const T = { 1: "Analyse de l\u2019information chiffr\xE9e", 2: "De la statistique aux probabilit\xE9s", 3: "Croissance lin\xE9aire", 4: "Croissance exponentielle", 5: "Variations instantan\xE9es", 6: "Variations globales" };
+  const S = (c, p, n) => "Manuel Enseignement math\xE9matique 1re, chapitre " + c + " \xAB " + T[c] + " \xBB, p. " + p + ", exercice n\xB0 " + n;
+  const nm = (q, a, suf, c) => ({ k: "num", q, a, suf, c });
+  const qc = (q, ch, ok, c) => ({ k: "qcm", q, ch, ok, c });
+  const vf = (q, ok, c) => ({ k: "vf", q, ok, c });
+  const R = {
+    1: "**Proportion** = partie \xF7 total. **Taux d\u2019\xE9volution** : **$t = \\frac{v_2 - v_1}{v_1}$**. Diagramme circulaire : angle = **proportion \xD7 360\xB0**.",
+    2: "Fr\xE9quence marginale = **total de la ligne (ou colonne) \xF7 effectif total**. Fr\xE9quence conditionnelle : **$f_A(B) = \\frac{n(A \\cap B)}{n(A)}$**. **$P(A \\cap B) = P(A) \xD7 P_A(B)$** ; $P(B) = P(A \\cap B) + P(\\bar{A} \\cap B)$.",
+    3: "Suite **arithm\xE9tique** de raison $r$ : **$u(n+1) = u(n) + r$**, **$u(n) = u(0) + nr$** $= u(p) + (n - p)r$. Croissante si $r > 0$, d\xE9croissante si $r < 0$.",
+    4: "Suite **g\xE9om\xE9trique** de raison $q$ : **$u(n+1) = q \xD7 u(n)$**, **$u(n) = u(0) \xD7 q^n$**. Avec $u(0) > 0$ : croissante si $q > 1$, d\xE9croissante si $0 < q < 1$.",
+    5: "Le **nombre d\xE9riv\xE9** $f^{\\prime}(a)$ est le **coefficient directeur de la tangente** au point d\u2019abscisse $a$. Pour $f(x) = x^2$ : **$f^{\\prime}(a) = 2a$**.",
+    6: "**$(x^n)^{\\prime} = nx^{n-1}$**, $(k)^{\\prime} = 0$, **$(ku)^{\\prime} = ku^{\\prime}$**, $(u + v)^{\\prime} = u^{\\prime} + v^{\\prime}$. Tangente horizontale \u27FA **$f^{\\prime}(a) = 0$**. Tangente : $y = f^{\\prime}(a)(x - a) + f(a)$."
+  };
+  const E = (c, p, n, t, it) => ({ n: String(n), src: S(c, p, n), t, rule: R[c], it });
+  ADD("premgen", { mnx: {
+    c1: [
+      E(1, 38, 18, "Baccalaur\xE9at 2021 (pr\xE9sents / admis) : g\xE9n\xE9ral 385 959 / 379 930 ; technologique 154 303 / 147 596 ; professionnel 205 601 / 186 395.", [nm("Nombre de bacheliers en 2021 :", 713921), nm("Taux global de r\xE9ussite (en %, au centi\xE8me) :", 95.72, "%"), nm("Taux de r\xE9ussite au bac g\xE9n\xE9ral (en %, au centi\xE8me) :", 98.44, "%"), nm("5 286 candidats STAV, 98,66 % admis : nombre de bacheliers (\xE0 l\u2019unit\xE9) :", 5215)]),
+      E(1, 38, 19, "\xC9missions de GES 2019 (rapport du GIEC) : Afrique 1 292 M hab. (9 %) ; Am\xE9rique latine 646 (10 %) ; Am\xE9rique du Nord 366 (12 %) ; Asie de l\u2019Est 1 471 (27 %) ; Asie du Sud 1 836 (8 %) ; Asie du Sud-Est et Pacifique 674 (9 %) ; Australie, Japon, NZ 157 (3 %) ; Europe 620 (8 %) ; Europe de l\u2019Est, Asie centrale et de l\u2019Ouest 291 (6 %) ; Moyen-Orient 252 (5 %) ; commerce international (3 %). Total : 59 Gt.", [qc("Zone ayant \xE9mis le plus de GES :", ["Asie de l\u2019Est", "Am\xE9rique du Nord", "Asie du Sud"], 0), nm("Population mondiale totale (en millions) :", 7605), nm("Part de la population mondiale en Asie de l\u2019Est (en %, au centi\xE8me) :", 19.34, "%"), nm("Quantit\xE9 de GES \xE9mise par l\u2019Afrique (en Gt) :", 5.31, "Gt")]),
+      E(1, 38, 20, "Esp\xE9rance de vie (2010 \u2192 2020) : \xE0 la naissance, femmes 84,6 \u2192 85,1 ; hommes 78,0 \u2192 79,1 ; en bonne sant\xE9, femmes 63,3 \u2192 65,9 ; hommes 61,8 \u2192 64,4.", [nm("\xC9cart entre esp\xE9rance de vie \xE0 la naissance et en bonne sant\xE9 des femmes en 2020 :", 19.2, "ans"), nm("Taux d\u2019\xE9volution 2010-2020 de l\u2019esp\xE9rance de vie \xE0 la naissance des femmes (%, au centi\xE8me) :", 0.59, "%"), nm("\u2026 en bonne sant\xE9 des femmes (%, au centi\xE8me) :", 4.11, "%"), nm("\u2026 \xE0 la naissance des hommes (%, au centi\xE8me) :", 1.41, "%"), nm("\u2026 en bonne sant\xE9 des hommes (%, au centi\xE8me) :", 4.21, "%")]),
+      E(1, 39, 22, "Seuils de niveau de vie (euros 2019) : 1er d\xE9cile D1 : 11 480 (2016) \u2192 11 660 (2019) ; m\xE9diane 21 350 \u2192 22 040 ; 9e d\xE9cile D9 : 39 080 \u2192 39 930.", [nm("\xC9volution de D1 entre 2016 et 2019 (%, \xE0 0,1 pr\xE8s) :", 1.6, "%"), nm("\xC9volution de la m\xE9diane (%, \xE0 0,1 pr\xE8s) :", 3.2, "%"), nm("\xC9volution de D9 (%, \xE0 0,1 pr\xE8s) :", 2.2, "%"), nm("$\\frac{D9}{D1}$ en 2016 (au centi\xE8me) :", 3.4), nm("$\\frac{D9}{D1}$ en 2019 (au centi\xE8me) :", 3.42)]),
+      E(1, 39, 23, "Option sport (individuel en ligne, collectif en colonne) : Musculation 55 / 250 / 100 ; Natation 110 / 150 / 40 ; Badminton 190 / 100 / 10 (Basket-ball / Football / Rugby).", [nm("\xC9tudiants ayant fait du football et de la natation :", 150), nm("\xC9tudiants ayant fait du badminton :", 300), nm("\xC9tudiants ayant choisi l\u2019option sport :", 1005)]),
+      E(1, 39, 25, "Budget d\u2019Edgar : loyer 750 \u20AC, nourriture 250 \u20AC, forfaits 50 \u20AC, loisirs 200 \u20AC, autres 600 \u20AC. Il a trac\xE9 un secteur de 216\xB0 pour le loyer.", [nm("Total des d\xE9penses :", 1850, "\u20AC"), nm("Angle correct du secteur \xAB Loyer \xBB (au degr\xE9) :", 146, "\xB0"), nm("Angle du secteur \xAB Nourriture \xBB (au degr\xE9) :", 49, "\xB0")])
+    ],
+    c2: [
+      E(2, 60, 24, "Ch\xF4mage 2021 (en milliers) : femmes 268 (< 25 ans), 621 (25-49), 252 (> 49) ; hommes 306, 634, 285.", [nm("Fr\xE9quence marginale des moins de 25 ans (au centi\xE8me) :", 0.24), nm("Fr\xE9quence des moins de 25 ans parmi les femmes (au centi\xE8me) :", 0.23), nm("Fr\xE9quence des femmes parmi les moins de 25 ans (au centi\xE8me) :", 0.47)]),
+      E(2, 60, 25, "1 200 \xE9l\xE8ves : 40 % sont externes ; 75 % des demi-pensionnaires sont conduits ; 85 % des externes sont autonomes.", [nm("Externes autonomes :", 408), nm("Demi-pensionnaires autonomes :", 180), nm("Fr\xE9quence marginale des \xE9l\xE8ves autonomes :", 0.49)]),
+      E(2, 60, 27, "Tests TROD : rapports r\xE9cents 12 positifs, 735 n\xE9gatifs ; rapports anciens 25 positifs, 828 n\xE9gatifs.", [nm("Fr\xE9quence des tests positifs (au milli\xE8me) :", 0.023), nm("Fr\xE9quence des positifs parmi les rapports r\xE9cents (au milli\xE8me) :", 0.016), nm("Fr\xE9quence des positifs parmi les rapports anciens (au milli\xE8me) :", 0.029)]),
+      E(2, 60, 28, "Fitness : tapis 3 hommes, 2 femmes ; v\xE9los elliptiques 2 hommes, 4 femmes ; rameurs 4 hommes, 1 femme (total 16).", [nm("Fr\xE9quence marginale des tapis de course :", 0.3125), nm("Fr\xE9quence des femmes parmi les utilisateurs de v\xE9lo elliptique :", "2/3")]),
+      E(2, 61, 30, "44 % des Fran\xE7ais sont du groupe A et 4 % du groupe AB (seuls ces deux groupes portent l\u2019antig\xE8ne A).", [nm("Probabilit\xE9 de porter l\u2019antig\xE8ne A :", 0.48), nm("Sachant que l\u2019antig\xE8ne A est pr\xE9sent, probabilit\xE9 d\u2019\xEAtre du groupe A (au milli\xE8me) :", 0.917, "", "$\\frac{0{,}44}{0{,}48} = \\frac{11}{12}$")]),
+      E(2, 61, 31, "Arbre : $P(A) = 0{,}35$, $P_A(B) = 0{,}04$ ; $P(\\bar{A}) = 0{,}65$, $P_{\\bar{A}}(B) = 0{,}72$.", [nm("$P(A \\cap B) =$", 0.014), nm("$P(\\bar{A} \\cap B) =$", 0.468), nm("$P(B) =$", 0.482)]),
+      E(2, 61, 32, "Club d\u2019aviron : comp\xE9titeurs 15 jeunes, 32 adultes, 8 seniors ; non-comp\xE9titeurs 25, 17, 14.", [nm("$P(C \\cap J)$ (fraction) :", "5/37"), nm("$P(S \\cap \\bar{C})$ (fraction) :", "14/111"), nm("$P(S)$ (fraction) :", "22/111"), nm("$P_S(C)$ (fraction) :", "4/11"), nm("$P_C(A)$ (fraction) :", "32/55")])
+    ],
+    c3: [
+      E(3, 80, 37, "Situations \xE0 croissance lin\xE9aire.", [nm("Ch\xE8vres : 76, 70, 64, 58\u2026 le mois suivant :", 52), nm("Pluviom\xE8tre : 15 mm, 19 mm, 23 mm, 27 mm\u2026 dix minutes plus tard :", 31, "mm")]),
+      E(3, 80, 38, "Raison et sens de variation.", [nm("Raison de la suite 0,2 ; \u22120,2 ; \u22120,6\u2026 :", -0.4), qc("Cette suite est :", ["d\xE9croissante", "croissante"], 0), nm("Raison de la suite $\\frac{3}{5}$ ; 1 ; $\\frac{7}{5}$ ; $\\frac{9}{5}$\u2026 :", "2/5"), qc("Cette suite est :", ["croissante", "d\xE9croissante"], 0)]),
+      E(3, 80, 39, "Calculer $u(10)$.", [nm("$u(n) = 5n - 12$ : $u(10) =$", 38), nm("$u(n) = \\frac{4n + 7}{3}$ : $u(10) =$", "47/3")]),
+      E(3, 80, 40, "$u(1) = 0{,}2$ et $u(n+1) = u(n) + 0{,}1$.", [nm("$u(4) =$", 0.5), qc("La suite $u$ est :", ["croissante", "d\xE9croissante"], 0)]),
+      E(3, 80, 41, "Premiers termes d\u2019une suite arithm\xE9tique : $\\frac{13}{4}$ ; $\\frac{5}{2}$ ; $\\frac{7}{4}$ ; 1 ; $\\frac{1}{4}$.", [nm("Terme suivant :", "-1/2"), nm("Terme encore suivant :", "-5/4")]),
+      E(3, 80, 42, "$u$ arithm\xE9tique de raison 3 avec $u(6) = -4$.", [nm("$u(8) =$", 2)]),
+      E(3, 80, 43, "Calculer le terme de rang 5.", [nm("$r = -7$ et $u(0) = 3$ : $u(5) =$", -32), nm("$r = -1{,}2$ et $u(0) = 5{,}6$ : $u(5) =$", -0.4)]),
+      E(3, 81, 46, "D\xE9pense alimentaire : 7 000 \u20AC en 2021, puis +500 \u20AC par an. \xC0 partir de quelle ann\xE9e d\xE9passe-t-elle 9 600 \u20AC ? (Edgar a lu \xAB 7 ans \xBB.)", [nm("Plus petit $n$ tel que $7\\,000 + 500n > 9\\,600$ :", 6), nm("Ann\xE9e :", 2027)]),
+      E(3, 81, 47, "Remont\xE9e de plong\xE9e \xE0 10 m/min ; $d(n)$ est la distance parcourue apr\xE8s $n$ minutes.", [nm("$d(3) =$", 30, "m"), nm("Dur\xE9e de la remont\xE9e depuis 60 m :", 6, "min")]),
+      E(3, 81, 48, "Placement : $p(n) = 104{,}5n + 9\\,500$ ; la moto co\xFBte 13 000 \u20AC.", [nm("Plus petite valeur de $n$ telle que $p(n) \u2265 13\\,000$ :", 34), qc("Guillaume pourra acheter sa moto :", ["au bout de 34 mois (novembre 2024)", "au bout de 12 mois", "au bout de 3 ans et demi"], 0)])
+    ],
+    c4: [
+      E(4, 98, 27, "$u(0) = 0{,}5$ et $u(n+1) = 3 \xD7 u(n)$.", [nm("$u(1) =$", 1.5), nm("$u(2) =$", 4.5), nm("$u(3) =$", 13.5), nm("$u(7) =$", 1093.5)]),
+      E(4, 98, 29, "$u(0) = 3$ et $u(n+1) = 4 \xD7 u(n)$.", [nm("$u(1) =$", 12), nm("$u(2) =$", 48), nm("$u(3) =$", 192), qc("$u(7)$ en fonction de $u(5)$ :", ["$16 \xD7 u(5)$", "$8 \xD7 u(5)$", "$4 \xD7 u(5)$"], 0)]),
+      E(4, 98, 30, "\xC9nergie des data centers : $u(0) = 200$ TWh (2018) et $u(n+1) = 1{,}6 \xD7 u(n)$.", [nm("Raison :", 1.6), nm("\xC9nergie consomm\xE9e en 2021 (TWh, au dixi\xE8me) :", 819.2, "TWh")]),
+      E(4, 99, 31, "Une rumeur est partag\xE9e avec deux personnes qui ne la connaissent pas.", [qc("Raison de la suite des nouvelles personnes inform\xE9es :", ["2", "3", "0,5"], 0), qc("La rumeur va-t-elle :", ["gagner en intensit\xE9", "perdre en intensit\xE9"], 0), nm("Si 80 % ne la partagent pas, nouvelle raison :", 0.4), qc("Alors la rumeur va :", ["perdre en intensit\xE9", "gagner en intensit\xE9"], 0)]),
+      E(4, 99, 32, "Suite g\xE9om\xE9trique : $u(0) = 8$, $u(2) = 2$, $u(5) = 0{,}25$.", [nm("Raison :", 0.5), nm("$u(1) =$", 4), nm("$u(3) =$", 1), nm("$u(4) =$", 0.5)]),
+      E(4, 99, 33, "Loi de Moore : le nombre de transistors double tous les deux ans ; 3 500 transistors en 1972.", [nm("Raison de la suite (par p\xE9riode de 2 ans) :", 2), nm("Transistors en 1974 :", 7e3)]),
+      E(4, 100, 34, "$p(n) = 3\\,500 \xD7 2^n$, $n$ nombre de p\xE9riodes de deux ans depuis 1972.", [nm("Rang $n$ correspondant \xE0 2010 :", 19), nm("Estimation pour 2010 (en millions, \xE0 l\u2019unit\xE9) :", 1835, "millions")]),
+      E(4, 100, 35, "$u(0) = 8$ et raison $q = 1{,}5$.", [nm("$u(1) =$", 12), nm("$u(2) =$", 18), nm("$u(3) =$", 27)]),
+      E(4, 100, 37, "Lesquelles sont croissantes ?", [vf("$u(0) = 4$, $u(n+1) = 0{,}5 \xD7 u(n)$", 0), vf("$v(0) = 0{,}5$, $v(n+1) = 4 \xD7 v(n)$", 1), vf("$w(0) = 4$, $w(n+1) = \\sqrt{2} \xD7 w(n)$", 1), vf("$z(0) = 4$, $z(n+1) = \\frac{1}{4} \xD7 z(n)$", 0)]),
+      E(4, 100, 38, "Le carbone 14 diminue de 1,24 % par si\xE8cle ; $C(0) = A$.", [nm("Raison de la suite $C$ :", 0.9876), qc("La suite $C$ est :", ["d\xE9croissante", "croissante"], 0), qc("Apr\xE8s deux si\xE8cles :", ["$C(2) = A \xD7 0{,}9876^2$", "$C(2) = A - 2{,}48$", "$C(2) = 0{,}9876 A$"], 0)])
+    ],
+    c5: [
+      E(5, 116, 16, "$f(x) = x^2$. Tangentes aux points A, B, C, D d\u2019abscisses \u22124 ; \u22121,5 ; 0 et 3.", [nm("Coefficient directeur en A :", -8), nm("en B :", -3), nm("en C :", 0), nm("en D :", 6)]),
+      E(5, 117, 21, "Existe-t-il une courbe confondue avec au moins une de ses tangentes ?", [qc("R\xE9ponse :", ["Oui, une droite", "Non, jamais"], 0)])
+    ],
+    c6: [
+      E(6, 134, 36, "D\xE9riv\xE9es.", [qc("$f(x) = x^2 + 3x - 2$ :", ["$2x + 3$", "$2x + 3x$", "$x + 3$"], 0), qc("$g(x) = 5x^3 - 4x^2 + 8$ :", ["$15x^2 - 8x$", "$15x^2 - 8x + 8$", "$5x^2 - 4x$"], 0), qc("$h(x) = x^3 + x^2 + x + 1$ :", ["$3x^2 + 2x + 1$", "$3x^2 + 2x$", "$x^2 + x + 1$"], 0), qc("$j(x) = -2x^3 - 5x + 8x^2 + 1$ :", ["$-6x^2 + 16x - 5$", "$-6x^2 - 5 + 16x + 1$", "$-6x^2 + 8x - 5$"], 0)]),
+      E(6, 135, 37, "D\xE9riv\xE9es.", [qc("$f(x) = 0{,}3x^2 + 4x - 6$ :", ["$0{,}6x + 4$", "$0{,}3x + 4$", "$0{,}6x - 6$"], 0), qc("$g(x) = 2 - 9x^2$ :", ["$-18x$", "$2 - 18x$", "$-9x$"], 0), qc("$h(x) = 5x^3 + 18x - 15$ :", ["$15x^2 + 18$", "$15x^2 + 18x$", "$5x^2 + 18$"], 0), qc("$j(x) = \\frac{4}{3}x^3 + \\frac{5}{2}x^2$ :", ["$4x^2 + 5x$", "$\\frac{4}{3}x^2 + \\frac{5}{2}x$", "$4x^2 + \\frac{5}{2}x$"], 0)]),
+      E(6, 135, 38, "D\xE9riv\xE9es.", [qc("$f(x) = \\frac{x^2 - 5x - 7}{4}$ :", ["$\\frac{2x - 5}{4}$", "$2x - 5$", "$\\frac{2x - 5 - 7}{4}$"], 0), qc("$g(x) = 1 - x^2 - x^3$ :", ["$-2x - 3x^2$", "$1 - 2x - 3x^2$", "$-x - x^2$"], 0), qc("$h(x) = x(x^2 + 1{,}2x + 8)$ :", ["$3x^2 + 2{,}4x + 8$", "$2x + 1{,}2$", "$x^2 + 2{,}4x + 8$"], 0), qc("$j(x) = (x - 3)^2$ :", ["$2x - 6$", "$2(x - 3)^2$", "$2x$"], 0)]),
+      E(6, 135, 39, "Ahmed d\xE9rive $f(x) = 6 - 10{,}2x^2$ en rempla\xE7ant $x^2$ par $2x$ et obtient $f^{\\prime}(x) = 6 - 20{,}4x$.", [qc("Expression correcte :", ["$f^{\\prime}(x) = -20{,}4x$", "$f^{\\prime}(x) = 6 - 20{,}4x$", "$f^{\\prime}(x) = -10{,}2x$"], 0, "la d\xE9riv\xE9e de la constante 6 est 0")]),
+      E(6, 135, 40, "$f(x) = 0{,}25x^2 + 0{,}5x - 3$.", [nm("Abscisse du point o\xF9 la tangente est horizontale :", -1), nm("\xC9quation r\xE9duite de la tangente : $y =$", -3.25)]),
+      E(6, 135, 41, "$g(x) = 12x^3 - 30x^2 + 25x - 10$.", [qc("$g^{\\prime}(x) =$", ["$36x^2 - 60x + 25$", "$36x^2 - 30x + 25$", "$12x^2 - 60x + 25$"], 0), vf("$g^{\\prime}(x) = (6x - 5)^2$", 1), nm("Abscisse de l\u2019unique tangente horizontale :", "5/6"), nm("\xC9quation de cette tangente : $y =$", "-55/18")]),
+      E(6, 135, 42, "Altitude d\u2019une balle de tennis : $z(t) = -4{,}9t^2 + 6{,}86t + 2$.", [nm("Instant o\xF9 la vitesse verticale est nulle :", 0.7, "s"), nm("Altitude atteinte \xE0 cet instant (au milli\xE8me) :", 4.401, "m")]),
+      E(6, 135, 43, "Canette de 33 cL : $S^{\\prime}(r) = \\frac{4\\pi r^3 - 660}{r^2}$.", [nm("Solution de $4\\pi r^3 - 660 = 0$ (au milli\xE8me) :", 3.745, "cm"), qc("Ce rayon correspond :", ["\xE0 la surface minimale", "\xE0 la surface maximale", "au volume maximal"], 0)])
+    ]
+  } });
+})();
+(function() {
   const M = window.MANUEL = window.MANUEL || {};
   const ADD = window.MANUEL_ADD = window.MANUEL_ADD || ((cls, o) => {
     const C = M[cls] = M[cls] || {};
