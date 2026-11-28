@@ -540,6 +540,11 @@ body.printing .wrap{display:none}
 @media (max-width:640px){.hd-track{gap:14px;padding:18px 20px 22px}.hd-card{flex-basis:162px;width:162px;height:292px;padding:12px 8px 10px}
  .hd-ph{width:100px;height:120px;flex-basis:120px}.hd-nm{font-size:14.5px}.hd-era{height:292px}.hd-en{font-size:15px;padding:8px 12px}
  .hd-f{font-size:24px}.hd-f:nth-child(2){font-size:19px}}
+.hs-av.hd-pic{flex:0 0 58px;width:58px;height:70px;border-radius:12px;overflow:hidden;padding:0;border:2px solid var(--ec,#e8c46c);box-shadow:0 3px 8px rgba(0,0,0,.2)}
+.hs-av.hd-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.hd-big{float:right;width:150px;margin:12px 0 10px 16px;text-align:center;font-size:12px;color:var(--muted)}
+.hd-big img{width:150px;height:180px;object-fit:cover;object-position:50% 20%;border-radius:14px;border:2px solid #e8c46c;box-shadow:0 6px 16px rgba(0,0,0,.25);display:block;margin-bottom:4px}
+@media (max-width:640px){.hd-big{width:112px;margin-left:12px}.hd-big img{width:112px;height:134px}}
 @media print{.hd-ctl{display:none}.hd-track{flex-wrap:wrap;overflow:visible}}
 /* /HFRISE-CSS */
 /* HANT-CSS */
@@ -150701,6 +150706,17 @@ var __yieldStar = (value) => {
     else { var m=tr.querySelector('.hd-era[data-era="'+t.getAttribute('data-hdera')+'"]'); if(m) go(Math.max(0,m.offsetLeft-20)); }
   });
   requestAnimationFrame(step);
+  // portrait aussi à côté de chaque biographie (on réutilise l'image de la frise, sans la dupliquer dans la page)
+  var cs=tr.querySelectorAll('.hd-card[data-bio]');
+  for(var c=0;c<cs.length;c++){
+    var im=cs[c].querySelector('.hd-ph img'), d=document.getElementById(cs[c].getAttribute('data-bio'));
+    if(!im||!d||d.getAttribute('data-pic')) continue; d.setAttribute('data-pic','1');
+    var av=d.querySelector('summary .hs-av');
+    if(av){ av.textContent=''; av.className+=' hd-pic'; av.style.setProperty('--ec',av.style.background); av.style.background='#222'; var a=im.cloneNode(); a.alt=''; av.appendChild(a); }
+    var bd=d.querySelector('.hs-body');
+    if(bd){ var f=document.createElement('figure'); f.className='hd-big'; var b=im.cloneNode(); f.appendChild(b);
+      var cap=document.createElement('figcaption'); cap.textContent=(d.querySelector('.hs-nm')||{}).textContent||''; f.appendChild(cap); bd.insertBefore(f,bd.firstChild); }
+  }
 })();
 </script>
 </body>
