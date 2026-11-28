@@ -28344,6 +28344,7 @@ var JMC = {
       row.innerHTML = '<div style="-webkit-transform:translateZ(' + R[r][5] + "px);transform:translateZ(" + R[r][5] + 'px)">' + part + part + "</div>";
       st.appendChild(row);
     }
+    /*PARALLAXE*/(function(){ /* Jacky 2026-11-27 : les formules montent quand on descend la page, et inversement (proches plus vite que lointaines) */var rows=st.children,T=[],K=[],tk=0;for(var i=0;i<rows.length;i++){T.push(R[i][0]);K.push(.35+.55*(1+R[i][5]/900));}function upd(){tk=0;if(!document.documentElement.classList.contains("da-on"))return;var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,h=window.innerHeight*1.6;for(var i=0;i<rows.length;i++){var t=((T[i]-y*K[i]/h*100)%100+100)%100;rows[i].style.top=t.toFixed(2)+"%";}}window.addEventListener("scroll",function(){if(!tk)tk=requestAnimationFrame(upd);},{passive:true});upd();})();/*/PARALLAXE*/
   })();
   var DI = ["dastro", "dchim", "deco", "delec", "dfin", "dia", "dinfo", "dmeca", "dmed", "dphys", "dplus", "dthermo"];
   var di0 = document.createElement("div");
