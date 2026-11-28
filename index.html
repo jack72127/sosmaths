@@ -2505,6 +2505,24 @@ html{-webkit-text-size-adjust:100%}body{margin:0;font-size:14px}img{max-width:10
   <div id="home-sub" hidden><button class="nav-back" id="home-back">← Tous les niveaux</button><h2 class="home-h2" id="home-sub-t"></h2><div class="home-grid home-grid-s" id="home-sub-list"></div></div>
 </section>
 <div class="sig">fait par SOSMATHS (JH)</div>
+<!-- PG-HOME -->
+<button class="pg-home" id="pg-home" type="button" hidden>🏠 Page d'accueil</button>
+<style>
+.chapters .nav-home,#home-back{display:none!important}
+.pg-home{position:fixed;left:10px;top:6px;top:calc(env(safe-area-inset-top,0px) + 6px);z-index:55;font:800 15px/1 var(--f-body,system-ui),system-ui,sans-serif;color:#fff;background:var(--accent,#2563eb);border:2px solid #fff;border-radius:999px;padding:8px 14px;box-shadow:0 2px 10px rgba(0,0,0,.3);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.pg-home:active{transform:scale(.96)}.pg-home[hidden]{display:none!important}
+html.pg-on .chapters{margin-top:44px!important}html.pg-on #home-sub{padding-top:36px}
+@media print{.pg-home{display:none!important}}
+</style>
+<script>
+(function(){
+  var b=document.getElementById("pg-home"), hs=document.getElementById("ch-accueil"); if(!b||!hs) return;
+  function upd(){ var on=hs.hidden||hs.classList.contains("in-grp"); b.hidden=!on; document.documentElement.classList.toggle("pg-on",on); }
+  b.addEventListener("click",function(){ var k=document.getElementById("home-back"); if(k) k.click(); else { location.hash=""; location.reload(); } });
+  new MutationObserver(upd).observe(hs,{attributes:true,attributeFilter:["hidden","class"]}); upd();
+})();
+</script>
+<!-- /PG-HOME -->
 <!-- /ACCUEIL -->
 
 
